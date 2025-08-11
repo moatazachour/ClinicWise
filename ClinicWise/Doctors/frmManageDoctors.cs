@@ -29,7 +29,19 @@ namespace ClinicWise.Doctors
         private async void btnAddDoctor_Click(object sender, EventArgs e)
         {
             frmAddEditDoctor frm = new frmAddEditDoctor(-1);
+            frm.ShowDialog();
 
+            await _RefreshData();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditDoctor frm = new frmAddEditDoctor((int)dgvManageDoctors.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
 
             await _RefreshData();

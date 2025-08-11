@@ -8,22 +8,22 @@ namespace ClinicWise.Doctors
 {
     public partial class frmAddEditDoctor : Form
     {
-        private int _PersonID;
+        private int _DoctorID;
 
         private enum enGender { Male, Female }
 
         private enum enMode { AddNew, Update }
         private enMode _Mode;
 
-        clsDoctor _Doctor;
+        private clsDoctor _Doctor;
 
-        public frmAddEditDoctor(int personID)
+        public frmAddEditDoctor(int doctorID)
         {
             InitializeComponent();
 
-            _PersonID = personID;
+            _DoctorID = doctorID;
 
-            _Mode = (_PersonID == -1) ? enMode.AddNew : enMode.Update;
+            _Mode = (_DoctorID == -1) ? enMode.AddNew : enMode.Update;
         }
 
         private async Task _LoadMedicalSpecializations()
@@ -44,11 +44,39 @@ namespace ClinicWise.Doctors
             {
                 return;
             }
+
+            _Doctor = await clsDoctor.FindAsync(_DoctorID);
+
+            if (_Doctor is null)
+            {
+                MessageBox.Show($"Doctor with ID {_DoctorID} Not Found!",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
+
+            lblDoctorID.Text = _DoctorID.ToString();
+            txtFirstName.Text = _Doctor.FirstName;
+            txtLastName.Text = _Doctor.LastName;
+            txtNationalNo.Text = _Doctor.NationalNo;
+            dtpDateOfBirth.Value = _Doctor.DateOfBirth;
+            rbMale.Checked = _Doctor.Gender == 0;
+            rbFemale.Checked = _Doctor.Gender == 1;
+            txtPhone.Text = _Doctor.Phone;
+            clsSpecialization specialization = await clsSpecialization.FindAsync(_Doctor.SpecializationID);
+            cbSpecialization.SelectedItem = specialization.Name;
+            txtEmail.Text = _Doctor.Email;
+            txtAddress.Text = _Doctor.Address;
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            _Doctor = new clsDoctor();
+            if (_Mode == enMode.AddNew)
+            {
+                _Doctor = new clsDoctor();
+            }
 
             _Doctor.NationalNo = txtNationalNo.Text;
             _Doctor.FirstName = txtFirstName.Text;
@@ -62,13 +90,12 @@ namespace ClinicWise.Doctors
             clsSpecialization specialization = await clsSpecialization.FindByNameAsync(cbSpecialization.Text);
             _Doctor.SpecializationID = specialization.SpecializationID;
 
-            if (await _Doctor.SaveAsync())
+            if (_Doctor.Save())
             {
                 MessageBox.Show(
                     $"Doctor ID = {_Doctor.DoctorID}", 
-                    "Doctor Saved Successfully",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                    "Doctor Saved Successfully");
+
 
                 _Mode = enMode.Update;
                 lblDoctorID.Text = _Doctor.DoctorID.ToString();

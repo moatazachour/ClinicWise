@@ -3,7 +3,7 @@ Create Procedure Person_AddNew
 	@FirstName varchar(100),
 	@LastName varchar(100),
 	@DateOfBirth datetime,
-	@Gender bit,
+	@Gender tinyint,
 	@Phone varchar(20),
 	@Email varchar(100),
 	@Address varchar(255),

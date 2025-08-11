@@ -59,25 +59,35 @@ namespace ClinicWise.Business
         }
 
 
-        private async Task<bool> _AddNewAsync()
+        private bool _AddNew()
         {
-            PersonID = await clsPersonData.AddNewPersonAsync(NationalNo, FirstName, LastName, DateOfBirth,
+            PersonID = clsPersonData.AddNewPerson(NationalNo, FirstName, LastName, DateOfBirth,
             Gender, Phone, Email, Address, CreatedByUserID);
 
             return PersonID != -1;
         }
 
-        //public async Task<clsPerson> Find(int PersonID)
-        //{
+        private bool _Update()
+        {
+            return clsPersonData.Update(
+                PersonID,
+                NationalNo,
+                FirstName,
+                LastName,
+                DateOfBirth,
+                Gender,
+                Phone,
+                Email,
+                Address,
+                CreatedByUserID);
+        }
 
-        //}
-
-        public virtual async Task<bool> SaveAsync()
+        public virtual bool Save()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (await _AddNewAsync())
+                    if (_AddNew())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -86,9 +96,7 @@ namespace ClinicWise.Business
                     return false;
 
                 case enMode.Update:
-                    break;
-                default:
-                    break;
+                    return _Update();
             }
 
             return true;

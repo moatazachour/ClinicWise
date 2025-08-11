@@ -52,7 +52,9 @@
   <ItemGroup>
     <Content Include="StoredProcedures\Doctors\Doctor_AddNew.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_GetAll.sql" />
+    <Content Include="StoredProcedures\Doctors\Doctor_Update.sql" />
     <Content Include="StoredProcedures\Persons\Person_AddNew.sql" />
+    <Content Include="StoredProcedures\Persons\Person_Update.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetAll.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetByID.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetByName.sql" />

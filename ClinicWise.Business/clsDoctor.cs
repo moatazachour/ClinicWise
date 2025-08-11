@@ -48,22 +48,29 @@ namespace ClinicWise.Business
             return await clsDoctorData.GetAllDoctors();
         }
 
-        private async Task<bool> _AddNewAsync()
+        private bool _AddNewAsync()
         {
-            DoctorID = await clsDoctorData.AddNewDoctorAsync(PersonID, SpecializationID);
+            DoctorID = clsDoctorData.AddNewDoctor(PersonID, SpecializationID);
 
             return DoctorID != -1;
         }
 
-        public override async Task<bool> SaveAsync()
+        public bool _Update()
         {
-            if (!await base.SaveAsync())
+            return clsDoctorData.Update(
+                DoctorID,
+                SpecializationID);
+        }
+
+        public override bool Save()
+        {
+            if (!base.Save())
                 return false;
 
-            switch(Mode)
+            switch (Mode)
             {
                 case enMode.AddNew:
-                    if (await _AddNewAsync())
+                    if (_AddNewAsync())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -71,13 +78,42 @@ namespace ClinicWise.Business
                     return false;
 
                 case enMode.Update:
-                    break;
-                
-                default:
-                    break;
+                    return _Update();
             }
 
             return false;
+        }
+
+        public static async Task<clsDoctor> FindAsync(int doctorID)
+        {
+            (
+                bool isFound,
+                string nationalNo,
+                int specializationID,
+                int personID,
+                string firstName, string lastName,
+                DateTime dateOfBirth,
+                byte gender,
+                string phone, string email, string address
+            )
+            = await clsDoctorData.GetDoctorByID(doctorID);
+
+            if (!isFound)
+                return null;
+
+            return new clsDoctor(
+                doctorID,
+                nationalNo,
+                specializationID,
+                personID,
+                firstName,
+                lastName,
+                dateOfBirth,
+                gender,
+                phone,
+                email,
+                address,
+                -1 /*For Now*/);
         }
     }
 }
