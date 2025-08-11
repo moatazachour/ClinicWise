@@ -1,5 +1,6 @@
 ﻿using ClinicWise.DataAccess;
 using System;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace ClinicWise.Business
@@ -39,6 +40,12 @@ namespace ClinicWise.Business
             SpecializationID = specializationID;
 
             Mode = enMode.Update;
+        }
+
+
+        public static async Task<DataTable> GetAllDoctorsAsync()
+        {
+            return await clsDoctorData.GetAllDoctors();
         }
 
         private async Task<bool> _AddNewAsync()

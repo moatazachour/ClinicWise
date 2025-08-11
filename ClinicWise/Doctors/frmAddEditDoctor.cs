@@ -44,7 +44,6 @@ namespace ClinicWise.Doctors
             {
                 return;
             }
-
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -65,13 +64,22 @@ namespace ClinicWise.Doctors
 
             if (await _Doctor.SaveAsync())
             {
-                MessageBox.Show($"Doctor ID = {_Doctor.DoctorID}", "Doctor Saved Successfully");
+                MessageBox.Show(
+                    $"Doctor ID = {_Doctor.DoctorID}", 
+                    "Doctor Saved Successfully",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
                 _Mode = enMode.Update;
                 lblDoctorID.Text = _Doctor.DoctorID.ToString();
             }
             else
             {
-                MessageBox.Show("Doctor Failed to be saved", "Error");
+                MessageBox.Show(
+                    "Doctor Failed to be saved", 
+                    "Error",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
             }
 
         }

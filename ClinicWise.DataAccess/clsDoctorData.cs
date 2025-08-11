@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Net;
-using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace ClinicWise.DataAccess
@@ -39,6 +37,35 @@ namespace ClinicWise.DataAccess
                     throw;
                 }
             }
+        }
+
+        public static async Task<DataTable> GetAllDoctors()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Doctor_GetAll", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (reader.HasRows)
+                            dt.Load(reader);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Unexpected Error: {ex.Message}");
+                    throw;
+                }
+            }
+
+            return dt;
         }
     }
 }

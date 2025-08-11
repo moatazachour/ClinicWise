@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClinicWise.Business;
+using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClinicWise.Doctors
@@ -10,18 +12,27 @@ namespace ClinicWise.Doctors
             InitializeComponent();
         }
 
-        private void frmManageDoctors_Load(object sender, EventArgs e)
+        private async Task _RefreshData()
         {
             cbManageDoctors.SelectedItem = "None";
+
+            dgvManageDoctors.DataSource = await clsDoctor.GetAllDoctorsAsync();
+
+            lblRecordCount.Text = dgvManageDoctors.RowCount.ToString();
         }
 
-        private void btnAddDoctor_Click(object sender, EventArgs e)
+        private async void frmManageDoctors_Load(object sender, EventArgs e)
+        {
+            await _RefreshData();
+        }
+
+        private async void btnAddDoctor_Click(object sender, EventArgs e)
         {
             frmAddEditDoctor frm = new frmAddEditDoctor(-1);
 
             frm.ShowDialog();
 
-            frmManageDoctors_Load(null, null);
+            await _RefreshData();
         }
     }
 }
