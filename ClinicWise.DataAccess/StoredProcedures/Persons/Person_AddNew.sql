@@ -1,4 +1,4 @@
-Create Procedure Person_AddNew
+ALTER Procedure Person_AddNew
 	@NationalNo varchar(20),
 	@FirstName varchar(100),
 	@LastName varchar(100),
@@ -7,6 +7,7 @@ Create Procedure Person_AddNew
 	@Phone varchar(20),
 	@Email varchar(100),
 	@Address varchar(255),
+	@CreatedByUserID int,
 	@PersonID int output
 As
 Begin
@@ -20,7 +21,8 @@ Begin
 				,Gender
 				,Phone
 				,Email
-				,Address)
+				,Address
+				,CreatedByUserID)
 		Values
 				(@NationalNo
 				,@FirstName
@@ -29,7 +31,8 @@ Begin
 				,@Gender
 				,@Phone
 				,@Email
-				,@Address);
+				,@Address
+				,@CreatedByUserID);
 
 	Set @PersonID = SCOPE_IDENTITY();
 END;

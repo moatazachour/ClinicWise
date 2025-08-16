@@ -1,4 +1,5 @@
 ﻿using ClinicWise.Business;
+using ClinicWise.Global_Classes;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -45,6 +46,37 @@ namespace ClinicWise.Doctors
             frm.ShowDialog();
 
             await _RefreshData();
+        }
+
+        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int doctorID = (int)dgvManageDoctors.CurrentRow.Cells[0].Value;
+
+            if (MessageBox.Show(
+                $"Are you sure you want to delete the doctor with ID [{doctorID}]",
+                "Are you sure?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information)
+                == DialogResult.OK)
+            {
+                if (clsDoctor.Delete(doctorID, clsGlobalSettings.CurrentUserID))
+                {
+                    MessageBox.Show(
+                        $"Doctor with ID = [{doctorID}] is deleted successfully",
+                        "Succcess");
+
+                    await _RefreshData();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Doctor deletion failed",
+                        "Error",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Error);
+                }
+
+            }
         }
     }
 }

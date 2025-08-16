@@ -14,8 +14,8 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@PersonID", personID);
-                command.Parameters.AddWithValue("@SpecializationID", specializationID);
+                command.Parameters.AddWithValue("@PersonID", SqlDbType.Int).Value = personID;
+                command.Parameters.AddWithValue("@SpecializationID", SqlDbType.Int).Value = specializationID;
 
                 SqlParameter outputParam = new SqlParameter("@DoctorID", SqlDbType.Int)
                 {
@@ -78,14 +78,15 @@ namespace ClinicWise.DataAccess
             byte gender, 
             string phone, 
             string email, 
-            string address)> GetDoctorByID(int doctorID)
+            string address,
+            int createdByUserID)> GetDoctorByID(int doctorID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Doctor_GetByID", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@DoctorID", doctorID);
+                command.Parameters.AddWithValue("@DoctorID", SqlDbType.Int).Value = doctorID;
 
                 await connection.OpenAsync();
 
@@ -106,11 +107,12 @@ namespace ClinicWise.DataAccess
                                 (byte)reader["Gender"],
                                 (string)reader["Phone"],
                                 (string)reader["Email"],
-                                (string)reader["Address"]);
+                                (string)reader["Address"],
+                                (int)reader["CreatedByUserID"]);
                         }
 
                         return
-                            (false, null, -1, -1, null, null, DateTime.MinValue, 0, null, null, null);
+                            (false, null, -1, -1, null, null, DateTime.MinValue, 0, null, null, null, -1);
                     }
                 }
                 catch (Exception ex)
@@ -130,8 +132,8 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@DoctorID", doctorID);
-                command.Parameters.AddWithValue("@SpecializationID", specializationID);
+                command.Parameters.AddWithValue("@DoctorID", SqlDbType.Int).Value = doctorID;
+                command.Parameters.AddWithValue("@SpecializationID", SqlDbType.Int).Value = specializationID;
 
                 connection.Open();
 
@@ -147,6 +149,43 @@ namespace ClinicWise.DataAccess
             }
 
             return rowsAffected > 0;
+        }
+
+        public static bool Delete(int doctorID, int deletedByUserID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Doctor_Delete", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@DoctorID", SqlDbType.Int).Value = doctorID;
+                command.Parameters.AddWithValue("@DeletedByUserID", SqlDbType.Int).Value = deletedByUserID;
+
+                SqlParameter outputParam = new SqlParameter("@RowsAffected", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                
+                command.Parameters.Add(outputParam);
+
+                connection.Open();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+
+                    rowsAffected = outputParam.Value != null ? (int)command.Parameters["@RowsAffected"].Value : 0;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    throw;
+                }
+            }
+
+            return (rowsAffected > 0);
         }
     }
 }

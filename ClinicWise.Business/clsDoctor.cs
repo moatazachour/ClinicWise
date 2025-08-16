@@ -94,7 +94,8 @@ namespace ClinicWise.Business
                 string firstName, string lastName,
                 DateTime dateOfBirth,
                 byte gender,
-                string phone, string email, string address
+                string phone, string email, string address,
+                int createdByUserID
             )
             = await clsDoctorData.GetDoctorByID(doctorID);
 
@@ -113,7 +114,12 @@ namespace ClinicWise.Business
                 phone,
                 email,
                 address,
-                -1 /*For Now*/);
+                createdByUserID);
+        }
+
+        public static bool Delete(int doctorID, int deletedByUserID)
+        {
+            return clsDoctorData.Delete(doctorID, deletedByUserID);
         }
     }
 }

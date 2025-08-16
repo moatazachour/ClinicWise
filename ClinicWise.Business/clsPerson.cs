@@ -23,6 +23,7 @@ namespace ClinicWise.Business
         public string Email { get; set; }
         public string Address { get; set; }
         public int CreatedByUserID { get; set; }
+        public int? DeletedByUserID { get; set; }
 
         public clsPerson()
         {

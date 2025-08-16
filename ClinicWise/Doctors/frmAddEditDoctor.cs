@@ -1,4 +1,5 @@
 ﻿using ClinicWise.Business;
+using ClinicWise.Global_Classes;
 using System;
 using System.Data;
 using System.Threading.Tasks;
@@ -86,6 +87,7 @@ namespace ClinicWise.Doctors
             _Doctor.Phone = txtPhone.Text;
             _Doctor.Email = txtEmail.Text;
             _Doctor.Address = txtAddress.Text;
+            _Doctor.CreatedByUserID = clsGlobalSettings.CurrentUserID;
 
             clsSpecialization specialization = await clsSpecialization.FindByNameAsync(cbSpecialization.Text);
             _Doctor.SpecializationID = specialization.SpecializationID;
@@ -93,8 +95,8 @@ namespace ClinicWise.Doctors
             if (_Doctor.Save())
             {
                 MessageBox.Show(
-                    $"Doctor ID = {_Doctor.DoctorID}", 
-                    "Doctor Saved Successfully");
+                    $"Doctor Saved Successfully", 
+                    "Success");
 
 
                 _Mode = enMode.Update;

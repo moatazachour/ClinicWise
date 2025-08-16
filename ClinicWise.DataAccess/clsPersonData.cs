@@ -35,6 +35,8 @@ namespace ClinicWise.DataAccess
                 else
                     command.Parameters.AddWithValue("@Address", address);
 
+                command.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
+
                 SqlParameter outputParam = new SqlParameter("@PersonID", SqlDbType.Int)
                 {
                     Direction = ParameterDirection.Output
@@ -93,6 +95,8 @@ namespace ClinicWise.DataAccess
                     command.Parameters.AddWithValue("@Address", DBNull.Value);
                 else
                     command.Parameters.AddWithValue("@Address", address);
+
+                command.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
 
                 SqlParameter returnedParam = new SqlParameter("@ReturnVal", SqlDbType.Int)
                 {

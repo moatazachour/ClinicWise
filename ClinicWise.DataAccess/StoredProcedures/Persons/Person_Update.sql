@@ -1,4 +1,4 @@
-create procedure Person_Update
+ALTER procedure Person_Update
 	@NationalNo varchar(20),
 	@FirstName varchar(100),
 	@LastName varchar(100),
@@ -7,6 +7,7 @@ create procedure Person_Update
 	@Phone varchar(20),
 	@Email varchar(100),
 	@Address varchar(255),
+	@CreatedByUserID int,
 	@PersonID int
 as
 begin
@@ -20,7 +21,8 @@ begin
 		Phone = @Phone,
 		Email = @Email,
 		Address = @Address,
-		NationalNo = @NationalNo
+		NationalNo = @NationalNo,
+		CreatedByUserID = @CreatedByUserID
 	where PersonID = @PersonID;
 
 	return @@ROWCOUNT;
