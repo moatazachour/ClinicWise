@@ -1,4 +1,5 @@
 ﻿using ClinicWise.Business;
+using ClinicWise.Contracts;
 using ClinicWise.Global_Classes;
 using System;
 using System.Data;
@@ -46,9 +47,9 @@ namespace ClinicWise.Doctors
                 return;
             }
 
-            _Doctor = await clsDoctor.FindAsync(_DoctorID);
+            DoctorDTO doctorDto = await clsDoctor.FindAsync(_DoctorID);
 
-            if (_Doctor is null)
+            if (doctorDto is null)
             {
                 MessageBox.Show($"Doctor with ID {_DoctorID} Not Found!",
                     "Error",
@@ -57,6 +58,9 @@ namespace ClinicWise.Doctors
 
                 return;
             }
+            
+            _Doctor = new clsDoctor(await clsDoctor.FindAsync(_DoctorID));
+
 
             lblDoctorID.Text = _DoctorID.ToString();
             txtFirstName.Text = _Doctor.FirstName;

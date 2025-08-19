@@ -1,6 +1,10 @@
-﻿using ClinicWise.DataAccess;
+﻿using ClinicWise.Contracts;
+using ClinicWise.DataAccess;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Net;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace ClinicWise.Business
@@ -43,7 +47,18 @@ namespace ClinicWise.Business
         }
 
 
-        public static async Task<DataTable> GetAllDoctorsAsync()
+        public clsDoctor(DoctorDTO doctorDTO)
+            : base(doctorDTO.PersonID, doctorDTO.NationalNo, doctorDTO.FirstName, doctorDTO.LastName,
+                  doctorDTO.DateOfBirth, doctorDTO.Gender, doctorDTO.Phone, doctorDTO.Email, doctorDTO.Address,
+                  doctorDTO.CreatedByUserID)
+        {
+            DoctorID = doctorDTO.DoctorID;
+            SpecializationID = doctorDTO.SpecializationID;
+
+            Mode = enMode.Update;
+        }
+
+        public static async Task<List<DoctorDisplayDTO>> GetAllDoctorsAsync()
         {
             return await clsDoctorData.GetAllDoctors();
         }
@@ -84,37 +99,9 @@ namespace ClinicWise.Business
             return false;
         }
 
-        public static async Task<clsDoctor> FindAsync(int doctorID)
+        public static async Task<DoctorDTO> FindAsync(int doctorID)
         {
-            (
-                bool isFound,
-                string nationalNo,
-                int specializationID,
-                int personID,
-                string firstName, string lastName,
-                DateTime dateOfBirth,
-                byte gender,
-                string phone, string email, string address,
-                int createdByUserID
-            )
-            = await clsDoctorData.GetDoctorByID(doctorID);
-
-            if (!isFound)
-                return null;
-
-            return new clsDoctor(
-                doctorID,
-                nationalNo,
-                specializationID,
-                personID,
-                firstName,
-                lastName,
-                dateOfBirth,
-                gender,
-                phone,
-                email,
-                address,
-                createdByUserID);
+            return await clsDoctorData.GetDoctorByID(doctorID);
         }
 
         public static bool Delete(int doctorID, int deletedByUserID)

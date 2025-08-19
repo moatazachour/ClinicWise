@@ -101,6 +101,10 @@
       <Project>{c4fb53a0-8ffe-4126-8932-ce90a6b6b6f4}</Project>
       <Name>ClinicWise.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ClinicWise.Contracts\ClinicWise.Contracts.csproj">
+      <Project>{8aad3f2d-2020-46c8-9a40-f79ea4adaefb}</Project>
+      <Name>ClinicWise.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\doctor-96.png" />

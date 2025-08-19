@@ -48,7 +48,12 @@
     <Compile Include="clsSpecializationData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ClinicWise.Contracts\ClinicWise.Contracts.csproj">
+      <Project>{8aad3f2d-2020-46c8-9a40-f79ea4adaefb}</Project>
+      <Name>ClinicWise.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="StoredProcedures\Doctors\Doctor_AddNew.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_Delete.sql" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClinicWise.Contracts;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -39,9 +41,9 @@ namespace ClinicWise.DataAccess
             }
         }
 
-        public static async Task<DataTable> GetAllDoctors()
+        public static async Task<List<DoctorDisplayDTO>> GetAllDoctors()
         {
-            DataTable dt = new DataTable();
+            List<DoctorDisplayDTO> doctors = new List<DoctorDisplayDTO>();
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Doctor_GetAll", connection))
@@ -54,8 +56,21 @@ namespace ClinicWise.DataAccess
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        if (reader.HasRows)
-                            dt.Load(reader);
+                        while (await reader.ReadAsync())
+                        {
+                            doctors.Add(new DoctorDisplayDTO
+                            {
+                                DoctorID = (int)reader["DoctorID"],
+                                FullName = (string)reader["FullName"],
+                                NationalNo = (string)reader["NationalNo"],
+                                Specialization = (string)reader["Specialization"],
+                                DateOfBirth = (DateTime)reader["DateOfBirth"],
+                                GenderCaption = (string)reader["Gender"],
+                                Phone = (string)reader["Phone"],
+                                Email = (string)reader["Email"],
+                                Address = (string)reader["Address"]
+                            });
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -65,21 +80,10 @@ namespace ClinicWise.DataAccess
                 }
             }
 
-            return dt;
+            return doctors;
         }
 
-        public static async Task<(bool isFound, 
-            string nationalNo, 
-            int specializationID, 
-            int personID, 
-            string firstName, 
-            string lastName, 
-            DateTime dateOfBirth, 
-            byte gender, 
-            string phone, 
-            string email, 
-            string address,
-            int createdByUserID)> GetDoctorByID(int doctorID)
+        public static async Task<DoctorDTO> GetDoctorByID(int doctorID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Doctor_GetByID", connection))
@@ -96,23 +100,24 @@ namespace ClinicWise.DataAccess
                     {
                         if (await reader.ReadAsync())
                         {
-                            return
-                                (true,
-                                (string)reader["NationalNo"],
-                                (int)reader["SpecializationID"],
-                                (int)reader["PersonID"],
-                                (string)reader["FirstName"],
-                                (string)reader["LastName"],
-                                (DateTime)reader["DateOfBirth"],
-                                (byte)reader["Gender"],
-                                (string)reader["Phone"],
-                                (string)reader["Email"],
-                                (string)reader["Address"],
-                                (int)reader["CreatedByUserID"]);
+                            return new DoctorDTO
+                            {
+                                DoctorID = doctorID,
+                                NationalNo = (string)reader["NationalNo"],
+                                SpecializationID = (int)reader["SpecializationID"],
+                                PersonID = (int)reader["PersonID"],
+                                FirstName = (string)reader["FirstName"],
+                                LastName = (string)reader["LastName"],
+                                DateOfBirth = (DateTime)reader["DateOfBirth"],
+                                Gender = (byte)reader["Gender"],
+                                Phone = (string)reader["Phone"],
+                                Email = (string)reader["Email"],
+                                Address = (string)reader["Address"],
+                                CreatedByUserID = (int)reader["CreatedByUserID"]
+                            };
                         }
 
-                        return
-                            (false, null, -1, -1, null, null, DateTime.MinValue, 0, null, null, null, -1);
+                        return null;
                     }
                 }
                 catch (Exception ex)

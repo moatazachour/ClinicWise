@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C4FB53A0-8FFE-4126-8932-CE90A6B6B6F4}</ProjectGuid>
+    <ProjectGuid>{8AAD3F2D-2020-46C8-9A40-F79EA4ADAEFB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClinicWise.Business</RootNamespace>
-    <AssemblyName>ClinicWise.Business</AssemblyName>
+    <RootNamespace>ClinicWise.Contracts</RootNamespace>
+    <AssemblyName>ClinicWise.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,20 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsDoctor.cs" />
-    <Compile Include="clsPerson.cs" />
-    <Compile Include="clsSpecialization.cs" />
+    <Compile Include="Doctors\DoctorDisplayDTO.cs" />
+    <Compile Include="Doctors\DoctorDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClinicWise.Contracts\ClinicWise.Contracts.csproj">
-      <Project>{8aad3f2d-2020-46c8-9a40-f79ea4adaefb}</Project>
-      <Name>ClinicWise.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClinicWise.DataAccess\ClinicWise.DataAccess.csproj">
-      <Project>{0fa4686b-a289-48db-97f7-3ecce12c5921}</Project>
-      <Name>ClinicWise.DataAccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
