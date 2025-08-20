@@ -23,19 +23,16 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@NationalNo", nationalNo);
-                command.Parameters.AddWithValue("@FirstName", firstName);
-                command.Parameters.AddWithValue("@LastName", lastName);
-                command.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-                command.Parameters.AddWithValue("@Gender", gender);
-                command.Parameters.AddWithValue("@Phone", phone);
-                command.Parameters.AddWithValue("@Email", email);
-                if (string.IsNullOrWhiteSpace(address))
-                    command.Parameters.AddWithValue("@Address", DBNull.Value);
-                else
-                    command.Parameters.AddWithValue("@Address", address);
-
-                command.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
+                command.Parameters.AddWithValue("@NationalNo", SqlDbType.VarChar).Value = nationalNo;
+                command.Parameters.AddWithValue("@FirstName", SqlDbType.NVarChar).Value = firstName;
+                command.Parameters.AddWithValue("@LastName", SqlDbType.NVarChar).Value = lastName;
+                command.Parameters.AddWithValue("@DateOfBirth", SqlDbType.DateTime).Value = dateOfBirth;
+                command.Parameters.AddWithValue("@Gender", SqlDbType.TinyInt).Value = gender;
+                command.Parameters.AddWithValue("@Phone", SqlDbType.NVarChar).Value = phone ?? (object)DBNull.Value;
+                command.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = email ?? (object)DBNull.Value;
+                command.Parameters.AddWithValue("@Address", SqlDbType.NVarChar).Value =
+                    string.IsNullOrWhiteSpace(address) ? (object)DBNull.Value : address;
+                command.Parameters.AddWithValue("@CreatedByUserID", SqlDbType.Int).Value = createdByUserID;
 
                 SqlParameter outputParam = new SqlParameter("@PersonID", SqlDbType.Int)
                 {
@@ -53,8 +50,8 @@ namespace ClinicWise.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Unexpected Error: {ex.Message}");
-                    throw;
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to add new person.", ex);
                 }
             }
         }
@@ -78,25 +75,17 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@PersonID", personID);
-                command.Parameters.AddWithValue("@NationalNo", nationalNo);
-                command.Parameters.AddWithValue("@FirstName", firstName);
-                command.Parameters.AddWithValue("@LastName", lastName);
-                command.Parameters.AddWithValue("@DateOfBirth", dateOfBirth);
-                command.Parameters.AddWithValue("@Gender", gender);
-                command.Parameters.AddWithValue("@Phone", phone);
-
-                if (string.IsNullOrWhiteSpace(email))
-                    command.Parameters.AddWithValue("@Email", DBNull.Value);
-                else
-                    command.Parameters.AddWithValue("@Email", email);
-
-                if (string.IsNullOrWhiteSpace(address))
-                    command.Parameters.AddWithValue("@Address", DBNull.Value);
-                else
-                    command.Parameters.AddWithValue("@Address", address);
-
-                command.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
+                command.Parameters.AddWithValue("@PersonID", SqlDbType.Int).Value = personID;
+                command.Parameters.AddWithValue("@NationalNo", SqlDbType.VarChar).Value = nationalNo;
+                command.Parameters.AddWithValue("@FirstName", SqlDbType.NVarChar).Value = firstName;
+                command.Parameters.AddWithValue("@LastName", SqlDbType.NVarChar).Value = lastName;
+                command.Parameters.AddWithValue("@DateOfBirth", SqlDbType.DateTime).Value = dateOfBirth;
+                command.Parameters.AddWithValue("@Gender", SqlDbType.TinyInt).Value = gender;
+                command.Parameters.AddWithValue("@Phone", SqlDbType.NVarChar).Value = phone ?? (object)DBNull.Value;
+                command.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = email ?? (object)DBNull.Value;
+                command.Parameters.AddWithValue("@Address", SqlDbType.NVarChar).Value =
+                    string.IsNullOrWhiteSpace(address) ? (object)DBNull.Value : address;
+                command.Parameters.AddWithValue("@CreatedByUserID", SqlDbType.Int).Value = createdByUserID;
 
                 SqlParameter returnedParam = new SqlParameter("@ReturnVal", SqlDbType.Int)
                 {
@@ -114,8 +103,8 @@ namespace ClinicWise.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
-                    throw;
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to update new person.", ex);
                 }
             }
 

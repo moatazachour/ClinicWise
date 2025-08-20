@@ -35,8 +35,8 @@ namespace ClinicWise.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Unexpected Error: {ex.Message}");
-                    throw;
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to add new doctor.", ex);
                 }
             }
         }
@@ -75,8 +75,8 @@ namespace ClinicWise.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Unexpected Error: {ex.Message}");
-                    throw;
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to retrieve doctors data", ex);
                 }
             }
 
@@ -122,8 +122,8 @@ namespace ClinicWise.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Unexpected Error: {ex.Message}");
-                    throw;
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to retrieve doctor data", ex);
                 }
             }
         }
@@ -148,8 +148,8 @@ namespace ClinicWise.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
-                    throw;
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to update doctor data", ex);
                 }
             }
 
@@ -185,8 +185,8 @@ namespace ClinicWise.DataAccess
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
-                    throw;
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to delete doctor data", ex);
                 }
             }
 

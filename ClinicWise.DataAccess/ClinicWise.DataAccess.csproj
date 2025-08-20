@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsDoctorData.cs" />
+    <Compile Include="clsGlobal.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsSpecializationData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

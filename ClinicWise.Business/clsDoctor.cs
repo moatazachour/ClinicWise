@@ -2,9 +2,6 @@
 using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Net;
-using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace ClinicWise.Business
