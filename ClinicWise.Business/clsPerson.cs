@@ -22,6 +22,7 @@ namespace ClinicWise.Business
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+        public string ImagePath { get; set; }
         public int CreatedByUserID { get; set; }
         public int? DeletedByUserID { get; set; }
 
@@ -29,21 +30,22 @@ namespace ClinicWise.Business
         {
             PersonID = -1;
             NationalNo = null;
-            FirstName = string.Empty;
-            LastName = string.Empty;
+            FirstName = null;
+            LastName = null;
             DateOfBirth = DateTime.MinValue;
             Gender = 0;
             Phone = string.Empty;
-            Email = string.Empty;
-            Address = string.Empty;
+            Email = null;
+            Address = null;
             CreatedByUserID = -1;
+            ImagePath = null;
 
             Mode = enMode.AddNew;
         }
 
         public clsPerson(
             int personID, string nationalNo, string firstName, string lastName, DateTime dateOfBirth, 
-            byte gender, string phone, string email, string address, int createdByUserID)
+            byte gender, string phone, string email, string address, string imagePath, int createdByUserID)
         {
             PersonID = personID;
             NationalNo = nationalNo; 
@@ -54,6 +56,7 @@ namespace ClinicWise.Business
             Phone = phone;
             Email = email;
             Address = address;
+            ImagePath = imagePath;
             CreatedByUserID = createdByUserID;
 
             Mode = enMode.Update;
@@ -63,7 +66,7 @@ namespace ClinicWise.Business
         private bool _AddNew()
         {
             PersonID = clsPersonData.AddNewPerson(NationalNo, FirstName, LastName, DateOfBirth,
-            Gender, Phone, Email, Address, CreatedByUserID);
+            Gender, Phone, Email, Address, ImagePath, CreatedByUserID);
 
             return PersonID != -1;
         }
@@ -80,6 +83,7 @@ namespace ClinicWise.Business
                 Phone,
                 Email,
                 Address,
+                ImagePath,
                 CreatedByUserID);
         }
 

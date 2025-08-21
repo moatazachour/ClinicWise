@@ -34,8 +34,9 @@ namespace ClinicWise.Business
             string phone,
             string email,
             string address,
+            string imagePath,
             int createdByUserID)
-            : base(personID, nationalNo, firstName, lastName, dateOfBirth, gender, phone, email, address, createdByUserID)
+            : base(personID, nationalNo, firstName, lastName, dateOfBirth, gender, phone, email, address, imagePath, createdByUserID)
         {
             DoctorID = doctorID;
             SpecializationID = specializationID;
@@ -47,7 +48,7 @@ namespace ClinicWise.Business
         public clsDoctor(DoctorDTO doctorDTO)
             : base(doctorDTO.PersonID, doctorDTO.NationalNo, doctorDTO.FirstName, doctorDTO.LastName,
                   doctorDTO.DateOfBirth, doctorDTO.Gender, doctorDTO.Phone, doctorDTO.Email, doctorDTO.Address,
-                  doctorDTO.CreatedByUserID)
+                  doctorDTO.ImagePath ,doctorDTO.CreatedByUserID)
         {
             DoctorID = doctorDTO.DoctorID;
             SpecializationID = doctorDTO.SpecializationID;

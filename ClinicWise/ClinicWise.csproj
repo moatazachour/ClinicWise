@@ -61,13 +61,9 @@
     <Compile Include="Doctors\frmManageDoctors.Designer.cs">
       <DependentUpon>frmManageDoctors.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Global Classes\clsGlobalSettings.cs" />
+    <Compile Include="Global Classes\clsUtil.cs" />
+    <Compile Include="Global Classes\enPersonType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Doctors\frmAddEditDoctor.resx">
@@ -118,6 +114,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Doctors\Control\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_boy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_girl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor_female.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor_male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor_femaleV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor_maleV2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

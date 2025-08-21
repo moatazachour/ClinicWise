@@ -1,12 +1,13 @@
 ALTER procedure Person_Update
 	@NationalNo varchar(20),
-	@FirstName varchar(100),
-	@LastName varchar(100),
+	@FirstName nvarchar(100),
+	@LastName nvarchar(100),
 	@DateOfBirth datetime,
 	@Gender tinyint,
-	@Phone varchar(20),
-	@Email varchar(100),
-	@Address varchar(255),
+	@Phone nvarchar(20),
+	@Email nvarchar(100),
+	@Address nvarchar(255),
+	@ImagePath nvarchar(250),
 	@CreatedByUserID int,
 	@PersonID int
 as
@@ -22,6 +23,7 @@ begin
 		Email = @Email,
 		Address = @Address,
 		NationalNo = @NationalNo,
+		ImagePath = @ImagePath,
 		CreatedByUserID = @CreatedByUserID
 	where PersonID = @PersonID;
 

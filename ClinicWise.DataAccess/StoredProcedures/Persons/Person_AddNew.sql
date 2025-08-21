@@ -1,12 +1,13 @@
 ALTER Procedure Person_AddNew
 	@NationalNo varchar(20),
-	@FirstName varchar(100),
-	@LastName varchar(100),
+	@FirstName nvarchar(100),
+	@LastName nvarchar(100),
 	@DateOfBirth datetime,
 	@Gender tinyint,
-	@Phone varchar(20),
-	@Email varchar(100),
-	@Address varchar(255),
+	@Phone nvarchar(20),
+	@Email nvarchar(100),
+	@Address nvarchar(255),
+	@ImagePath nvarchar(250),
 	@CreatedByUserID int,
 	@PersonID int output
 As
@@ -22,6 +23,7 @@ Begin
 				,Phone
 				,Email
 				,Address
+				,ImagePath
 				,CreatedByUserID)
 		Values
 				(@NationalNo
@@ -32,6 +34,7 @@ Begin
 				,@Phone
 				,@Email
 				,@Address
+				,@ImagePath
 				,@CreatedByUserID);
 
 	Set @PersonID = SCOPE_IDENTITY();

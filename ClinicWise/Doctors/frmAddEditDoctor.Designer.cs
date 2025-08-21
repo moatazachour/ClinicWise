@@ -57,6 +57,7 @@
             this.lblDoctorID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblMode = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDoctorImage)).BeginInit();
             this.SuspendLayout();
@@ -92,7 +93,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(927, 393);
+            this.groupBox1.Size = new System.Drawing.Size(948, 393);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             // 
@@ -100,23 +101,25 @@
             // 
             this.llRemove.AutoSize = true;
             this.llRemove.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llRemove.Location = new System.Drawing.Point(790, 264);
+            this.llRemove.Location = new System.Drawing.Point(815, 266);
             this.llRemove.Name = "llRemove";
             this.llRemove.Size = new System.Drawing.Size(69, 18);
             this.llRemove.TabIndex = 52;
             this.llRemove.TabStop = true;
             this.llRemove.Text = "Remove";
+            this.llRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llRemove_LinkClicked);
             // 
             // llSetImage
             // 
             this.llSetImage.AutoSize = true;
             this.llSetImage.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llSetImage.Location = new System.Drawing.Point(790, 235);
+            this.llSetImage.Location = new System.Drawing.Point(815, 235);
             this.llSetImage.Name = "llSetImage";
             this.llSetImage.Size = new System.Drawing.Size(82, 18);
             this.llSetImage.TabIndex = 51;
             this.llSetImage.TabStop = true;
             this.llSetImage.Text = "Set Image";
+            this.llSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSetImage_LinkClicked);
             // 
             // btnClose
             // 
@@ -130,6 +133,7 @@
             this.btnClose.TabIndex = 50;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -176,13 +180,14 @@
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(80, 24);
             this.rbFemale.TabIndex = 38;
-            this.rbFemale.TabStop = true;
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
             // 
             // rbMale
             // 
             this.rbMale.AutoSize = true;
+            this.rbMale.Checked = true;
             this.rbMale.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbMale.Location = new System.Drawing.Point(140, 107);
             this.rbMale.Margin = new System.Windows.Forms.Padding(2);
@@ -192,6 +197,7 @@
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
             this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
             // 
             // cbSpecialization
             // 
@@ -226,10 +232,10 @@
             // 
             // pbDoctorImage
             // 
-            this.pbDoctorImage.Location = new System.Drawing.Point(761, 71);
+            this.pbDoctorImage.Location = new System.Drawing.Point(770, 50);
             this.pbDoctorImage.Margin = new System.Windows.Forms.Padding(2);
             this.pbDoctorImage.Name = "pbDoctorImage";
-            this.pbDoctorImage.Size = new System.Drawing.Size(139, 139);
+            this.pbDoctorImage.Size = new System.Drawing.Size(164, 163);
             this.pbDoctorImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbDoctorImage.TabIndex = 37;
             this.pbDoctorImage.TabStop = false;
@@ -402,6 +408,10 @@
             this.lblMode.TabIndex = 32;
             this.lblMode.Text = "Add New Doctor";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmAddEditDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,5 +464,6 @@
         private System.Windows.Forms.LinkLabel llRemove;
         private System.Windows.Forms.ComboBox cbSpecialization;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

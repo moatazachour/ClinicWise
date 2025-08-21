@@ -15,7 +15,8 @@ namespace ClinicWise.DataAccess
             byte gender, 
             string phone, 
             string email, 
-            string address, 
+            string address,
+            string imagePath,
             int createdByUserID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
@@ -32,6 +33,8 @@ namespace ClinicWise.DataAccess
                 command.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = email ?? (object)DBNull.Value;
                 command.Parameters.AddWithValue("@Address", SqlDbType.NVarChar).Value =
                     string.IsNullOrWhiteSpace(address) ? (object)DBNull.Value : address;
+                command.Parameters.AddWithValue("@ImagePath", SqlDbType.NChar).Value =
+                    string.IsNullOrWhiteSpace(imagePath) ? (object)DBNull.Value : imagePath;
                 command.Parameters.AddWithValue("@CreatedByUserID", SqlDbType.Int).Value = createdByUserID;
 
                 SqlParameter outputParam = new SqlParameter("@PersonID", SqlDbType.Int)
@@ -65,7 +68,8 @@ namespace ClinicWise.DataAccess
             byte gender, 
             string phone, 
             string email, 
-            string address, 
+            string address,
+            string imagePath,
             int createdByUserID)
         {
             int rowsAffected = 0;
@@ -85,6 +89,8 @@ namespace ClinicWise.DataAccess
                 command.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = email ?? (object)DBNull.Value;
                 command.Parameters.AddWithValue("@Address", SqlDbType.NVarChar).Value =
                     string.IsNullOrWhiteSpace(address) ? (object)DBNull.Value : address;
+                command.Parameters.AddWithValue("@ImagePath", SqlDbType.NVarChar).Value =
+                    string.IsNullOrWhiteSpace(imagePath) ? (object)DBNull.Value : imagePath;
                 command.Parameters.AddWithValue("@CreatedByUserID", SqlDbType.Int).Value = createdByUserID;
 
                 SqlParameter returnedParam = new SqlParameter("@ReturnVal", SqlDbType.Int)

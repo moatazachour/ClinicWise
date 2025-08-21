@@ -111,8 +111,9 @@ namespace ClinicWise.DataAccess
                                 DateOfBirth = (DateTime)reader["DateOfBirth"],
                                 Gender = (byte)reader["Gender"],
                                 Phone = (string)reader["Phone"],
-                                Email = (string)reader["Email"],
-                                Address = (string)reader["Address"],
+                                Email = reader["Email"] == DBNull.Value ? null : (string)reader["Email"],
+                                Address = reader["Address"] == DBNull.Value ? null : (string)reader["Address"],
+                                ImagePath = reader["ImagePath"] == DBNull.Value ? null : (string)reader["ImagePath"],
                                 CreatedByUserID = (int)reader["CreatedByUserID"]
                             };
                         }

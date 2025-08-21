@@ -1,8 +1,10 @@
 ﻿using ClinicWise.Business;
 using ClinicWise.Contracts;
 using ClinicWise.Global_Classes;
+using ClinicWise.Properties;
 using System;
 using System.Data;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -38,15 +40,34 @@ namespace ClinicWise.Doctors
             }
         }
 
-        private async void frmAddEditDoctor_Load(object sender, EventArgs e)
+        private async Task _ResetInformations()
         {
             await _LoadMedicalSpecializations();
 
             if (_Mode == enMode.AddNew)
             {
-                return;
+                lblMode.Text = "Add New Doctor";
+                _Doctor = new clsDoctor();
+            }
+            else
+            {
+                lblMode.Text = "Update Doctor";
             }
 
+            lblDoctorID.Text = "N/A";
+            txtFirstName.Text = string.Empty;
+            txtLastName.Text = string.Empty;
+            txtNationalNo.Text = string.Empty;
+            pbDoctorImage.Image = rbMale.Checked ? Resources.doctor_maleV2 : Resources.doctor_femaleV2;
+            txtPhone.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+
+            llRemove.Visible = false;
+        }
+
+        private async Task _LoadData()
+        {
             DoctorDTO doctorDto = await clsDoctor.FindAsync(_DoctorID);
 
             if (doctorDto is null)
@@ -58,7 +79,7 @@ namespace ClinicWise.Doctors
 
                 return;
             }
-            
+
             _Doctor = new clsDoctor(await clsDoctor.FindAsync(_DoctorID));
 
 
@@ -72,16 +93,65 @@ namespace ClinicWise.Doctors
             txtPhone.Text = _Doctor.Phone;
             clsSpecialization specialization = await clsSpecialization.FindAsync(_Doctor.SpecializationID);
             cbSpecialization.SelectedItem = specialization.Name;
-            txtEmail.Text = _Doctor.Email;
-            txtAddress.Text = _Doctor.Address;
+            txtEmail.Text = _Doctor.Email ?? string.Empty;
+            txtAddress.Text = _Doctor.Address ?? string.Empty;
+
+            if (_Doctor.ImagePath != "")
+            {
+                pbDoctorImage.ImageLocation = _Doctor.ImagePath;
+            }
+
+            llRemove.Visible = (_Doctor.ImagePath != "");
+        }
+
+        private async void frmAddEditDoctor_Load(object sender, EventArgs e)
+        {
+            await _ResetInformations();
+
+            if (_Mode == enMode.Update)
+                await _LoadData();
+        }
+
+        private bool _HandleImage()
+        {
+            if (_Doctor.ImagePath != pbDoctorImage.ImageLocation)
+            {
+                if (_Doctor.ImagePath != null)
+                {
+                    try
+                    {
+                        File.Delete(_Doctor.ImagePath);
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("Error Deleting Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        throw;
+                    }
+                }
+
+                if (pbDoctorImage.ImageLocation != null)
+                {
+                    string sourceImage = pbDoctorImage.ImageLocation.ToString();
+                    if (clsUtil.CopyImageToProjectImageFolder(ref sourceImage, enPersonType.Doctor))
+                    {
+                        pbDoctorImage.ImageLocation = sourceImage;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (_Mode == enMode.AddNew)
-            {
-                _Doctor = new clsDoctor();
-            }
+            if (!_HandleImage())
+                return;
 
             _Doctor.NationalNo = txtNationalNo.Text;
             _Doctor.FirstName = txtFirstName.Text;
@@ -91,6 +161,7 @@ namespace ClinicWise.Doctors
             _Doctor.Phone = txtPhone.Text;
             _Doctor.Email = txtEmail.Text;
             _Doctor.Address = txtAddress.Text;
+            _Doctor.ImagePath = pbDoctorImage.ImageLocation;
             _Doctor.CreatedByUserID = clsGlobalSettings.CurrentUserID;
 
             clsSpecialization specialization = await clsSpecialization.FindByNameAsync(cbSpecialization.Text);
@@ -115,6 +186,50 @@ namespace ClinicWise.Doctors
                      MessageBoxIcon.Error);
             }
 
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbMale.Checked)
+            {
+                pbDoctorImage.Image = Resources.doctor_maleV2;
+            }
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbFemale.Checked)
+            {
+                pbDoctorImage.Image = Resources.doctor_femaleV2;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog1.FileName;
+                pbDoctorImage.Load(selectedFilePath);
+                llRemove.Visible = true;
+            }
+        }
+
+        private void llRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pbDoctorImage.ImageLocation = null;
+
+            pbDoctorImage.Image =  rbMale.Checked ? Resources.doctor_maleV2 : Resources.doctor_femaleV2;
+
+            llRemove.Visible = false;
         }
     }
 }
