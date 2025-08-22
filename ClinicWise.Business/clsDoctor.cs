@@ -13,6 +13,18 @@ namespace ClinicWise.Business
 
         public int DoctorID { get; set; }
         public int SpecializationID { get; set; }
+        
+        private clsSpecialization _SpecializationInfo;
+
+        public async Task<clsSpecialization> GetSpecializationInfo()
+        {
+            if (_SpecializationInfo == null && SpecializationID > 0)
+            {
+                _SpecializationInfo = await clsSpecialization.FindAsync(SpecializationID);
+            }
+
+            return _SpecializationInfo;
+        }
 
         public clsDoctor()
         {

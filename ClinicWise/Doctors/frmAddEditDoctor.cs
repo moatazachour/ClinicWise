@@ -91,17 +91,17 @@ namespace ClinicWise.Doctors
             rbMale.Checked = _Doctor.Gender == 0;
             rbFemale.Checked = _Doctor.Gender == 1;
             txtPhone.Text = _Doctor.Phone;
-            clsSpecialization specialization = await clsSpecialization.FindAsync(_Doctor.SpecializationID);
+            clsSpecialization specialization = await _Doctor.GetSpecializationInfo();
             cbSpecialization.SelectedItem = specialization.Name;
             txtEmail.Text = _Doctor.Email ?? string.Empty;
             txtAddress.Text = _Doctor.Address ?? string.Empty;
 
-            if (_Doctor.ImagePath != "")
+            if (_Doctor.ImagePath != null)
             {
                 pbDoctorImage.ImageLocation = _Doctor.ImagePath;
             }
 
-            llRemove.Visible = (_Doctor.ImagePath != "");
+            llRemove.Visible = (_Doctor.ImagePath != null);
         }
 
         private async void frmAddEditDoctor_Load(object sender, EventArgs e)
