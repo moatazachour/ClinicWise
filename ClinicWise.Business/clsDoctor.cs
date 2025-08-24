@@ -118,5 +118,10 @@ namespace ClinicWise.Business
         {
             return clsDoctorData.Delete(doctorID, deletedByUserID);
         }
+
+        public static bool IsExistByNationalNo(string nationalNo)
+        {
+            return clsDoctorData.IsExistByNationalNo(nationalNo);
+        }
     }
 }

@@ -3,7 +3,9 @@ using ClinicWise.Contracts;
 using ClinicWise.Global_Classes;
 using ClinicWise.Properties;
 using System;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -230,6 +232,59 @@ namespace ClinicWise.Doctors
             pbDoctorImage.Image =  rbMale.Checked ? Resources.doctor_maleV2 : Resources.doctor_femaleV2;
 
             llRemove.Visible = false;
+        }
+
+        // Validation
+
+        private void ValidateEmptyTextBox(object sender, CancelEventArgs e)
+        {
+            TextBox Temp = (TextBox)sender;
+
+            if (string.IsNullOrEmpty(Temp.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(Temp, "This field is required!");
+            }
+            else
+            {
+                errorProvider1.SetError(Temp, null);
+            }
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtEmail, "This field is required!");
+            }
+            else if (!clsValidation.ValidateEmail(txtEmail.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtEmail, "Incorrect email format!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtEmail, null);
+            }
+        }
+
+        private void txtNationalNo_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNationalNo.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtNationalNo, "This field is required!");
+            }
+            else if (clsDoctor.IsExistByNationalNo(txtNationalNo.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtNationalNo, "There is already a doctor with this NationalNo!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtEmail, null);
+            }
         }
     }
 }

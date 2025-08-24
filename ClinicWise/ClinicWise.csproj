@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Global Classes\clsGlobalSettings.cs" />
     <Compile Include="Global Classes\clsUtil.cs" />
+    <Compile Include="Global Classes\clsValidation.cs" />
     <Compile Include="Global Classes\enPersonType.cs" />
     <Compile Include="Persons\ctrlPersonCard.cs">
       <SubType>UserControl</SubType>

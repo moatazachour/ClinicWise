@@ -193,5 +193,40 @@ namespace ClinicWise.DataAccess
 
             return (rowsAffected > 0);
         }
+
+        public static bool IsExistByNationalNo(string nationalNo)
+        {
+            bool isFound = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Doctor_IsExistByNationalNo", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@NationalNo", SqlDbType.VarChar).Value = nationalNo;
+
+                SqlParameter outputParam = new SqlParameter("@Exists", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                command.Parameters.Add(outputParam);
+
+                connection.Open();
+
+                try
+                {
+                    command.ExecuteNonQuery ();
+                    isFound = (bool)command.Parameters["@Exists"].Value;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to ckeck doctor existance", ex);
+                }
+            }
+
+            return isFound;
+        }
     }
 }

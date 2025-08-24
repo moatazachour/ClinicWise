@@ -60,6 +60,7 @@
     <Content Include="StoredProcedures\Doctors\Doctor_Delete.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_GetAll.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_GetByID.sql" />
+    <Content Include="StoredProcedures\Doctors\Doctor_IsExistByNationalNo.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_Update.sql" />
     <Content Include="StoredProcedures\Persons\Person_AddNew.sql" />
     <Content Include="StoredProcedures\Persons\Person_Update.sql" />
