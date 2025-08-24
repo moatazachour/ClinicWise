@@ -78,5 +78,11 @@ namespace ClinicWise.Doctors
 
             }
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDoctorDetails frm = new frmDoctorDetails((int)dgvManageDoctors.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
     }
 }

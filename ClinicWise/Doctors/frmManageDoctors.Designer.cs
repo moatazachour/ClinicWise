@@ -45,6 +45,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddDoctor = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageDoctors)).BeginInit();
             this.cmsManageDoctors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,7 +79,7 @@
             "Email",
             "Specialization"});
             this.cbManageDoctors.Location = new System.Drawing.Point(158, 266);
-            this.cbManageDoctors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbManageDoctors.Margin = new System.Windows.Forms.Padding(2);
             this.cbManageDoctors.Name = "cbManageDoctors";
             this.cbManageDoctors.Size = new System.Drawing.Size(164, 27);
             this.cbManageDoctors.TabIndex = 12;
@@ -120,7 +122,7 @@
             this.dgvManageDoctors.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvManageDoctors.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvManageDoctors.Location = new System.Drawing.Point(42, 312);
-            this.dgvManageDoctors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvManageDoctors.Margin = new System.Windows.Forms.Padding(2);
             this.dgvManageDoctors.MultiSelect = false;
             this.dgvManageDoctors.Name = "dgvManageDoctors";
             this.dgvManageDoctors.ReadOnly = true;
@@ -144,22 +146,24 @@
             this.cmsManageDoctors.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmsManageDoctors.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsManageDoctors.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsToolStripMenuItem,
+            this.toolStripSeparator1,
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsManageDoctors.Name = "cmsManageDoctors";
-            this.cmsManageDoctors.Size = new System.Drawing.Size(142, 56);
+            this.cmsManageDoctors.Size = new System.Drawing.Size(181, 110);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -225,6 +229,18 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
             // frmManageDoctors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,5 +284,7 @@
         private System.Windows.Forms.ContextMenuStrip cmsManageDoctors;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicWise.Contracts.Persons;
+using System;
 
 namespace ClinicWise.Contracts
 {
@@ -17,5 +18,22 @@ namespace ClinicWise.Contracts
         public string Address { get; set; }
         public string ImagePath { get; set; }
         public int CreatedByUserID { get; set; }
+
+        public PersonDTO ToPersonDTO()
+        {
+            return new PersonDTO
+            {
+                PersonID = PersonID,
+                FullName = FirstName + " " + LastName,
+                NationalNo = NationalNo,
+                DateOfBirth = DateOfBirth,
+                GenderCaption = Gender == 0 ? "Male" : "Female",
+                Phone = Phone,
+                Email = Email,
+                Address = Address,
+                ImagePath = ImagePath,
+                CreatedBy = CreatedByUserID
+            };
+        }
     }
 }
