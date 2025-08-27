@@ -17,7 +17,7 @@ namespace ClinicWise
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmManageDoctors());
+            Application.Run(new frmMain());
         }
     }
 }
