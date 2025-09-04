@@ -1,0 +1,11 @@
+CREATE PROCEDURE Patient_GetAll 
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+	SELECT *
+	FROM GetAllPatients_View
+	ORDER BY FullName;
+
+END;

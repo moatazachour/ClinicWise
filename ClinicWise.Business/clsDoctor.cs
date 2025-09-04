@@ -73,7 +73,7 @@ namespace ClinicWise.Business
             return await clsDoctorData.GetAllDoctors();
         }
 
-        private bool _AddNewAsync()
+        private bool _AddNew()
         {
             DoctorID = clsDoctorData.AddNewDoctor(PersonID, SpecializationID);
 
@@ -95,7 +95,7 @@ namespace ClinicWise.Business
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewAsync())
+                    if (_AddNew())
                     {
                         Mode = enMode.Update;
                         return true;

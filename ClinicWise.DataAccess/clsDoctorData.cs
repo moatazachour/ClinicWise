@@ -16,8 +16,8 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@PersonID", SqlDbType.Int).Value = personID;
-                command.Parameters.AddWithValue("@SpecializationID", SqlDbType.Int).Value = specializationID;
+                command.Parameters.Add("@PersonID", SqlDbType.Int).Value = personID;
+                command.Parameters.Add("@SpecializationID", SqlDbType.Int).Value = specializationID;
 
                 SqlParameter outputParam = new SqlParameter("@DoctorID", SqlDbType.Int)
                 {
@@ -90,7 +90,7 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@DoctorID", SqlDbType.Int).Value = doctorID;
+                command.Parameters.Add("@DoctorID", SqlDbType.Int).Value = doctorID;
 
                 await connection.OpenAsync();
 
@@ -138,8 +138,8 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@DoctorID", SqlDbType.Int).Value = doctorID;
-                command.Parameters.AddWithValue("@SpecializationID", SqlDbType.Int).Value = specializationID;
+                command.Parameters.Add("@DoctorID", SqlDbType.Int).Value = doctorID;
+                command.Parameters.Add("@SpecializationID", SqlDbType.Int).Value = specializationID;
 
                 connection.Open();
 
@@ -166,8 +166,8 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@DoctorID", SqlDbType.Int).Value = doctorID;
-                command.Parameters.AddWithValue("@DeletedByUserID", SqlDbType.Int).Value = deletedByUserID;
+                command.Parameters.Add("@DoctorID", SqlDbType.Int).Value = doctorID;
+                command.Parameters.Add("@DeletedByUserID", SqlDbType.Int).Value = deletedByUserID;
 
                 SqlParameter outputParam = new SqlParameter("@RowsAffected", SqlDbType.Int)
                 {
@@ -203,7 +203,7 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@NationalNo", SqlDbType.VarChar).Value = nationalNo;
+                command.Parameters.Add("@NationalNo", SqlDbType.VarChar).Value = nationalNo;
 
                 SqlParameter outputParam = new SqlParameter("@Exists", SqlDbType.Bit)
                 {
