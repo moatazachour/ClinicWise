@@ -2,6 +2,8 @@
 using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace ClinicWise.Business
@@ -34,6 +36,25 @@ namespace ClinicWise.Business
         {
             PatientID = patientID;
             GuardianID = guardianID;
+
+            Mode = enMode.Update;
+        }
+
+        public clsPatient(PatientDTO patientDto)
+            : base(patientDto.PersonID, 
+                  patientDto.NationalNo, 
+                  patientDto.FirstName,
+                  patientDto.LastName,
+                  patientDto.DateOfBirth,
+                  patientDto.Gender,
+                  patientDto.Phone,
+                  patientDto.Email,
+                  patientDto.Address,
+                  patientDto.ImagePath,
+                  patientDto.CreatedByUserID)
+        {
+            PatientID = patientDto.PatientID;
+            GuardianID = patientDto.GuardianID;
 
             Mode = enMode.Update;
         }
@@ -73,9 +94,9 @@ namespace ClinicWise.Business
             }
         }
 
-        public async Task<PatientDTO> FindAsync(int patientID)
+        public async static Task<PatientDTO> FindAsync(int patientID)
         {
-            return await clsPatientData.GetByID(PatientID);
+            return await clsPatientData.GetByID(patientID);
         }
 
         public async static Task<List<PatientDisplayDTO>> GetAllAsync()

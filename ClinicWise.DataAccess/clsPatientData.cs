@@ -108,11 +108,7 @@ namespace ClinicWise.DataAccess
                                     GenderCaption = (string)reader["Gender"],
                                     Phone = (string)reader["Phone"],
                                     Email = (string)reader["Email"],
-                                    Address = (string)reader["Address"],
-                                    GuardianID = 
-                                        reader["GuardianID"] == DBNull.Value 
-                                        ? (int?)null 
-                                        : (int)reader["GuardianID"]
+                                    Address = (string)reader["Address"]
                                 });
                         }
                     }

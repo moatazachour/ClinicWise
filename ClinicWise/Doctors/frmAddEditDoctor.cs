@@ -82,7 +82,7 @@ namespace ClinicWise.Doctors
                 return;
             }
 
-            _Doctor = new clsDoctor(await clsDoctor.FindAsync(_DoctorID));
+            _Doctor = new clsDoctor(doctorDto);
 
 
             lblDoctorID.Text = _DoctorID.ToString();
