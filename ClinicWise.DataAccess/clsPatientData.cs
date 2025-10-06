@@ -9,7 +9,7 @@ namespace ClinicWise.DataAccess
 {
     public class clsPatientData
     {
-        public static async Task<int> AddNewAsync(int personID, int? guardianID)
+        public static int AddNew(int personID, int? guardianID)
         {
             int patientID = -1;
 
@@ -32,11 +32,11 @@ namespace ClinicWise.DataAccess
 
                 command.Parameters.Add(outputParam);
 
-                await connection.OpenAsync();
+                connection.Open();
 
                 try
                 {
-                    await command.ExecuteNonQueryAsync();
+                    command.ExecuteNonQuery();
 
                     patientID = (int)command.Parameters["@PatientID"].Value;
                 }
@@ -50,7 +50,7 @@ namespace ClinicWise.DataAccess
             return patientID;
         }
 
-        public async static Task<bool> UpdateAsync(int patientID, int? guardianID)
+        public static bool Update(int patientID, int? guardianID)
         {
             int rowsAffected = 0;
 
@@ -66,11 +66,11 @@ namespace ClinicWise.DataAccess
                 else
                     command.Parameters.Add("@GuardianID", SqlDbType.Int).Value = DBNull.Value;
 
-                await connection.OpenAsync();
+                connection.Open();
 
                 try
                 {
-                    rowsAffected = await command.ExecuteNonQueryAsync();
+                    rowsAffected = command.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -103,12 +103,12 @@ namespace ClinicWise.DataAccess
                                 {
                                     PatientID = (int)reader["PatientID"],
                                     FullName = (string)reader["FullName"],
-                                    NationalNo = (string)reader["NationalNo"],
+                                    NationalNo = reader["NationalNo"] as string,
                                     DateOfBirth = (DateTime)reader["DateOfBirth"],
                                     GenderCaption = (string)reader["Gender"],
                                     Phone = (string)reader["Phone"],
-                                    Email = (string)reader["Email"],
-                                    Address = (string)reader["Address"]
+                                    Email = reader["Email"] as string,
+                                    Address = reader["Address"] as string
                                 });
                         }
                     }
@@ -143,15 +143,17 @@ namespace ClinicWise.DataAccess
                             {
                                 PatientID = patientID,
                                 PersonID = (int)reader["PersonID"],
-                                NationalNo = (string)reader["NationalNo"],
+                                NationalNo = reader["NationalNo"] as string,
                                 FirstName = (string)reader["FirstName"],
                                 LastName = (string)reader["LastName"],
                                 DateOfBirth = (DateTime)reader["DateOfBirth"],
                                 Gender = (byte)reader["Gender"],
-                                Phone = (string)reader["Phone"],
-                                Email = (string)reader["Email"],
-                                Address = (string)reader["Address"],
-                                ImagePath = (string)reader["ImagePath"],
+                                Phone = reader["Phone"] as string,
+                                Email = reader["Email"] as string,
+                                Address = reader["Address"] as string,
+                                ImagePath = reader["ImagePath"] == DBNull.Value
+                                                ? null
+                                                : (string)reader["ImagePath"],
                                 CreatedByUserID = (int)reader["CreatedByUserID"],
                                 GuardianID = reader["GuardianID"] == DBNull.Value
                                                 ? (int?)null

@@ -69,7 +69,7 @@
             this.cbManagePatients.Location = new System.Drawing.Point(211, 280);
             this.cbManagePatients.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbManagePatients.Name = "cbManagePatients";
-            this.cbManagePatients.Size = new System.Drawing.Size(217, 31);
+            this.cbManagePatients.Size = new System.Drawing.Size(217, 27);
             this.cbManagePatients.TabIndex = 22;
             // 
             // label3
@@ -78,7 +78,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(69, 283);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 27);
+            this.label3.Size = new System.Drawing.Size(85, 23);
             this.label3.TabIndex = 21;
             this.label3.Text = "Filter By:";
             // 
@@ -139,35 +139,37 @@
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsManagePatients.Name = "cmsManageDoctors";
-            this.cmsManagePatients.Size = new System.Drawing.Size(250, 122);
+            this.cmsManagePatients.Size = new System.Drawing.Size(217, 136);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(249, 28);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(246, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(213, 6);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(249, 28);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem1.Text = "Add New Patient";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(249, 28);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(249, 28);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // label1
@@ -211,7 +213,7 @@
             this.lblRecordCount.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount.Location = new System.Drawing.Point(186, 766);
             this.lblRecordCount.Name = "lblRecordCount";
-            this.lblRecordCount.Size = new System.Drawing.Size(25, 27);
+            this.lblRecordCount.Size = new System.Drawing.Size(21, 23);
             this.lblRecordCount.TabIndex = 25;
             this.lblRecordCount.Text = "0";
             // 
@@ -221,7 +223,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(32, 766);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 27);
+            this.label2.Size = new System.Drawing.Size(100, 23);
             this.label2.TabIndex = 24;
             this.label2.Text = "# Records";
             // 
@@ -231,7 +233,7 @@
             this.mtxtFilter.Location = new System.Drawing.Point(463, 280);
             this.mtxtFilter.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtFilter.Name = "mtxtFilter";
-            this.mtxtFilter.Size = new System.Drawing.Size(472, 32);
+            this.mtxtFilter.Size = new System.Drawing.Size(472, 27);
             this.mtxtFilter.TabIndex = 23;
             // 
             // pictureBox1

@@ -1,6 +1,8 @@
 ﻿using ClinicWise.Business;
+using ClinicWise.Contracts.Guardians;
 using ClinicWise.Contracts.Patients;
 using ClinicWise.Global_Classes;
+using ClinicWise.Guardians;
 using ClinicWise.Properties;
 using System;
 using System.Collections.Generic;
@@ -20,6 +22,7 @@ namespace ClinicWise.Patients
         private int _PatientID;
         private clsPatient _Patient;
         private PatientDTO _PatientDTO;
+        private GuardianDTO _GuardianDTO;
         private enum enMode { AddNew, Update };
         private enMode _Mode;
 
@@ -85,9 +88,13 @@ namespace ClinicWise.Patients
             txtPhone.Text = _Patient.Phone;
             txtEmail.Text = _Patient.Email ?? string.Empty;
             txtAddress.Text = _Patient.Address ?? string.Empty;
+
+            _GuardianDTO = await _Patient.GetGuardianInfo();
+
             lblGuardianID.Text = _Patient.GuardianID?.ToString() ?? "N/A";
-            //lblGuardianNationalNo.Text = _Patient
-            // I can not process the line before until I finish implementing Guardians Classes
+            lblGuardianNationalNo.Text = _GuardianDTO.NationalNo ?? "N/A";
+            lblGuardianPhone.Text = _GuardianDTO.Phone ?? "N/A";
+
 
             if (_Patient.ImagePath != null)
             {
@@ -163,16 +170,20 @@ namespace ClinicWise.Patients
             return monthDifference < 0;
         }
 
-        private async void btnSave_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             if (!_HandleImage())
                 return;
 
             if (_CheckIfPatientNeedAGuardian())
             {
-                MessageBox.Show("You need a guardian!!!");
-                return;
+                frmAddEditGuardian frm = new frmAddEditGuardian(-1);
+                frm.DataBack += GuardianChanged;
+                frm.ShowDialog();
             }
+
+            // Dont forget the case when the patient is already a guardian (he already exist but but as a guardian),
+            // So we don't get a duplicated persons in the database
 
             _Patient.FirstName = txtFirstName.Text;
             _Patient.LastName = txtLastName.Text;
@@ -182,13 +193,16 @@ namespace ClinicWise.Patients
             _Patient.Phone = txtPhone.Text;
             _Patient.Email = txtEmail.Text;
             _Patient.Address = txtAddress.Text;
+            _Patient.ImagePath = pbPatientImage.ImageLocation;
+            _Patient.CreatedByUserID = clsGlobalSettings.CurrentUserID;
+
 
             if (int.TryParse(lblGuardianID.Text, out int guardianID))
                 _Patient.GuardianID = guardianID;
             else
                 _Patient.GuardianID = null;
 
-            if (await _Patient.SaveAsync())
+            if (_Patient.Save())
             {
                 MessageBox.Show(
                     $"Patient Saved Successfully",
@@ -201,11 +215,18 @@ namespace ClinicWise.Patients
             else
             {
                 MessageBox.Show(
-                    "Pateint Failed to be saved",
+                    "Patient Failed to be saved",
                     "Error",
                      MessageBoxButtons.OK,
                      MessageBoxIcon.Error);
             }
+        }
+
+        private void GuardianChanged(GuardianDTO dto)
+        {
+            lblGuardianID.Text = dto.GuardianID.ToString();
+            lblGuardianNationalNo.Text = dto.NationalNo;
+            lblGuardianPhone.Text = dto.Phone;
         }
 
         private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -229,6 +250,20 @@ namespace ClinicWise.Patients
             pbPatientImage.Image = rbMale.Checked ? Resources.person_boy : Resources.person_girl;
 
             llRemove.Visible = false;
+        }
+
+        private void btnEditGuardian_Click(object sender, EventArgs e)
+        {
+            if (lblGuardianID.Text != "N/A")
+            {
+                frmAddEditGuardian frm = new frmAddEditGuardian(Convert.ToInt32(lblGuardianID.Text));
+                frm.DataBack += GuardianChanged;
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("There is no guardian to edit!", "Problem", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
         }
     }
 }

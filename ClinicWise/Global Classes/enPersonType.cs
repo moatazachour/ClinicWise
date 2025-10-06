@@ -3,6 +3,7 @@
     public enum enPersonType
     {
         Doctor,
-        Patient
+        Patient,
+        Guardian
     }
 }

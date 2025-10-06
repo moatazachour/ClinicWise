@@ -45,9 +45,11 @@
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsDoctorData.cs" />
     <Compile Include="clsGlobal.cs" />
+    <Compile Include="clsGuardianData.cs" />
     <Compile Include="clsPatientData.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsSpecializationData.cs" />
+    <Compile Include="clsGuardianRelationshipData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +65,12 @@
     <Content Include="StoredProcedures\Doctors\Doctor_GetByID.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_IsExistByNationalNo.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_Update.sql" />
+    <Content Include="StoredProcedures\GuardianRelationships\GuardianRelationship_GetAll.sql" />
+    <Content Include="StoredProcedures\GuardianRelationships\GuardianRelationship_GetByID.sql" />
+    <Content Include="StoredProcedures\GuardianRelationships\GuardianRelationship_GetByName.sql" />
+    <Content Include="StoredProcedures\Guardians\Guardian_AddNew.sql" />
+    <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
+    <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
     <Content Include="StoredProcedures\Patients\Patient_AddNew.sql" />
     <Content Include="StoredProcedures\Patients\Patient_GetAll.sql" />
     <Content Include="StoredProcedures\Patients\Patient_GetByID.sql" />
@@ -77,5 +85,6 @@
     <Content Include="Views\GetAllDoctors_View.sql" />
     <Content Include="Views\GetAllPatients_View.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

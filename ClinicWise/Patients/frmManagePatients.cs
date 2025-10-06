@@ -38,11 +38,31 @@ namespace ClinicWise.Patients
             await _RefreshData();
         }
 
-        private void btnAddPatient_Click(object sender, EventArgs e)
+        private async void btnAddPatient_Click(object sender, EventArgs e)
         {
             frmAddEditPatient frm = new frmAddEditPatient(-1);
 
             frm.ShowDialog();
+
+            await _RefreshData();
+        }
+
+        private async void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAddEditPatient frm = new frmAddEditPatient(-1);
+
+            frm.ShowDialog();
+
+            await _RefreshData();
+        }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditPatient frm = new frmAddEditPatient((int)dgvManagePatients.CurrentRow.Cells[0].Value);
+
+            frm.ShowDialog();
+
+            await _RefreshData();
         }
     }
 }

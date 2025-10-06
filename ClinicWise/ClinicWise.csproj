@@ -78,6 +78,12 @@
     <Compile Include="Global Classes\clsUtil.cs" />
     <Compile Include="Global Classes\clsValidation.cs" />
     <Compile Include="Global Classes\enPersonType.cs" />
+    <Compile Include="Guardians\frmAddEditGuardian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guardians\frmAddEditGuardian.Designer.cs">
+      <DependentUpon>frmAddEditGuardian.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\frmAddEditPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guardians\frmAddEditGuardian.resx">
+      <DependentUpon>frmAddEditGuardian.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\frmAddEditPatient.resx">
       <DependentUpon>frmAddEditPatient.cs</DependentUpon>

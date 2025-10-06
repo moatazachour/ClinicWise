@@ -32,15 +32,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtNationalNo = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.rbMale = new System.Windows.Forms.RadioButton();
@@ -52,6 +48,11 @@
             this.llSetImage = new System.Windows.Forms.LinkLabel();
             this.llRemove = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbPatientImage = new System.Windows.Forms.PictureBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblPatientID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -62,11 +63,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lblGuardianID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pbPatientImage = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPatientImage)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblMode
@@ -76,7 +76,7 @@
             this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.lblMode.Location = new System.Drawing.Point(459, 39);
             this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(378, 51);
+            this.lblMode.Size = new System.Drawing.Size(300, 41);
             this.lblMode.TabIndex = 36;
             this.lblMode.Text = "Add New Patient";
             // 
@@ -86,7 +86,7 @@
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(17, 36);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 23);
+            this.label3.Size = new System.Drawing.Size(57, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Name:";
             // 
@@ -96,7 +96,7 @@
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(17, 85);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 23);
+            this.label4.Size = new System.Drawing.Size(99, 18);
             this.label4.TabIndex = 5;
             this.label4.Text = "National No:";
             // 
@@ -106,29 +106,9 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(17, 134);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 23);
+            this.label5.Size = new System.Drawing.Size(69, 18);
             this.label5.TabIndex = 7;
             this.label5.Text = "Gendor:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(21, 190);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 23);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Email:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 239);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 23);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Address:";
             // 
             // label8
             // 
@@ -136,7 +116,7 @@
             this.label8.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(492, 91);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(129, 23);
+            this.label8.Size = new System.Drawing.Size(103, 18);
             this.label8.TabIndex = 17;
             this.label8.Text = "Date Of Birth:";
             // 
@@ -146,7 +126,7 @@
             this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(552, 134);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 23);
+            this.label9.Size = new System.Drawing.Size(58, 18);
             this.label9.TabIndex = 19;
             this.label9.Text = "Phone:";
             // 
@@ -156,7 +136,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(183, 42);
             this.txtFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(285, 30);
+            this.txtFirstName.Size = new System.Drawing.Size(285, 26);
             this.txtFirstName.TabIndex = 31;
             // 
             // txtLastName
@@ -165,7 +145,7 @@
             this.txtLastName.Location = new System.Drawing.Point(496, 42);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(265, 30);
+            this.txtLastName.Size = new System.Drawing.Size(265, 26);
             this.txtLastName.TabIndex = 34;
             // 
             // txtNationalNo
@@ -174,27 +154,8 @@
             this.txtNationalNo.Location = new System.Drawing.Point(183, 85);
             this.txtNationalNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNationalNo.Name = "txtNationalNo";
-            this.txtNationalNo.Size = new System.Drawing.Size(285, 30);
+            this.txtNationalNo.Size = new System.Drawing.Size(285, 26);
             this.txtNationalNo.TabIndex = 35;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(187, 187);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(343, 30);
-            this.txtEmail.TabIndex = 40;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(187, 241);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(695, 96);
-            this.txtAddress.TabIndex = 42;
             // 
             // dtpDateOfBirth
             // 
@@ -204,7 +165,7 @@
             this.dtpDateOfBirth.Location = new System.Drawing.Point(635, 87);
             this.dtpDateOfBirth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(343, 27);
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(343, 23);
             this.dtpDateOfBirth.TabIndex = 36;
             // 
             // txtPhone
@@ -213,7 +174,7 @@
             this.txtPhone.Location = new System.Drawing.Point(635, 130);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(343, 30);
+            this.txtPhone.Size = new System.Drawing.Size(343, 26);
             this.txtPhone.TabIndex = 39;
             // 
             // rbMale
@@ -224,7 +185,7 @@
             this.rbMale.Location = new System.Drawing.Point(187, 132);
             this.rbMale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(76, 26);
+            this.rbMale.Size = new System.Drawing.Size(65, 24);
             this.rbMale.TabIndex = 37;
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
@@ -237,7 +198,7 @@
             this.rbFemale.Location = new System.Drawing.Point(299, 130);
             this.rbFemale.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(97, 26);
+            this.rbFemale.Size = new System.Drawing.Size(80, 24);
             this.rbFemale.TabIndex = 38;
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
@@ -248,7 +209,7 @@
             this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(260, 17);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 23);
+            this.label11.Size = new System.Drawing.Size(77, 18);
             this.label11.TabIndex = 43;
             this.label11.Text = "Firstname";
             // 
@@ -258,7 +219,7 @@
             this.label14.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(575, 17);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(99, 23);
+            this.label14.Size = new System.Drawing.Size(78, 18);
             this.label14.TabIndex = 46;
             this.label14.Text = "Lastname";
             // 
@@ -296,7 +257,7 @@
             this.llSetImage.Location = new System.Drawing.Point(1087, 289);
             this.llSetImage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.llSetImage.Name = "llSetImage";
-            this.llSetImage.Size = new System.Drawing.Size(104, 23);
+            this.llSetImage.Size = new System.Drawing.Size(82, 18);
             this.llSetImage.TabIndex = 51;
             this.llSetImage.TabStop = true;
             this.llSetImage.Text = "Set Image";
@@ -309,7 +270,7 @@
             this.llRemove.Location = new System.Drawing.Point(1087, 327);
             this.llRemove.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.llRemove.Name = "llRemove";
-            this.llRemove.Size = new System.Drawing.Size(86, 23);
+            this.llRemove.Size = new System.Drawing.Size(69, 18);
             this.llRemove.TabIndex = 52;
             this.llRemove.TabStop = true;
             this.llRemove.Text = "Remove";
@@ -348,13 +309,62 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient Informations";
             // 
+            // pbPatientImage
+            // 
+            this.pbPatientImage.Location = new System.Drawing.Point(1027, 62);
+            this.pbPatientImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbPatientImage.Name = "pbPatientImage";
+            this.pbPatientImage.Size = new System.Drawing.Size(219, 201);
+            this.pbPatientImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPatientImage.TabIndex = 37;
+            this.pbPatientImage.TabStop = false;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Location = new System.Drawing.Point(187, 241);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(695, 96);
+            this.txtAddress.TabIndex = 42;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(187, 187);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(343, 26);
+            this.txtEmail.TabIndex = 40;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(17, 239);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 18);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Address:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(21, 190);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 18);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Email:";
+            // 
             // lblPatientID
             // 
             this.lblPatientID.AutoSize = true;
             this.lblPatientID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPatientID.Location = new System.Drawing.Point(165, 114);
             this.lblPatientID.Name = "lblPatientID";
-            this.lblPatientID.Size = new System.Drawing.Size(47, 23);
+            this.lblPatientID.Size = new System.Drawing.Size(37, 18);
             this.lblPatientID.TabIndex = 38;
             this.lblPatientID.Text = "N/A";
             // 
@@ -364,7 +374,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(26, 114);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 23);
+            this.label2.Size = new System.Drawing.Size(80, 18);
             this.label2.TabIndex = 37;
             this.label2.Text = "Patient ID:";
             // 
@@ -397,6 +407,7 @@
             this.btnEditGuardian.TabIndex = 53;
             this.btnEditGuardian.Text = "Edit Guardian";
             this.btnEditGuardian.UseVisualStyleBackColor = true;
+            this.btnEditGuardian.Click += new System.EventHandler(this.btnEditGuardian_Click);
             // 
             // lblGuardianPhone
             // 
@@ -404,7 +415,7 @@
             this.lblGuardianPhone.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGuardianPhone.Location = new System.Drawing.Point(604, 102);
             this.lblGuardianPhone.Name = "lblGuardianPhone";
-            this.lblGuardianPhone.Size = new System.Drawing.Size(47, 23);
+            this.lblGuardianPhone.Size = new System.Drawing.Size(37, 18);
             this.lblGuardianPhone.TabIndex = 47;
             this.lblGuardianPhone.Text = "N/A";
             // 
@@ -414,7 +425,7 @@
             this.label12.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(516, 102);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 23);
+            this.label12.Size = new System.Drawing.Size(58, 18);
             this.label12.TabIndex = 46;
             this.label12.Text = "Phone:";
             // 
@@ -424,7 +435,7 @@
             this.lblGuardianNationalNo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGuardianNationalNo.Location = new System.Drawing.Point(179, 102);
             this.lblGuardianNationalNo.Name = "lblGuardianNationalNo";
-            this.lblGuardianNationalNo.Size = new System.Drawing.Size(47, 23);
+            this.lblGuardianNationalNo.Size = new System.Drawing.Size(37, 18);
             this.lblGuardianNationalNo.TabIndex = 45;
             this.lblGuardianNationalNo.Text = "N/A";
             // 
@@ -434,7 +445,7 @@
             this.label10.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(40, 49);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(126, 23);
+            this.label10.Size = new System.Drawing.Size(101, 18);
             this.label10.TabIndex = 43;
             this.label10.Text = "Guardian ID:";
             // 
@@ -444,7 +455,7 @@
             this.lblGuardianID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGuardianID.Location = new System.Drawing.Point(179, 49);
             this.lblGuardianID.Name = "lblGuardianID";
-            this.lblGuardianID.Size = new System.Drawing.Size(47, 23);
+            this.lblGuardianID.Size = new System.Drawing.Size(37, 18);
             this.lblGuardianID.TabIndex = 44;
             this.lblGuardianID.Text = "N/A";
             // 
@@ -454,19 +465,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(40, 102);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 23);
+            this.label1.Size = new System.Drawing.Size(99, 18);
             this.label1.TabIndex = 41;
             this.label1.Text = "National No:";
-            // 
-            // pbPatientImage
-            // 
-            this.pbPatientImage.Location = new System.Drawing.Point(1027, 62);
-            this.pbPatientImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbPatientImage.Name = "pbPatientImage";
-            this.pbPatientImage.Size = new System.Drawing.Size(219, 201);
-            this.pbPatientImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPatientImage.TabIndex = 37;
-            this.pbPatientImage.TabStop = false;
             // 
             // openFileDialog1
             // 
@@ -492,9 +493,9 @@
             this.Load += new System.EventHandler(this.frmAddEditPatient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPatientImage)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPatientImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,15 +507,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtNationalNo;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.PictureBox pbPatientImage;
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
         private System.Windows.Forms.TextBox txtPhone;
@@ -538,5 +535,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblGuardianNationalNo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

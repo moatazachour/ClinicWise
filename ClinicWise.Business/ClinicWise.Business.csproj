@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsDoctor.cs" />
+    <Compile Include="clsGuardian.cs" />
+    <Compile Include="clsGuardianRelationship.cs" />
     <Compile Include="clsPatient.cs" />
     <Compile Include="clsPerson.cs" />
     <Compile Include="clsSpecialization.cs" />

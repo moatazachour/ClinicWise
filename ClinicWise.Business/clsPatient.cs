@@ -1,4 +1,5 @@
-﻿using ClinicWise.Contracts.Patients;
+﻿using ClinicWise.Contracts.Guardians;
+using ClinicWise.Contracts.Patients;
 using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,18 @@ namespace ClinicWise.Business
 
         public int PatientID { get; set; }
         public int? GuardianID { get; set; }
+
+        private GuardianDTO _GuardianInfo;
+
+        public async Task<GuardianDTO> GetGuardianInfo()
+        {
+            if (_GuardianInfo == null && GuardianID != null)
+            {
+                _GuardianInfo = await clsGuardian.FindAsync(Convert.ToInt32(GuardianID));
+            }
+
+            return _GuardianInfo;
+        }
 
         public clsPatient() 
         {
@@ -59,19 +72,19 @@ namespace ClinicWise.Business
             Mode = enMode.Update;
         }
 
-        private async Task<bool> _AddNewAsync()
+        private bool _AddNew()
         {
-            PatientID = await DataAccess.clsPatientData.AddNewAsync(PersonID, GuardianID);
+            PatientID = clsPatientData.AddNew(PersonID, GuardianID);
 
             return PatientID != -1;
         }
 
-        private async Task<bool> _UpdateAsync()
+        private bool _Update()
         {
-            return await DataAccess.clsPatientData.UpdateAsync(PatientID, GuardianID);
+            return clsPatientData.Update(PatientID, GuardianID);
         }
 
-        public async Task<bool> SaveAsync()
+        public override bool Save()
         {
             if (!base.Save())
                 return false;
@@ -79,7 +92,7 @@ namespace ClinicWise.Business
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (await _AddNewAsync())
+                    if (_AddNew())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -87,7 +100,7 @@ namespace ClinicWise.Business
                     return false;
 
                 case enMode.Update:
-                    return await _UpdateAsync();
+                    return _Update();
 
                 default:
                     return false;
