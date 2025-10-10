@@ -91,9 +91,13 @@ namespace ClinicWise.Patients
 
             _GuardianDTO = await _Patient.GetGuardianInfo();
 
-            lblGuardianID.Text = _Patient.GuardianID?.ToString() ?? "N/A";
-            lblGuardianNationalNo.Text = _GuardianDTO.NationalNo ?? "N/A";
-            lblGuardianPhone.Text = _GuardianDTO.Phone ?? "N/A";
+            if (_GuardianDTO != null)
+            {
+                lblGuardianID.Text = _Patient.GuardianID?.ToString() ?? "N/A";
+                lblGuardianNationalNo.Text = _GuardianDTO.NationalNo ?? "N/A";
+                lblGuardianPhone.Text = _GuardianDTO.Phone ?? "N/A";
+            }
+
 
 
             if (_Patient.ImagePath != null)
@@ -254,16 +258,27 @@ namespace ClinicWise.Patients
 
         private void btnEditGuardian_Click(object sender, EventArgs e)
         {
+            frmAddEditGuardian frm;
+
             if (lblGuardianID.Text != "N/A")
-            {
-                frmAddEditGuardian frm = new frmAddEditGuardian(Convert.ToInt32(lblGuardianID.Text));
-                frm.DataBack += GuardianChanged;
-                frm.ShowDialog();
-            }
+                frm = new frmAddEditGuardian(Convert.ToInt32(lblGuardianID.Text));
             else
-            {
-                MessageBox.Show("There is no guardian to edit!", "Problem", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            }
+                frm = new frmAddEditGuardian(-1);
+
+            frm.DataBack += GuardianChanged;
+            frm.ShowDialog(this);
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pbPatientImage.ImageLocation != null)
+                pbPatientImage.Image = Resources.person_girl;
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pbPatientImage.ImageLocation != null)
+                pbPatientImage.Image = Resources.person_boy;
         }
     }
 }

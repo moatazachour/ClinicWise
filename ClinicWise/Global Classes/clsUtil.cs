@@ -47,7 +47,10 @@ namespace ClinicWise.Global_Classes
 
                 case enPersonType.Patient:
                     return destinationFolderBase + @"Patients\";
-                
+
+                case enPersonType.Guardian:
+                    return destinationFolderBase + @"Guardians\";
+
                 default:
                     return destinationFolderBase;
             }

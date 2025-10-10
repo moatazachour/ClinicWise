@@ -201,5 +201,31 @@ namespace ClinicWise.Guardians
                      MessageBoxIcon.Error);
             }
         }
+
+        private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog1.FileName;
+                pbGuardianImage.Load(selectedFilePath);
+                llRemove.Visible = true;
+            }
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pbGuardianImage.ImageLocation != null)
+                pbGuardianImage.Image = Resources.person_boy;
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pbGuardianImage.ImageLocation != null)
+                pbGuardianImage.Image = Resources.person_girl;
+        }
     }
 }
