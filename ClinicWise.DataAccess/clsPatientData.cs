@@ -82,7 +82,7 @@ namespace ClinicWise.DataAccess
             }
         }
 
-        public async static Task<List<PatientDisplayDTO>> GetAllAsync()
+        public static async Task<List<PatientDisplayDTO>> GetAllAsync()
         {
             List<PatientDisplayDTO> patients = new List<PatientDisplayDTO>();
 
@@ -170,6 +170,43 @@ namespace ClinicWise.DataAccess
                     throw;
                 }
             }
+        }
+
+        public static bool Delete(int patientID, int deletedByUserID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Patient_Delete", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@PatientID", SqlDbType.Int).Value = patientID;
+                command.Parameters.Add("@DeletedByUserID", SqlDbType.Int).Value = deletedByUserID;
+
+                SqlParameter outputParam = new SqlParameter("@RowsAffected", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                command.Parameters.Add(outputParam);
+
+                connection.Open();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+
+                    rowsAffected = outputParam.Value != null ? (int)command.Parameters["@RowsAffected"].Value : 0;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to delete patient data", ex);
+                }
+            }
+
+            return (rowsAffected > 0);
         }
     }
 }

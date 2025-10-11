@@ -227,5 +227,10 @@ namespace ClinicWise.Guardians
             if (pbGuardianImage.ImageLocation != null)
                 pbGuardianImage.Image = Resources.person_girl;
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

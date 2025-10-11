@@ -151,7 +151,7 @@
             this.Controls.Add(this.lblMode);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmDoctorDetails";
-            this.Text = "frmDoctorDetails";
+            this.Text = "Doctor Details";
             this.Load += new System.EventHandler(this.frmDoctorDetails_Load);
             this.gpMedicalInfo.ResumeLayout(false);
             this.gpMedicalInfo.PerformLayout();

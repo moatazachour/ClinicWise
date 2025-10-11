@@ -116,5 +116,11 @@ namespace ClinicWise.Business
         {
             return await clsPatientData.GetAllAsync();
         }
+
+        public static bool Delete(int patientID, int deletedByUserID)
+        {
+            return clsPatientData.Delete(patientID, deletedByUserID);
+        }
+
     }
 }

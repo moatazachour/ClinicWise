@@ -72,6 +72,7 @@
     <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
     <Content Include="StoredProcedures\Patients\Patient_AddNew.sql" />
+    <Content Include="StoredProcedures\Patients\Patient_Delete.sql" />
     <Content Include="StoredProcedures\Patients\Patient_GetAll.sql" />
     <Content Include="StoredProcedures\Patients\Patient_GetByID.sql" />
     <Content Include="StoredProcedures\Patients\Patient_Update.sql" />
@@ -81,6 +82,8 @@
     <Content Include="StoredProcedures\Specializations\Specialization_GetByID.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetByName.sql" />
     <Content Include="Triggers\trg_AfterDeleteDoctor.sql" />
+    <Content Include="Triggers\trg_AfterDeleteGuardian.sql" />
+    <Content Include="Triggers\trg_AfterDeletePatient.sql" />
     <Content Include="Triggers\trg_AfterDeletePerson.sql" />
     <Content Include="Views\GetAllDoctors_View.sql" />
     <Content Include="Views\GetAllPatients_View.sql" />

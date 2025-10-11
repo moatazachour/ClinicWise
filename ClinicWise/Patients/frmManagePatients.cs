@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Business;
 using ClinicWise.Contracts.Patients;
+using ClinicWise.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -132,6 +133,44 @@ namespace ClinicWise.Patients
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPatientDetails frm = new frmPatientDetails((int)dgvManagePatients.CurrentRow.Cells[0].Value);
+
+            frm.ShowDialog();
+        }
+
+        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int patientID = (int)dgvManagePatients.CurrentRow.Cells[0].Value;
+
+            if (MessageBox.Show(
+                $"Are you sure you want to delete the patient with ID [{patientID}]",
+                "Are you sure?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information)
+                == DialogResult.OK)
+            {
+                if (clsPatient.Delete(patientID, clsGlobalSettings.CurrentUserID))
+                {
+                    MessageBox.Show(
+                        $"Patient with ID = [{patientID}] is deleted successfully",
+                        "Succcess");
+
+                    await _RefreshData();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Doctor deletion failed",
+                        "Error",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Error);
+                }
+
+            }
         }
     }
 }

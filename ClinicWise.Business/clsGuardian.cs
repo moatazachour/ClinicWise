@@ -15,7 +15,7 @@ namespace ClinicWise.Business
 
         public int GuardianID { get; set; }
         public int RelashionshipID { get; set; }
-
+        
         public clsGuardian()
         {
             GuardianID = -1;
@@ -70,6 +70,13 @@ namespace ClinicWise.Business
 
             Mode = enMode.Update;
         }
+
+        public async Task<string> GetRelationshipNameAsync()
+        {
+            var relationship = await clsGuardianRelationship.FindAsync(RelashionshipID);
+            return relationship.RelationshipName;
+        }
+
 
         private bool _AddNew()
         {

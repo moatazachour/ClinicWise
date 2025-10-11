@@ -174,20 +174,10 @@ namespace ClinicWise.Patients
             return monthDifference < 0;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void _SaveData()
         {
             if (!_HandleImage())
                 return;
-
-            if (_CheckIfPatientNeedAGuardian())
-            {
-                frmAddEditGuardian frm = new frmAddEditGuardian(-1);
-                frm.DataBack += GuardianChanged;
-                frm.ShowDialog();
-            }
-
-            // Dont forget the case when the patient is already a guardian (he already exist but but as a guardian),
-            // So we don't get a duplicated persons in the database
 
             _Patient.FirstName = txtFirstName.Text;
             _Patient.LastName = txtLastName.Text;
@@ -226,11 +216,28 @@ namespace ClinicWise.Patients
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (_CheckIfPatientNeedAGuardian())
+            {
+                frmAddEditGuardian frm = new frmAddEditGuardian(-1);
+                frm.DataBack += GuardianChanged;
+                frm.ShowDialog();
+            }
+
+            _SaveData();
+
+            // Dont forget the case when the patient is already a guardian (he already exist but but as a guardian),
+            // So we don't get a duplicated persons in the database
+        }
+
         private void GuardianChanged(GuardianDTO dto)
         {
             lblGuardianID.Text = dto.GuardianID.ToString();
             lblGuardianNationalNo.Text = dto.NationalNo;
             lblGuardianPhone.Text = dto.Phone;
+
+            _SaveData();
         }
 
         private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
