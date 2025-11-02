@@ -48,6 +48,7 @@
     <Compile Include="clsGuardianData.cs" />
     <Compile Include="clsPatientData.cs" />
     <Compile Include="clsPersonData.cs" />
+    <Compile Include="clsRoleData.cs" />
     <Compile Include="clsSpecializationData.cs" />
     <Compile Include="clsGuardianRelationshipData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,7 +78,12 @@
     <Content Include="StoredProcedures\Patients\Patient_GetByID.sql" />
     <Content Include="StoredProcedures\Patients\Patient_Update.sql" />
     <Content Include="StoredProcedures\Persons\Person_AddNew.sql" />
+    <Content Include="StoredProcedures\Persons\Person_GetByID.sql" />
+    <Content Include="StoredProcedures\Persons\Person_GetByNationalNo.sql" />
+    <Content Include="StoredProcedures\Persons\Person_IsExistByNationalNo.sql" />
     <Content Include="StoredProcedures\Persons\Person_Update.sql" />
+    <Content Include="StoredProcedures\Roles\Role_GetAll.sql" />
+    <Content Include="StoredProcedures\Roles\Role_GetByRoleName.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetAll.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetByID.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetByName.sql" />
@@ -87,7 +93,10 @@
     <Content Include="Triggers\trg_AfterDeletePerson.sql" />
     <Content Include="Views\GetAllDoctors_View.sql" />
     <Content Include="Views\GetAllPatients_View.sql" />
+    <Content Include="Views\GetAllPersons_View.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="StoredProcedures\Users\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

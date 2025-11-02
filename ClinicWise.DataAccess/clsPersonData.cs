@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicWise.Contracts.Persons;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -57,6 +58,135 @@ namespace ClinicWise.DataAccess
                     throw new ApplicationException("Failed to add new person.", ex);
                 }
             }
+        }
+
+        public static async Task<PersonDTO> GetByID(int personID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Person_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@PersonID", SqlDbType.Int).Value = personID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (reader.Read())
+                        {
+                            return new PersonDTO
+                            {
+                                PersonID = personID,
+                                FirstName = (string)reader["FirstName"],
+                                LastName = (string)reader["LastName"],
+                                NationalNo = (string)reader["NationalNo"],
+                                DateOfBirth = (DateTime)reader["DateOfBirth"],
+                                Gender = (byte)reader["Gender"],
+                                Phone = (string)reader["Phone"],
+                                Email = reader["Email"] as string,
+                                Address = reader["Address"] as string,
+                                ImagePath = reader["ImagePath"] as string,
+                                CreatedBy = (int)reader["CreatedByUserID"]
+                            };
+                        }
+
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
+        public static async Task<PersonDTO> GetByNationalNo(string nationalNo)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Person_GetByNationalNo", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@NationalNo", SqlDbType.VarChar).Value = nationalNo;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (reader.Read())
+                        {
+                            return new PersonDTO
+                            {
+                                PersonID = (int)reader["PersonID"],
+                                FirstName = (string)reader["FirstName"],
+                                LastName = (string)reader["LastName"],
+                                NationalNo = nationalNo,
+                                DateOfBirth = (DateTime)reader["DateOfBirth"],
+                                Gender = (byte)reader["Gender"],
+                                Phone = (string)reader["Phone"],
+                                Email = reader["Phone"] as string,
+                                Address = reader["Address"] as string,
+                                ImagePath = reader["ImagePath"] as string,
+                                CreatedBy = (int)reader["CreatedByUserID"]
+                            };
+                        }
+
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
+        public static bool IsExistByNationalNo(string nationalNo)
+        {
+            bool isFound = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Person_IsExistByNationalNo", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@NationalNo", SqlDbType.VarChar).Value = nationalNo;
+
+                SqlParameter outputParam = new SqlParameter("@Exists", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                command.Parameters.Add(outputParam);
+
+                connection.Open();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    isFound = (bool)command.Parameters["@Exists"].Value;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to ckeck doctor existance", ex);
+                }
+            }
+
+            return isFound;
         }
 
         public static bool Update(

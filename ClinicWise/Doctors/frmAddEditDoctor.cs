@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Business;
 using ClinicWise.Contracts;
+using ClinicWise.Contracts.Guardians;
 using ClinicWise.Global_Classes;
 using ClinicWise.Properties;
 using System;
@@ -14,6 +15,10 @@ namespace ClinicWise.Doctors
 {
     public partial class frmAddEditDoctor : Form
     {
+        public delegate void DataBackEventHandler(int doctorID);
+
+        public event DataBackEventHandler DataBack;
+
         private int _DoctorID;
 
         private enum enGender { Male, Female }
@@ -175,6 +180,7 @@ namespace ClinicWise.Doctors
                     $"Doctor Saved Successfully", 
                     "Success");
 
+                DataBack?.Invoke(_Doctor.DoctorID);
 
                 _Mode = enMode.Update;
                 lblDoctorID.Text = _Doctor.DoctorID.ToString();

@@ -1,0 +1,11 @@
+CREATE PROCEDURE Role_GetByRoleName
+	@RoleName VARCHAR(50)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT * FROM Roles
+	WHERE RoleName = @RoleName;
+
+END;

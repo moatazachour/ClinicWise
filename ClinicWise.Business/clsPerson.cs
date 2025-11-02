@@ -1,4 +1,5 @@
-﻿using ClinicWise.DataAccess;
+﻿using ClinicWise.Contracts.Persons;
+using ClinicWise.DataAccess;
 using System;
 using System.Net;
 using System.Security.Policy;
@@ -62,6 +63,22 @@ namespace ClinicWise.Business
             Mode = enMode.Update;
         }
 
+        public clsPerson(PersonDTO personDTO)
+        {
+            PersonID = personDTO.PersonID;
+            NationalNo = personDTO.NationalNo;
+            FirstName = personDTO.FirstName;
+            LastName = personDTO.LastName;
+            DateOfBirth = personDTO.DateOfBirth;
+            Gender = personDTO.Gender;
+            Phone = personDTO.Phone;
+            Email = personDTO.Email;
+            Address = personDTO.Address;
+            ImagePath = personDTO.ImagePath;
+            CreatedByUserID = personDTO.CreatedBy;
+
+            Mode = enMode.Update;
+        }
 
         private bool _AddNew()
         {
@@ -105,6 +122,21 @@ namespace ClinicWise.Business
             }
 
             return true;
+        }
+
+        public static async Task<PersonDTO> FindAsync(int personID)
+        {
+            return await clsPersonData.GetByID(personID);
+        }
+
+        public static async Task<PersonDTO> FindAsync(string nationalNo)
+        {
+            return await clsPersonData.GetByNationalNo(nationalNo);
+        }
+
+        public static bool IsExistByNationalNo(string nationalNo)
+        {
+            return clsPersonData.IsExistByNationalNo(nationalNo);
         }
     }
 }

@@ -46,7 +46,9 @@
     <Compile Include="clsGuardianRelationship.cs" />
     <Compile Include="clsPatient.cs" />
     <Compile Include="clsPerson.cs" />
+    <Compile Include="clsRole.cs" />
     <Compile Include="clsSpecialization.cs" />
+    <Compile Include="clsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

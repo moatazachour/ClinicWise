@@ -1,0 +1,10 @@
+ALTER PROCEDURE Person_GetByID
+	@PersonID INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT *
+	FROM Persons
+	WHERE PersonID = @PersonID;
+END;

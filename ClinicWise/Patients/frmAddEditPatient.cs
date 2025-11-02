@@ -218,7 +218,7 @@ namespace ClinicWise.Patients
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (_CheckIfPatientNeedAGuardian())
+            if (_CheckIfPatientNeedAGuardian() && _GuardianDTO == null)
             {
                 frmAddEditGuardian frm = new frmAddEditGuardian(-1);
                 frm.DataBack += GuardianChanged;

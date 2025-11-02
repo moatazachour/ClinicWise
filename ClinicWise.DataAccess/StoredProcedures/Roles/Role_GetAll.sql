@@ -1,0 +1,9 @@
+CREATE PROCEDURE Role_GetAll
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT * FROM Roles;
+
+END;

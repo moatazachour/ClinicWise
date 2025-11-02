@@ -24,10 +24,11 @@ namespace ClinicWise.Contracts.Patients
             return new PersonDTO
             {
                 PersonID = PersonID,
-                FullName = FirstName + " " + LastName,
+                FirstName = FirstName,
+                LastName = LastName,
                 NationalNo = NationalNo,
                 DateOfBirth = DateOfBirth,
-                GenderCaption = Gender == 0 ? "Male" : "Female",
+                Gender = Gender,
                 Phone = Phone,
                 Email = Email,
                 Address = Address,

@@ -4,6 +4,7 @@
     {
         Doctor,
         Patient,
-        Guardian
+        Guardian,
+        Staff
     }
 }

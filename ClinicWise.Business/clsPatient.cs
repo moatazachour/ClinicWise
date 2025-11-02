@@ -121,6 +121,5 @@ namespace ClinicWise.Business
         {
             return clsPatientData.Delete(patientID, deletedByUserID);
         }
-
     }
 }
