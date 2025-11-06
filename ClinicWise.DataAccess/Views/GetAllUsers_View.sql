@@ -13,9 +13,11 @@ As
 				When u.Isactive = 1 Then 'Active'
 				Else 'Inactive'
 			End,
-		CreatedBy = (Select Username From Users Where UserID = u.CreatedByUserID)
+		CreatedBy = c.Username
 	From Users u
 		Inner Join Roles r 
 		On u.RoleID = r.RoleID
+		Left Join Users c
+		On u.CreatedByUserID = c.UserID
 )
 Select * From UserData;
