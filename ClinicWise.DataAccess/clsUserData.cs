@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.SymbolStore;
+using System.Threading.Tasks;
 
 namespace ClinicWise.DataAccess
 {
@@ -47,6 +49,37 @@ namespace ClinicWise.DataAccess
                     throw;
                 }
                 
+            }
+        }
+
+        public static async Task<bool> IsPersonAssignedToUserAccountAsync(int personID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("User_IsPersonAssignedToUserAccount", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                
+                command.Parameters.Add("@PersonID", SqlDbType.Int).Value = personID;
+
+                SqlParameter outputParam = new SqlParameter("@Exists", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(outputParam);
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    await command.ExecuteNonQueryAsync();
+
+                    return (bool)command.Parameters["@Exists"].Value;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw; 
+                }
             }
         }
     }

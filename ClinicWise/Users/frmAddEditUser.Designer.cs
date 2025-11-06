@@ -33,7 +33,6 @@
             this.tcUsers = new System.Windows.Forms.TabControl();
             this.tabPersonInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.ctrlPersonCardWithFilter1 = new ClinicWise.Persons.ctrlPersonCardWithFilter();
             this.tabLoginInfo = new System.Windows.Forms.TabPage();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.lblUserID = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlPersonCardWithFilter1 = new ClinicWise.Persons.ctrlPersonCardWithFilter();
             this.tcUsers.SuspendLayout();
             this.tabPersonInfo.SuspendLayout();
             this.tabLoginInfo.SuspendLayout();
@@ -100,14 +100,6 @@
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // ctrlPersonCardWithFilter1
-            // 
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(2, 3);
-            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(997, 470);
-            this.ctrlPersonCardWithFilter1.TabIndex = 0;
             // 
             // tabLoginInfo
             // 
@@ -260,6 +252,14 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(2, 3);
+            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(997, 470);
+            this.ctrlPersonCardWithFilter1.TabIndex = 0;
             // 
             // frmAddEditUser
             // 

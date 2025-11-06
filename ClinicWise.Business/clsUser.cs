@@ -1,5 +1,6 @@
 ﻿using ClinicWise.DataAccess;
 using System;
+using System.Threading.Tasks;
 
 namespace ClinicWise.Business
 {
@@ -81,6 +82,11 @@ namespace ClinicWise.Business
                 default:
                     return false;
             }
+        }
+
+        public static async Task<bool> IsPersonAssignedToUserAccountAsync(int personID)
+        {
+            return await clsUserData.IsPersonAssignedToUserAccountAsync(personID);
         }
     }
 }

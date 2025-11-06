@@ -36,11 +36,22 @@ namespace ClinicWise.Users
             if (_Mode == enMode.AddNew)
             {
                 lblMode.Text = "Add New User";
+                this.Text = "Add New User";
+
                 _User = new clsUser();
+                tabLoginInfo.Enabled = false;
+
+                ctrlPersonCardWithFilter1.FilterFocus();
+
+                return;
             }
             else
             {
                 lblMode.Text = "Update User";
+                this.Text = "Update User";
+
+                tabLoginInfo.Enabled = true;
+                btnSave.Enabled = true;
             }
 
             lblUserID.Text = "N/A";
@@ -54,14 +65,25 @@ namespace ClinicWise.Users
             _ResetInformations();
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        private async void btnNext_Click(object sender, EventArgs e)
         {
             if (ctrlPersonCardWithFilter1.PersonID != -1)
             {
-                // TODO: Check if the user already exist
                 _PersonID = ctrlPersonCardWithFilter1.PersonID;
-                tcUsers.SelectedTab = tabLoginInfo;
-                btnSave.Enabled = true;
+                
+                if (await clsUser.IsPersonAssignedToUserAccountAsync(_PersonID))
+                {
+                    MessageBox.Show("This person already have a user account", "Select another Person",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    ctrlPersonCardWithFilter1.FilterFocus();
+                }
+                else
+                {
+                    tabLoginInfo.Enabled = true;
+                    tcUsers.SelectedTab = tabLoginInfo;
+                    btnSave.Enabled = true;
+                }
                 
             }
             else
