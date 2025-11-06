@@ -244,12 +244,7 @@ namespace ClinicWise.Persons
 
         private void txtNationalNo_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNationalNo.Text))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtNationalNo, "This field is required!");
-            }
-            else if (clsPerson.IsExistByNationalNo(txtNationalNo.Text.Trim()))
+            if (clsPerson.IsExistByNationalNo(txtNationalNo.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtNationalNo, "There is already a person with this NationalNo!");

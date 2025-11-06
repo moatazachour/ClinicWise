@@ -16,7 +16,7 @@ namespace ClinicWise.Persons
 {
     public partial class ctrlPersonCardWithFilter : UserControl
     {
-        private int _PersonID;
+        private int _PersonID = -1;
         private string _NationalNo;
         private clsPerson _Person;
 
@@ -29,7 +29,7 @@ namespace ClinicWise.Persons
         {
             get
             {
-                return _PersonID;
+                return ctrlPersonCard1.PersonID;
             }
         }
 
@@ -55,7 +55,6 @@ namespace ClinicWise.Persons
             {
                 if (int.TryParse(txtFilter.Text, out int personID))
                 {
-                    _PersonID = personID;
                     await ctrlPersonCard1.LoadPersonInfo(_PersonID);
                 }
                 else
@@ -116,6 +115,17 @@ namespace ClinicWise.Persons
 
             cbFilterBy.Text = "National No";
             txtFilter.Text = person.NationalNo;
+        }
+
+        public void FilterFocus()
+        {
+            txtFilter.Focus();
+        }
+
+        private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
+        {
+            cbFilterBy.Text = "National No";
+            txtFilter.Focus();
         }
     }
 }

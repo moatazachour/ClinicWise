@@ -1,10 +1,10 @@
-ALTER PROCEDURE Person_GetByNationalNo
+ALTER PROCEDURE [dbo].[Person_GetByNationalNo]
 	@NationalNo VARCHAR(20)
 AS
 BEGIN
 	SET NOCOUNT ON;
 
 	SELECT *
-	FROM GetAllPersons_View
+	FROM Persons
 	WHERE NationalNo = @NationalNo;
 END;

@@ -77,7 +77,7 @@
     <Compile Include="Global Classes\clsGlobalSettings.cs" />
     <Compile Include="Global Classes\clsUtil.cs" />
     <Compile Include="Global Classes\clsValidation.cs" />
-    <Compile Include="Global Classes\enPersonType.cs" />
+    <Compile Include="Persons\enPersonType.cs" />
     <Compile Include="Guardians\frmAddEditGuardian.cs">
       <SubType>Form</SubType>
     </Compile>

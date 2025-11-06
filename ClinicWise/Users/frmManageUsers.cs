@@ -23,7 +23,7 @@ namespace ClinicWise.Users
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            frmAddEditUser frm = new frmAddEditUser();
+            frmAddEditUser frm = new frmAddEditUser(-1);
 
             frm.ShowDialog();
         }

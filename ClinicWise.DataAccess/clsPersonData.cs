@@ -25,13 +25,15 @@ namespace ClinicWise.DataAccess
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@NationalNo", SqlDbType.VarChar).Value = nationalNo;
+                command.Parameters.AddWithValue("@NationalNo", SqlDbType.VarChar).Value =
+                    string.IsNullOrWhiteSpace(nationalNo) ? (object)DBNull.Value : nationalNo;
                 command.Parameters.AddWithValue("@FirstName", SqlDbType.NVarChar).Value = firstName;
                 command.Parameters.AddWithValue("@LastName", SqlDbType.NVarChar).Value = lastName;
                 command.Parameters.AddWithValue("@DateOfBirth", SqlDbType.DateTime).Value = dateOfBirth;
                 command.Parameters.AddWithValue("@Gender", SqlDbType.TinyInt).Value = gender;
-                command.Parameters.AddWithValue("@Phone", SqlDbType.NVarChar).Value = phone ?? (object)DBNull.Value;
-                command.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = email ?? (object)DBNull.Value;
+                command.Parameters.AddWithValue("@Phone", SqlDbType.TinyInt).Value = phone;
+                command.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value =
+                    string.IsNullOrWhiteSpace(email) ? (object)DBNull.Value : email;
                 command.Parameters.AddWithValue("@Address", SqlDbType.NVarChar).Value =
                     string.IsNullOrWhiteSpace(address) ? (object)DBNull.Value : address;
                 command.Parameters.AddWithValue("@ImagePath", SqlDbType.NChar).Value =
@@ -50,7 +52,8 @@ namespace ClinicWise.DataAccess
                     connection.Open();
                     command.ExecuteNonQuery();
 
-                    return (int)command.Parameters["@PersonID"].Value;
+                    object result = command.Parameters["@PersonID"].Value;
+                    return result == DBNull.Value ? -1 : (int)result;
                 }
                 catch (Exception ex)
                 {
@@ -82,7 +85,7 @@ namespace ClinicWise.DataAccess
                                 PersonID = personID,
                                 FirstName = (string)reader["FirstName"],
                                 LastName = (string)reader["LastName"],
-                                NationalNo = (string)reader["NationalNo"],
+                                NationalNo = reader["NationalNo"] as string,
                                 DateOfBirth = (DateTime)reader["DateOfBirth"],
                                 Gender = (byte)reader["Gender"],
                                 Phone = (string)reader["Phone"],

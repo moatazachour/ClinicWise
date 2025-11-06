@@ -228,5 +228,40 @@ namespace ClinicWise.DataAccess
 
             return isFound;
         }
+
+        public static bool ExistsForPerson(int personID)
+        {
+            bool isFound = false;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Doctor_ExistsForPerson", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@PersonID", SqlDbType.VarChar).Value = personID;
+
+                SqlParameter outputParam = new SqlParameter("@Exists", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                command.Parameters.Add(outputParam);
+
+                connection.Open();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    isFound = (bool)command.Parameters["@Exists"].Value;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw new ApplicationException("Failed to ckeck doctor existance", ex);
+                }
+            }
+
+            return isFound;
+        }
     }
 }

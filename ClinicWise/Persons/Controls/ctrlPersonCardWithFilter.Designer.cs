@@ -128,6 +128,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ctrlPersonCardWithFilter";
             this.Size = new System.Drawing.Size(850, 362);
+            this.Load += new System.EventHandler(this.ctrlPersonCardWithFilter_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

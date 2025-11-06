@@ -109,7 +109,7 @@ namespace ClinicWise.Business
             return false;
         }
 
-        public static async Task<DoctorDTO> FindAsync(int doctorID)
+        public new static async Task<DoctorDTO> FindAsync(int doctorID)
         {
             return await clsDoctorData.GetDoctorByID(doctorID);
         }
@@ -119,9 +119,14 @@ namespace ClinicWise.Business
             return clsDoctorData.Delete(doctorID, deletedByUserID);
         }
 
-        public static bool IsExistByNationalNo(string nationalNo)
+        public new static bool IsExistByNationalNo(string nationalNo)
         {
             return clsDoctorData.IsExistByNationalNo(nationalNo);
+        }
+
+        public static bool ExistsForPerson(int personID)
+        {
+            return clsDoctorData.ExistsForPerson(personID);
         }
     }
 }

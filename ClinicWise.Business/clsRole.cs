@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Contracts.Roles;
 using ClinicWise.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -35,5 +36,9 @@ namespace ClinicWise.Business
             return await clsRoleData.GetAllAsync();
         }
 
+        public static RoleDTO FindByRoleName(string roleName)
+        {
+            return clsRoleData.GetByRoleName(roleName);
+        }
     }
 }

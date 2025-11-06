@@ -14,8 +14,20 @@ namespace ClinicWise.Persons
             InitializeComponent();
         }
 
+        private int _PersonID = -1;
+
+        public int PersonID
+        {
+            get
+            {
+                return _PersonID;
+            }
+        }
+
         public void LoadPersonInfo(PersonDTO personDTO)
         {
+            _PersonID = personDTO.PersonID;
+
             lblPersonID.Text = personDTO.PersonID.ToString();
             lblName.Text = string.Join(" ", personDTO.FirstName, personDTO.LastName);
             lblNationalNo.Text = personDTO.NationalNo;
@@ -33,6 +45,8 @@ namespace ClinicWise.Persons
 
         public async Task LoadPersonInfo(int personID)
         {
+            _PersonID = personID;
+
             PersonDTO personDTO = await clsPerson.FindAsync(personID);
 
             if (personDTO != null)
@@ -57,8 +71,11 @@ namespace ClinicWise.Persons
         {
             PersonDTO personDTO = await clsPerson.FindAsync(nationalNo);
 
+
             if (personDTO != null)
             {
+                _PersonID = personDTO.PersonID;
+
                 lblPersonID.Text = personDTO.PersonID.ToString();
                 lblName.Text = string.Join(" ", personDTO.FirstName, personDTO.LastName);
                 lblNationalNo.Text = personDTO.NationalNo;

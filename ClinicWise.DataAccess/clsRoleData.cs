@@ -1,4 +1,5 @@
-﻿using ClinicWise.Contracts.Roles;
+﻿using ClinicWise.Contracts.Patients;
+using ClinicWise.Contracts.Roles;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -42,6 +43,38 @@ namespace ClinicWise.DataAccess
             }
 
             return roles;
+        }
+
+        public static RoleDTO GetByRoleName(string roleName)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Role_GetByRoleName", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@RoleName", SqlDbType.VarChar).Value = roleName;
+
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new RoleDTO(
+                                (int)reader["RoleID"],
+                                roleName);
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
         }
     }
 }
