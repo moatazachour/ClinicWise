@@ -98,6 +98,7 @@
     <Content Include="Views\GetAllDoctors_View.sql" />
     <Content Include="Views\GetAllPatients_View.sql" />
     <Content Include="Views\GetAllPersons_View.sql" />
+    <Content Include="Views\GetAllUsers_View.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

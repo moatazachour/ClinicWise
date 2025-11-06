@@ -46,6 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.mtxtFilter = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cbUserRoles = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageDoctors)).BeginInit();
             this.cmsManageUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,6 +68,7 @@
             this.cbManageUsers.Name = "cbManageUsers";
             this.cbManageUsers.Size = new System.Drawing.Size(164, 27);
             this.cbManageUsers.TabIndex = 22;
+            this.cbManageUsers.SelectedIndexChanged += new System.EventHandler(this.cbManageUsers_SelectedIndexChanged);
             // 
             // dgvManageDoctors
             // 
@@ -222,12 +224,27 @@
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
             // 
+            // cbUserRoles
+            // 
+            this.cbUserRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUserRoles.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbUserRoles.FormattingEnabled = true;
+            this.cbUserRoles.Items.AddRange(new object[] {
+            "Admin",
+            "Doctor"});
+            this.cbUserRoles.Location = new System.Drawing.Point(198, 207);
+            this.cbUserRoles.Margin = new System.Windows.Forms.Padding(2);
+            this.cbUserRoles.Name = "cbUserRoles";
+            this.cbUserRoles.Size = new System.Drawing.Size(148, 27);
+            this.cbUserRoles.TabIndex = 28;
+            // 
             // frmManageUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1271, 658);
+            this.Controls.Add(this.cbUserRoles);
             this.Controls.Add(this.cbManageUsers);
             this.Controls.Add(this.dgvManageDoctors);
             this.Controls.Add(this.label1);
@@ -241,6 +258,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmManageUsers";
             this.Text = "Manage Users";
+            this.Load += new System.EventHandler(this.frmManageUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageDoctors)).EndInit();
             this.cmsManageUsers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -265,5 +283,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox mtxtFilter;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox cbUserRoles;
     }
 }

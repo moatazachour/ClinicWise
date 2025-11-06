@@ -28,92 +28,24 @@ namespace ClinicWise.Users
             frm.ShowDialog();
         }
 
-        //private List<DoctorDisplayDTO> _DoctorList;
+        private void _RefreshData()
+        {
+            cbManageUsers.SelectedItem = "None";
 
-        //private List<DoctorDisplayDTO> _DoctorFilter;
+            mtxtFilter.Visible = false;
+            cbUserRoles.Visible = false;
+        }
 
-        //private async Task _RefreshData()
-        //{
-        //    cbManageUsers.SelectedItem = "None";
+        private void frmManageUsers_Load(object sender, EventArgs e)
+        {
+            _RefreshData();
+        }
 
-        //    _DoctorList = await clsDoctor.GetAllDoctorsAsync();
+        private void cbManageUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mtxtFilter.Visible = cbManageUsers.Text != "None" && cbManageUsers.Text != "Role";
 
-        //    dgvManageDoctors.DataSource = _DoctorList;
-
-        //    lblRecordCount.Text = dgvManageDoctors.RowCount.ToString();
-
-        //    mtxtFilter.Visible = false;
-        //}
-
-        //private async void frmManageDoctors_Load(object sender, EventArgs e)
-        //{
-        //    await _RefreshData();
-        //}
-
-
-        //private void cbManageDoctors_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    mtxtFilter.Visible = (cbManageDoctors.Text != "None");
-
-        //    if (mtxtFilter.Visible)
-        //    {
-        //        mtxtFilter.Mask = "";
-        //        mtxtFilter.Text = "";
-        //        mtxtFilter.Focus();
-        //    }
-
-        //    if (cbManageDoctors.Text == "None")
-        //        dgvManageDoctors.DataSource = _DoctorList;
-        //}
-
-        //private void mtxtFilter_TextChanged(object sender, EventArgs e)
-        //{
-        //    switch (cbManageDoctors.Text)
-        //    {
-        //        case "DoctorID":
-        //            if (string.IsNullOrWhiteSpace(mtxtFilter.Text))
-        //                _DoctorFilter = _DoctorList;
-        //            else
-        //                _DoctorFilter = _DoctorList.Where(d => d.DoctorID == Convert.ToInt32(mtxtFilter.Text.Trim())).ToList();
-        //            break;
-
-        //        case "Fullname":
-        //            _DoctorFilter = _DoctorList.Where(d => d.FullName.ToLower().Contains(mtxtFilter.Text.ToLower().Trim())).ToList();
-        //            break;
-
-        //        case "Gender":
-        //            _DoctorFilter = _DoctorList.Where(d => d.GenderCaption.ToLower().StartsWith(mtxtFilter.Text.ToLower().Trim())).ToList();
-        //            break;
-
-        //        case "Phone":
-        //            _DoctorFilter = _DoctorList.Where(d => d.Phone.StartsWith(mtxtFilter.Text.Trim())).ToList();
-        //            break;
-
-        //        case "Email":
-        //            _DoctorFilter = _DoctorList.Where(d => d.Email.ToLower().StartsWith(mtxtFilter.Text.ToLower().Trim())).ToList();
-        //            break;
-
-        //        case "Specialization":
-        //            _DoctorFilter = _DoctorList.Where(d => d.Specialization.ToLower().StartsWith(mtxtFilter.Text.ToLower().Trim())).ToList();
-        //            break;
-
-        //        case "Address":
-        //            _DoctorFilter = _DoctorList.Where(d => d.Address.ToLower().StartsWith(mtxtFilter.Text.ToLower().Trim())).ToList();
-        //            break;
-
-        //        default:
-        //            _DoctorFilter = _DoctorList;
-        //            break;
-        //    }
-
-        //    dgvManageDoctors.DataSource = _DoctorFilter;
-        //    lblRecordCount.Text = dgvManageDoctors.RowCount.ToString();
-        //}
-
-        //private void mtxtFilter_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (cbManageDoctors.Text == "DoctorID")
-        //        e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        //}
+            cbUserRoles.Visible = cbManageUsers.Text == "Role";
+        }
     }
 }
