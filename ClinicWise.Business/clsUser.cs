@@ -1,5 +1,7 @@
-﻿using ClinicWise.DataAccess;
+﻿using ClinicWise.Contracts.Users;
+using ClinicWise.DataAccess;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ClinicWise.Business
@@ -87,6 +89,11 @@ namespace ClinicWise.Business
         public static async Task<bool> IsPersonAssignedToUserAccountAsync(int personID)
         {
             return await clsUserData.IsPersonAssignedToUserAccountAsync(personID);
+        }
+
+        public static async Task<List<UserDisplayDTO>> GetAll()
+        {
+            return await clsUserData.GetAll();
         }
     }
 }

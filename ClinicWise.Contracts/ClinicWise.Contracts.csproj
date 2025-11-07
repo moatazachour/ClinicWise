@@ -50,6 +50,7 @@
     <Compile Include="Persons\PersonDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\RoleDTO.cs" />
+    <Compile Include="Users\UserDisplayDTO.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

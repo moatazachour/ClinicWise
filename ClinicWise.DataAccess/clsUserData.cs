@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClinicWise.Contracts.Users;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.SymbolStore;
@@ -81,6 +83,42 @@ namespace ClinicWise.DataAccess
                     throw; 
                 }
             }
+        }
+
+        public static async Task<List<UserDisplayDTO>> GetAll()
+        {
+            List<UserDisplayDTO> users = new List<UserDisplayDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("User_GetAll", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                    while (reader.Read())
+                    {
+                        users.Add(new UserDisplayDTO(
+                            (int)reader["UserID"],
+                            (string)reader["Username"],
+                            (string)reader["RoleName"],
+                            (string)reader["IsActiveCaption"],
+                            (string)reader["CreatedBy"]
+                            ));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return users;
         }
     }
 }
