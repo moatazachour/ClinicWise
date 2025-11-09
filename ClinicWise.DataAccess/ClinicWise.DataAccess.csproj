@@ -85,12 +85,14 @@
     <Content Include="StoredProcedures\Persons\Person_IsExistByNationalNo.sql" />
     <Content Include="StoredProcedures\Persons\Person_Update.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetAll.sql" />
+    <Content Include="StoredProcedures\Roles\Role_GetByID.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetByRoleName.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetAll.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetByID.sql" />
     <Content Include="StoredProcedures\Specializations\Specialization_GetByName.sql" />
     <Content Include="StoredProcedures\Users\User_AddNew.sql" />
     <Content Include="StoredProcedures\Users\User_GetAll.sql" />
+    <Content Include="StoredProcedures\Users\User_GetByID.sql" />
     <Content Include="StoredProcedures\Users\User_GetByUsernameAndPassword.sql" />
     <Content Include="StoredProcedures\Users\User_IsPersonAssignedToUserAccount.sql" />
     <Content Include="Triggers\trg_AfterDeleteDoctor.sql" />

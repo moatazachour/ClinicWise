@@ -158,5 +158,42 @@ namespace ClinicWise.DataAccess
                 }
             }
         }
+
+        public static async Task<UserDTO> GetByIDAsync(int userID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("User_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@UserID", SqlDbType.Int).Value = userID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                    if (await reader.ReadAsync())
+                    {
+                        return new UserDTO(
+                            (int)reader["UserID"],
+                            (int)reader["PersonID"],
+                            (string)reader["Username"],
+                            (string)reader["Password"],
+                            (int)reader["RoleID"],
+                            (bool)reader["IsActive"],
+                            (int)reader["CreatedByUserID"]);
+                    }
+
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
     }
 }

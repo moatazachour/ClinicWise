@@ -45,6 +45,38 @@ namespace ClinicWise.DataAccess
             return roles;
         }
 
+        public static async Task<RoleDTO> GetByIDAsync(int roleID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Role_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@RoleID", SqlDbType.VarChar).Value = roleID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new RoleDTO(
+                                roleID,
+                                (string)reader["RoleName"]);
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
         public static RoleDTO GetByRoleName(string roleName)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))

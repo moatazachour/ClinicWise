@@ -1,4 +1,6 @@
 ﻿using ClinicWise.Doctors;
+using ClinicWise.Global_Classes;
+using ClinicWise.Login;
 using ClinicWise.Patients;
 using ClinicWise.Users;
 using System;
@@ -8,9 +10,13 @@ namespace ClinicWise
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private frmLoginScreen _loginScreen;
+
+        public frmMain(frmLoginScreen frm)
         {
             InitializeComponent();
+
+            _loginScreen = frm;
         }
 
         private void doctorsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,6 +38,20 @@ namespace ClinicWise
             frmManageUsers frm = new frmManageUsers();
 
             frm.ShowDialog();
+        }
+
+        private void currentUserInformationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserInfo frm = new frmUserInfo(clsGlobalSettings.CurrentUserID);
+
+            frm.ShowDialog();
+        }
+
+        private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsGlobalSettings.CurrentUserID = -1;
+            _loginScreen.Show();
+            this.Close();
         }
     }
 }

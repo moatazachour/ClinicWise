@@ -57,7 +57,8 @@ namespace ClinicWise.Login
 
                 clsGlobalSettings.CurrentUserID = user.UserID;
 
-                frmMain frm = new frmMain();
+                this.Hide();
+                frmMain frm = new frmMain(this);
                 frm.ShowDialog();
             }
             else

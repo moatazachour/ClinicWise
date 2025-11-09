@@ -40,5 +40,10 @@ namespace ClinicWise.Business
         {
             return clsRoleData.GetByRoleName(roleName);
         }
+
+        public static async Task<RoleDTO> FindAsync(int  roleID)
+        {
+            return await clsRoleData.GetByIDAsync(roleID);
+        }
     }
 }

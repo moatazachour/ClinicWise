@@ -1,4 +1,5 @@
-﻿using ClinicWise.Contracts.Users;
+﻿using ClinicWise.Contracts.Roles;
+using ClinicWise.Contracts.Users;
 using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,13 @@ namespace ClinicWise.Business
         public int RoleID { get; set; }
         public bool IsActive { get; set; }
         public int CreatedByUserID { get; set; }
+
+        public static async Task<string> GetRoleName(int roleID)
+        {
+            RoleDTO role = await clsRole.FindAsync(roleID);
+
+            return role.RoleName;
+        }
 
         public clsUser()
         {
@@ -99,6 +107,11 @@ namespace ClinicWise.Business
         public static async Task<UserDTO> FindByUsernameAndPasswordAsync(string username, string password)
         {
             return await clsUserData.GetByUsernameAndPasswordAsync(username, password);
+        }
+
+        public static async Task<UserDTO> FindAsync(int userID)
+        {
+            return await clsUserData.GetByIDAsync(userID);
         }
     }
 }
