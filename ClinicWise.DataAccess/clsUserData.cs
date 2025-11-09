@@ -85,7 +85,7 @@ namespace ClinicWise.DataAccess
             }
         }
 
-        public static async Task<List<UserDisplayDTO>> GetAll()
+        public static async Task<List<UserDisplayDTO>> GetAllAsync()
         {
             List<UserDisplayDTO> users = new List<UserDisplayDTO>();
 
@@ -100,7 +100,7 @@ namespace ClinicWise.DataAccess
                 {
                     SqlDataReader reader = await command.ExecuteReaderAsync();
 
-                    while (reader.Read())
+                    while (await reader.ReadAsync())
                     {
                         users.Add(new UserDisplayDTO(
                             (int)reader["UserID"],
@@ -119,6 +119,44 @@ namespace ClinicWise.DataAccess
             }
 
             return users;
+        }
+
+        public static async Task<UserDTO> GetByUsernameAndPasswordAsync(string username, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("User_GetByUsernameAndPassword", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
+                command.Parameters.Add("@Password", SqlDbType.NVarChar).Value = password;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+
+                    if (await reader.ReadAsync())
+                    {
+                        return new UserDTO(
+                            (int)reader["UserID"],
+                            (int)reader["PersonID"],
+                            (string)reader["Username"],
+                            (string)reader["Password"],
+                            (int)reader["RoleID"],
+                            (bool)reader["IsActive"],
+                            (int)reader["CreatedByUserID"]);
+                    }
+
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
         }
     }
 }

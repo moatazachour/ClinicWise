@@ -123,6 +123,16 @@ namespace ClinicWise.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cross_32 {
+            get {
+                object obj = ResourceManager.GetObject("cross 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap doctor_48 {
             get {
                 object obj = ResourceManager.GetObject("doctor-48", resourceCulture);
@@ -186,6 +196,16 @@ namespace ClinicWise.Properties {
         internal static System.Drawing.Bitmap doctor_maleV2 {
             get {
                 object obj = ResourceManager.GetObject("doctor_maleV2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap login_image {
+            get {
+                object obj = ResourceManager.GetObject("login_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

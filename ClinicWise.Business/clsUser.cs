@@ -91,9 +91,14 @@ namespace ClinicWise.Business
             return await clsUserData.IsPersonAssignedToUserAccountAsync(personID);
         }
 
-        public static async Task<List<UserDisplayDTO>> GetAll()
+        public static async Task<List<UserDisplayDTO>> GetAllAsync()
         {
-            return await clsUserData.GetAll();
+            return await clsUserData.GetAllAsync();
+        }
+
+        public static async Task<UserDTO> FindByUsernameAndPasswordAsync(string username, string password)
+        {
+            return await clsUserData.GetByUsernameAndPasswordAsync(username, password);
         }
     }
 }

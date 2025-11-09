@@ -41,7 +41,7 @@ namespace ClinicWise.Users
             mtxtFilter.Visible = false;
             cbUserRoles.Visible = false;
 
-            _UserList = await clsUser.GetAll();
+            _UserList = await clsUser.GetAllAsync();
 
             dgvManageUsers.DataSource = _UserList;
 

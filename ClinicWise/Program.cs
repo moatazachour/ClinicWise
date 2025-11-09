@@ -1,4 +1,5 @@
 ﻿using ClinicWise.Doctors;
+using ClinicWise.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace ClinicWise
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmLoginScreen());
         }
     }
 }
