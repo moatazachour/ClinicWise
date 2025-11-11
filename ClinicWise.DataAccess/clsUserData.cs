@@ -195,5 +195,44 @@ namespace ClinicWise.DataAccess
                 }
             }
         }
+
+        public static bool Update(int userID, string username, string password, int roleID, bool isActive)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connecction = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("User_Update", connecction))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@UserID", SqlDbType.Int).Value = userID;
+                command.Parameters.Add("@Username", SqlDbType.NVarChar).Value = username;
+                command.Parameters.Add("@Password", SqlDbType.NVarChar).Value = password;
+                command.Parameters.Add("@RoleID", SqlDbType.Int).Value = roleID;
+                command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = isActive;
+
+                SqlParameter returnedParam = new SqlParameter("@ReturnVal", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.ReturnValue
+                };
+                command.Parameters.Add(returnedParam);
+
+                connecction.Open();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+
+                    rowsAffected = (int)returnedParam.Value;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return rowsAffected > 0;
+        }
     }
 }

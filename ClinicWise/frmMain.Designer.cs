@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.doctorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appointmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,7 +37,6 @@
             this.paymentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.currentUserInformationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,10 +60,22 @@
             this.accountSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(356, 999);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(430, 1055);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "msMain";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::ClinicWise.Properties.Resources.background;
+            this.pictureBox1.Location = new System.Drawing.Point(430, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1478, 1055);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // doctorsToolStripMenuItem
             // 
@@ -72,7 +84,7 @@
             this.doctorsToolStripMenuItem.Image = global::ClinicWise.Properties.Resources.doctor_96;
             this.doctorsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.doctorsToolStripMenuItem.Name = "doctorsToolStripMenuItem";
-            this.doctorsToolStripMenuItem.Size = new System.Drawing.Size(347, 100);
+            this.doctorsToolStripMenuItem.Size = new System.Drawing.Size(419, 100);
             this.doctorsToolStripMenuItem.Text = "Doctors";
             this.doctorsToolStripMenuItem.Click += new System.EventHandler(this.doctorsToolStripMenuItem_Click);
             // 
@@ -83,7 +95,7 @@
             this.patientsToolStripMenuItem.Image = global::ClinicWise.Properties.Resources.patient_care_100;
             this.patientsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.patientsToolStripMenuItem.Name = "patientsToolStripMenuItem";
-            this.patientsToolStripMenuItem.Size = new System.Drawing.Size(347, 104);
+            this.patientsToolStripMenuItem.Size = new System.Drawing.Size(419, 104);
             this.patientsToolStripMenuItem.Text = "Patients";
             this.patientsToolStripMenuItem.Click += new System.EventHandler(this.patientsToolStripMenuItem_Click);
             // 
@@ -95,7 +107,7 @@
             this.appointmentsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.appointmentsToolStripMenuItem.Name = "appointmentsToolStripMenuItem";
             this.appointmentsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
-            this.appointmentsToolStripMenuItem.Size = new System.Drawing.Size(347, 98);
+            this.appointmentsToolStripMenuItem.Size = new System.Drawing.Size(419, 98);
             this.appointmentsToolStripMenuItem.Text = "   Appointments";
             // 
             // medicalRecordsToolStripMenuItem
@@ -107,7 +119,7 @@
             this.medicalRecordsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.medicalRecordsToolStripMenuItem.Name = "medicalRecordsToolStripMenuItem";
             this.medicalRecordsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 15, 4, 15);
-            this.medicalRecordsToolStripMenuItem.Size = new System.Drawing.Size(347, 98);
+            this.medicalRecordsToolStripMenuItem.Size = new System.Drawing.Size(419, 98);
             this.medicalRecordsToolStripMenuItem.Text = "Medical Records";
             // 
             // paymentsToolStripMenuItem
@@ -119,7 +131,7 @@
             this.paymentsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.paymentsToolStripMenuItem.Name = "paymentsToolStripMenuItem";
             this.paymentsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
-            this.paymentsToolStripMenuItem.Size = new System.Drawing.Size(347, 101);
+            this.paymentsToolStripMenuItem.Size = new System.Drawing.Size(419, 101);
             this.paymentsToolStripMenuItem.Text = "   Payments";
             // 
             // usersToolStripMenuItem
@@ -131,7 +143,7 @@
             this.usersToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(347, 98);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(419, 98);
             this.usersToolStripMenuItem.Text = "   Users";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
@@ -148,49 +160,40 @@
             this.accountSettingsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.accountSettingsToolStripMenuItem.Name = "accountSettingsToolStripMenuItem";
             this.accountSettingsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 15, 4, 15);
-            this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(347, 98);
+            this.accountSettingsToolStripMenuItem.Size = new System.Drawing.Size(419, 98);
             this.accountSettingsToolStripMenuItem.Text = "   Account Settings";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::ClinicWise.Properties.Resources.background;
-            this.pictureBox1.Location = new System.Drawing.Point(356, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1075, 999);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // currentUserInformationsToolStripMenuItem
             // 
             this.currentUserInformationsToolStripMenuItem.Name = "currentUserInformationsToolStripMenuItem";
-            this.currentUserInformationsToolStripMenuItem.Size = new System.Drawing.Size(441, 40);
+            this.currentUserInformationsToolStripMenuItem.Size = new System.Drawing.Size(559, 48);
             this.currentUserInformationsToolStripMenuItem.Text = "Current User Informations";
             this.currentUserInformationsToolStripMenuItem.Click += new System.EventHandler(this.currentUserInformationsToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(441, 40);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(559, 48);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // signOutToolStripMenuItem
             // 
             this.signOutToolStripMenuItem.Name = "signOutToolStripMenuItem";
-            this.signOutToolStripMenuItem.Size = new System.Drawing.Size(441, 40);
+            this.signOutToolStripMenuItem.Size = new System.Drawing.Size(559, 48);
             this.signOutToolStripMenuItem.Text = "Sign out";
             this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1431, 999);
+            this.ClientSize = new System.Drawing.Size(1908, 1055);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";

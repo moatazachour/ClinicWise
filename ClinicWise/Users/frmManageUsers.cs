@@ -112,5 +112,12 @@ namespace ClinicWise.Users
             dgvManageUsers.DataSource = _UserFilter;
             lblRecordCount.Text = dgvManageUsers.RowCount.ToString();
         }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditUser frm = new frmAddEditUser((int)dgvManageUsers.CurrentRow.Cells[0].Value);
+
+            frm.ShowDialog();
+        }
     }
 }

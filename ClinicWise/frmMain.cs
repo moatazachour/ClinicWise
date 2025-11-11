@@ -50,8 +50,16 @@ namespace ClinicWise
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clsGlobalSettings.CurrentUserID = -1;
+            clsGlobalSettings.CurrentUser = null;
             _loginScreen.Show();
             this.Close();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword();
+
+            frm.ShowDialog();
         }
     }
 }

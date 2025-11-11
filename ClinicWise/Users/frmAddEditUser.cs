@@ -15,20 +15,20 @@ namespace ClinicWise.Users
 {
     public partial class frmAddEditUser : Form
     {
-        private int _PersonID;
+        private int _UserID;
 
         private enum enMode { AddNew, Update }
         private enMode _Mode;
 
         private clsUser _User;
 
-        public frmAddEditUser(int personID)
+        public frmAddEditUser(int userID)
         {
             InitializeComponent();
 
-            _PersonID = personID;
+            _UserID = userID;
 
-            _Mode = _PersonID == -1 ? enMode.AddNew : enMode.Update;
+            _Mode = _UserID == -1 ? enMode.AddNew : enMode.Update;
         }
 
         private void _ResetInformations()
@@ -60,18 +60,41 @@ namespace ClinicWise.Users
             txtConfirmPassword.Text = string.Empty;
         }
 
-        private void frmAddEditUser_Load(object sender, EventArgs e)
+        private async Task _LoadData()
+        {
+            _User = new clsUser(await clsUser.FindAsync(_UserID));
+
+            await ctrlPersonCardWithFilter1.LoadInformations(_User.PersonID);
+
+            lblUserID.Text = _UserID.ToString();
+            txtUserName.Text = _User.Username;
+        }
+
+        private async void frmAddEditUser_Load(object sender, EventArgs e)
         {
             _ResetInformations();
+
+            if (_Mode == enMode.Update)
+            {
+                await _LoadData();
+            }
         }
+
+        
 
         private async void btnNext_Click(object sender, EventArgs e)
         {
+            if (_Mode == enMode.Update)
+            {
+                tabLoginInfo.Enabled = true;
+                btnSave.Enabled = true;
+                tcUsers.SelectedTab = tabLoginInfo;
+                return;
+            }
+
             if (ctrlPersonCardWithFilter1.PersonID != -1)
             {
-                _PersonID = ctrlPersonCardWithFilter1.PersonID;
-                
-                if (await clsUser.IsPersonAssignedToUserAccountAsync(_PersonID))
+                if (await clsUser.IsPersonAssignedToUserAccountAsync(ctrlPersonCardWithFilter1.PersonID))
                 {
                     MessageBox.Show("This person already have a user account", "Select another Person",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,7 +119,10 @@ namespace ClinicWise.Users
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _User.PersonID = _PersonID;
+            if (!ValidateChildren())
+                return;
+
+            _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
             _User.Username = txtUserName.Text.Trim();
             _User.Password = clsUtil.ComputeHash(txtPassword.Text.Trim());
             _User.IsActive = chkIsActive.Checked;
@@ -159,6 +185,11 @@ namespace ClinicWise.Users
             {
                 errorProvider1.SetError(txtPassword, null);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

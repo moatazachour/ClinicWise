@@ -56,6 +56,7 @@ namespace ClinicWise.Login
                 }
 
                 clsGlobalSettings.CurrentUserID = user.UserID;
+                clsGlobalSettings.CurrentUser = user;
 
                 this.Hide();
                 frmMain frm = new frmMain(this);

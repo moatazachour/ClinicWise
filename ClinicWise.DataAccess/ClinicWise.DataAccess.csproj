@@ -95,6 +95,7 @@
     <Content Include="StoredProcedures\Users\User_GetByID.sql" />
     <Content Include="StoredProcedures\Users\User_GetByUsernameAndPassword.sql" />
     <Content Include="StoredProcedures\Users\User_IsPersonAssignedToUserAccount.sql" />
+    <Content Include="StoredProcedures\Users\User_Update.sql" />
     <Content Include="Triggers\trg_AfterDeleteDoctor.sql" />
     <Content Include="Triggers\trg_AfterDeleteGuardian.sql" />
     <Content Include="Triggers\trg_AfterDeletePatient.sql" />

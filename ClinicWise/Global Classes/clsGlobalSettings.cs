@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using ClinicWise.Contracts.Users;
+using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 
@@ -7,6 +8,7 @@ namespace ClinicWise.Global_Classes
     static class clsGlobalSettings
     {
         public static int CurrentUserID;
+        public static UserDTO CurrentUser;
 
         private static string EncryptionKey = "moatazachour2001";
 

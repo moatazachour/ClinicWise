@@ -49,6 +49,21 @@ namespace ClinicWise.Persons
             }
         }
 
+        public async Task LoadInformations(int personID)
+        {
+            PersonDTO person = await clsPerson.FindAsync(personID);
+            if (person != null)
+            {
+                cbFilterBy.Text = "National No";
+                txtFilter.Text = person.NationalNo;
+
+                cbFilterBy.Enabled = false;
+                txtFilter.Enabled = false;
+
+                await ctrlPersonCard1.LoadPersonInfo(personID);
+            }
+        }
+
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             if (cbFilterBy.Text == "Person ID")

@@ -54,6 +54,20 @@ namespace ClinicWise.Business
             Mode = enMode.Update;
         }
 
+        public clsUser(UserDTO userDTO)
+        {
+            UserID = userDTO.UserID;
+            PersonID = userDTO.PersonID;
+            Username = userDTO.Username;
+            Password = userDTO.Password;
+            RoleID = userDTO.RoleID;
+            IsActive = userDTO.IsActive;
+            CreatedByUserID = userDTO.CreatedByUserID;
+
+            Mode = enMode.Update;
+        }
+
+
         private bool _AddNew()
         {
             bool isTheUserADoctor = clsDoctor.ExistsForPerson(PersonID);
@@ -71,7 +85,7 @@ namespace ClinicWise.Business
 
         private bool _Update()
         {
-            throw new NotImplementedException();
+            return clsUserData.Update(UserID, Username, Password, RoleID, IsActive);
         }
 
         public bool Save()
