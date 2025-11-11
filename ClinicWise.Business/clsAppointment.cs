@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicWise.DataAccess;
+using System;
 
 namespace ClinicWise.Business
 {
@@ -48,5 +49,38 @@ namespace ClinicWise.Business
         }
 
 
+        private bool _Update()
+        {
+            return clsAppointmentData.Update(AppointmentID, DoctorID, PatientID, Date, (byte)Status, ScheduledByUserID);
+        }
+
+        private bool _AddNew()
+        {
+            AppointmentID = clsAppointmentData.AddNew(DoctorID,  PatientID, Date, (byte)Status, ScheduledByUserID);
+
+            return AppointmentID != -1;
+        }
+
+        public bool Save()
+        {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNew())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    return false;
+
+                case enMode.Update:
+                    return _Update();
+
+                default:
+                    return false;
+            }
+        }
+
+        
     }
 }
