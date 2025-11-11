@@ -132,6 +132,7 @@
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
             this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -168,7 +169,7 @@
             // 
             this.btnAddUser.Image = global::ClinicWise.Properties.Resources.Add_Person_40;
             this.btnAddUser.Location = new System.Drawing.Point(1564, 213);
-            this.btnAddUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(95, 69);
             this.btnAddUser.TabIndex = 27;
@@ -179,7 +180,7 @@
             // 
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(1496, 734);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(163, 52);
             this.btnClose.TabIndex = 26;
@@ -211,7 +212,7 @@
             // 
             this.mtxtFilter.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxtFilter.Location = new System.Drawing.Point(264, 254);
-            this.mtxtFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxtFilter.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtFilter.Name = "mtxtFilter";
             this.mtxtFilter.Size = new System.Drawing.Size(472, 32);
             this.mtxtFilter.TabIndex = 23;
@@ -223,7 +224,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = global::ClinicWise.Properties.Resources.users;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1695, 118);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

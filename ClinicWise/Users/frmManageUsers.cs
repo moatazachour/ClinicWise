@@ -119,5 +119,13 @@ namespace ClinicWise.Users
 
             frm.ShowDialog();
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int userID = (int)dgvManageUsers.CurrentRow.Cells[0].Value;
+
+            frmUserInfo frm = new frmUserInfo(userID);
+            frm.ShowDialog();
+        }
     }
 }
