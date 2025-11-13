@@ -65,7 +65,7 @@ namespace ClinicWise
 
         private void appointmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddEditAppointment frm = new frmAddEditAppointment(-1);
+            frmManageAppointments frm = new frmManageAppointments();
 
             frm.ShowDialog();
         }

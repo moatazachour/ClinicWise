@@ -1,5 +1,8 @@
-﻿using ClinicWise.DataAccess;
+﻿using ClinicWise.Contracts.Appointments;
+using ClinicWise.DataAccess;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ClinicWise.Business
 {
@@ -81,6 +84,10 @@ namespace ClinicWise.Business
             }
         }
 
+        public static async Task<List<AppointmentDisplayDTO>> GetAllAsync()
+        {
+            return await clsAppointmentData.GetAllAsync();
+        }
         
     }
 }
