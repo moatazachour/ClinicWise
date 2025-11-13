@@ -1,9 +1,11 @@
 ﻿using ClinicWise.Business;
 using ClinicWise.Contracts;
 using ClinicWise.Contracts.Guardians;
+using ClinicWise.Contracts.Speciatizations;
 using ClinicWise.Global_Classes;
 using ClinicWise.Properties;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -39,11 +41,11 @@ namespace ClinicWise.Doctors
 
         private async Task _LoadMedicalSpecializations()
         {
-            DataTable allSpecialization = await clsSpecialization.GetAllAsync();
+            List<SpecializationDTO> allSpecialization = await clsSpecialization.GetAllAsync();
 
-            foreach (DataRow row in allSpecialization.Rows)
+            foreach (SpecializationDTO specialization in allSpecialization)
             {
-                cbSpecialization.Items.Add(row["Name"]);
+                cbSpecialization.Items.Add(specialization.Name);
             }
         }
 

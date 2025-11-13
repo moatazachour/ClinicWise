@@ -1,4 +1,5 @@
-﻿using ClinicWise.Doctors;
+﻿using ClinicWise.Appointments;
+using ClinicWise.Doctors;
 using ClinicWise.Global_Classes;
 using ClinicWise.Login;
 using ClinicWise.Patients;
@@ -58,6 +59,13 @@ namespace ClinicWise
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmChangePassword frm = new frmChangePassword();
+
+            frm.ShowDialog();
+        }
+
+        private void appointmentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditAppointment frm = new frmAddEditAppointment();
 
             frm.ShowDialog();
         }

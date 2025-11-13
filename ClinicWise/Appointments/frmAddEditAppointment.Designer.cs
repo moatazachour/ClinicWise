@@ -101,6 +101,7 @@
             this.btnPatientDetails.ForeColor = System.Drawing.Color.Black;
             this.btnPatientDetails.Name = "btnPatientDetails";
             this.btnPatientDetails.UseVisualStyleBackColor = true;
+            this.btnPatientDetails.Click += new System.EventHandler(this.btnPatientDetails_Click);
             // 
             // btnDoctorDetails
             // 
@@ -115,6 +116,7 @@
             this.btnPickPatient.ForeColor = System.Drawing.Color.Black;
             this.btnPickPatient.Name = "btnPickPatient";
             this.btnPickPatient.UseVisualStyleBackColor = true;
+            this.btnPickPatient.Click += new System.EventHandler(this.btnPickPatient_Click);
             // 
             // btnPickDoctor
             // 
@@ -122,6 +124,7 @@
             this.btnPickDoctor.ForeColor = System.Drawing.Color.Black;
             this.btnPickDoctor.Name = "btnPickDoctor";
             this.btnPickDoctor.UseVisualStyleBackColor = true;
+            this.btnPickDoctor.Click += new System.EventHandler(this.btnPickDoctor_Click);
             // 
             // lblPatientName
             // 

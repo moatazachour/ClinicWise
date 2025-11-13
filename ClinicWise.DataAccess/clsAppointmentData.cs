@@ -6,7 +6,7 @@ namespace ClinicWise.DataAccess
 {
     public class clsAppointmentData
     {
-        public static int AddNew(int doctorID, int patientID, DateTime date, byte status, int scheduledByUserID)
+        public static int AddNew(int doctorID, int patientID, DateTime? date, byte status, int scheduledByUserID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Appointment_AddNew", connection))
@@ -40,7 +40,7 @@ namespace ClinicWise.DataAccess
             }
         }
 
-        public static bool Update(int appointmentID, int doctorID, int patientID, DateTime date, byte status, int scheduledByUserID)
+        public static bool Update(int appointmentID, int doctorID, int patientID, DateTime? date, byte status, int scheduledByUserID)
         {
             int rowsAffected = 0;
 

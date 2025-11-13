@@ -14,7 +14,7 @@ namespace ClinicWise.Business
         public int AppointmentID { get; set; }
         public int DoctorID { get; set; }
         public int PatientID { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public enAppointmentStatus Status { get; set; }
         public int ScheduledByUserID { get; set; }
 
@@ -34,7 +34,7 @@ namespace ClinicWise.Business
             int appointmentID, 
             int doctorID, 
             int patientID, 
-            DateTime date, 
+            DateTime? date, 
             enAppointmentStatus status, 
             int scheduledByUserID)
         {

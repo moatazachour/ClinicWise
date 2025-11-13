@@ -107,7 +107,7 @@ namespace ClinicWise.Business
             }
         }
 
-        public async static Task<PatientDTO> FindAsync(int patientID)
+        public new async static Task<PatientDTO> FindAsync(int patientID)
         {
             return await clsPatientData.GetByID(patientID);
         }

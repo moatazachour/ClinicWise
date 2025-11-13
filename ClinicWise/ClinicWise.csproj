@@ -68,6 +68,12 @@
     <Compile Include="Doctors\frmDoctorDetails.Designer.cs">
       <DependentUpon>frmDoctorDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctors\frmDoctorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\frmDoctorPicker.Designer.cs">
+      <DependentUpon>frmDoctorPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doctors\frmManageDoctors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,12 @@
     </Compile>
     <Compile Include="Login\frmLoginScreen.Designer.cs">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\frmPatientPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\frmPatientPicker.Designer.cs">
+      <DependentUpon>frmPatientPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="Persons\enPersonType.cs" />
     <Compile Include="Guardians\frmAddEditGuardian.cs">
@@ -173,6 +185,9 @@
     <EmbeddedResource Include="Doctors\frmDoctorDetails.resx">
       <DependentUpon>frmDoctorDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\frmDoctorPicker.resx">
+      <DependentUpon>frmDoctorPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Doctors\frmManageDoctors.resx">
       <DependentUpon>frmManageDoctors.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\frmPatientDetails.resx">
       <DependentUpon>frmPatientDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\frmPatientPicker.resx">
+      <DependentUpon>frmPatientPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Persons\Controls\ctrlPersonCard.resx">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>

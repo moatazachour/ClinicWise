@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClinicWise.Contracts.Speciatizations;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -41,9 +43,9 @@ namespace ClinicWise.DataAccess
             }
         }
 
-        public static async Task<DataTable> GetAllSpecializations()
+        public static async Task<List<SpecializationDTO>> GetAllSpecializations()
         {
-            DataTable dt = new DataTable();
+            List<SpecializationDTO> specializations = new List<SpecializationDTO>();
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Specialization_GetAll", connection))
@@ -58,8 +60,17 @@ namespace ClinicWise.DataAccess
 
                     using (SqlDataReader reader = await command.ExecuteReaderAsync())
                     {
-                        if (reader.HasRows)
-                            dt.Load(reader);
+                        while (await reader.ReadAsync())
+                        {
+                            specializations.Add(
+                                new SpecializationDTO
+                                (
+                                    (int)reader["SpecializationID"],
+                                    (string)reader["Name"],
+                                    (string)reader["Description"]
+                                )
+                            );
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -69,7 +80,7 @@ namespace ClinicWise.DataAccess
                 }
             }
 
-            return dt;
+            return specializations;
         }
 
         public static async Task<(bool isFound, int id, string description)> GetSpecializationByName(string name)

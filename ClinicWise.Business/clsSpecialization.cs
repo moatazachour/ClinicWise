@@ -1,4 +1,6 @@
-﻿using ClinicWise.DataAccess;
+﻿using ClinicWise.Contracts.Speciatizations;
+using ClinicWise.DataAccess;
+using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
@@ -48,7 +50,7 @@ namespace ClinicWise.Business
                 return null;
         }
 
-        public static async Task<DataTable> GetAllAsync()
+        public static async Task<List<SpecializationDTO>> GetAllAsync()
         {
             return await clsSpecializationData.GetAllSpecializations();
         }
