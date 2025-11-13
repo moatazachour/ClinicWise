@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditAppointment));
             this.lblMode = new System.Windows.Forms.Label();
             this.gbAppointmentInfos = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpAppointmentTime = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dtpDateOnly = new System.Windows.Forms.DateTimePicker();
+            this.dtpAppointmentDate = new System.Windows.Forms.DateTimePicker();
             this.btnPatientDetails = new System.Windows.Forms.Button();
             this.btnDoctorDetails = new System.Windows.Forms.Button();
             this.btnPickPatient = new System.Windows.Forms.Button();
@@ -56,10 +56,10 @@
             // 
             // gbAppointmentInfos
             // 
-            this.gbAppointmentInfos.Controls.Add(this.dateTimePicker1);
+            this.gbAppointmentInfos.Controls.Add(this.dtpAppointmentTime);
             this.gbAppointmentInfos.Controls.Add(this.label3);
             this.gbAppointmentInfos.Controls.Add(this.label2);
-            this.gbAppointmentInfos.Controls.Add(this.dtpDateOnly);
+            this.gbAppointmentInfos.Controls.Add(this.dtpAppointmentDate);
             this.gbAppointmentInfos.Controls.Add(this.btnPatientDetails);
             this.gbAppointmentInfos.Controls.Add(this.btnDoctorDetails);
             this.gbAppointmentInfos.Controls.Add(this.btnPickPatient);
@@ -73,12 +73,12 @@
             this.gbAppointmentInfos.Name = "gbAppointmentInfos";
             this.gbAppointmentInfos.TabStop = false;
             // 
-            // dateTimePicker1
+            // dtpAppointmentTime
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
+            this.dtpAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            resources.ApplyResources(this.dtpAppointmentTime, "dtpAppointmentTime");
+            this.dtpAppointmentTime.Name = "dtpAppointmentTime";
+            this.dtpAppointmentTime.ShowUpDown = true;
             // 
             // label3
             // 
@@ -90,10 +90,10 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // dtpDateOnly
+            // dtpAppointmentDate
             // 
-            resources.ApplyResources(this.dtpDateOnly, "dtpDateOnly");
-            this.dtpDateOnly.Name = "dtpDateOnly";
+            resources.ApplyResources(this.dtpAppointmentDate, "dtpAppointmentDate");
+            this.dtpAppointmentDate.Name = "dtpAppointmentDate";
             // 
             // btnPatientDetails
             // 
@@ -156,6 +156,7 @@
             this.btnSave.ForeColor = System.Drawing.Color.Black;
             this.btnSave.Name = "btnSave";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -175,6 +176,7 @@
             this.Controls.Add(this.lblMode);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditAppointment";
+            this.Load += new System.EventHandler(this.frmAddEditAppointment_Load);
             this.gbAppointmentInfos.ResumeLayout(false);
             this.gbAppointmentInfos.PerformLayout();
             this.ResumeLayout(false);
@@ -195,9 +197,9 @@
         private System.Windows.Forms.Button btnPatientDetails;
         private System.Windows.Forms.Button btnDoctorDetails;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dtpDateOnly;
+        private System.Windows.Forms.DateTimePicker dtpAppointmentDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpAppointmentTime;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
     }

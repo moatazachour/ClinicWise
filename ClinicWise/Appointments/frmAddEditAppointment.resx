@@ -149,25 +149,25 @@
   <data name="&gt;&gt;lblMode.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="dateTimePicker1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="dtpAppointmentTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>215, 372</value>
   </data>
-  <data name="dateTimePicker1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="dtpAppointmentTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 32</value>
   </data>
-  <data name="dateTimePicker1.TabIndex" type="System.Int32, mscorlib">
+  <data name="dtpAppointmentTime.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;dateTimePicker1.Name" xml:space="preserve">
-    <value>dateTimePicker1</value>
+  <data name="&gt;&gt;dtpAppointmentTime.Name" xml:space="preserve">
+    <value>dtpAppointmentTime</value>
   </data>
-  <data name="&gt;&gt;dateTimePicker1.Type" xml:space="preserve">
+  <data name="&gt;&gt;dtpAppointmentTime.Type" xml:space="preserve">
     <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dateTimePicker1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dtpAppointmentTime.Parent" xml:space="preserve">
     <value>gbAppointmentInfos</value>
   </data>
-  <data name="&gt;&gt;dateTimePicker1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;dtpAppointmentTime.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
@@ -237,25 +237,25 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="dtpDateOnly.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="dtpAppointmentDate.Location" type="System.Drawing.Point, System.Drawing">
     <value>215, 275</value>
   </data>
-  <data name="dtpDateOnly.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="dtpAppointmentDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>472, 32</value>
   </data>
-  <data name="dtpDateOnly.TabIndex" type="System.Int32, mscorlib">
+  <data name="dtpAppointmentDate.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;dtpDateOnly.Name" xml:space="preserve">
-    <value>dtpDateOnly</value>
+  <data name="&gt;&gt;dtpAppointmentDate.Name" xml:space="preserve">
+    <value>dtpAppointmentDate</value>
   </data>
-  <data name="&gt;&gt;dtpDateOnly.Type" xml:space="preserve">
+  <data name="&gt;&gt;dtpAppointmentDate.Type" xml:space="preserve">
     <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dtpDateOnly.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dtpAppointmentDate.Parent" xml:space="preserve">
     <value>gbAppointmentInfos</value>
   </data>
-  <data name="&gt;&gt;dtpDateOnly.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;dtpAppointmentDate.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="btnPatientDetails.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">

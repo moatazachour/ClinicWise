@@ -3,6 +3,7 @@ using ClinicWise.Contracts;
 using ClinicWise.Contracts.Patients;
 using ClinicWise.Contracts.Speciatizations;
 using ClinicWise.Doctors;
+using ClinicWise.Global_Classes;
 using ClinicWise.Patients;
 using System;
 using System.Collections.Generic;
@@ -13,17 +14,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ClinicWise.Business.clsAppointment;
 
 namespace ClinicWise.Appointments
 {
     public partial class frmAddEditAppointment : Form
     {
+        private enum enMode { AddNew, Update }
+        private enMode _Mode;
+
         private DoctorDTO _Doctor;
         private PatientDTO _Patient;
 
-        public frmAddEditAppointment()
+        private clsAppointment _Appointment;
+
+        public frmAddEditAppointment(int appointmentID)
         {
             InitializeComponent();
+
+            _Mode = appointmentID == -1 ? enMode.AddNew : enMode.Update;
+        }
+
+        private void _ResetInformation()
+        {
+            if (_Mode == enMode.AddNew)
+            {
+                lblMode.Text = "Book an Appointment";
+                _Appointment = new clsAppointment();
+            }
+            else
+            {
+                lblMode.Text = "Update an Appointment";
+            }
+
+            lblDoctorName.Text = "[Not chosen yet!]";
+            lblPatientName.Text = "[Not chosen yet!]";
+            dtpAppointmentDate.Value = DateTime.Today;
+            dtpAppointmentTime.Value = DateTime.Now;
+        }
+
+        private void _LoadData()
+        {
+
+        }
+
+        private void frmAddEditAppointment_Load(object sender, EventArgs e)
+        {
+            _ResetInformation();
+
+            if (_Mode == enMode.Update)
+                _LoadData();
         }
 
         private void btnPickDoctor_Click(object sender, EventArgs e)
@@ -75,5 +115,51 @@ namespace ClinicWise.Appointments
 
             frm.ShowDialog();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            _Appointment.DoctorID = _Doctor.DoctorID;
+            _Appointment.PatientID = _Patient.PatientID;
+            _Appointment.Date = dtpAppointmentDate.Value.Date + dtpAppointmentTime.Value.TimeOfDay;
+            _Appointment.ScheduledByUserID = clsGlobalSettings.CurrentUserID;
+            
+            if (_Mode == enMode.AddNew)
+            {
+                if (MessageBox.Show(
+                    "Is this confirmed? \n[Yes]: Confirmed\n[No]: Confirm Later",
+                    "Confirmation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _Appointment.Status = enAppointmentStatus.Confirmed;
+                }
+                else
+                {
+                    _Appointment.Status = enAppointmentStatus.Pending;
+                }
+            }
+
+            if (_Appointment.Save())
+            {
+                MessageBox.Show(
+                    "Appointment saved successfully!",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                _Mode = enMode.Update;
+                btnSave.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Appointment saving failed!",
+                    "Failure",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        
     }
 }

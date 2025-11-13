@@ -30,7 +30,7 @@ namespace ClinicWise.DataAccess
                     connection.Open();
                     command.ExecuteNonQuery();
 
-                    return (int)command.Parameters["AppointmentID"].Value;
+                    return (int)command.Parameters["@AppointmentID"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -71,8 +71,6 @@ namespace ClinicWise.DataAccess
 
             return rowsAffected > 0;
         }
-
-
 
     }
 }
