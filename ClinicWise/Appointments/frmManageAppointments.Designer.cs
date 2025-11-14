@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbManageAppointments = new System.Windows.Forms.ComboBox();
             this.dgvManageAppointments = new System.Windows.Forms.DataGridView();
             this.cmsManageUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -39,7 +39,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbApointmentStatus = new System.Windows.Forms.ComboBox();
+            this.cbAppointmentStatus = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -47,6 +47,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.mtxtFilter = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cbDoctors = new System.Windows.Forms.ComboBox();
+            this.cbPatients = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageAppointments)).BeginInit();
             this.cmsManageUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,15 +61,16 @@
             this.cbManageAppointments.FormattingEnabled = true;
             this.cbManageAppointments.Items.AddRange(new object[] {
             "None",
-            "Apointment ID",
+            "Appointment ID",
             "Doctor",
             "Patient",
             "Status"});
             this.cbManageAppointments.Location = new System.Drawing.Point(31, 271);
             this.cbManageAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbManageAppointments.Name = "cbManageAppointments";
-            this.cbManageAppointments.Size = new System.Drawing.Size(217, 31);
+            this.cbManageAppointments.Size = new System.Drawing.Size(254, 31);
             this.cbManageAppointments.TabIndex = 32;
+            this.cbManageAppointments.SelectedIndexChanged += new System.EventHandler(this.cbManageAppointments_SelectedIndexChanged);
             // 
             // dgvManageAppointments
             // 
@@ -76,38 +79,38 @@
             this.dgvManageAppointments.AllowUserToResizeRows = false;
             this.dgvManageAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvManageAppointments.BackgroundColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvManageAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvManageAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvManageAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvManageAppointments.ContextMenuStrip = this.cmsManageUsers;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvManageAppointments.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvManageAppointments.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvManageAppointments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvManageAppointments.Location = new System.Drawing.Point(31, 316);
             this.dgvManageAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvManageAppointments.MultiSelect = false;
             this.dgvManageAppointments.Name = "dgvManageAppointments";
             this.dgvManageAppointments.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvManageAppointments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvManageAppointments.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvManageAppointments.RowHeadersWidth = 51;
             this.dgvManageAppointments.RowTemplate.Height = 24;
             this.dgvManageAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -150,23 +153,31 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(204, 28);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
-            // cbApointmentStatus
+            // cbAppointmentStatus
             // 
-            this.cbApointmentStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbApointmentStatus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbApointmentStatus.FormattingEnabled = true;
-            this.cbApointmentStatus.Location = new System.Drawing.Point(276, 271);
-            this.cbApointmentStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbApointmentStatus.Name = "cbApointmentStatus";
-            this.cbApointmentStatus.Size = new System.Drawing.Size(196, 31);
-            this.cbApointmentStatus.TabIndex = 38;
+            this.cbAppointmentStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAppointmentStatus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAppointmentStatus.FormattingEnabled = true;
+            this.cbAppointmentStatus.Items.AddRange(new object[] {
+            "Pending",
+            "Confirmed",
+            "Completed",
+            "Cancelled",
+            "Rescheduled",
+            "NoShow"});
+            this.cbAppointmentStatus.Location = new System.Drawing.Point(305, 271);
+            this.cbAppointmentStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbAppointmentStatus.Name = "cbAppointmentStatus";
+            this.cbAppointmentStatus.Size = new System.Drawing.Size(290, 31);
+            this.cbAppointmentStatus.TabIndex = 38;
+            this.cbAppointmentStatus.SelectedIndexChanged += new System.EventHandler(this.cbAppointmentStatus_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Azure;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(798, 140);
+            this.label1.Location = new System.Drawing.Point(674, 122);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(591, 98);
@@ -219,11 +230,13 @@
             // mtxtFilter
             // 
             this.mtxtFilter.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtFilter.Location = new System.Drawing.Point(276, 270);
+            this.mtxtFilter.Location = new System.Drawing.Point(305, 270);
             this.mtxtFilter.Margin = new System.Windows.Forms.Padding(4);
             this.mtxtFilter.Name = "mtxtFilter";
             this.mtxtFilter.Size = new System.Drawing.Size(472, 32);
             this.mtxtFilter.TabIndex = 33;
+            this.mtxtFilter.TextChanged += new System.EventHandler(this.mtxtFilter_TextChanged);
+            this.mtxtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtFilter_KeyPress);
             // 
             // pictureBox1
             // 
@@ -237,15 +250,41 @@
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
+            // cbDoctors
+            // 
+            this.cbDoctors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDoctors.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDoctors.FormattingEnabled = true;
+            this.cbDoctors.Location = new System.Drawing.Point(305, 270);
+            this.cbDoctors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDoctors.Name = "cbDoctors";
+            this.cbDoctors.Size = new System.Drawing.Size(417, 31);
+            this.cbDoctors.TabIndex = 39;
+            this.cbDoctors.SelectedIndexChanged += new System.EventHandler(this.cbDoctors_SelectedIndexChanged);
+            // 
+            // cbPatients
+            // 
+            this.cbPatients.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPatients.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPatients.FormattingEnabled = true;
+            this.cbPatients.Location = new System.Drawing.Point(305, 270);
+            this.cbPatients.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbPatients.Name = "cbPatients";
+            this.cbPatients.Size = new System.Drawing.Size(290, 31);
+            this.cbPatients.TabIndex = 40;
+            this.cbPatients.SelectedIndexChanged += new System.EventHandler(this.cbPatients_SelectedIndexChanged);
+            // 
             // frmManageAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1924, 814);
+            this.Controls.Add(this.cbPatients);
+            this.Controls.Add(this.cbDoctors);
             this.Controls.Add(this.cbManageAppointments);
             this.Controls.Add(this.dgvManageAppointments);
-            this.Controls.Add(this.cbApointmentStatus);
+            this.Controls.Add(this.cbAppointmentStatus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.btnClose);
@@ -275,7 +314,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ComboBox cbApointmentStatus;
+        private System.Windows.Forms.ComboBox cbAppointmentStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Button btnClose;
@@ -283,5 +322,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox mtxtFilter;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox cbDoctors;
+        private System.Windows.Forms.ComboBox cbPatients;
     }
 }

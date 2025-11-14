@@ -118,6 +118,8 @@ namespace ClinicWise.Appointments
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // TODO: Don't forget to check the EXISTANCE of elements before SAVE
+
             _Appointment.DoctorID = _Doctor.DoctorID;
             _Appointment.PatientID = _Patient.PatientID;
             _Appointment.Date = dtpAppointmentDate.Value.Date + dtpAppointmentTime.Value.TimeOfDay;
@@ -159,7 +161,5 @@ namespace ClinicWise.Appointments
                     MessageBoxIcon.Error);
             }
         }
-
-        
     }
 }
