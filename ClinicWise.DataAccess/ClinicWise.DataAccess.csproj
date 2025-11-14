@@ -64,6 +64,9 @@
   <ItemGroup>
     <Content Include="StoredProcedures\Appointments\Appointment_AddNew.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetAll.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_GetThisWeek.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_GetTodays.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_GetTomorrows.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_Update.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_AddNew.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_Delete.sql" />
@@ -104,7 +107,9 @@
     <Content Include="Triggers\trg_AfterDeleteGuardian.sql" />
     <Content Include="Triggers\trg_AfterDeletePatient.sql" />
     <Content Include="Triggers\trg_AfterDeletePerson.sql" />
-    <Content Include="Views\GetAllAppointments_View.sql" />
+    <Content Include="Views\Appointments\GetAllAppointments_View.sql" />
+    <Content Include="Views\Appointments\GetTodaysAppointments_View.sql" />
+    <Content Include="Views\Appointments\GetTomorrowsAppointments_View.sql" />
     <Content Include="Views\GetAllDoctors_View.sql" />
     <Content Include="Views\GetAllPatients_View.sql" />
     <Content Include="Views\GetAllPersons_View.sql" />

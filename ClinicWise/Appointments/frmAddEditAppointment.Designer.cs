@@ -164,6 +164,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.Black;
             this.btnClose.Name = "btnClose";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmAddEditAppointment
             // 

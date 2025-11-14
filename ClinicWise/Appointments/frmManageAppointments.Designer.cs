@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbManageAppointments = new System.Windows.Forms.ComboBox();
             this.dgvManageAppointments = new System.Windows.Forms.DataGridView();
             this.cmsManageUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -49,6 +49,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbDoctors = new System.Windows.Forms.ComboBox();
             this.cbPatients = new System.Windows.Forms.ComboBox();
+            this.cbDate = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageAppointments)).BeginInit();
             this.cmsManageUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,7 +65,8 @@
             "Appointment ID",
             "Doctor",
             "Patient",
-            "Status"});
+            "Status",
+            "Dates"});
             this.cbManageAppointments.Location = new System.Drawing.Point(31, 271);
             this.cbManageAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbManageAppointments.Name = "cbManageAppointments";
@@ -79,38 +81,38 @@
             this.dgvManageAppointments.AllowUserToResizeRows = false;
             this.dgvManageAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvManageAppointments.BackgroundColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvManageAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvManageAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvManageAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvManageAppointments.ContextMenuStrip = this.cmsManageUsers;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvManageAppointments.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvManageAppointments.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvManageAppointments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvManageAppointments.Location = new System.Drawing.Point(31, 316);
             this.dgvManageAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvManageAppointments.MultiSelect = false;
             this.dgvManageAppointments.Name = "dgvManageAppointments";
             this.dgvManageAppointments.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvManageAppointments.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvManageAppointments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvManageAppointments.RowHeadersWidth = 51;
             this.dgvManageAppointments.RowTemplate.Height = 24;
             this.dgvManageAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -177,7 +179,7 @@
             this.label1.BackColor = System.Drawing.Color.Azure;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(674, 122);
+            this.label1.Location = new System.Drawing.Point(630, 133);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(591, 98);
@@ -188,7 +190,7 @@
             // btnAddUser
             // 
             this.btnAddUser.Image = global::ClinicWise.Properties.Resources.Add_Person_40;
-            this.btnAddUser.Location = new System.Drawing.Point(1421, 233);
+            this.btnAddUser.Location = new System.Drawing.Point(1695, 232);
             this.btnAddUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(95, 69);
@@ -206,6 +208,7 @@
             this.btnClose.TabIndex = 36;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblRecordCount
             // 
@@ -245,7 +248,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1924, 118);
+            this.pictureBox1.Size = new System.Drawing.Size(1815, 118);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
@@ -274,12 +277,31 @@
             this.cbPatients.TabIndex = 40;
             this.cbPatients.SelectedIndexChanged += new System.EventHandler(this.cbPatients_SelectedIndexChanged);
             // 
+            // cbDate
+            // 
+            this.cbDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDate.FormattingEnabled = true;
+            this.cbDate.Items.AddRange(new object[] {
+            "Today",
+            "Tomorrow",
+            "This Week",
+            "Next Month",
+            "After"});
+            this.cbDate.Location = new System.Drawing.Point(305, 271);
+            this.cbDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDate.Name = "cbDate";
+            this.cbDate.Size = new System.Drawing.Size(334, 31);
+            this.cbDate.TabIndex = 41;
+            this.cbDate.SelectedIndexChanged += new System.EventHandler(this.cbDate_SelectedIndexChanged);
+            // 
             // frmManageAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1924, 814);
+            this.ClientSize = new System.Drawing.Size(1815, 814);
+            this.Controls.Add(this.cbDate);
             this.Controls.Add(this.cbPatients);
             this.Controls.Add(this.cbDoctors);
             this.Controls.Add(this.cbManageAppointments);
@@ -324,5 +346,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cbDoctors;
         private System.Windows.Forms.ComboBox cbPatients;
+        private System.Windows.Forms.ComboBox cbDate;
     }
 }

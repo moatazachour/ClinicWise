@@ -9,6 +9,8 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ClinicWise.Business.clsAppointment;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace ClinicWise.Appointments
 {
@@ -74,6 +76,7 @@ namespace ClinicWise.Appointments
             cbAppointmentStatus.Visible = cbManageAppointments.SelectedItem.Equals("Status");
             cbDoctors.Visible = cbManageAppointments.SelectedItem.Equals("Doctor");
             cbPatients.Visible = cbManageAppointments.SelectedItem.Equals("Patient");
+            cbDate.Visible = cbManageAppointments.SelectedItem.Equals("Dates");
 
             if (cbManageAppointments.SelectedItem.Equals("None"))
                 dgvManageAppointments.DataSource = _AppointmentsList;
@@ -163,6 +166,35 @@ namespace ClinicWise.Appointments
 
             dgvManageAppointments.DataSource = _AppointmentsFilter;
             lblRecordCount.Text = dgvManageAppointments.RowCount.ToString();
+        }
+
+        private async void cbDate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbDate.SelectedItem)
+            {
+                case "Today":
+                    _AppointmentsFilter = await clsAppointment.GetTodaysAsync();
+                    break;
+
+                case "Tomorrow":
+                    _AppointmentsFilter = await clsAppointment.GetTomorrowsAsync();
+                    break;
+
+                case "This Week":
+                    _AppointmentsFilter = await clsAppointment.GetThisWeekAppointmentsAsync();
+                    break;
+
+                default:
+                    break;
+            }
+
+            dgvManageAppointments.DataSource = _AppointmentsFilter;
+            lblRecordCount.Text = dgvManageAppointments.RowCount.ToString();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

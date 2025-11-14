@@ -88,6 +88,20 @@ namespace ClinicWise.Business
         {
             return await clsAppointmentData.GetAllAsync();
         }
-        
+
+        public static async Task<List<AppointmentDisplayDTO>> GetTodaysAsync()
+        {
+            return await clsAppointmentData.GetTodaysAsync();
+        }
+
+        public static async Task<List<AppointmentDisplayDTO>> GetTomorrowsAsync()
+        {
+            return await clsAppointmentData.GetTomorrowsAsync();
+        }
+
+        public static async Task<List<AppointmentDisplayDTO>> GetThisWeekAppointmentsAsync()
+        {
+            return await clsAppointmentData.GetThisWeekAppointmentsAsync();
+        }
     }
 }
