@@ -34,12 +34,19 @@ namespace ClinicWise.Patients
             lblPatient.Text = _PatientID.ToString();
 
             GuardianDTO guardianDTO = await patient.GetGuardianInfo();
-            clsGuardian guardian = new clsGuardian(guardianDTO);
+            if (guardianDTO != null)
+            {
+                clsGuardian guardian = new clsGuardian(guardianDTO);
 
-            lblGuardianID.Text = guardianDTO.GuardianID.ToString();
-            lblNationalNo.Text = guardianDTO.NationalNo;
-            lblPhone.Text = guardianDTO.Phone;
-            lblRelationship.Text = await guardian.GetRelationshipNameAsync();
+                lblGuardianID.Text = guardianDTO.GuardianID.ToString();
+                lblNationalNo.Text = guardianDTO.NationalNo;
+                lblPhone.Text = guardianDTO.Phone;
+                lblRelationship.Text = await guardian.GetRelationshipNameAsync();
+            }
+            else
+            {
+                gbGuardianInfo.Visible = false;
+            }
         }
 
         private async void frmPatientDetails_Load(object sender, EventArgs e)
