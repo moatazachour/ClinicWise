@@ -184,7 +184,19 @@ namespace ClinicWise.Appointments
                     _AppointmentsFilter = await clsAppointment.GetThisWeekAppointmentsAsync();
                     break;
 
+                case "Next Week":
+                    _AppointmentsFilter = await clsAppointment.GetNextWeekAppointmeentsAsync();
+                    break;
+
+                case "This Month":
+                    _AppointmentsFilter = await clsAppointment.GetThisMonthAppointmentsAsync();
+                    break;
+
+                case "Next Month":
+                    _AppointmentsFilter = await clsAppointment.GetNextMonthAppointmentsAsync();
+                    break;
                 default:
+                    _AppointmentsFilter = _AppointmentsList;
                     break;
             }
 

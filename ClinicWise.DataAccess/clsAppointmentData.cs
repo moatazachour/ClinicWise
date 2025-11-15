@@ -234,5 +234,125 @@ namespace ClinicWise.DataAccess
 
             return appointments;
         }
+
+        public static async Task<List<AppointmentDisplayDTO>> GetNextWeekAppointmeentsAsync()
+        {
+            List<AppointmentDisplayDTO> appointments = new List<AppointmentDisplayDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_GetNextWeek", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            appointments.Add(
+                                new AppointmentDisplayDTO(
+                                    (int)reader["AppointmentID"],
+                                    (string)reader["DoctorFullLabel"],
+                                    (string)reader["PatientName"],
+                                    reader["Date"] as DateTime?,
+                                    (string)reader["StatusCaption"],
+                                    (string)reader["ScheduledBy"]
+                                )
+                            );
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return appointments;
+        }
+
+        public static async Task<List<AppointmentDisplayDTO>> GetThisMonthAppointmentsAsync()
+        {
+            List<AppointmentDisplayDTO> appointments = new List<AppointmentDisplayDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_GetThisMonth", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            appointments.Add(
+                                new AppointmentDisplayDTO(
+                                    (int)reader["AppointmentID"],
+                                    (string)reader["DoctorFullLabel"],
+                                    (string)reader["PatientName"],
+                                    reader["Date"] as DateTime?,
+                                    (string)reader["StatusCaption"],
+                                    (string)reader["ScheduledBy"]
+                                )
+                            );
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return appointments;
+        }
+
+        public static async Task<List<AppointmentDisplayDTO>> GetNextMonthAppointmentsAsync()
+        {
+            List<AppointmentDisplayDTO> appointments = new List<AppointmentDisplayDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_GetNextMonth", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            appointments.Add(
+                                new AppointmentDisplayDTO(
+                                    (int)reader["AppointmentID"],
+                                    (string)reader["DoctorFullLabel"],
+                                    (string)reader["PatientName"],
+                                    reader["Date"] as DateTime?,
+                                    (string)reader["StatusCaption"],
+                                    (string)reader["ScheduledBy"]
+                                )
+                            );
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return appointments;
+        }
     }
 }

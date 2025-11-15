@@ -64,6 +64,9 @@
   <ItemGroup>
     <Content Include="StoredProcedures\Appointments\Appointment_AddNew.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetAll.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_GetNextMonth.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_GetNextWeek.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_GetThisMonth.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetThisWeek.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetTodays.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetTomorrows.sql" />

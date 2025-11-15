@@ -167,7 +167,7 @@
             "Cancelled",
             "Rescheduled",
             "NoShow"});
-            this.cbAppointmentStatus.Location = new System.Drawing.Point(305, 271);
+            this.cbAppointmentStatus.Location = new System.Drawing.Point(305, 272);
             this.cbAppointmentStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbAppointmentStatus.Name = "cbAppointmentStatus";
             this.cbAppointmentStatus.Size = new System.Drawing.Size(290, 31);
@@ -190,7 +190,7 @@
             // btnAddUser
             // 
             this.btnAddUser.Image = global::ClinicWise.Properties.Resources.Add_Person_40;
-            this.btnAddUser.Location = new System.Drawing.Point(1695, 232);
+            this.btnAddUser.Location = new System.Drawing.Point(1285, 233);
             this.btnAddUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(95, 69);
@@ -286,8 +286,9 @@
             "Today",
             "Tomorrow",
             "This Week",
-            "Next Month",
-            "After"});
+            "Next Week",
+            "This Month",
+            "Next Month"});
             this.cbDate.Location = new System.Drawing.Point(305, 271);
             this.cbDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbDate.Name = "cbDate";
