@@ -169,6 +169,7 @@
             this.dgvManageDoctors.Size = new System.Drawing.Size(1060, 416);
             this.dgvManageDoctors.TabIndex = 26;
             this.dgvManageDoctors.TabStop = false;
+            this.dgvManageDoctors.DoubleClick += new System.EventHandler(this.dgvManageDoctors_DoubleClick);
             // 
             // cmsManageDoctors
             // 

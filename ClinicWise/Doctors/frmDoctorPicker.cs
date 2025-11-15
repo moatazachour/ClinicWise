@@ -151,5 +151,14 @@ namespace ClinicWise.Doctors
         {
             Close();
         }
+
+        private void dgvManageDoctors_DoubleClick(object sender, EventArgs e)
+        {
+            int pickedDoctorID = (int)dgvManageDoctors.CurrentRow.Cells[0].Value;
+
+            DataBack?.Invoke(pickedDoctorID);
+
+            Close();
+        }
     }
 }

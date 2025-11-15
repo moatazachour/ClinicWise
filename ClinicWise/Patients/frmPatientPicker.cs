@@ -134,5 +134,14 @@ namespace ClinicWise.Patients
             
             frm.ShowDialog();
         }
+
+        private void dgvManagePatients_DoubleClick(object sender, EventArgs e)
+        {
+            int pickedPatientID = (int)dgvManagePatients.CurrentRow.Cells[0].Value;
+
+            DataBack?.Invoke(pickedPatientID);
+
+            Close();
+        }
     }
 }
