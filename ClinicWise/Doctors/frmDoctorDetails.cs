@@ -12,7 +12,6 @@ namespace ClinicWise.Doctors
     public partial class frmDoctorDetails : Form
     {
         private int _DoctorID;
-        private List<AppointmentDisplayDTO> _AppointmentsList;
 
         public frmDoctorDetails(int doctorID)
         {
@@ -21,11 +20,11 @@ namespace ClinicWise.Doctors
             _DoctorID = doctorID;
         }
 
-        private async Task<List<AppointmentBasicDTO>> _LoadAppointments()
+        private async Task<List<AppointmentBasicDTO>> _LoadNextAppointments()
         {
-            List<AppointmentDisplayDTO> appointmentsList = await clsAppointment.GetByDoctorAsync(_DoctorID);
+            List<AppointmentDisplayDTO> nextAppointmentsList = await clsAppointment.GetNextByDoctorAsync(_DoctorID);
 
-            return appointmentsList
+            return nextAppointmentsList
                 .Select(a => new AppointmentBasicDTO
                 (
                     a.AppointmentID,
@@ -47,7 +46,7 @@ namespace ClinicWise.Doctors
             clsSpecialization doctorSpecialization = await doctor.GetSpecializationInfo();
             lblSpecialization.Text = doctorSpecialization.Name;
 
-            dgvAppointments.DataSource = await _LoadAppointments();
+            dgvNextAppointments.DataSource = await _LoadNextAppointments();
         }
 
         private async void frmDoctorDetails_Load(object sender, EventArgs e)

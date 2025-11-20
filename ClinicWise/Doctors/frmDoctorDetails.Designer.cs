@@ -39,11 +39,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.llEditDoctor = new System.Windows.Forms.LinkLabel();
-            this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.dgvNextAppointments = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.ctrlPersonCard1 = new ClinicWise.Persons.ctrlPersonCard();
             this.gpMedicalInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNextAppointments)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMode
@@ -143,13 +143,13 @@
             this.llEditDoctor.Text = "Edit Doctor";
             this.llEditDoctor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditDoctor_LinkClicked);
             // 
-            // dgvAppointments
+            // dgvNextAppointments
             // 
-            this.dgvAppointments.AllowUserToAddRows = false;
-            this.dgvAppointments.AllowUserToDeleteRows = false;
-            this.dgvAppointments.AllowUserToResizeRows = false;
-            this.dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvAppointments.BackgroundColor = System.Drawing.Color.Azure;
+            this.dgvNextAppointments.AllowUserToAddRows = false;
+            this.dgvNextAppointments.AllowUserToDeleteRows = false;
+            this.dgvNextAppointments.AllowUserToResizeRows = false;
+            this.dgvNextAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvNextAppointments.BackgroundColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -157,8 +157,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNextAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvNextAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,13 +166,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAppointments.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvAppointments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvAppointments.Location = new System.Drawing.Point(21, 572);
-            this.dgvAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvAppointments.MultiSelect = false;
-            this.dgvAppointments.Name = "dgvAppointments";
-            this.dgvAppointments.ReadOnly = true;
+            this.dgvNextAppointments.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvNextAppointments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvNextAppointments.Location = new System.Drawing.Point(21, 572);
+            this.dgvNextAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvNextAppointments.MultiSelect = false;
+            this.dgvNextAppointments.Name = "dgvNextAppointments";
+            this.dgvNextAppointments.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -180,13 +180,13 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAppointments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvAppointments.RowHeadersWidth = 51;
-            this.dgvAppointments.RowTemplate.Height = 24;
-            this.dgvAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAppointments.Size = new System.Drawing.Size(1109, 365);
-            this.dgvAppointments.TabIndex = 53;
-            this.dgvAppointments.TabStop = false;
+            this.dgvNextAppointments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvNextAppointments.RowHeadersWidth = 51;
+            this.dgvNextAppointments.RowTemplate.Height = 24;
+            this.dgvNextAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvNextAppointments.Size = new System.Drawing.Size(1109, 365);
+            this.dgvNextAppointments.TabIndex = 53;
+            this.dgvNextAppointments.TabStop = false;
             // 
             // label2
             // 
@@ -196,9 +196,9 @@
             this.label2.Location = new System.Drawing.Point(21, 535);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 23);
+            this.label2.Size = new System.Drawing.Size(203, 23);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Appointments:";
+            this.label2.Text = "Next Appointments:";
             // 
             // ctrlPersonCard1
             // 
@@ -216,7 +216,7 @@
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1159, 1029);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgvAppointments);
+            this.Controls.Add(this.dgvNextAppointments);
             this.Controls.Add(this.llEditDoctor);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.gpMedicalInfo);
@@ -230,7 +230,7 @@
             this.Load += new System.EventHandler(this.frmDoctorDetails_Load);
             this.gpMedicalInfo.ResumeLayout(false);
             this.gpMedicalInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNextAppointments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,7 +247,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.LinkLabel llEditDoctor;
-        private System.Windows.Forms.DataGridView dgvAppointments;
+        private System.Windows.Forms.DataGridView dgvNextAppointments;
         private System.Windows.Forms.Label label2;
     }
 }

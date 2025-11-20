@@ -123,5 +123,10 @@ namespace ClinicWise.Business
         {
             return await clsAppointmentData.GetByDoctorAsync(doctorId);
         }
+
+        public static async Task<List<AppointmentDisplayDTO>> GetNextByDoctorAsync(int doctorId)
+        {
+            return await clsAppointmentData.GetNextByDoctorAsync(doctorId);
+        }
     }
 }
