@@ -109,6 +109,7 @@
             this.btnDoctorDetails.ForeColor = System.Drawing.Color.Black;
             this.btnDoctorDetails.Name = "btnDoctorDetails";
             this.btnDoctorDetails.UseVisualStyleBackColor = true;
+            this.btnDoctorDetails.Click += new System.EventHandler(this.btnDoctorDetails_Click);
             // 
             // btnPickPatient
             // 

@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Business;
 using ClinicWise.Contracts.Persons;
+using ClinicWise.Contracts.Users;
 using ClinicWise.Properties;
 using System;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace ClinicWise.Persons
             }
         }
 
-        public void LoadPersonInfo(PersonDTO personDTO)
+        public async Task LoadPersonInfo(PersonDTO personDTO)
         {
             _PersonID = personDTO.PersonID;
 
@@ -36,7 +37,9 @@ namespace ClinicWise.Persons
             lblGender.Text = personDTO.Gender == 0 ? "Male" : "Female";
             lblPhone.Text = personDTO.Phone;
             lblAddress.Text = personDTO.Address;
-            lblCreatedBy.Text = personDTO.CreatedBy.ToString();
+
+            UserDTO user = await clsUser.FindAsync(personDTO.CreatedBy);
+            lblCreatedBy.Text = user.Username;
             pbPersonImage.ImageLocation = personDTO.ImagePath;
             
             if (personDTO?.ImagePath == null)
@@ -59,7 +62,9 @@ namespace ClinicWise.Persons
                 lblGender.Text = personDTO.Gender == 0 ? "Male" : "Female";
                 lblPhone.Text = personDTO.Phone;
                 lblAddress.Text = personDTO.Address;
-                lblCreatedBy.Text = personDTO.CreatedBy.ToString();
+                
+                UserDTO user = await clsUser.FindAsync(personDTO.CreatedBy);
+                lblCreatedBy.Text = user.Username;
                 pbPersonImage.ImageLocation = personDTO.ImagePath;
             }
 
@@ -83,8 +88,9 @@ namespace ClinicWise.Persons
                 lblEmail.Text = personDTO.Email;
                 lblGender.Text = personDTO.Gender == 0 ? "Male" : "Female";
                 lblPhone.Text = personDTO.Phone;
-                lblAddress.Text = personDTO.Address;
-                lblCreatedBy.Text = personDTO.CreatedBy.ToString();
+                
+                UserDTO user = await clsUser.FindAsync(personDTO.CreatedBy);
+                lblCreatedBy.Text = user.Username;
                 pbPersonImage.ImageLocation = personDTO.ImagePath;
             }
 

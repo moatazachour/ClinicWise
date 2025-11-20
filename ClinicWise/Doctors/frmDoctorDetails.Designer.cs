@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblMode = new System.Windows.Forms.Label();
             this.gpMedicalInfo = new System.Windows.Forms.GroupBox();
             this.lblSpecialization = new System.Windows.Forms.Label();
@@ -35,9 +38,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlPersonCard1 = new ClinicWise.Persons.ctrlPersonCard();
             this.llEditDoctor = new System.Windows.Forms.LinkLabel();
+            this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ctrlPersonCard1 = new ClinicWise.Persons.ctrlPersonCard();
             this.gpMedicalInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMode
@@ -45,10 +51,9 @@
             this.lblMode.AutoSize = true;
             this.lblMode.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblMode.Location = new System.Drawing.Point(290, 9);
-            this.lblMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMode.Location = new System.Drawing.Point(387, 11);
             this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(251, 41);
+            this.lblMode.Size = new System.Drawing.Size(318, 51);
             this.lblMode.TabIndex = 33;
             this.lblMode.Text = "Doctor Details";
             // 
@@ -60,9 +65,11 @@
             this.gpMedicalInfo.Controls.Add(this.label1);
             this.gpMedicalInfo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpMedicalInfo.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.gpMedicalInfo.Location = new System.Drawing.Point(14, 317);
+            this.gpMedicalInfo.Location = new System.Drawing.Point(19, 390);
+            this.gpMedicalInfo.Margin = new System.Windows.Forms.Padding(4);
             this.gpMedicalInfo.Name = "gpMedicalInfo";
-            this.gpMedicalInfo.Size = new System.Drawing.Size(835, 83);
+            this.gpMedicalInfo.Padding = new System.Windows.Forms.Padding(4);
+            this.gpMedicalInfo.Size = new System.Drawing.Size(1113, 102);
             this.gpMedicalInfo.TabIndex = 35;
             this.gpMedicalInfo.TabStop = false;
             this.gpMedicalInfo.Text = "Medical Informations";
@@ -71,9 +78,10 @@
             // 
             this.lblSpecialization.AutoSize = true;
             this.lblSpecialization.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(85)))));
-            this.lblSpecialization.Location = new System.Drawing.Point(463, 37);
+            this.lblSpecialization.Location = new System.Drawing.Point(617, 46);
+            this.lblSpecialization.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpecialization.Name = "lblSpecialization";
-            this.lblSpecialization.Size = new System.Drawing.Size(50, 18);
+            this.lblSpecialization.Size = new System.Drawing.Size(66, 23);
             this.lblSpecialization.TabIndex = 15;
             this.lblSpecialization.Text = "[????]";
             // 
@@ -81,27 +89,30 @@
             // 
             this.lblDoctorID.AutoSize = true;
             this.lblDoctorID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(85)))));
-            this.lblDoctorID.Location = new System.Drawing.Point(126, 37);
+            this.lblDoctorID.Location = new System.Drawing.Point(168, 46);
+            this.lblDoctorID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDoctorID.Name = "lblDoctorID";
-            this.lblDoctorID.Size = new System.Drawing.Size(50, 18);
+            this.lblDoctorID.Size = new System.Drawing.Size(66, 23);
             this.lblDoctorID.TabIndex = 10;
             this.lblDoctorID.Text = "[????]";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(341, 37);
+            this.label5.Location = new System.Drawing.Point(455, 46);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 18);
+            this.label5.Size = new System.Drawing.Size(146, 23);
             this.label5.TabIndex = 4;
             this.label5.Text = "Specialization:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 37);
+            this.label1.Location = new System.Drawing.Point(55, 46);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 18);
+            this.label1.Size = new System.Drawing.Size(99, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Doctor ID:";
             // 
@@ -110,51 +121,116 @@
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(733, 417);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClose.Location = new System.Drawing.Point(975, 961);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(116, 38);
+            this.btnClose.Size = new System.Drawing.Size(155, 47);
             this.btnClose.TabIndex = 51;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(12, 66);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(847, 243);
-            this.ctrlPersonCard1.TabIndex = 34;
-            // 
             // llEditDoctor
             // 
             this.llEditDoctor.AutoSize = true;
             this.llEditDoctor.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llEditDoctor.Location = new System.Drawing.Point(759, 42);
+            this.llEditDoctor.Location = new System.Drawing.Point(1012, 52);
+            this.llEditDoctor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.llEditDoctor.Name = "llEditDoctor";
-            this.llEditDoctor.Size = new System.Drawing.Size(98, 21);
+            this.llEditDoctor.Size = new System.Drawing.Size(118, 23);
             this.llEditDoctor.TabIndex = 52;
             this.llEditDoctor.TabStop = true;
             this.llEditDoctor.Text = "Edit Doctor";
             this.llEditDoctor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditDoctor_LinkClicked);
             // 
+            // dgvAppointments
+            // 
+            this.dgvAppointments.AllowUserToAddRows = false;
+            this.dgvAppointments.AllowUserToDeleteRows = false;
+            this.dgvAppointments.AllowUserToResizeRows = false;
+            this.dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvAppointments.BackgroundColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAppointments.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvAppointments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvAppointments.Location = new System.Drawing.Point(21, 572);
+            this.dgvAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvAppointments.MultiSelect = false;
+            this.dgvAppointments.Name = "dgvAppointments";
+            this.dgvAppointments.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAppointments.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvAppointments.RowHeadersWidth = 51;
+            this.dgvAppointments.RowTemplate.Height = 24;
+            this.dgvAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAppointments.Size = new System.Drawing.Size(1109, 365);
+            this.dgvAppointments.TabIndex = 53;
+            this.dgvAppointments.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label2.Location = new System.Drawing.Point(21, 535);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(152, 23);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Appointments:";
+            // 
+            // ctrlPersonCard1
+            // 
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(16, 81);
+            this.ctrlPersonCard1.Margin = new System.Windows.Forms.Padding(5);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(1129, 299);
+            this.ctrlPersonCard1.TabIndex = 34;
+            // 
             // frmDoctorDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(869, 479);
+            this.ClientSize = new System.Drawing.Size(1159, 1029);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dgvAppointments);
             this.Controls.Add(this.llEditDoctor);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.gpMedicalInfo);
             this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.lblMode);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmDoctorDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Doctor Details";
             this.Load += new System.EventHandler(this.frmDoctorDetails_Load);
             this.gpMedicalInfo.ResumeLayout(false);
             this.gpMedicalInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +247,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.LinkLabel llEditDoctor;
+        private System.Windows.Forms.DataGridView dgvAppointments;
+        private System.Windows.Forms.Label label2;
     }
 }

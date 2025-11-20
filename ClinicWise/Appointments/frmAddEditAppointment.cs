@@ -166,5 +166,20 @@ namespace ClinicWise.Appointments
         {
             Close();
         }
+
+        private void btnDoctorDetails_Click(object sender, EventArgs e)
+        {
+            if (_Doctor is null)
+            {
+                MessageBox.Show(
+                    "You should choose a doctor first!",
+                    "Choose Doctor",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+            frmDoctorDetails frm = new frmDoctorDetails(_Doctor.DoctorID);
+            frm.ShowDialog();
+        }
     }
 }
