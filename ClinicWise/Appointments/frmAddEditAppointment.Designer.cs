@@ -75,10 +75,11 @@
             // 
             // dtpAppointmentTime
             // 
-            this.dtpAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             resources.ApplyResources(this.dtpAppointmentTime, "dtpAppointmentTime");
+            this.dtpAppointmentTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpAppointmentTime.Name = "dtpAppointmentTime";
             this.dtpAppointmentTime.ShowUpDown = true;
+            this.dtpAppointmentTime.ValueChanged += new System.EventHandler(this.dtpAppointmentTime_ValueChanged);
             // 
             // label3
             // 

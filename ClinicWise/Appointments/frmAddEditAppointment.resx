@@ -149,6 +149,9 @@
   <data name="&gt;&gt;lblMode.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="dtpAppointmentTime.CustomFormat" xml:space="preserve">
+    <value>HH:mm</value>
+  </data>
   <data name="dtpAppointmentTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>215, 372</value>
   </data>

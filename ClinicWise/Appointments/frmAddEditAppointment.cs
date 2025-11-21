@@ -116,15 +116,50 @@ namespace ClinicWise.Appointments
             frm.ShowDialog();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
-            // TODO: Don't forget to check the EXISTANCE of elements before SAVE
+            if (_Doctor is null)
+            {
+                MessageBox.Show(
+                    "Choose a doctor for the appointment!",
+                    "Choose a doctor",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (_Patient is null)
+            {
+                MessageBox.Show(
+                    "Choose a patient for the appointment!",
+                    "Choose a patient",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return;
+            }
+
 
             _Appointment.DoctorID = _Doctor.DoctorID;
             _Appointment.PatientID = _Patient.PatientID;
+
             _Appointment.Date = dtpAppointmentDate.Value.Date + dtpAppointmentTime.Value.TimeOfDay;
             _Appointment.ScheduledByUserID = clsGlobalSettings.CurrentUserID;
-            
+
+            if (!ClinicHours.IsWithinBusinessHours((DateTime)_Appointment.Date))
+            {
+                MessageBox.Show(
+                    "The selected appointment time is outside the clinic’s operating hours.\n\n" +
+                    "Clinic Business Hours:\n" +
+                    "  • Monday – Friday: 08:00 to 17:00\n" +
+                    "  • Saturday: 09:00 to 13:00\n\n" +
+                    "Please select a time within the allowed range.",
+                    "Invalid Appointment Time",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            } 
+
             if (_Mode == enMode.AddNew)
             {
                 if (MessageBox.Show(
@@ -140,7 +175,7 @@ namespace ClinicWise.Appointments
                     _Appointment.Status = enAppointmentStatus.Pending;
                 }
             }
-
+b
             if (_Appointment.Save())
             {
                 MessageBox.Show(
@@ -180,6 +215,15 @@ namespace ClinicWise.Appointments
             }
             frmDoctorDetails frm = new frmDoctorDetails(_Doctor.DoctorID);
             frm.ShowDialog();
+        }
+
+        private void dtpAppointmentTime_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime value = dtpAppointmentTime.Value;
+            int minutes = value.Minute < 30 ? 0 : 30;
+
+            dtpAppointmentTime.Value = 
+                new DateTime(value.Year, value.Month, value.Day, value.Hour, minutes, 0);
         }
     }
 }
