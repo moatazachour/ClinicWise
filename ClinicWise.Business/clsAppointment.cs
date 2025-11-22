@@ -128,5 +128,42 @@ namespace ClinicWise.Business
         {
             return await clsAppointmentData.GetNextByDoctorAsync(doctorId);
         }
+
+        public async Task<bool> IsPatientAvailable()
+        {
+            List<AppointmentDisplayDTO> patientNextAppointments = await clsAppointmentData.GetByPatientAsync(this.PatientID);
+
+            if (this.Date.HasValue)
+            {
+                foreach (var appointment in patientNextAppointments)
+                {
+                    if (appointment.Date.Equals(this.Date))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public async Task<bool> IsDoctorAvailable()
+        {
+            List<AppointmentDisplayDTO> doctorNextAppointments = await clsAppointmentData.GetNextByDoctorAsync(this.DoctorID);
+
+            if (this.Date.HasValue)
+            {
+                foreach (var appointment in doctorNextAppointments)
+                {
+                    if (appointment.Date.Equals(this.Date))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public static async Task<List<AppointmentDisplayDTO>> GetByPatientAsync(int patientID)
+        {
+            return await clsAppointmentData.GetByPatientAsync(patientID);
+        }
     }
 }

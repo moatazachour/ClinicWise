@@ -16,8 +16,13 @@ namespace ClinicWise.Appointments
 {
     public partial class frmManageAppointments : Form
     {
+        private enum enLoadMode { All, Patient };
+        private enLoadMode _Mode = enLoadMode.All;
+        private int? _PatientID = null;
+
         private List<AppointmentDisplayDTO> _AppointmentsList;
         private List<AppointmentDisplayDTO> _AppointmentsFilter;
+
 
         public frmManageAppointments()
         {
@@ -58,10 +63,20 @@ namespace ClinicWise.Appointments
 
         private async void frmManageAppointments_Load(object sender, EventArgs e)
         {
-            await _RefreshData();
+            if (_Mode == enLoadMode.All)
+                await _RefreshData();
+            else
+                await _LoadPatientAppointments();
         }
 
-        private async void btnAddUser_Click(object sender, EventArgs e)
+        public void LoadForPatient(int patientID)
+        {
+            _Mode = enLoadMode.Patient;
+
+            _PatientID = patientID;
+        }
+
+        private async void btnAddAppointment_Click(object sender, EventArgs e)
         {
             frmAddEditAppointment frm = new frmAddEditAppointment(-1);
 
@@ -207,6 +222,24 @@ namespace ClinicWise.Appointments
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private async Task _LoadPatientAppointments()
+        {
+            int patientID = (int)_PatientID;
+
+            await _LoadPatients();
+
+            _AppointmentsList = await clsAppointment.GetByPatientAsync(patientID);
+
+            cbManageAppointments.SelectedItem = "Patient";
+
+            PatientDTO patient = await clsPatient.FindAsync(patientID);
+            cbPatients.SelectedItem = string.Join(" ", patient.FirstName, patient.LastName);
+
+            cbManageAppointments.Enabled = false;
+            cbPatients.Enabled = false;
+            btnAddAppointment.Enabled = false;
         }
     }
 }

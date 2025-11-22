@@ -7,6 +7,7 @@ as
 		a.AppointmentID,
 		a.DoctorID,
 		CONCAT(doctorPerson.FirstName, ' ', doctorPerson.LastName, ' - ', s.Name) as DoctorFullLabel,
+		a.PatientID,
 		CONCAT(patientPerson.FirstName, ' ', patientPerson.LastName) as PatientName,
 		a.Date,
 		StatusCaption = 
@@ -33,5 +34,5 @@ as
 		inner join Users u
 			on a.ScheduledBy = u.UserID
 )
-select AppointmentID, DoctorID, DoctorFullLabel, PatientName, Date, StatusCaption, ScheduledBy
+select AppointmentID, DoctorID, DoctorFullLabel, PatientID, PatientName, Date, StatusCaption, ScheduledBy
 from AppointmentData;

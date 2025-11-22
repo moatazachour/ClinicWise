@@ -158,7 +158,40 @@ namespace ClinicWise.Appointments
                     MessageBoxIcon.Warning);
 
                 return;
-            } 
+            }
+
+            if (!await _Appointment.IsDoctorAvailable())
+            {
+                if (MessageBox.Show(
+                    $"Doctor {lblDoctorName.Text} is not available at {_Appointment.Date}\n" +
+                    $"Click [OK] to check his schedule",
+                    "Doctor Busy!",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                    == DialogResult.OK)
+                {
+                    frmDoctorDetails frm = new frmDoctorDetails(_Appointment.DoctorID);
+                    frm.ShowDialog();
+                }
+
+                return;
+            }
+
+            if (!await _Appointment.IsPatientAvailable())
+            {
+                if (MessageBox.Show(
+                    $"Patient {lblPatientName.Text} is already have an appointment at {_Appointment.Date}",
+                    "Patient have an appointment!",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                    == DialogResult.OK)
+                {
+                    frmManageAppointments frm = new frmManageAppointments();
+                    frm.LoadForPatient(_Appointment.PatientID);
+                    frm.ShowDialog();
+
+                }
+
+                return;
+            }
 
             if (_Mode == enMode.AddNew)
             {
@@ -175,7 +208,7 @@ namespace ClinicWise.Appointments
                     _Appointment.Status = enAppointmentStatus.Pending;
                 }
             }
-b
+
             if (_Appointment.Save())
             {
                 MessageBox.Show(
@@ -194,7 +227,7 @@ b
                     "Failure",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-            }
+            } 
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -222,7 +255,7 @@ b
             DateTime value = dtpAppointmentTime.Value;
             int minutes = value.Minute < 30 ? 0 : 30;
 
-            dtpAppointmentTime.Value = 
+            dtpAppointmentTime.Value =
                 new DateTime(value.Year, value.Month, value.Day, value.Hour, minutes, 0);
         }
     }
