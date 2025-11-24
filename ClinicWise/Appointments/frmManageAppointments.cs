@@ -241,5 +241,14 @@ namespace ClinicWise.Appointments
             cbPatients.Enabled = false;
             btnAddAppointment.Enabled = false;
         }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int appointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
+
+            frmAddEditAppointment frm = new frmAddEditAppointment(appointmentID);
+            frm.ShowDialog();
+            await _RefreshData();
+        }
     }
 }

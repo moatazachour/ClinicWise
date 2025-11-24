@@ -51,6 +51,17 @@ namespace ClinicWise.Business
             Mode = enMode.Update;
         }
 
+        public clsAppointment(AppointmentDTO appointmentDTO)
+        {
+            AppointmentID = appointmentDTO.AppointmentID;
+            DoctorID = appointmentDTO.DoctorID;
+            PatientID = appointmentDTO.PatientID;
+            Date = appointmentDTO.Date;
+            Status = (enAppointmentStatus)appointmentDTO.Status;
+            ScheduledByUserID = appointmentDTO.ScheduledByUserID;
+
+            Mode = enMode.Update;
+        }
 
         private bool _Update()
         {
@@ -82,6 +93,11 @@ namespace ClinicWise.Business
                 default:
                     return false;
             }
+        }
+
+        public static async Task<AppointmentDTO> FindAsync(int  appointmentID)
+        {
+            return await clsAppointmentData.GetByID(appointmentID);
         }
 
         public static async Task<List<AppointmentDisplayDTO>> GetAllAsync()

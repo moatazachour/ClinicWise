@@ -75,6 +75,44 @@ namespace ClinicWise.DataAccess
             return rowsAffected > 0;
         }
 
+        public static async Task<AppointmentDTO> GetByID(int appointmentID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@AppointmentID", SqlDbType.Int).Value = appointmentID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new AppointmentDTO()
+                            {
+                                AppointmentID = (int)reader["AppointmentID"],
+                                DoctorID = (int)reader["DoctorID"],
+                                PatientID = (int)reader["PatientID"],
+                                Date = reader["Date"] as DateTime?,
+                                Status = (byte)reader["Status"],
+                                ScheduledByUserID = (int)reader["ScheduledBy"]
+                            };
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
         public static async Task<List<AppointmentDisplayDTO>> GetAllAsync()
         {
             List<AppointmentDisplayDTO> appointments = new List<AppointmentDisplayDTO>();

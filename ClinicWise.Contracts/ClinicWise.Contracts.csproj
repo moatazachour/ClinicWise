@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Appointments\AppointmentBasicDTO.cs" />
     <Compile Include="Appointments\AppointmentDisplayDTO.cs" />
+    <Compile Include="Appointments\AppointmentDTO.cs" />
     <Compile Include="Doctors\DoctorDisplayDTO.cs" />
     <Compile Include="Doctors\DoctorDisplayPickerDTO.cs" />
     <Compile Include="Doctors\DoctorDTO.cs" />

@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Business;
 using ClinicWise.Contracts;
+using ClinicWise.Contracts.Appointments;
 using ClinicWise.Contracts.Patients;
 using ClinicWise.Contracts.Speciatizations;
 using ClinicWise.Doctors;
@@ -27,12 +28,15 @@ namespace ClinicWise.Appointments
         private PatientDTO _Patient;
 
         private clsAppointment _Appointment;
+        private int _AppointmentID;
 
         public frmAddEditAppointment(int appointmentID)
         {
             InitializeComponent();
 
-            _Mode = appointmentID == -1 ? enMode.AddNew : enMode.Update;
+            _AppointmentID = appointmentID;
+
+            _Mode = _AppointmentID == -1 ? enMode.AddNew : enMode.Update;
         }
 
         private void _ResetInformation()
@@ -53,17 +57,31 @@ namespace ClinicWise.Appointments
             dtpAppointmentTime.Value = DateTime.Now;
         }
 
-        private void _LoadData()
+        private async Task _LoadData()
         {
+            AppointmentDTO appointmentDTO = await clsAppointment.FindAsync(_AppointmentID);
 
+            _Appointment = new clsAppointment(appointmentDTO);
+
+            _Doctor = await clsDoctor.FindAsync(_Appointment.DoctorID);
+            _Patient = await clsPatient.FindAsync(_Appointment.PatientID);
+
+            lblDoctorName.Text = _Doctor.FullName;
+            lblPatientName.Text = _Patient.FullName;
+
+            if (_Appointment.Date.HasValue)
+            {
+                dtpAppointmentDate.Value = _Appointment.Date.Value.Date;
+                dtpAppointmentTime.Value = _Appointment.Date.Value;
+            }
         }
 
-        private void frmAddEditAppointment_Load(object sender, EventArgs e)
+        private async void frmAddEditAppointment_Load(object sender, EventArgs e)
         {
             _ResetInformation();
 
             if (_Mode == enMode.Update)
-                _LoadData();
+                await _LoadData();
         }
 
         private void btnPickDoctor_Click(object sender, EventArgs e)
@@ -142,7 +160,14 @@ namespace ClinicWise.Appointments
             _Appointment.DoctorID = _Doctor.DoctorID;
             _Appointment.PatientID = _Patient.PatientID;
 
-            _Appointment.Date = dtpAppointmentDate.Value.Date + dtpAppointmentTime.Value.TimeOfDay;
+            DateTime appointmentDate = dtpAppointmentDate.Value.Date + dtpAppointmentTime.Value.TimeOfDay;
+
+            if (!_Appointment.Date.Equals(appointmentDate))
+            {
+                _Appointment.Status = enAppointmentStatus.Rescheduled;
+            }
+
+            _Appointment.Date = appointmentDate;
             _Appointment.ScheduledByUserID = clsGlobalSettings.CurrentUserID;
 
             if (!ClinicHours.IsWithinBusinessHours((DateTime)_Appointment.Date))
