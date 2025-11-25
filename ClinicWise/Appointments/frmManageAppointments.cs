@@ -250,5 +250,60 @@ namespace ClinicWise.Appointments
             frm.ShowDialog();
             await _RefreshData();
         }
+
+        private void cmsManageUsers_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string currentStatusCaption = dgvManageAppointments.CurrentRow.Cells[4].Value.ToString();
+
+            enAppointmentStatus status;
+
+            switch (currentStatusCaption)
+            {
+                case "Pending":
+                    status = enAppointmentStatus.Pending; 
+                    break;
+
+                case "Confirmed":
+                    status = enAppointmentStatus.Confirmed;
+                    break;
+
+                case "Completed":
+                    status = enAppointmentStatus.Completed;
+                    break;
+
+                case "Cancelled":
+                    status = enAppointmentStatus.Cancelled;
+                    break;
+
+                case "Rescheduled":
+                    status = enAppointmentStatus.Rescheduled;
+                    break;
+
+                case "NoShow":
+                    status = enAppointmentStatus.NoShow;
+                    break;
+
+                default:
+                    status = enAppointmentStatus.Pending;
+                    break;
+            }
+
+            updateToolStripMenuItem.Enabled = status == enAppointmentStatus.Pending ||
+                                              status == enAppointmentStatus.Confirmed || 
+                                              status == enAppointmentStatus.Rescheduled;
+
+            cancelToolStripMenuItem.Enabled = status == enAppointmentStatus.Pending &&
+                                              status == enAppointmentStatus.Confirmed &&
+                                              status == enAppointmentStatus.Rescheduled;
+
+            confirmToolStripMenuItem.Enabled = status == enAppointmentStatus.Pending;
+
+            noShowStripMenuItem.Enabled = status == enAppointmentStatus.Confirmed ||
+                                          status == enAppointmentStatus.Rescheduled;
+
+            deleteToolStripMenuItem.Enabled = status == enAppointmentStatus.Completed ||
+                                              status == enAppointmentStatus.Cancelled ||
+                                              status == enAppointmentStatus.NoShow;
+        }
     }
 }
