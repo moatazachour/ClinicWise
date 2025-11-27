@@ -56,6 +56,12 @@ namespace ClinicWise.Appointments
             cbManageAppointments.SelectedItem = "None";
 
             dgvManageAppointments.DataSource = _AppointmentsList;
+
+            if (dgvManageAppointments.Columns["DoctorID"] != null)
+                dgvManageAppointments.Columns["DoctorID"].Visible = false;
+
+            if (dgvManageAppointments.Columns["PatientID"] != null)
+                dgvManageAppointments.Columns["PatientID"].Visible = false;
         }
 
         private async void frmManageAppointments_Load(object sender, EventArgs e)
@@ -229,6 +235,14 @@ namespace ClinicWise.Appointments
 
             _AppointmentsList = await clsAppointment.GetByPatientAsync(patientID);
 
+            if (dgvManageAppointments.Columns["DoctorID"] != null)
+                dgvManageAppointments.Columns["DoctorID"].Visible = false;
+
+            if (dgvManageAppointments.Columns["PatientID"] != null)
+                dgvManageAppointments.Columns["PatientID"].Visible = false;
+
+            dgvManageAppointments.DataSource = _AppointmentsList;
+
             cbManageAppointments.SelectedItem = "Patient";
 
             PatientDTO patient = await clsPatient.FindAsync(patientID);
@@ -394,6 +408,13 @@ namespace ClinicWise.Appointments
             }
 
             await _RefreshData();
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int appointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
+            frmAppointmentDetails frm = new frmAppointmentDetails(appointmentID);
+            frm.ShowDialog();
         }
     }
 }

@@ -43,15 +43,15 @@
             this.noShowStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbAppointmentStatus = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAddAppointment = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecordCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.mtxtFilter = new System.Windows.Forms.MaskedTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbDoctors = new System.Windows.Forms.ComboBox();
             this.cbPatients = new System.Windows.Forms.ComboBox();
             this.cbDate = new System.Windows.Forms.ComboBox();
+            this.btnAddAppointment = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageAppointments)).BeginInit();
             this.cmsManageUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -142,6 +142,7 @@
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
             this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -208,17 +209,6 @@
             this.label1.Text = "Manage Appointments";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnAddAppointment
-            // 
-            this.btnAddAppointment.Image = global::ClinicWise.Properties.Resources.Add_Person_40;
-            this.btnAddAppointment.Location = new System.Drawing.Point(1695, 236);
-            this.btnAddAppointment.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAddAppointment.Name = "btnAddAppointment";
-            this.btnAddAppointment.Size = new System.Drawing.Size(95, 69);
-            this.btnAddAppointment.TabIndex = 37;
-            this.btnAddAppointment.UseVisualStyleBackColor = true;
-            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
-            // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,18 +252,6 @@
             this.mtxtFilter.TextChanged += new System.EventHandler(this.mtxtFilter_TextChanged);
             this.mtxtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtFilter_KeyPress);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::ClinicWise.Properties.Resources.appointments_64;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1815, 118);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 30;
-            this.pictureBox1.TabStop = false;
-            // 
             // cbDoctors
             // 
             this.cbDoctors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -316,6 +294,29 @@
             this.cbDate.Size = new System.Drawing.Size(335, 31);
             this.cbDate.TabIndex = 41;
             this.cbDate.SelectedIndexChanged += new System.EventHandler(this.cbDate_SelectedIndexChanged);
+            // 
+            // btnAddAppointment
+            // 
+            this.btnAddAppointment.Image = global::ClinicWise.Properties.Resources.Add_Person_40;
+            this.btnAddAppointment.Location = new System.Drawing.Point(1695, 236);
+            this.btnAddAppointment.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddAppointment.Name = "btnAddAppointment";
+            this.btnAddAppointment.Size = new System.Drawing.Size(95, 69);
+            this.btnAddAppointment.TabIndex = 37;
+            this.btnAddAppointment.UseVisualStyleBackColor = true;
+            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = global::ClinicWise.Properties.Resources.appointments_64;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1815, 118);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
             // 
             // frmManageAppointments
             // 

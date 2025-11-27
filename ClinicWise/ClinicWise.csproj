@@ -62,6 +62,12 @@
     <Compile Include="Appointments\frmAddEditAppointment.Designer.cs">
       <DependentUpon>frmAddEditAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Appointments\frmAppointmentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointments\frmAppointmentDetails.Designer.cs">
+      <DependentUpon>frmAppointmentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Appointments\frmManageAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Appointments\frmAddEditAppointment.resx">
       <DependentUpon>frmAddEditAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointments\frmAppointmentDetails.resx">
+      <DependentUpon>frmAppointmentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Appointments\frmManageAppointments.resx">
       <DependentUpon>frmManageAppointments.cs</DependentUpon>
