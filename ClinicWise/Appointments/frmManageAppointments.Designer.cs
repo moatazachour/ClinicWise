@@ -41,7 +41,6 @@
             this.confirmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noShowStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbAppointmentStatus = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddAppointment = new System.Windows.Forms.Button();
@@ -133,10 +132,9 @@
             this.updateToolStripMenuItem,
             this.confirmToolStripMenuItem,
             this.cancelToolStripMenuItem,
-            this.noShowStripMenuItem,
-            this.deleteToolStripMenuItem});
+            this.noShowStripMenuItem});
             this.cmsManageUsers.Name = "cmsManageDoctors";
-            this.cmsManageUsers.Size = new System.Drawing.Size(211, 206);
+            this.cmsManageUsers.Size = new System.Drawing.Size(211, 178);
             this.cmsManageUsers.Opening += new System.ComponentModel.CancelEventHandler(this.cmsManageUsers_Opening);
             // 
             // showDetailsToolStripMenuItem
@@ -177,12 +175,6 @@
             this.noShowStripMenuItem.Size = new System.Drawing.Size(210, 28);
             this.noShowStripMenuItem.Text = "No Show";
             this.noShowStripMenuItem.Click += new System.EventHandler(this.noShowStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
-            this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // cbAppointmentStatus
             // 
@@ -366,7 +358,6 @@
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbAppointmentStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddAppointment;

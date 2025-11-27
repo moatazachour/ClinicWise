@@ -164,7 +164,7 @@ namespace ClinicWise.Patients
                 else
                 {
                     MessageBox.Show(
-                        "Doctor deletion failed",
+                        "Patient is not deleted due to data connected to it.",
                         "Error",
                         MessageBoxButtons.OKCancel,
                         MessageBoxIcon.Error);

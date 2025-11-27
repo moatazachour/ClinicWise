@@ -202,7 +202,7 @@ namespace ClinicWise.DataAccess
                 catch (Exception ex)
                 {
                     clsGlobal.LogError(ex);
-                    throw new ApplicationException("Failed to delete patient data", ex);
+                    return false;
                 }
             }
 

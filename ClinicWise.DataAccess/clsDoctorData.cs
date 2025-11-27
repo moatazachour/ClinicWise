@@ -187,7 +187,7 @@ namespace ClinicWise.DataAccess
                 catch (Exception ex)
                 {
                     clsGlobal.LogError(ex);
-                    throw new ApplicationException("Failed to delete doctor data", ex);
+                    return false;
                 }
             }
 
