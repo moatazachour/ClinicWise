@@ -297,10 +297,6 @@ namespace ClinicWise.Appointments
 
             noShowStripMenuItem.Enabled = status == enAppointmentStatus.Confirmed ||
                                           status == enAppointmentStatus.Rescheduled;
-
-            deleteToolStripMenuItem.Enabled = status == enAppointmentStatus.Completed ||
-                                              status == enAppointmentStatus.Cancelled ||
-                                              status == enAppointmentStatus.NoShow;
         }
 
         private async void confirmToolStripMenuItem_Click(object sender, EventArgs e)

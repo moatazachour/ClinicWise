@@ -75,7 +75,7 @@ namespace ClinicWise.DataAccess
             return rowsAffected > 0;
         }
 
-        public static async Task<AppointmentDTO> GetByID(int appointmentID)
+        public static async Task<AppointmentDTO> GetByIDAsync(int appointmentID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Appointment_GetByID", connection))
@@ -518,6 +518,46 @@ namespace ClinicWise.DataAccess
             }
 
             return appointments;
+        }
+
+        public static async Task<AppointmentDisplayDTO> GetDetailedByID(int appointmentID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_GetDetailedByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@AppointmentID", SqlDbType.Int).Value = appointmentID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new AppointmentDisplayDTO(
+                                    appointmentID,
+                                    (int)reader["DoctorID"],
+                                    (string)reader["DoctorFullLabel"],
+                                    (int)reader["PatientID"],
+                                    (string)reader["PatientName"],
+                                    reader["Date"] as DateTime?,
+                                    (string)reader["StatusCaption"],
+                                    (string)reader["ScheduledBy"]
+                                );
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
         }
     }
 }

@@ -67,6 +67,7 @@
     <Content Include="StoredProcedures\Appointments\Appointment_GetByDoctor.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetByID.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetByPatient.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_GetDetailedByID.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetNextByDoctor.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetNextMonth.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetNextWeek.sql" />

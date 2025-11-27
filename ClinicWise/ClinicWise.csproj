@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointments\Controls\ctrlAppointmentDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Appointments\Controls\ctrlAppointmentDetails.Designer.cs">
+      <DependentUpon>ctrlAppointmentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Appointments\frmAddEditAppointment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     <Compile Include="Users\frmUserInfo.Designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Appointments\Controls\ctrlAppointmentDetails.resx">
+      <DependentUpon>ctrlAppointmentDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Appointments\frmAddEditAppointment.resx">
       <DependentUpon>frmAddEditAppointment.cs</DependentUpon>
     </EmbeddedResource>
