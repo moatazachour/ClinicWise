@@ -176,6 +176,7 @@
             this.noShowStripMenuItem.Name = "noShowStripMenuItem";
             this.noShowStripMenuItem.Size = new System.Drawing.Size(210, 28);
             this.noShowStripMenuItem.Text = "No Show";
+            this.noShowStripMenuItem.Click += new System.EventHandler(this.noShowStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 

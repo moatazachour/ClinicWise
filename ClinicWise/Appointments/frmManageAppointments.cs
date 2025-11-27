@@ -326,6 +326,8 @@ namespace ClinicWise.Appointments
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+
+            await _RefreshData();
         }
 
         private async void cancelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -368,6 +370,34 @@ namespace ClinicWise.Appointments
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+
+            await _RefreshData();
+        }
+
+        private async void noShowStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int appointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
+            AppointmentDTO appointmentDTO = await clsAppointment.FindAsync(appointmentID);
+
+            clsAppointment appointment = new clsAppointment(appointmentDTO);
+
+            if (appointment.Date >  DateTime.Now)
+            {
+                MessageBox.Show("Appointment Date is still in the future!", "Upcoming Appointment",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return;
+            }
+
+            appointment.Status = enAppointmentStatus.NoShow;
+
+            if (!appointment.Save())
+            {
+                MessageBox.Show("Appointment status changing failed", "Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            await _RefreshData();
         }
     }
 }
