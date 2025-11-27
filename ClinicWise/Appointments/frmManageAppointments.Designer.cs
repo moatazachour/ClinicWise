@@ -38,6 +38,7 @@
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.confirmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noShowStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@
             this.cbDoctors = new System.Windows.Forms.ComboBox();
             this.cbPatients = new System.Windows.Forms.ComboBox();
             this.cbDate = new System.Windows.Forms.ComboBox();
-            this.confirmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageAppointments)).BeginInit();
             this.cmsManageUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -157,11 +157,19 @@
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
+            // confirmToolStripMenuItem
+            // 
+            this.confirmToolStripMenuItem.Name = "confirmToolStripMenuItem";
+            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
+            this.confirmToolStripMenuItem.Text = "Confirm";
+            this.confirmToolStripMenuItem.Click += new System.EventHandler(this.confirmToolStripMenuItem_Click);
+            // 
             // cancelToolStripMenuItem
             // 
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
             this.cancelToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
             this.cancelToolStripMenuItem.Text = "Cancel";
+            this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
             // noShowStripMenuItem
             // 
@@ -315,12 +323,6 @@
             this.cbDate.Size = new System.Drawing.Size(335, 31);
             this.cbDate.TabIndex = 41;
             this.cbDate.SelectedIndexChanged += new System.EventHandler(this.cbDate_SelectedIndexChanged);
-            // 
-            // confirmToolStripMenuItem
-            // 
-            this.confirmToolStripMenuItem.Name = "confirmToolStripMenuItem";
-            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
-            this.confirmToolStripMenuItem.Text = "Confirm";
             // 
             // frmManageAppointments
             // 

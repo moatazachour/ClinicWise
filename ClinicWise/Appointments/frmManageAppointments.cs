@@ -5,12 +5,9 @@ using ClinicWise.Contracts.Patients;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ClinicWise.Business.clsAppointment;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace ClinicWise.Appointments
 {
@@ -109,7 +106,7 @@ namespace ClinicWise.Appointments
                 else
                     _AppointmentsFilter = _AppointmentsList;
             }
-            
+
             dgvManageAppointments.DataSource = _AppointmentsFilter;
             lblRecordCount.Text = dgvManageAppointments.RowCount.ToString();
         }
@@ -260,7 +257,7 @@ namespace ClinicWise.Appointments
             switch (currentStatusCaption)
             {
                 case "Pending":
-                    status = enAppointmentStatus.Pending; 
+                    status = enAppointmentStatus.Pending;
                     break;
 
                 case "Confirmed":
@@ -289,7 +286,7 @@ namespace ClinicWise.Appointments
             }
 
             updateToolStripMenuItem.Enabled = status == enAppointmentStatus.Pending ||
-                                              status == enAppointmentStatus.Confirmed || 
+                                              status == enAppointmentStatus.Confirmed ||
                                               status == enAppointmentStatus.Rescheduled;
 
             cancelToolStripMenuItem.Enabled = status == enAppointmentStatus.Pending &&
@@ -304,6 +301,73 @@ namespace ClinicWise.Appointments
             deleteToolStripMenuItem.Enabled = status == enAppointmentStatus.Completed ||
                                               status == enAppointmentStatus.Cancelled ||
                                               status == enAppointmentStatus.NoShow;
+        }
+
+        private async void confirmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int appointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
+            AppointmentDTO appointmentDTO = await clsAppointment.FindAsync(appointmentID);
+
+            clsAppointment appointment = new clsAppointment(appointmentDTO);
+
+            if (!appointment.Status.Equals(enAppointmentStatus.Pending))
+            {
+                MessageBox.Show("Appointment already confirmed", "Appointment Confirmed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return;
+            }
+
+            appointment.Status = enAppointmentStatus.Confirmed;
+
+            if (!appointment.Save())
+            {
+                MessageBox.Show("Appointment confirmation failed", "Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private async void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int appointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
+            AppointmentDTO appointmentDTO = await clsAppointment.FindAsync(appointmentID);
+
+            clsAppointment appointment = new clsAppointment(appointmentDTO);
+
+            if (appointment.Status.Equals(enAppointmentStatus.Completed))
+            {
+                MessageBox.Show("Appointment completed you can't cancel it!", "Appointment Completed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return;
+            }
+
+            if (appointment.Status.Equals(enAppointmentStatus.Cancelled))
+            {
+                MessageBox.Show("Appointment already cancelled!", "Appointment Cancelled",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return;
+            }
+
+            if (appointment.Status.Equals(enAppointmentStatus.NoShow))
+            {
+                MessageBox.Show("Patient did not show to his appointment, you can't cancel this appointment!",
+                    "Patient Did Not Show",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return;
+            }
+
+            appointment.Status = enAppointmentStatus.Cancelled;
+
+            if (!appointment.Save())
+            {
+                MessageBox.Show("Appointment cancelling failed", "Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }
