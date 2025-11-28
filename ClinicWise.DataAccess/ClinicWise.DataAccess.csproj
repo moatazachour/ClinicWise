@@ -47,6 +47,7 @@
     <Compile Include="clsDoctorData.cs" />
     <Compile Include="clsGlobal.cs" />
     <Compile Include="clsGuardianData.cs" />
+    <Compile Include="clsMedicalRecordData.cs" />
     <Compile Include="clsPatientData.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsRoleData.cs" />
@@ -89,6 +90,8 @@
     <Content Include="StoredProcedures\Guardians\Guardian_AddNew.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
+    <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
+    <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Update.sql" />
     <Content Include="StoredProcedures\Patients\Patient_AddNew.sql" />
     <Content Include="StoredProcedures\Patients\Patient_Delete.sql" />
     <Content Include="StoredProcedures\Patients\Patient_GetAll.sql" />

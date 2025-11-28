@@ -30,7 +30,7 @@ namespace ClinicWise.Patients
             PatientDTO patientDTO = await clsPatient.FindAsync(_PatientID);
             clsPatient patient = new clsPatient(patientDTO);
 
-            ctrlPersonCard1.LoadPersonInfo(patientDTO.ToPersonDTO());
+            await ctrlPersonCard1.LoadPersonInfo(patientDTO.ToPersonDTO());
             lblPatient.Text = _PatientID.ToString();
 
             GuardianDTO guardianDTO = await patient.GetGuardianInfo();

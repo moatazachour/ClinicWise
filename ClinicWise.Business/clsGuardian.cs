@@ -113,7 +113,7 @@ namespace ClinicWise.Business
             }
         }
 
-        public async static Task<GuardianDTO> FindAsync(int guardianID)
+        public new async static Task<GuardianDTO> FindAsync(int guardianID)
         {
             return await clsGuardianData.GetByID(guardianID);
         }
