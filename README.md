@@ -99,16 +99,6 @@ ClinicWise follows a **3-Tier Architecture** pattern ensuring clean separation o
                             │
                             ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                     CONTRACTS LAYER                          │
-│                   (ClinicWise.Contracts)                     │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐       │
-│  │PatientDTO│ │DoctorDTO │ │Appointmt │ │ UserDTO  │       │
-│  │DisplayDTO│ │DisplayDTO│ │   DTO    │ │DisplayDTO│       │
-│  └──────────┘ └──────────┘ └──────────┘ └──────────┘       │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
 │                    DATA ACCESS LAYER                         │
 │                  (ClinicWise.DataAccess)                     │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐       │
