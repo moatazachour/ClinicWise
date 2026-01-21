@@ -227,7 +227,7 @@ ClinicWise/
 ## 🗄️ Database Schema
 
 <p align="center">
-  <img src="database-schema.png" alt="ClinicWise Database Schema" width="100%"/>
+  <img src="Database Schema.png" alt="ClinicWise Database Schema" width="100%"/>
 </p>
 
 ### Tables Overview
