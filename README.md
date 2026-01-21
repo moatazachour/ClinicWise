@@ -38,24 +38,6 @@ Beyond just coding, this project provided deep insight into **healthcare domain 
 | 👨‍👩‍👧 **Guardian Management** | Automatic guardian requirement detection for minor patients |
 | 📋 **Medical Records** | Visit tracking with 6 visit types (Consultation, Follow-Up, Emergency, Routine Check, Vaccination, Lab Test) |
 
-### Appointment Workflow States
-
-```
-┌─────────┐     ┌───────────┐     ┌───────────┐
-│ Pending │ ──► │ Confirmed │ ──► │ Completed │
-└─────────┘     └───────────┘     └───────────┘
-     │               │
-     ▼               ▼
-┌───────────┐   ┌─────────┐
-│ Cancelled │   │ No-Show │
-└───────────┘   └─────────┘
-     │
-     ▼
-┌─────────────┐
-│ Rescheduled │
-└─────────────┘
-```
-
 ### Medical Record Visit Types
 
 ```csharp
