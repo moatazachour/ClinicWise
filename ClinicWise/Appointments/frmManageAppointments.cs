@@ -264,7 +264,7 @@ namespace ClinicWise.Appointments
 
         private void cmsManageUsers_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            string currentStatusCaption = dgvManageAppointments.CurrentRow.Cells[4].Value.ToString();
+            string currentStatusCaption = dgvManageAppointments.CurrentRow.Cells[6].Value.ToString();
 
             enAppointmentStatus status;
 
@@ -303,14 +303,14 @@ namespace ClinicWise.Appointments
                                               status == enAppointmentStatus.Confirmed ||
                                               status == enAppointmentStatus.Rescheduled;
 
-            cancelToolStripMenuItem.Enabled = status == enAppointmentStatus.Pending &&
-                                              status == enAppointmentStatus.Confirmed &&
+            cancelToolStripMenuItem.Enabled = status == enAppointmentStatus.Pending ||
+                                              status == enAppointmentStatus.Confirmed ||
                                               status == enAppointmentStatus.Rescheduled;
 
             confirmToolStripMenuItem.Enabled = status == enAppointmentStatus.Pending;
 
             noShowStripMenuItem.Enabled = status == enAppointmentStatus.Confirmed ||
-                                          status == enAppointmentStatus.Rescheduled;
+                                              status == enAppointmentStatus.Rescheduled;
         }
 
         private async void confirmToolStripMenuItem_Click(object sender, EventArgs e)

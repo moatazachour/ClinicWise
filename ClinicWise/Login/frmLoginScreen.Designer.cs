@@ -177,6 +177,7 @@
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLoginScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLoginScreen";
             this.Load += new System.EventHandler(this.frmLoginScreen_Load);
             this.splitContainer1.Panel2.ResumeLayout(false);

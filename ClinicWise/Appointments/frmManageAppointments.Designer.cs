@@ -69,10 +69,10 @@
             "Patient",
             "Status",
             "Dates"});
-            this.cbManageAppointments.Location = new System.Drawing.Point(31, 271);
-            this.cbManageAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbManageAppointments.Location = new System.Drawing.Point(23, 220);
+            this.cbManageAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbManageAppointments.Name = "cbManageAppointments";
-            this.cbManageAppointments.Size = new System.Drawing.Size(255, 31);
+            this.cbManageAppointments.Size = new System.Drawing.Size(192, 27);
             this.cbManageAppointments.TabIndex = 32;
             this.cbManageAppointments.SelectedIndexChanged += new System.EventHandler(this.cbManageAppointments_SelectedIndexChanged);
             // 
@@ -102,8 +102,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvManageAppointments.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvManageAppointments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvManageAppointments.Location = new System.Drawing.Point(31, 316);
-            this.dgvManageAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvManageAppointments.Location = new System.Drawing.Point(23, 257);
+            this.dgvManageAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvManageAppointments.MultiSelect = false;
             this.dgvManageAppointments.Name = "dgvManageAppointments";
             this.dgvManageAppointments.ReadOnly = true;
@@ -118,7 +118,7 @@
             this.dgvManageAppointments.RowHeadersWidth = 51;
             this.dgvManageAppointments.RowTemplate.Height = 24;
             this.dgvManageAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvManageAppointments.Size = new System.Drawing.Size(1759, 416);
+            this.dgvManageAppointments.Size = new System.Drawing.Size(1319, 338);
             this.dgvManageAppointments.TabIndex = 31;
             this.dgvManageAppointments.TabStop = false;
             // 
@@ -134,46 +134,46 @@
             this.cancelToolStripMenuItem,
             this.noShowStripMenuItem});
             this.cmsManageUsers.Name = "cmsManageDoctors";
-            this.cmsManageUsers.Size = new System.Drawing.Size(211, 178);
+            this.cmsManageUsers.Size = new System.Drawing.Size(179, 140);
             this.cmsManageUsers.Opening += new System.ComponentModel.CancelEventHandler(this.cmsManageUsers_Opening);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // confirmToolStripMenuItem
             // 
             this.confirmToolStripMenuItem.Name = "confirmToolStripMenuItem";
-            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
+            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.confirmToolStripMenuItem.Text = "Confirm";
             this.confirmToolStripMenuItem.Click += new System.EventHandler(this.confirmToolStripMenuItem_Click);
             // 
             // cancelToolStripMenuItem
             // 
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(210, 28);
+            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.cancelToolStripMenuItem.Text = "Cancel";
             this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
             // noShowStripMenuItem
             // 
             this.noShowStripMenuItem.Name = "noShowStripMenuItem";
-            this.noShowStripMenuItem.Size = new System.Drawing.Size(210, 28);
+            this.noShowStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.noShowStripMenuItem.Text = "No Show";
             this.noShowStripMenuItem.Click += new System.EventHandler(this.noShowStripMenuItem_Click);
             // 
@@ -189,10 +189,10 @@
             "Cancelled",
             "Rescheduled",
             "NoShow"});
-            this.cbAppointmentStatus.Location = new System.Drawing.Point(305, 272);
-            this.cbAppointmentStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbAppointmentStatus.Location = new System.Drawing.Point(229, 221);
+            this.cbAppointmentStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAppointmentStatus.Name = "cbAppointmentStatus";
-            this.cbAppointmentStatus.Size = new System.Drawing.Size(289, 31);
+            this.cbAppointmentStatus.Size = new System.Drawing.Size(218, 27);
             this.cbAppointmentStatus.TabIndex = 38;
             this.cbAppointmentStatus.SelectedIndexChanged += new System.EventHandler(this.cbAppointmentStatus_SelectedIndexChanged);
             // 
@@ -201,10 +201,9 @@
             this.label1.BackColor = System.Drawing.Color.Azure;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(629, 133);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(472, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(591, 98);
+            this.label1.Size = new System.Drawing.Size(443, 80);
             this.label1.TabIndex = 29;
             this.label1.Text = "Manage Appointments";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -212,10 +211,9 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(1627, 750);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Location = new System.Drawing.Point(1220, 609);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(163, 52);
+            this.btnClose.Size = new System.Drawing.Size(122, 42);
             this.btnClose.TabIndex = 36;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -225,9 +223,10 @@
             // 
             this.lblRecordCount.AutoSize = true;
             this.lblRecordCount.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCount.Location = new System.Drawing.Point(173, 750);
+            this.lblRecordCount.Location = new System.Drawing.Point(130, 609);
+            this.lblRecordCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount.Name = "lblRecordCount";
-            this.lblRecordCount.Size = new System.Drawing.Size(25, 27);
+            this.lblRecordCount.Size = new System.Drawing.Size(21, 23);
             this.lblRecordCount.TabIndex = 35;
             this.lblRecordCount.Text = "0";
             // 
@@ -235,19 +234,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 750);
+            this.label2.Location = new System.Drawing.Point(21, 609);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 27);
+            this.label2.Size = new System.Drawing.Size(105, 23);
             this.label2.TabIndex = 34;
             this.label2.Text = "# Records:";
             // 
             // mtxtFilter
             // 
             this.mtxtFilter.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtFilter.Location = new System.Drawing.Point(305, 270);
-            this.mtxtFilter.Margin = new System.Windows.Forms.Padding(4);
+            this.mtxtFilter.Location = new System.Drawing.Point(229, 219);
             this.mtxtFilter.Name = "mtxtFilter";
-            this.mtxtFilter.Size = new System.Drawing.Size(472, 32);
+            this.mtxtFilter.Size = new System.Drawing.Size(355, 27);
             this.mtxtFilter.TabIndex = 33;
             this.mtxtFilter.TextChanged += new System.EventHandler(this.mtxtFilter_TextChanged);
             this.mtxtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtFilter_KeyPress);
@@ -257,10 +256,10 @@
             this.cbDoctors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDoctors.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDoctors.FormattingEnabled = true;
-            this.cbDoctors.Location = new System.Drawing.Point(305, 270);
-            this.cbDoctors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDoctors.Location = new System.Drawing.Point(229, 219);
+            this.cbDoctors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbDoctors.Name = "cbDoctors";
-            this.cbDoctors.Size = new System.Drawing.Size(417, 31);
+            this.cbDoctors.Size = new System.Drawing.Size(314, 27);
             this.cbDoctors.TabIndex = 39;
             this.cbDoctors.SelectedIndexChanged += new System.EventHandler(this.cbDoctors_SelectedIndexChanged);
             // 
@@ -269,10 +268,10 @@
             this.cbPatients.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPatients.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPatients.FormattingEnabled = true;
-            this.cbPatients.Location = new System.Drawing.Point(305, 270);
-            this.cbPatients.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbPatients.Location = new System.Drawing.Point(229, 219);
+            this.cbPatients.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbPatients.Name = "cbPatients";
-            this.cbPatients.Size = new System.Drawing.Size(289, 31);
+            this.cbPatients.Size = new System.Drawing.Size(218, 27);
             this.cbPatients.TabIndex = 40;
             this.cbPatients.SelectedIndexChanged += new System.EventHandler(this.cbPatients_SelectedIndexChanged);
             // 
@@ -288,20 +287,19 @@
             "Next Week",
             "This Month",
             "Next Month"});
-            this.cbDate.Location = new System.Drawing.Point(305, 271);
-            this.cbDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDate.Location = new System.Drawing.Point(229, 220);
+            this.cbDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbDate.Name = "cbDate";
-            this.cbDate.Size = new System.Drawing.Size(335, 31);
+            this.cbDate.Size = new System.Drawing.Size(252, 27);
             this.cbDate.TabIndex = 41;
             this.cbDate.SelectedIndexChanged += new System.EventHandler(this.cbDate_SelectedIndexChanged);
             // 
             // btnAddAppointment
             // 
             this.btnAddAppointment.Image = global::ClinicWise.Properties.Resources.Add_Person_40;
-            this.btnAddAppointment.Location = new System.Drawing.Point(1695, 236);
-            this.btnAddAppointment.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddAppointment.Location = new System.Drawing.Point(1271, 192);
             this.btnAddAppointment.Name = "btnAddAppointment";
-            this.btnAddAppointment.Size = new System.Drawing.Size(95, 69);
+            this.btnAddAppointment.Size = new System.Drawing.Size(71, 56);
             this.btnAddAppointment.TabIndex = 37;
             this.btnAddAppointment.UseVisualStyleBackColor = true;
             this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
@@ -311,19 +309,18 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = global::ClinicWise.Properties.Resources.appointments_64;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1815, 118);
+            this.pictureBox1.Size = new System.Drawing.Size(1361, 96);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
             // frmManageAppointments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1815, 814);
+            this.ClientSize = new System.Drawing.Size(1361, 661);
             this.Controls.Add(this.cbDate);
             this.Controls.Add(this.cbPatients);
             this.Controls.Add(this.cbDoctors);
@@ -338,7 +335,7 @@
             this.Controls.Add(this.mtxtFilter);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmManageAppointments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmManageAppointments";
