@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ClinicWise.Contracts.MedicalRecords;
+using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace ClinicWise.DataAccess
 {
@@ -36,6 +38,45 @@ namespace ClinicWise.DataAccess
                     command.ExecuteNonQuery();
 
                     return (int)command.Parameters["@RecordID"].Value;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
+        public static async Task<MedicalRecordDTO> GetByAppointmentID(int appointmentID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("MedicalRecord_GetByAppointmentID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@AppointmentID", SqlDbType.Int).Value = appointmentID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new MedicalRecordDTO(
+                                (int)reader["RecordID"],
+                                appointmentID,
+                                (byte)reader["VisitType"],
+                                (string)reader["DescriptionOfVisit"],
+                                (string)reader["Diagnosis"],
+                                (string)reader["AdditionalNotes"]
+                            );
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {

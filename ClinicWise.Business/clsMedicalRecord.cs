@@ -1,5 +1,7 @@
-﻿using ClinicWise.DataAccess;
+﻿using ClinicWise.Contracts.MedicalRecords;
+using ClinicWise.DataAccess;
 using System;
+using System.Threading.Tasks;
 
 namespace ClinicWise.Business
 {
@@ -51,6 +53,11 @@ namespace ClinicWise.Business
             Mode = enMode.Update;
         }
 
+
+        public static async Task<MedicalRecordDTO> FindByAppointmentID(int appointmentID)
+        {
+            return await clsMedicalRecordData.GetByAppointmentID(appointmentID);
+        }
 
         private bool _AddNew()
         {

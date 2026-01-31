@@ -2,6 +2,8 @@
 using ClinicWise.Contracts;
 using ClinicWise.Contracts.Appointments;
 using ClinicWise.Contracts.Patients;
+using ClinicWise.Doctors;
+using ClinicWise.MedicalRecords;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -311,6 +313,9 @@ namespace ClinicWise.Appointments
 
             noShowStripMenuItem.Enabled = status == enAppointmentStatus.Confirmed ||
                                               status == enAppointmentStatus.Rescheduled;
+
+            documentVisitToolStripMenuItem.Enabled = status == enAppointmentStatus.Confirmed ||
+                                                    status == enAppointmentStatus.Rescheduled;
         }
 
         private async void confirmToolStripMenuItem_Click(object sender, EventArgs e)
@@ -414,6 +419,27 @@ namespace ClinicWise.Appointments
         {
             int appointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
             frmAppointmentDetails frm = new frmAppointmentDetails(appointmentID);
+            frm.ShowDialog();
+        }
+
+        private async void documentVisitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int currentAppointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
+            AppointmentDTO appointment = await clsAppointment.FindAsync(currentAppointmentID);
+
+            if (appointment.Date > DateTime.Now)
+            {
+                if (MessageBox.Show("Appointment is still in the future!\nAre you sure you want to continue",
+                    "The appointment is not due yet",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+                    == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            frmAddEditMedicalRecord frm = new frmAddEditMedicalRecord(-1);
+            await frm.LoadByAppointmentIDAsync(currentAppointmentID);
             frm.ShowDialog();
         }
     }

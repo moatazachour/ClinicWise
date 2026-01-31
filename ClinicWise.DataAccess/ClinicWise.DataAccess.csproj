@@ -91,6 +91,7 @@
     <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
+    <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetByAppointmentID.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Update.sql" />
     <Content Include="StoredProcedures\Patients\Patient_AddNew.sql" />
     <Content Include="StoredProcedures\Patients\Patient_Delete.sql" />
