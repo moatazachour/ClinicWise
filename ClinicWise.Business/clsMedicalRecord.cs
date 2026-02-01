@@ -54,6 +54,18 @@ namespace ClinicWise.Business
         }
 
 
+        public clsMedicalRecord(MedicalRecordDTO recordDTO)
+        {
+            RecordID = recordDTO.RecordID;
+            AppointmentID = recordDTO.AppointmentID;
+            VisitType = (enVisitType)recordDTO.VisitType;
+            DescriptionOfVisit = recordDTO.DescriptionOfVisit;
+            Diagnosis = recordDTO.Diagnosis;
+            AdditionalNotes = recordDTO.AdditionalNotes;
+
+            Mode = enMode.Update;
+        }
+
         public static async Task<MedicalRecordDTO> FindByAppointmentID(int appointmentID)
         {
             return await clsMedicalRecordData.GetByAppointmentID(appointmentID);
@@ -93,6 +105,9 @@ namespace ClinicWise.Business
             }
         }
 
-            
+        public static async Task<MedicalRecordDTO> FindAsync(int medicalRecordID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

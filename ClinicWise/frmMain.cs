@@ -3,6 +3,7 @@ using ClinicWise.Doctors;
 using ClinicWise.Global_Classes;
 using ClinicWise.Login;
 using ClinicWise.Patients;
+using ClinicWise.Pharmacy;
 using ClinicWise.Users;
 using System;
 using System.Windows.Forms;
@@ -66,7 +67,12 @@ namespace ClinicWise
         private void appointmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageAppointments frm = new frmManageAppointments();
+            frm.ShowDialog();
+        }
 
+        private void pharmacyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManagePharmacy frm = new frmManagePharmacy();
             frm.ShowDialog();
         }
     }

@@ -439,8 +439,8 @@ namespace ClinicWise.Appointments
             }
 
             frmAddEditMedicalRecord frm = new frmAddEditMedicalRecord(-1);
-            await frm.LoadByAppointmentIDAsync(currentAppointmentID);
             frm.ShowDialog();
+            await frm.LoadByAppointmentIDAsync(currentAppointmentID);
         }
     }
 }
