@@ -50,6 +50,8 @@
     <Compile Include="Guardians\GuardianDTO.cs" />
     <Compile Include="Guardians\GuardianRelationshipDTO.cs" />
     <Compile Include="MedicalRecords\MedicalRecordDTO.cs" />
+    <Compile Include="Medicaments\enDosageForm.cs" />
+    <Compile Include="Medicaments\MedicamentDTO.cs" />
     <Compile Include="Patients\PatientDisplayDTO.cs" />
     <Compile Include="Patients\PatientDTO.cs" />
     <Compile Include="Persons\PersonDTO.cs" />

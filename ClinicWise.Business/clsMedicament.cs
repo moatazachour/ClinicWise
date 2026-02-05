@@ -1,4 +1,8 @@
-﻿using ClinicWise.DataAccess;
+﻿using ClinicWise.Contracts.MedicalRecords;
+using ClinicWise.Contracts.Medicaments;
+using ClinicWise.DataAccess;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ClinicWise.Business
 {
@@ -7,32 +11,6 @@ namespace ClinicWise.Business
         public enum enMode { AddNew, Update }
         public enMode Mode;
 
-        public enum enDosageForm
-        {
-            Tablet = 1,
-            Capsule = 2,
-            Syrup = 3,
-            Suspension = 4,
-            Solution = 5,
-            Injection = 6,
-            Drops = 7,
-            Cream = 8,
-            Ointment = 9,
-            Gel = 10,
-            Lotion = 11,
-            Spray = 12,
-            Inhaler = 13,
-            Patch = 14,
-            Suppository = 15,
-            Powder = 16,
-            Granules = 17,
-            Lozenge = 18,
-            Foam = 19,
-            Shampoo = 20,
-            NasalSpray = 21,
-            EyeDrops = 22,
-            EarDrops = 23
-        }
 
         public int MedicamentID { get; set; }
         public string Name { get; set; }
@@ -57,6 +35,26 @@ namespace ClinicWise.Business
             DosageForm = dosageForm;
 
             Mode = enMode.Update;
+        }
+
+        public clsMedicament(MedicamentDTO medicamentDTO)
+        {
+            MedicamentID = medicamentDTO.MedicamentID;
+            Name = medicamentDTO.Name;
+            Brand = medicamentDTO.Brand;
+            DosageForm = medicamentDTO.DosageForm;
+
+            Mode = enMode.Update;
+        }
+
+        public static async Task<List<MedicamentDTO>> GetAllAsync()
+        {
+            return await clsMedicamentData.GetAllAsync();
+        }
+
+        public static async Task<MedicamentDTO> FindAsync(int medicamentID)
+        {
+            return await clsMedicamentData.GetByID(medicamentID);
         }
 
         private bool _AddNew()

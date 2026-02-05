@@ -168,6 +168,12 @@
     <Compile Include="Persons\frmAddEditPerson.Designer.cs">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pharmacy\frmAddEditMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharmacy\frmAddEditMedicament.Designer.cs">
+      <DependentUpon>frmAddEditMedicament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pharmacy\frmManagePharmacy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persons\frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pharmacy\frmAddEditMedicament.resx">
+      <DependentUpon>frmAddEditMedicament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pharmacy\frmManagePharmacy.resx">
       <DependentUpon>frmManagePharmacy.cs</DependentUpon>

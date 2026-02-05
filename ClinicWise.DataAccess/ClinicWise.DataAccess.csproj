@@ -95,6 +95,8 @@
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetByAppointmentID.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Update.sql" />
     <Content Include="StoredProcedures\Medicament\Medicament_AddNew.sql" />
+    <Content Include="StoredProcedures\Medicament\Medicament_GetAll.sql" />
+    <Content Include="StoredProcedures\Medicament\Medicament_GetByID.sql" />
     <Content Include="StoredProcedures\Medicament\Medicament_Update.sql" />
     <Content Include="StoredProcedures\Patients\Patient_AddNew.sql" />
     <Content Include="StoredProcedures\Patients\Patient_Delete.sql" />
@@ -130,6 +132,5 @@
     <Content Include="Views\GetAllPersons_View.sql" />
     <Content Include="Views\GetAllUsers_View.sql" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
