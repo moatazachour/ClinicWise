@@ -52,6 +52,7 @@
     <Compile Include="clsMedicament.cs" />
     <Compile Include="clsPatient.cs" />
     <Compile Include="clsPerson.cs" />
+    <Compile Include="clsPrescriptionItem.cs" />
     <Compile Include="clsRole.cs" />
     <Compile Include="clsSpecialization.cs" />
     <Compile Include="clsUser.cs" />

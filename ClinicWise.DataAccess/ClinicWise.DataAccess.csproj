@@ -108,6 +108,8 @@
     <Content Include="StoredProcedures\Persons\Person_GetByNationalNo.sql" />
     <Content Include="StoredProcedures\Persons\Person_IsExistByNationalNo.sql" />
     <Content Include="StoredProcedures\Persons\Person_Update.sql" />
+    <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_AddNew.sql" />
+    <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_Update.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetAll.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetByID.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetByRoleName.sql" />

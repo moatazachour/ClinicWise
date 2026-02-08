@@ -393,5 +393,8 @@
   <ItemGroup>
     <None Include="Resources\pharmacy_add-48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PrescriptionItems\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -55,6 +55,8 @@
     <Compile Include="Patients\PatientDisplayDTO.cs" />
     <Compile Include="Patients\PatientDTO.cs" />
     <Compile Include="Persons\PersonDTO.cs" />
+    <Compile Include="PrescriptionItems\stDosageInfo.cs" />
+    <Compile Include="PrescriptionItems\stDurationPeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\RoleDTO.cs" />
     <Compile Include="Speciatizations\SpecializationDTO.cs" />
