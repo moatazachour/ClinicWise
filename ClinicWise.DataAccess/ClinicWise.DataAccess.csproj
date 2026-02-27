@@ -55,6 +55,7 @@
     <Compile Include="clsSpecializationData.cs" />
     <Compile Include="clsGuardianRelationshipData.cs" />
     <Compile Include="clsUserData.cs" />
+    <Compile Include="clsPrescriptionItemData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

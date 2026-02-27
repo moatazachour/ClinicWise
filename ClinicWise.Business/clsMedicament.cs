@@ -52,9 +52,15 @@ namespace ClinicWise.Business
             return await clsMedicamentData.GetAllAsync();
         }
 
+        public static MedicamentDTO Find(int medicamentID)
+        {
+            return clsMedicamentData.GetByID(medicamentID);
+        }
+
+
         public static async Task<MedicamentDTO> FindAsync(int medicamentID)
         {
-            return await clsMedicamentData.GetByID(medicamentID);
+            return await clsMedicamentData.GetByIDAsync(medicamentID);
         }
 
         private bool _AddNew()

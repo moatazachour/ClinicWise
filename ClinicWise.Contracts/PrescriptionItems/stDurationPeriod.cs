@@ -8,6 +8,7 @@
         public override string ToString() => Months > 0 ? $"{Months}M {Days}D" : $"{Days}D";
 
         // To Database
+        public string ToStorageString() => $"{Months}:{Days}";
 
         // From Database
     }

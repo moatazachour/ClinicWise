@@ -15,12 +15,18 @@ namespace ClinicWise.Pharmacy
 {
     public partial class frmManagePharmacy : Form
     {
+        public event Action<int> DataBack;
+
         private List<MedicamentDTO> _MedicamentList;
         private List<MedicamentDTO> _MedicamentFilteredList;
 
-        public frmManagePharmacy()
+        public enum enPharmacyMode { Normal, Picker }
+        public enPharmacyMode Mode;
+
+        public frmManagePharmacy(enPharmacyMode mode = enPharmacyMode.Normal)
         {
             InitializeComponent();
+            Mode = mode;
         }
 
         private async Task _LoadDataAsync()
@@ -29,6 +35,12 @@ namespace ClinicWise.Pharmacy
             _MedicamentList = await clsMedicament.GetAllAsync();
             dgvManageMedicines.DataSource = _MedicamentList;
             lblRecordCount.Text = dgvManageMedicines.RowCount.ToString();
+
+            if (Mode == enPharmacyMode.Picker)
+            {
+                btnAddMedicine.Enabled = false;
+                pickToolStripMenuItem.Enabled = true;
+            }
         }
 
         private void _LoadDosageForms()
@@ -105,6 +117,13 @@ namespace ClinicWise.Pharmacy
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void pickToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int medicamentID = (int)dgvManageMedicines.CurrentRow.Cells[0].Value;
+            DataBack?.Invoke(medicamentID);
             this.Close();
         }
     }

@@ -41,6 +41,7 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecordCount = new System.Windows.Forms.Label();
@@ -64,10 +65,10 @@
             "Name",
             "Brand",
             "Dosage Form"});
-            this.cbManagePharmacy.Location = new System.Drawing.Point(210, 329);
-            this.cbManagePharmacy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbManagePharmacy.Location = new System.Drawing.Point(158, 267);
+            this.cbManagePharmacy.Margin = new System.Windows.Forms.Padding(2);
             this.cbManagePharmacy.Name = "cbManagePharmacy";
-            this.cbManagePharmacy.Size = new System.Drawing.Size(217, 31);
+            this.cbManagePharmacy.Size = new System.Drawing.Size(164, 27);
             this.cbManagePharmacy.TabIndex = 22;
             this.cbManagePharmacy.SelectedIndexChanged += new System.EventHandler(this.cbManagePharmacy_SelectedIndexChanged);
             // 
@@ -75,9 +76,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(69, 329);
+            this.label3.Location = new System.Drawing.Point(52, 267);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 27);
+            this.label3.Size = new System.Drawing.Size(85, 23);
             this.label3.TabIndex = 21;
             this.label3.Text = "Filter By:";
             // 
@@ -107,8 +109,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvManageMedicines.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvManageMedicines.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvManageMedicines.Location = new System.Drawing.Point(56, 383);
-            this.dgvManageMedicines.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvManageMedicines.Location = new System.Drawing.Point(42, 311);
+            this.dgvManageMedicines.Margin = new System.Windows.Forms.Padding(2);
             this.dgvManageMedicines.MultiSelect = false;
             this.dgvManageMedicines.Name = "dgvManageMedicines";
             this.dgvManageMedicines.ReadOnly = true;
@@ -123,7 +125,7 @@
             this.dgvManageMedicines.RowHeadersWidth = 51;
             this.dgvManageMedicines.RowTemplate.Height = 24;
             this.dgvManageMedicines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvManageMedicines.Size = new System.Drawing.Size(1008, 416);
+            this.dgvManageMedicines.Size = new System.Drawing.Size(756, 338);
             this.dgvManageMedicines.TabIndex = 20;
             this.dgvManageMedicines.TabStop = false;
             // 
@@ -136,49 +138,57 @@
             this.toolStripSeparator1,
             this.addToolStripMenuItem,
             this.updateToolStripMenuItem,
-            this.deleteToolStripMenuItem});
+            this.deleteToolStripMenuItem,
+            this.pickToolStripMenuItem});
             this.cmsManageMedicines.Name = "cmsManageDoctors";
-            this.cmsManageMedicines.Size = new System.Drawing.Size(205, 122);
+            this.cmsManageMedicines.Size = new System.Drawing.Size(179, 140);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(204, 28);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(201, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(204, 28);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(204, 28);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.updateToolStripMenuItem.Text = "Update";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(204, 28);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // pickToolStripMenuItem
+            // 
+            this.pickToolStripMenuItem.Enabled = false;
+            this.pickToolStripMenuItem.Name = "pickToolStripMenuItem";
+            this.pickToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.pickToolStripMenuItem.Text = "Pick";
+            this.pickToolStripMenuItem.Click += new System.EventHandler(this.pickToolStripMenuItem_Click);
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Azure;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(276, 149);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(207, 121);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(591, 98);
+            this.label1.Size = new System.Drawing.Size(443, 80);
             this.label1.TabIndex = 18;
             this.label1.Text = "Manage Pharmacy";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -186,10 +196,9 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(889, 814);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(667, 661);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(175, 55);
+            this.btnClose.Size = new System.Drawing.Size(131, 45);
             this.btnClose.TabIndex = 26;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -199,9 +208,10 @@
             // 
             this.lblRecordCount.AutoSize = true;
             this.lblRecordCount.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCount.Location = new System.Drawing.Point(205, 822);
+            this.lblRecordCount.Location = new System.Drawing.Point(154, 668);
+            this.lblRecordCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount.Name = "lblRecordCount";
-            this.lblRecordCount.Size = new System.Drawing.Size(25, 27);
+            this.lblRecordCount.Size = new System.Drawing.Size(21, 23);
             this.lblRecordCount.TabIndex = 25;
             this.lblRecordCount.Text = "0";
             // 
@@ -209,29 +219,28 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(51, 822);
+            this.label2.Location = new System.Drawing.Point(38, 668);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 27);
+            this.label2.Size = new System.Drawing.Size(105, 23);
             this.label2.TabIndex = 24;
             this.label2.Text = "# Records:";
             // 
             // txtFilter
             // 
             this.txtFilter.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(452, 327);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFilter.Location = new System.Drawing.Point(339, 266);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(373, 30);
+            this.txtFilter.Size = new System.Drawing.Size(281, 26);
             this.txtFilter.TabIndex = 28;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // btnAddMedicine
             // 
             this.btnAddMedicine.Image = global::ClinicWise.Properties.Resources.pharmacy_add_48;
-            this.btnAddMedicine.Location = new System.Drawing.Point(967, 288);
-            this.btnAddMedicine.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddMedicine.Location = new System.Drawing.Point(725, 234);
             this.btnAddMedicine.Name = "btnAddMedicine";
-            this.btnAddMedicine.Size = new System.Drawing.Size(97, 71);
+            this.btnAddMedicine.Size = new System.Drawing.Size(73, 58);
             this.btnAddMedicine.TabIndex = 27;
             this.btnAddMedicine.UseVisualStyleBackColor = true;
             this.btnAddMedicine.Click += new System.EventHandler(this.btnAddMedicine_Click);
@@ -241,9 +250,8 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = global::ClinicWise.Properties.Resources.pharmacy_72;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1120, 127);
+            this.pictureBox1.Size = new System.Drawing.Size(840, 103);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
@@ -253,19 +261,19 @@
             this.cbDosageForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDosageForm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDosageForm.FormattingEnabled = true;
-            this.cbDosageForm.Location = new System.Drawing.Point(452, 325);
-            this.cbDosageForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDosageForm.Location = new System.Drawing.Point(339, 264);
+            this.cbDosageForm.Margin = new System.Windows.Forms.Padding(2);
             this.cbDosageForm.Name = "cbDosageForm";
-            this.cbDosageForm.Size = new System.Drawing.Size(300, 31);
+            this.cbDosageForm.Size = new System.Drawing.Size(226, 27);
             this.cbDosageForm.TabIndex = 29;
             this.cbDosageForm.SelectedIndexChanged += new System.EventHandler(this.cbDosageForm_SelectedIndexChanged);
             // 
             // frmManagePharmacy
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1120, 884);
+            this.ClientSize = new System.Drawing.Size(840, 718);
             this.Controls.Add(this.cbDosageForm);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.cbManagePharmacy);
@@ -278,7 +286,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmManagePharmacy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Pharmacy";
@@ -310,5 +317,6 @@
         private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbDosageForm;
+        private System.Windows.Forms.ToolStripMenuItem pickToolStripMenuItem;
     }
 }

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblMode = new System.Windows.Forms.Label();
             this.gbAppointmentInfos = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDetails = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAddPrescription = new System.Windows.Forms.Button();
             this.dgvPrescriptionItems = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
@@ -43,15 +45,17 @@
             this.txtVisitDescription = new System.Windows.Forms.TextBox();
             this.cmbVisitType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDoctorDetails = new System.Windows.Forms.Button();
-            this.btnPickDoctor = new System.Windows.Forms.Button();
+            this.btnAppointmentDatails = new System.Windows.Forms.Button();
+            this.btnPickAppointment = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.lblAppointment = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblPatientID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbAppointmentInfos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrescriptionItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -59,8 +63,8 @@
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(788, 764);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(823, 780);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(116, 38);
             this.btnClose.TabIndex = 57;
@@ -72,13 +76,14 @@
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(919, 764);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(953, 780);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(116, 38);
             this.btnSave.TabIndex = 56;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblMode
             // 
@@ -94,7 +99,8 @@
             // 
             // gbAppointmentInfos
             // 
-            this.gbAppointmentInfos.Controls.Add(this.button1);
+            this.gbAppointmentInfos.Controls.Add(this.btnDetails);
+            this.gbAppointmentInfos.Controls.Add(this.btnUpdate);
             this.gbAppointmentInfos.Controls.Add(this.btnAddPrescription);
             this.gbAppointmentInfos.Controls.Add(this.dgvPrescriptionItems);
             this.gbAppointmentInfos.Controls.Add(this.label7);
@@ -105,8 +111,8 @@
             this.gbAppointmentInfos.Controls.Add(this.txtVisitDescription);
             this.gbAppointmentInfos.Controls.Add(this.cmbVisitType);
             this.gbAppointmentInfos.Controls.Add(this.label1);
-            this.gbAppointmentInfos.Controls.Add(this.btnDoctorDetails);
-            this.gbAppointmentInfos.Controls.Add(this.btnPickDoctor);
+            this.gbAppointmentInfos.Controls.Add(this.btnAppointmentDatails);
+            this.gbAppointmentInfos.Controls.Add(this.btnPickAppointment);
             this.gbAppointmentInfos.Controls.Add(this.label6);
             this.gbAppointmentInfos.Controls.Add(this.lblAppointment);
             this.gbAppointmentInfos.Controls.Add(this.label4);
@@ -114,23 +120,37 @@
             this.gbAppointmentInfos.ForeColor = System.Drawing.Color.DodgerBlue;
             this.gbAppointmentInfos.Location = new System.Drawing.Point(28, 118);
             this.gbAppointmentInfos.Name = "gbAppointmentInfos";
-            this.gbAppointmentInfos.Size = new System.Drawing.Size(1006, 630);
+            this.gbAppointmentInfos.Size = new System.Drawing.Size(1049, 644);
             this.gbAppointmentInfos.TabIndex = 58;
             this.gbAppointmentInfos.TabStop = false;
             // 
-            // button1
+            // btnDetails
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(879, 514);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 39);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "Details";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDetails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDetails.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDetails.ForeColor = System.Drawing.Color.Black;
+            this.btnDetails.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnDetails.Location = new System.Drawing.Point(925, 577);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.Size = new System.Drawing.Size(106, 39);
+            this.btnDetails.TabIndex = 34;
+            this.btnDetails.Text = "Details";
+            this.btnDetails.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnUpdate.Location = new System.Drawing.Point(925, 516);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(106, 39);
+            this.btnUpdate.TabIndex = 33;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // btnAddPrescription
             // 
@@ -138,24 +158,26 @@
             this.btnAddPrescription.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnAddPrescription.ForeColor = System.Drawing.Color.Black;
             this.btnAddPrescription.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAddPrescription.Location = new System.Drawing.Point(879, 460);
-            this.btnAddPrescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddPrescription.Location = new System.Drawing.Point(925, 460);
+            this.btnAddPrescription.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddPrescription.Name = "btnAddPrescription";
             this.btnAddPrescription.Size = new System.Drawing.Size(106, 39);
             this.btnAddPrescription.TabIndex = 32;
             this.btnAddPrescription.Text = "Add";
             this.btnAddPrescription.UseVisualStyleBackColor = true;
+            this.btnAddPrescription.Click += new System.EventHandler(this.btnAddPrescription_Click);
             // 
             // dgvPrescriptionItems
             // 
+            this.dgvPrescriptionItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPrescriptionItems.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrescriptionItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrescriptionItems.Location = new System.Drawing.Point(224, 460);
-            this.dgvPrescriptionItems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvPrescriptionItems.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPrescriptionItems.Name = "dgvPrescriptionItems";
             this.dgvPrescriptionItems.RowHeadersWidth = 51;
             this.dgvPrescriptionItems.RowTemplate.Height = 24;
-            this.dgvPrescriptionItems.Size = new System.Drawing.Size(635, 137);
+            this.dgvPrescriptionItems.Size = new System.Drawing.Size(687, 156);
             this.dgvPrescriptionItems.TabIndex = 31;
             // 
             // label7
@@ -173,10 +195,10 @@
             // 
             this.txtAdditionalNotes.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdditionalNotes.Location = new System.Drawing.Point(224, 359);
-            this.txtAdditionalNotes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAdditionalNotes.Margin = new System.Windows.Forms.Padding(2);
             this.txtAdditionalNotes.Multiline = true;
             this.txtAdditionalNotes.Name = "txtAdditionalNotes";
-            this.txtAdditionalNotes.Size = new System.Drawing.Size(762, 65);
+            this.txtAdditionalNotes.Size = new System.Drawing.Size(807, 65);
             this.txtAdditionalNotes.TabIndex = 29;
             // 
             // label5
@@ -184,18 +206,18 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(25, 359);
+            this.label5.Location = new System.Drawing.Point(16, 359);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(177, 25);
+            this.label5.Size = new System.Drawing.Size(186, 25);
             this.label5.TabIndex = 28;
-            this.label5.Text = "Visit Description:";
+            this.label5.Text = "Additional Notes:";
             // 
             // txtDiagnosis
             // 
             this.txtDiagnosis.Location = new System.Drawing.Point(224, 303);
-            this.txtDiagnosis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiagnosis.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiagnosis.Name = "txtDiagnosis";
-            this.txtDiagnosis.Size = new System.Drawing.Size(762, 27);
+            this.txtDiagnosis.Size = new System.Drawing.Size(807, 27);
             this.txtDiagnosis.TabIndex = 27;
             // 
             // label3
@@ -213,10 +235,10 @@
             // 
             this.txtVisitDescription.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVisitDescription.Location = new System.Drawing.Point(224, 188);
-            this.txtVisitDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtVisitDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtVisitDescription.Multiline = true;
             this.txtVisitDescription.Name = "txtVisitDescription";
-            this.txtVisitDescription.Size = new System.Drawing.Size(762, 84);
+            this.txtVisitDescription.Size = new System.Drawing.Size(807, 84);
             this.txtVisitDescription.TabIndex = 25;
             // 
             // cmbVisitType
@@ -232,10 +254,11 @@
             "Vaccination",
             "Lab Test"});
             this.cmbVisitType.Location = new System.Drawing.Point(224, 121);
-            this.cmbVisitType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbVisitType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbVisitType.Name = "cmbVisitType";
             this.cmbVisitType.Size = new System.Drawing.Size(284, 30);
             this.cmbVisitType.TabIndex = 24;
+            this.cmbVisitType.Validating += new System.ComponentModel.CancelEventHandler(this.cmbVisitType_Validating);
             // 
             // label1
             // 
@@ -248,33 +271,34 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "Visit Description:";
             // 
-            // btnDoctorDetails
+            // btnAppointmentDatails
             // 
-            this.btnDoctorDetails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDoctorDetails.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.btnDoctorDetails.ForeColor = System.Drawing.Color.Black;
-            this.btnDoctorDetails.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDoctorDetails.Location = new System.Drawing.Point(316, 47);
-            this.btnDoctorDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnDoctorDetails.Name = "btnDoctorDetails";
-            this.btnDoctorDetails.Size = new System.Drawing.Size(70, 39);
-            this.btnDoctorDetails.TabIndex = 2;
-            this.btnDoctorDetails.Text = "Details";
-            this.btnDoctorDetails.UseVisualStyleBackColor = true;
+            this.btnAppointmentDatails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAppointmentDatails.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAppointmentDatails.ForeColor = System.Drawing.Color.Black;
+            this.btnAppointmentDatails.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnAppointmentDatails.Location = new System.Drawing.Point(316, 47);
+            this.btnAppointmentDatails.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAppointmentDatails.Name = "btnAppointmentDatails";
+            this.btnAppointmentDatails.Size = new System.Drawing.Size(70, 39);
+            this.btnAppointmentDatails.TabIndex = 2;
+            this.btnAppointmentDatails.Text = "Details";
+            this.btnAppointmentDatails.UseVisualStyleBackColor = true;
+            this.btnAppointmentDatails.Click += new System.EventHandler(this.btnAppointmentDatails_Click);
             // 
-            // btnPickDoctor
+            // btnPickAppointment
             // 
-            this.btnPickDoctor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnPickDoctor.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.btnPickDoctor.ForeColor = System.Drawing.Color.Black;
-            this.btnPickDoctor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnPickDoctor.Location = new System.Drawing.Point(224, 47);
-            this.btnPickDoctor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnPickDoctor.Name = "btnPickDoctor";
-            this.btnPickDoctor.Size = new System.Drawing.Size(69, 39);
-            this.btnPickDoctor.TabIndex = 1;
-            this.btnPickDoctor.Text = "Pick";
-            this.btnPickDoctor.UseVisualStyleBackColor = true;
+            this.btnPickAppointment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnPickAppointment.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnPickAppointment.ForeColor = System.Drawing.Color.Black;
+            this.btnPickAppointment.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnPickAppointment.Location = new System.Drawing.Point(224, 47);
+            this.btnPickAppointment.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPickAppointment.Name = "btnPickAppointment";
+            this.btnPickAppointment.Size = new System.Drawing.Size(69, 39);
+            this.btnPickAppointment.TabIndex = 1;
+            this.btnPickAppointment.Text = "Pick";
+            this.btnPickAppointment.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -333,12 +357,16 @@
             this.label2.TabIndex = 52;
             this.label2.Text = "Medical Record ID:";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAddEditMedicalRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1066, 818);
+            this.ClientSize = new System.Drawing.Size(1102, 840);
             this.Controls.Add(this.gbAppointmentInfos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblPatientID);
@@ -346,7 +374,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblMode);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAddEditMedicalRecord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddEditMedicalRecord";
@@ -354,6 +382,7 @@
             this.gbAppointmentInfos.ResumeLayout(false);
             this.gbAppointmentInfos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrescriptionItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,8 +394,8 @@
         private System.Windows.Forms.Label lblMode;
         private System.Windows.Forms.GroupBox gbAppointmentInfos;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnDoctorDetails;
-        private System.Windows.Forms.Button btnPickDoctor;
+        private System.Windows.Forms.Button btnAppointmentDatails;
+        private System.Windows.Forms.Button btnPickAppointment;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblAppointment;
         private System.Windows.Forms.Label label4;
@@ -381,6 +410,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAddPrescription;
         private System.Windows.Forms.DataGridView dgvPrescriptionItems;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnDetails;
     }
 }

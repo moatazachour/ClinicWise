@@ -1,5 +1,10 @@
-﻿using ClinicWise.Contracts.PrescriptionItems;
+﻿using ClinicWise.Contracts.Medicaments;
+using ClinicWise.Contracts.PrescriptionItems;
+using ClinicWise.DataAccess;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ClinicWise.Business
 {
@@ -11,6 +16,14 @@ namespace ClinicWise.Business
         public int ItemID { get; set; }
         public int MedicalRecordID { get; set; }
         public int MedicamentID { get; set; }
+        public MedicamentDTO Medicament
+        {
+            get
+            {
+                return clsMedicament.Find(MedicamentID);
+            }
+        }
+
         public stDosageInfo DosageInfo { get; set; }
 
         public clsPrescriptionItem()
@@ -45,12 +58,14 @@ namespace ClinicWise.Business
 
         private bool _Update()
         {
-            throw new NotImplementedException();
-        }    }
+            return clsPrescriptionItemData.Update(ItemID, MedicalRecordID, MedicamentID, DosageInfo);
+        }
 
         private bool _AddNew()
         {
-            throw new NotImplementedException();
+            ItemID = clsPrescriptionItemData.AddNew(MedicalRecordID, MedicamentID, DosageInfo);
+
+            return ItemID != -1;
         }
 
         public bool Save()
@@ -73,5 +88,20 @@ namespace ClinicWise.Business
             }
         }
 
+        public static bool SaveItems(List<clsPrescriptionItem> medicalRecordNewPrescriptions, int medicalRecordID)
+        {
+            List<PrescriptionItemsCreateDTO> prescriptionItemDTOs = medicalRecordNewPrescriptions
+                                                                .Select(prescription => new PrescriptionItemsCreateDTO(
+                                                                    medicalRecordID,
+                                                                    prescription.MedicamentID,
+                                                                    prescription.DosageInfo)).ToList();
+
+            bool isPrescriptionsAddedSuccessfully = clsPrescriptionItemData.AddNewItems(prescriptionItemDTOs);
+
+            if (isPrescriptionsAddedSuccessfully)
+                medicalRecordNewPrescriptions.ForEach(prescriptionItem => prescriptionItem.Mode = enMode.Update);
+
+            return isPrescriptionsAddedSuccessfully;
+        }
     }
 }

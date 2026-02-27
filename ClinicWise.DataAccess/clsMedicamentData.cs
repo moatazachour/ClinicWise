@@ -78,7 +78,41 @@ namespace ClinicWise.DataAccess
             }
         }
 
-        public static async Task<MedicamentDTO> GetByID(int medicamentID)
+        public static MedicamentDTO GetByID(int medicamentID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Medicament_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("MedicamentID", SqlDbType.Int).Value = medicamentID;
+
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new MedicamentDTO(
+                                (int)reader["MedicamentID"],
+                                (string)reader["Name"],
+                                reader["Brand"] as string,
+                                (enDosageForm)(byte)reader["DosageForm"]);
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
+        public static async Task<MedicamentDTO> GetByIDAsync(int medicamentID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Medicament_GetByID", connection))
