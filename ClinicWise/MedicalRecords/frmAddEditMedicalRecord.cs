@@ -63,7 +63,7 @@ namespace ClinicWise.MedicalRecords
         public async Task LoadByAppointmentIDAsync(int appointmentID)
         {
             _AppointmentID = appointmentID;
-            MedicalRecordDTO medicalRecord = await clsMedicalRecord.FindByAppointmentID(_AppointmentID);
+            MedicalRecordDTO medicalRecord = await clsMedicalRecord.FindByAppointmentIDAsync(_AppointmentID);
 
             AppointmentDTO appointment = await clsAppointment.FindAsync(appointmentID);
             PatientDTO patient = await clsPatient.FindAsync(appointment.PatientID);

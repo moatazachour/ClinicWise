@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Contracts.MedicalRecords;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -45,6 +46,43 @@ namespace ClinicWise.DataAccess
                     throw;
                 }
             }
+        }
+
+        public static async Task<List<MedicalRecordViewDTO>> GetAllAsync()
+        {
+            List<MedicalRecordViewDTO> medicalRecords = new List<MedicalRecordViewDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("MedicalRecord_GetAll", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            medicalRecords.Add(new MedicalRecordViewDTO(
+                                (int)reader["RecordID"],
+                                (int)reader["AppointmentID"],
+                                (string)reader["VisitTypeLabel"],
+                                (string)reader["DescriptionOfVisit"],
+                                (string)reader["Diagnosis"]
+                            ));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return medicalRecords;
         }
 
         public static async Task<MedicalRecordDTO> GetByAppointmentID(int appointmentID)

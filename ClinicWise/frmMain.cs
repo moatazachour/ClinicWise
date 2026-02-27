@@ -2,6 +2,7 @@
 using ClinicWise.Doctors;
 using ClinicWise.Global_Classes;
 using ClinicWise.Login;
+using ClinicWise.MedicalRecords;
 using ClinicWise.Patients;
 using ClinicWise.Pharmacy;
 using ClinicWise.Users;
@@ -73,6 +74,12 @@ namespace ClinicWise
         private void pharmacyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManagePharmacy frm = new frmManagePharmacy();
+            frm.ShowDialog();
+        }
+
+        private void medicalRecordsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageMedicalRecord frm = new frmManageMedicalRecord();
             frm.ShowDialog();
         }
     }

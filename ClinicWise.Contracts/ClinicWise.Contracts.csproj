@@ -49,7 +49,9 @@
     <Compile Include="Doctors\DoctorDTO.cs" />
     <Compile Include="Guardians\GuardianDTO.cs" />
     <Compile Include="Guardians\GuardianRelationshipDTO.cs" />
+    <Compile Include="MedicalRecords\enVisitType.cs" />
     <Compile Include="MedicalRecords\MedicalRecordDTO.cs" />
+    <Compile Include="MedicalRecords\MedicalRecordViewDTO.cs" />
     <Compile Include="Medicaments\enDosageForm.cs" />
     <Compile Include="Medicaments\MedicamentDTO.cs" />
     <Compile Include="Patients\PatientDisplayDTO.cs" />
