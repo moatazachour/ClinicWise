@@ -10,11 +10,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ClinicWise.Business.clsAppointment;
+using static ClinicWise.MedicalRecords.frmAddEditMedicalRecord;
 
 namespace ClinicWise.Appointments
 {
     public partial class frmManageAppointments : Form
     {
+        public Action<AppointmentDisplayDTO> AppointmentDataBack;
+
+        public enum enAppointmentModeType { Normal, Picker }
+        public enAppointmentModeType ModeType;
+
         private enum enLoadMode { All, Patient };
         private enLoadMode _Mode = enLoadMode.All;
         private int? _PatientID = null;
@@ -23,9 +29,10 @@ namespace ClinicWise.Appointments
         private List<AppointmentDisplayDTO> _AppointmentsFilter;
 
 
-        public frmManageAppointments()
+        public frmManageAppointments(enAppointmentModeType modeType = enAppointmentModeType.Normal)
         {
             InitializeComponent();
+            ModeType = modeType;
         }
 
         private async Task _LoadDoctors()
@@ -72,6 +79,8 @@ namespace ClinicWise.Appointments
                 await _RefreshData();
             else
                 await _LoadPatientAppointments();
+
+            pickToolStripMenuItem.Enabled = ModeType == enAppointmentModeType.Picker;
         }
 
         public void LoadForPatient(int patientID)
@@ -237,11 +246,6 @@ namespace ClinicWise.Appointments
 
             _AppointmentsList = await clsAppointment.GetByPatientAsync(patientID);
 
-            if (dgvManageAppointments.Columns["DoctorID"] != null)
-                dgvManageAppointments.Columns["DoctorID"].Visible = false;
-
-            if (dgvManageAppointments.Columns["PatientID"] != null)
-                dgvManageAppointments.Columns["PatientID"].Visible = false;
 
             dgvManageAppointments.DataSource = _AppointmentsList;
 
@@ -438,9 +442,17 @@ namespace ClinicWise.Appointments
                 }
             }
 
-            frmAddEditMedicalRecord frm = new frmAddEditMedicalRecord(-1);
-            await frm.LoadByAppointmentIDAsync(currentAppointmentID);
+            frmAddEditMedicalRecord frm = new frmAddEditMedicalRecord(-1, currentAppointmentID, enMedicalRecordLoadMode.ByAppointment);
             frm.ShowDialog();
+        }
+
+        private async void pickToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int selectedAppointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
+            AppointmentDisplayDTO appointment = await clsAppointment.FindDetailedAsync(selectedAppointmentID);
+
+            AppointmentDataBack?.Invoke(appointment);
+            this.Close();
         }
     }
 }

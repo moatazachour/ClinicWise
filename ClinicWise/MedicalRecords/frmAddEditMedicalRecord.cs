@@ -4,6 +4,7 @@ using ClinicWise.Contracts.Appointments;
 using ClinicWise.Contracts.MedicalRecords;
 using ClinicWise.Contracts.Medicaments;
 using ClinicWise.Contracts.Patients;
+using ClinicWise.Contracts.PrescriptionItems;
 using ClinicWise.Global_Classes;
 using ClinicWise.PrescriptionItems;
 using System;
@@ -18,21 +19,29 @@ namespace ClinicWise.MedicalRecords
 {
     public partial class frmAddEditMedicalRecord : Form
     {
+        public enum enMedicalRecordLoadMode { ByMedicalRecord, ByAppointment }
+        private enMedicalRecordLoadMode _LoadMode;
+
         private enum enMode { AddNew, Update }
         private enMode _Mode = enMode.AddNew;
 
-        private int _AppointmentID = -1;
+        private int _AppointmentID;
         private int _MedicalRecordID;
         private List<clsPrescriptionItem> _MedicalRecordNewPrescriptions;
         private List<clsPrescriptionItem> _MedicalRecordAllPrescriptions;
 
         private clsMedicalRecord _MedicalRecord;
 
-        public frmAddEditMedicalRecord(int medicalRecordID)
+        public frmAddEditMedicalRecord(
+            int medicalRecordID, 
+            int appointmentID = -1, 
+            enMedicalRecordLoadMode loadMode = enMedicalRecordLoadMode.ByMedicalRecord)
         {
             _MedicalRecordID = medicalRecordID;
+            _AppointmentID = appointmentID;
 
             _Mode = (_MedicalRecordID == -1) ? enMode.AddNew : enMode.Update;
+            _LoadMode = loadMode;
 
             InitializeComponent();
         }
@@ -57,10 +66,11 @@ namespace ClinicWise.MedicalRecords
             txtVisitDescription.Text = null;
             txtDiagnosis.Text = null;
             txtAdditionalNotes.Text = null;
+            btnAppointmentDatails.Enabled = _AppointmentID != -1;
 
         }
 
-        public async Task LoadByAppointmentIDAsync(int appointmentID)
+        public async Task _LoadByAppointmentIDAsync(int appointmentID)
         {
             _AppointmentID = appointmentID;
             MedicalRecordDTO medicalRecord = await clsMedicalRecord.FindByAppointmentIDAsync(_AppointmentID);
@@ -73,6 +83,7 @@ namespace ClinicWise.MedicalRecords
             if (medicalRecord != null)
             {
                 _MedicalRecordID = medicalRecord.RecordID;
+                lblMedicalRecordID.Text = _MedicalRecordID.ToString();
                 _MedicalRecord = new clsMedicalRecord(medicalRecord);
                 _Mode = enMode.Update;
 
@@ -104,7 +115,12 @@ namespace ClinicWise.MedicalRecords
                 txtDiagnosis.Text = _MedicalRecord.Diagnosis;
                 txtAdditionalNotes.Text = _MedicalRecord.AdditionalNotes;
 
-                // NOTE: dgvPrescriptions should be loaded 
+                List<PrescriptionItemDisplayDTO> prescriptionItems = await clsPrescriptionItem.GetAllByMedicalRecordAsync(_MedicalRecordID);
+                _MedicalRecordAllPrescriptions = prescriptionItems.Select(p => new clsPrescriptionItem(p.ItemID,
+                                                                                                        p.MedicalRecordID,
+                                                                                                        p.MedicamentID,
+                                                                                                        p.DosageInfo)).ToList();
+                dgvPrescriptionItems.DataSource = _GetCleanPrescriptionView();
             }
         }
 
@@ -151,13 +167,24 @@ namespace ClinicWise.MedicalRecords
                 txtDiagnosis.Text = _MedicalRecord.Diagnosis;
                 txtAdditionalNotes.Text = _MedicalRecord.AdditionalNotes;
 
-                // NOTE: dgvPrescriptions should be loaded
+                List<PrescriptionItemDisplayDTO> prescriptionItems = await clsPrescriptionItem.GetAllByMedicalRecordAsync(_MedicalRecordID);
+                _MedicalRecordAllPrescriptions = prescriptionItems.Select(p => new clsPrescriptionItem(p.ItemID,
+                                                                                                        p.MedicalRecordID,
+                                                                                                        p.MedicamentID,
+                                                                                                        p.DosageInfo)).ToList();
+                dgvPrescriptionItems.DataSource = _GetCleanPrescriptionView();
             }
         }
 
         private async void frmAddEditMedicalRecord_Load(object sender, System.EventArgs e)
         {
             _ResetInformations();
+
+            if (_LoadMode == enMedicalRecordLoadMode.ByAppointment)
+            {
+                await _LoadByAppointmentIDAsync(_AppointmentID);
+                return;
+            }
 
             if (_Mode == enMode.Update)
                 await _LoadDataAsync();
@@ -290,6 +317,20 @@ namespace ClinicWise.MedicalRecords
         {
             frmAppointmentDetails frm = new frmAppointmentDetails(_AppointmentID);
             frm.ShowDialog();
+        }
+
+        private void btnPickAppointment_Click(object sender, EventArgs e)
+        {
+            frmManageAppointments frm = new frmManageAppointments(frmManageAppointments.enAppointmentModeType.Picker);
+            frm.AppointmentDataBack += _AppointmentPicked;
+            frm.ShowDialog();
+        }
+
+        private void _AppointmentPicked(AppointmentDisplayDTO appointment)
+        {
+            _AppointmentID = appointment.AppointmentID;
+            lblAppointment.Text = $"{_AppointmentID} - {appointment.PatientName}";
+            btnAppointmentDatails.Enabled = true;
         }
     }
 }

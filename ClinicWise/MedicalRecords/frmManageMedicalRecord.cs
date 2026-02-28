@@ -112,8 +112,6 @@ namespace ClinicWise.MedicalRecords
         {
             switch (cbVisitTypes.Text)
             {
-                //Consultation = 1, FollowUp = 2, Emergency = 3,
-                //RoutineCheck = 4, Vaccination = 5, LabTest = 6
                 case "Consultation":
                     _MedicalRecordsFilteredList = _MedicalRecordsList
                             .Where(mr => mr.VisitType.Equals("Consultation")).ToList();
@@ -151,6 +149,25 @@ namespace ClinicWise.MedicalRecords
 
             dgvManageMedicalRecords.DataSource = _MedicalRecordsFilteredList;
             lblRecordCount.Text = dgvManageMedicalRecords.RowCount.ToString();
+        }
+
+        private async void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditMedicalRecord frm = new frmAddEditMedicalRecord(-1);
+            frm.ShowDialog();
+
+            await _LoadDataAsync();
+
+        }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int currentMedicalRecordID = (int)dgvManageMedicalRecords.CurrentRow.Cells[0].Value;
+
+            frmAddEditMedicalRecord frm = new frmAddEditMedicalRecord(currentMedicalRecordID);
+            frm.ShowDialog();
+
+            await _LoadDataAsync();
         }
     }
 }

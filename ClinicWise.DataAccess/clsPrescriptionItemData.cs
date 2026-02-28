@@ -1,8 +1,10 @@
-﻿using ClinicWise.Contracts.PrescriptionItems;
+﻿using ClinicWise.Contracts.Medicaments;
+using ClinicWise.Contracts.PrescriptionItems;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace ClinicWise.DataAccess
 {
@@ -88,6 +90,52 @@ namespace ClinicWise.DataAccess
                     throw;
                 }
             }
+        }
+
+        public static async Task<List<PrescriptionItemDisplayDTO>> GetAllByMedicalRecordAsync(int medicalRecordID)
+        {
+            List<PrescriptionItemDisplayDTO> prescriptionItems = new List<PrescriptionItemDisplayDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("PrescriptionItem_GetAllByMedicalRecord", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@MedicalRecordID", SqlDbType.Int).Value = medicalRecordID;
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            prescriptionItems.Add(new PrescriptionItemDisplayDTO(
+                                (int)reader["ItemID"],
+                                (int)reader["RecordID"],
+                                (int)reader["MedicamentID"],
+                                (string)reader["Brand"],
+                                (string)reader["Name"],
+                                (enDosageForm)(byte)reader["DosageForm"],
+                                new stDosageInfo
+                                {
+                                    Dosage = (string)reader["Dosage"],
+                                    Frequency = (string)reader["Frequency"],
+                                    Duration = stDurationPeriod.FromDatabase((string)reader["Duration"]),
+                                    SpecialInstruction = (string)reader["SpecialInstruction"],
+                                    IsForever = (bool)reader["IsForever"]
+                                }
+                            ));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return prescriptionItems;
         }
 
         public static bool Update(int itemID, int medicalRecordID, int medicamentID, stDosageInfo dosageInfo)

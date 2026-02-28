@@ -41,7 +41,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsManageAppointments = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbManageMedicalRecord = new System.Windows.Forms.ComboBox();
             this.dgvManageMedicalRecords = new System.Windows.Forms.DataGridView();
@@ -110,18 +110,19 @@
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             // 
             // cmsManageAppointments
@@ -131,22 +132,23 @@
             this.cmsManageAppointments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showDetailsToolStripMenuItem,
             this.toolStripSeparator1,
-            this.toolStripMenuItem1,
+            this.addToolStripMenuItem,
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsManageAppointments.Name = "cmsManageDoctors";
-            this.cmsManageAppointments.Size = new System.Drawing.Size(179, 114);
+            this.cmsManageAppointments.Size = new System.Drawing.Size(181, 136);
             // 
-            // toolStripMenuItem1
+            // addToolStripMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(178, 26);
-            this.toolStripMenuItem1.Text = "Add";
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // cbManageMedicalRecord
@@ -290,7 +292,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddMedicalRecord;
         private System.Windows.Forms.ComboBox cbVisitTypes;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

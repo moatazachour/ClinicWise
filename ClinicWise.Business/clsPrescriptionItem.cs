@@ -103,5 +103,10 @@ namespace ClinicWise.Business
 
             return isPrescriptionsAddedSuccessfully;
         }
+
+        public static async Task<List<PrescriptionItemDisplayDTO>> GetAllByMedicalRecordAsync(int medicalRecordID)
+        {
+            return await clsPrescriptionItemData.GetAllByMedicalRecordAsync(medicalRecordID);
+        }
     }
 }

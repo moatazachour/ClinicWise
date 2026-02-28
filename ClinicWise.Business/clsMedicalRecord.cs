@@ -113,7 +113,7 @@ namespace ClinicWise.Business
 
         public static async Task<MedicalRecordDTO> FindAsync(int medicalRecordID)
         {
-            throw new NotImplementedException();
+            return await clsMedicalRecordData.GetByIDAsync(medicalRecordID);
         }
     }
 }

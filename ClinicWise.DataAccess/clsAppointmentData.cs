@@ -500,7 +500,9 @@ namespace ClinicWise.DataAccess
                             appointments.Add(
                                 new AppointmentDisplayDTO(
                                     (int)reader["AppointmentID"],
+                                    (int)reader["DoctorID"],
                                     (string)reader["DoctorFullLabel"],
+                                    (int)reader["PatientID"],
                                     (string)reader["PatientName"],
                                     reader["Date"] as DateTime?,
                                     (string)reader["StatusCaption"],

@@ -95,6 +95,7 @@
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetAll.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetByAppointmentID.sql" />
+    <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetByID.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Update.sql" />
     <Content Include="StoredProcedures\Medicament\Medicament_AddNew.sql" />
     <Content Include="StoredProcedures\Medicament\Medicament_GetAll.sql" />
@@ -111,6 +112,7 @@
     <Content Include="StoredProcedures\Persons\Person_IsExistByNationalNo.sql" />
     <Content Include="StoredProcedures\Persons\Person_Update.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_AddNew.sql" />
+    <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_GetAllByMedicalRecord.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_Update.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetAll.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetByID.sql" />
@@ -136,6 +138,7 @@
     <Content Include="Views\GetAllPatients_View.sql" />
     <Content Include="Views\GetAllPersons_View.sql" />
     <Content Include="Views\GetAllUsers_View.sql" />
+    <Content Include="Views\PrescriptionItem_GetAll.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

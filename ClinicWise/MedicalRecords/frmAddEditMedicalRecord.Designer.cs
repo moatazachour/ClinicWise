@@ -50,7 +50,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblAppointment = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblPatientID = new System.Windows.Forms.Label();
+            this.lblMedicalRecordID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbAppointmentInfos.SuspendLayout();
@@ -299,6 +299,7 @@
             this.btnPickAppointment.TabIndex = 1;
             this.btnPickAppointment.Text = "Pick";
             this.btnPickAppointment.UseVisualStyleBackColor = true;
+            this.btnPickAppointment.Click += new System.EventHandler(this.btnPickAppointment_Click);
             // 
             // label6
             // 
@@ -335,16 +336,16 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Appointment:";
             // 
-            // lblPatientID
+            // lblMedicalRecordID
             // 
-            this.lblPatientID.AutoSize = true;
-            this.lblPatientID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatientID.Location = new System.Drawing.Point(176, 84);
-            this.lblPatientID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPatientID.Name = "lblPatientID";
-            this.lblPatientID.Size = new System.Drawing.Size(37, 18);
-            this.lblPatientID.TabIndex = 53;
-            this.lblPatientID.Text = "N/A";
+            this.lblMedicalRecordID.AutoSize = true;
+            this.lblMedicalRecordID.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMedicalRecordID.Location = new System.Drawing.Point(176, 84);
+            this.lblMedicalRecordID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMedicalRecordID.Name = "lblMedicalRecordID";
+            this.lblMedicalRecordID.Size = new System.Drawing.Size(37, 18);
+            this.lblMedicalRecordID.TabIndex = 53;
+            this.lblMedicalRecordID.Text = "N/A";
             // 
             // label2
             // 
@@ -369,7 +370,7 @@
             this.ClientSize = new System.Drawing.Size(1102, 840);
             this.Controls.Add(this.gbAppointmentInfos);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblPatientID);
+            this.Controls.Add(this.lblMedicalRecordID);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblMode);
@@ -399,7 +400,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblAppointment;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblPatientID;
+        private System.Windows.Forms.Label lblMedicalRecordID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtVisitDescription;
         private System.Windows.Forms.ComboBox cmbVisitType;

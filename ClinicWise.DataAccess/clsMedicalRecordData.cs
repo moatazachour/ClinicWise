@@ -124,6 +124,45 @@ namespace ClinicWise.DataAccess
             }
         }
 
+        public static async Task<MedicalRecordDTO> GetByIDAsync(int medicalRecordID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("MedicalRecord_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@RecordID", SqlDbType.Int).Value = medicalRecordID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new MedicalRecordDTO(
+                                medicalRecordID,
+                                (int)reader["AppointmentID"],
+                                (byte)reader["VisitType"],
+                                (string)reader["DescriptionOfVisit"],
+                                (string)reader["Diagnosis"],
+                                (string)reader["AdditionalNotes"]
+                            );
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
         public static bool Update(
             int recordID, 
             byte visitType, 
