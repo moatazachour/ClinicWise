@@ -138,6 +138,48 @@ namespace ClinicWise.DataAccess
             return prescriptionItems;
         }
 
+        public static async Task<PrescriptionItemDTO> GetByIDAsync(int prescriptionItemID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("PrescriptionItem_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@PrescriptionItemID", SqlDbType.Int).Value = prescriptionItemID;
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new PrescriptionItemDTO
+                            {
+                                ItemID = prescriptionItemID,
+                                MedicalRecordID = (int)reader["RecordID"],
+                                MedicamentID = (int)reader["MedicamentID"],
+                                DosageInfo = new stDosageInfo
+                                {
+                                    Dosage = (string)reader["Dosage"],
+                                    Frequency = (string)reader["Frequency"],
+                                    Duration = stDurationPeriod.FromDatabase((string)reader["Duration"]),
+                                    SpecialInstruction = (string)reader["SpecialInstruction"],
+                                    IsForever = (bool)reader["IsForever"]
+                                }
+                            };
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
         public static bool Update(int itemID, int medicalRecordID, int medicamentID, stDosageInfo dosageInfo)
         {
             int rowsAffected = 0;
@@ -153,12 +195,7 @@ namespace ClinicWise.DataAccess
                 command.Parameters.Add("@Dosage", SqlDbType.VarChar).Value = dosageInfo.Dosage;
                 command.Parameters.Add("@Frequency", SqlDbType.VarChar).Value = dosageInfo.Frequency;
                 command.Parameters.Add("@IsForever", SqlDbType.Bit).Value = dosageInfo.IsForever;
-                
-                if (dosageInfo.IsForever)
-                    command.Parameters.Add("@Duration", SqlDbType.VarChar).Value = DBNull.Value;
-                else
-                    command.Parameters.Add("@Duration", SqlDbType.VarChar).Value = dosageInfo.Duration.ToStorageString();
-                
+                command.Parameters.Add("@Duration", SqlDbType.VarChar).Value = dosageInfo.Duration.ToStorageString();
                 command.Parameters.Add("@SpecialInstruction", SqlDbType.VarChar).Value = dosageInfo.SpecialInstruction;
 
                 connection.Open();

@@ -63,7 +63,7 @@
             this.lblMode.AutoSize = true;
             this.lblMode.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblMode.Location = new System.Drawing.Point(254, 25);
+            this.lblMode.Location = new System.Drawing.Point(268, 25);
             this.lblMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMode.Name = "lblMode";
             this.lblMode.Size = new System.Drawing.Size(400, 37);
@@ -97,7 +97,7 @@
             this.gbAppointmentInfos.ForeColor = System.Drawing.Color.DodgerBlue;
             this.gbAppointmentInfos.Location = new System.Drawing.Point(19, 84);
             this.gbAppointmentInfos.Name = "gbAppointmentInfos";
-            this.gbAppointmentInfos.Size = new System.Drawing.Size(838, 532);
+            this.gbAppointmentInfos.Size = new System.Drawing.Size(893, 532);
             this.gbAppointmentInfos.TabIndex = 59;
             this.gbAppointmentInfos.TabStop = false;
             // 
@@ -122,7 +122,7 @@
             this.chkIsForever.Margin = new System.Windows.Forms.Padding(2);
             this.chkIsForever.Name = "chkIsForever";
             this.chkIsForever.Size = new System.Drawing.Size(15, 14);
-            this.chkIsForever.TabIndex = 45;
+            this.chkIsForever.TabIndex = 42;
             this.chkIsForever.UseVisualStyleBackColor = true;
             this.chkIsForever.CheckedChanged += new System.EventHandler(this.chkIsForever_CheckedChanged);
             // 
@@ -156,7 +156,7 @@
             this.nudMonths.Margin = new System.Windows.Forms.Padding(2);
             this.nudMonths.Name = "nudMonths";
             this.nudMonths.Size = new System.Drawing.Size(81, 30);
-            this.nudMonths.TabIndex = 42;
+            this.nudMonths.TabIndex = 41;
             // 
             // label8
             // 
@@ -260,7 +260,7 @@
             this.txtSpecialInstructions.Multiline = true;
             this.txtSpecialInstructions.Name = "txtSpecialInstructions";
             this.txtSpecialInstructions.Size = new System.Drawing.Size(562, 88);
-            this.txtSpecialInstructions.TabIndex = 29;
+            this.txtSpecialInstructions.TabIndex = 43;
             // 
             // label5
             // 
@@ -280,7 +280,7 @@
             this.txtFrequency.Margin = new System.Windows.Forms.Padding(2);
             this.txtFrequency.Name = "txtFrequency";
             this.txtFrequency.Size = new System.Drawing.Size(375, 27);
-            this.txtFrequency.TabIndex = 27;
+            this.txtFrequency.TabIndex = 39;
             // 
             // label3
             // 
@@ -344,11 +344,11 @@
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(575, 633);
+            this.btnClose.Location = new System.Drawing.Point(663, 633);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(116, 38);
-            this.btnClose.TabIndex = 61;
+            this.btnClose.TabIndex = 45;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -358,11 +358,11 @@
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(705, 633);
+            this.btnAdd.Location = new System.Drawing.Point(796, 633);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(116, 38);
-            this.btnAdd.TabIndex = 60;
+            this.btnAdd.TabIndex = 44;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -372,11 +372,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(884, 700);
+            this.ClientSize = new System.Drawing.Size(936, 693);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.gbAppointmentInfos);
             this.Controls.Add(this.lblMode);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAddEditPrescriptionItem";
             this.Text = " Prescription Item";

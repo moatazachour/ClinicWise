@@ -26,6 +26,9 @@ namespace ClinicWise.Business
 
         public stDosageInfo DosageInfo { get; set; }
 
+        public bool IsNewlyAdded;
+        public bool ToUpdateANewlyAdded = false;
+
         public clsPrescriptionItem()
         {
             ItemID = -1;
@@ -52,6 +55,16 @@ namespace ClinicWise.Business
             MedicalRecordID = medicalRecordID;
             MedicamentID = medicamentID;
             DosageInfo = dosageInfo;
+
+            Mode = enMode.Update;
+        }
+
+        public clsPrescriptionItem(PrescriptionItemDTO prescriptionItemDTO)
+        {
+            ItemID= prescriptionItemDTO.ItemID;
+            MedicalRecordID = prescriptionItemDTO.MedicalRecordID;
+            MedicamentID = prescriptionItemDTO.MedicamentID;
+            DosageInfo = prescriptionItemDTO.DosageInfo;
 
             Mode = enMode.Update;
         }
@@ -90,6 +103,9 @@ namespace ClinicWise.Business
 
         public static bool SaveItems(List<clsPrescriptionItem> medicalRecordNewPrescriptions, int medicalRecordID)
         {
+            if (medicalRecordNewPrescriptions.Count == 0)
+                return true;
+
             List<PrescriptionItemsCreateDTO> prescriptionItemDTOs = medicalRecordNewPrescriptions
                                                                 .Select(prescription => new PrescriptionItemsCreateDTO(
                                                                     medicalRecordID,
@@ -107,6 +123,16 @@ namespace ClinicWise.Business
         public static async Task<List<PrescriptionItemDisplayDTO>> GetAllByMedicalRecordAsync(int medicalRecordID)
         {
             return await clsPrescriptionItemData.GetAllByMedicalRecordAsync(medicalRecordID);
+        }
+
+        public static async Task<PrescriptionItemDTO> FindAsync(int prescriptionItemID)
+        {
+            return await clsPrescriptionItemData.GetByIDAsync(prescriptionItemID);
+        }
+
+        public static bool Delete(int itemID)
+        {
+            throw new NotImplementedException();
         }
     }
 }

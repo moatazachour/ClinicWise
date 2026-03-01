@@ -34,7 +34,6 @@
             this.lblMode = new System.Windows.Forms.Label();
             this.gbAppointmentInfos = new System.Windows.Forms.GroupBox();
             this.btnDetails = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAddPrescription = new System.Windows.Forms.Button();
             this.dgvPrescriptionItems = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,9 +52,16 @@
             this.lblMedicalRecordID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmsManagePrescriptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbAppointmentInfos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrescriptionItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.cmsManagePrescriptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -100,7 +106,6 @@
             // gbAppointmentInfos
             // 
             this.gbAppointmentInfos.Controls.Add(this.btnDetails);
-            this.gbAppointmentInfos.Controls.Add(this.btnUpdate);
             this.gbAppointmentInfos.Controls.Add(this.btnAddPrescription);
             this.gbAppointmentInfos.Controls.Add(this.dgvPrescriptionItems);
             this.gbAppointmentInfos.Controls.Add(this.label7);
@@ -130,27 +135,13 @@
             this.btnDetails.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnDetails.ForeColor = System.Drawing.Color.Black;
             this.btnDetails.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDetails.Location = new System.Drawing.Point(925, 577);
+            this.btnDetails.Location = new System.Drawing.Point(925, 513);
             this.btnDetails.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(106, 39);
             this.btnDetails.TabIndex = 34;
             this.btnDetails.Text = "Details";
             this.btnDetails.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnUpdate.Location = new System.Drawing.Point(925, 516);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(106, 39);
-            this.btnUpdate.TabIndex = 33;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // btnAddPrescription
             // 
@@ -172,11 +163,14 @@
             this.dgvPrescriptionItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvPrescriptionItems.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPrescriptionItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrescriptionItems.ContextMenuStrip = this.cmsManagePrescriptions;
+            this.dgvPrescriptionItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPrescriptionItems.Location = new System.Drawing.Point(224, 460);
             this.dgvPrescriptionItems.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPrescriptionItems.Name = "dgvPrescriptionItems";
             this.dgvPrescriptionItems.RowHeadersWidth = 51;
             this.dgvPrescriptionItems.RowTemplate.Height = 24;
+            this.dgvPrescriptionItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrescriptionItems.Size = new System.Drawing.Size(687, 156);
             this.dgvPrescriptionItems.TabIndex = 31;
             // 
@@ -362,6 +356,51 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // cmsManagePrescriptions
+            // 
+            this.cmsManagePrescriptions.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsManagePrescriptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManagePrescriptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.addToolStripMenuItem,
+            this.updateToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.cmsManagePrescriptions.Name = "cmsManageDoctors";
+            this.cmsManagePrescriptions.Size = new System.Drawing.Size(179, 114);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.showDetailsToolStripMenuItem.Text = "Show Details";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // frmAddEditMedicalRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,6 +423,7 @@
             this.gbAppointmentInfos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrescriptionItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.cmsManagePrescriptions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,8 +451,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnAddPrescription;
         private System.Windows.Forms.DataGridView dgvPrescriptionItems;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnDetails;
+        private System.Windows.Forms.ContextMenuStrip cmsManagePrescriptions;
+        private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

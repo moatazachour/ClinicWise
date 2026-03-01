@@ -113,6 +113,7 @@
     <Content Include="StoredProcedures\Persons\Person_Update.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_AddNew.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_GetAllByMedicalRecord.sql" />
+    <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_GetByID.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_Update.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetAll.sql" />
     <Content Include="StoredProcedures\Roles\Role_GetByID.sql" />

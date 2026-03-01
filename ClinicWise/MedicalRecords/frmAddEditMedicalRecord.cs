@@ -53,7 +53,6 @@ namespace ClinicWise.MedicalRecords
                 lblMode.Text = "Add New Medical Record";
                 _MedicalRecord = new clsMedicalRecord();
                 _MedicalRecordAllPrescriptions = new List<clsPrescriptionItem>();
-                _MedicalRecordNewPrescriptions = new List<clsPrescriptionItem>();
             }
             else
             {
@@ -62,6 +61,8 @@ namespace ClinicWise.MedicalRecords
 
             if (_AppointmentID == -1)
                 lblAppointment.Text = "[Not selected yet]";
+
+            _MedicalRecordNewPrescriptions = new List<clsPrescriptionItem>();
 
             txtVisitDescription.Text = null;
             txtDiagnosis.Text = null;
@@ -116,10 +117,14 @@ namespace ClinicWise.MedicalRecords
                 txtAdditionalNotes.Text = _MedicalRecord.AdditionalNotes;
 
                 List<PrescriptionItemDisplayDTO> prescriptionItems = await clsPrescriptionItem.GetAllByMedicalRecordAsync(_MedicalRecordID);
-                _MedicalRecordAllPrescriptions = prescriptionItems.Select(p => new clsPrescriptionItem(p.ItemID,
-                                                                                                        p.MedicalRecordID,
-                                                                                                        p.MedicamentID,
-                                                                                                        p.DosageInfo)).ToList();
+                _MedicalRecordAllPrescriptions = prescriptionItems.Select(p => new clsPrescriptionItem
+                {
+                    ItemID = p.ItemID,
+                    MedicalRecordID = p.MedicalRecordID,
+                    MedicamentID = p.MedicamentID,
+                    DosageInfo = p.DosageInfo,
+                    IsNewlyAdded = false
+                }).ToList();
                 dgvPrescriptionItems.DataSource = _GetCleanPrescriptionView();
             }
         }
@@ -130,7 +135,10 @@ namespace ClinicWise.MedicalRecords
 
             if (medicalRecordDTO != null)
             {
-                AppointmentDTO appointment = await clsAppointment.FindAsync(medicalRecordDTO.AppointmentID);
+                lblMedicalRecordID.Text = medicalRecordDTO.RecordID.ToString();
+
+                _AppointmentID = medicalRecordDTO.AppointmentID;
+                AppointmentDTO appointment = await clsAppointment.FindAsync(_AppointmentID);
                 PatientDTO patient = await clsPatient.FindAsync(appointment.PatientID);
 
                 _MedicalRecordID = medicalRecordDTO.RecordID;
@@ -168,10 +176,14 @@ namespace ClinicWise.MedicalRecords
                 txtAdditionalNotes.Text = _MedicalRecord.AdditionalNotes;
 
                 List<PrescriptionItemDisplayDTO> prescriptionItems = await clsPrescriptionItem.GetAllByMedicalRecordAsync(_MedicalRecordID);
-                _MedicalRecordAllPrescriptions = prescriptionItems.Select(p => new clsPrescriptionItem(p.ItemID,
-                                                                                                        p.MedicalRecordID,
-                                                                                                        p.MedicamentID,
-                                                                                                        p.DosageInfo)).ToList();
+                _MedicalRecordAllPrescriptions = prescriptionItems.Select(p => new clsPrescriptionItem
+                {
+                    ItemID = p.ItemID,
+                    MedicalRecordID = p.MedicalRecordID,
+                    MedicamentID = p.MedicamentID,
+                    DosageInfo = p.DosageInfo,
+                    IsNewlyAdded = false
+                }).ToList();
                 dgvPrescriptionItems.DataSource = _GetCleanPrescriptionView();
             }
         }
@@ -295,13 +307,35 @@ namespace ClinicWise.MedicalRecords
 
         private void PrescriptionAdded(clsPrescriptionItem prescriptionItem)
         {
+            if (_MedicamenmentAlreadyExist(prescriptionItem))
+            {
+                MessageBox.Show(
+                    $"{prescriptionItem.Medicament.Brand} - {prescriptionItem.Medicament.Name} already exist in your prescription.",
+                    "Medicament Exists",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
             if (_Mode == enMode.Update)
                 prescriptionItem.MedicalRecordID = _MedicalRecordID;
             
+            prescriptionItem.IsNewlyAdded = true;
             _MedicalRecordAllPrescriptions.Add(prescriptionItem);
             _MedicalRecordNewPrescriptions.Add(prescriptionItem);
 
             dgvPrescriptionItems.DataSource = _GetCleanPrescriptionView();
+        }
+
+        private bool _MedicamenmentAlreadyExist(clsPrescriptionItem prescriptionItem)
+        {
+            foreach (clsPrescriptionItem item in _MedicalRecordAllPrescriptions)
+            {
+                if (item.MedicamentID ==  prescriptionItem.MedicamentID)
+                    return true;
+            }
+
+            return false;
         }
 
         private List<MedicamentDTO> _GetCleanPrescriptionView()
@@ -331,6 +365,99 @@ namespace ClinicWise.MedicalRecords
             _AppointmentID = appointment.AppointmentID;
             lblAppointment.Text = $"{_AppointmentID} - {appointment.PatientName}";
             btnAppointmentDatails.Enabled = true;
+        }
+
+        private clsPrescriptionItem _GetPrescriptionItem()
+        {
+            foreach (clsPrescriptionItem item in _MedicalRecordAllPrescriptions)
+            {
+                if (item.MedicamentID.Equals(dgvPrescriptionItems.CurrentRow.Cells[0].Value))
+                    return item;
+            }
+            return null;
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditPrescriptionItem frm = new frmAddEditPrescriptionItem(-1);
+            frm.PrescriptionDataBack += PrescriptionAdded;
+            frm.ShowDialog();
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_MedicalRecordAllPrescriptions.Count == 0)
+                return;
+
+            clsPrescriptionItem prescriptionItem = _GetPrescriptionItem();
+
+            if (prescriptionItem == null) return;
+
+            frmAddEditPrescriptionItem frm;
+
+            if (!prescriptionItem.IsNewlyAdded)
+            {
+                frm = new frmAddEditPrescriptionItem(prescriptionItem.ItemID);
+            }
+            else
+            {
+                prescriptionItem.ToUpdateANewlyAdded = true;
+                frm = new frmAddEditPrescriptionItem(-1, prescriptionItem);
+                frm.PrescriptionDataBack += PrescriptionUpdated;
+            }
+            frm.ShowDialog();
+        }
+
+        private void PrescriptionUpdated(clsPrescriptionItem item)
+        {
+            item.ToUpdateANewlyAdded = false;
+
+            _SyncMedicalRecordAllPrescriptions(item);
+            _SyncMedicalRecordNewPrescriptions(item);
+        }
+
+        private void _SyncMedicalRecordNewPrescriptions(clsPrescriptionItem item)
+        {
+            for (int i = 0; i < _MedicalRecordNewPrescriptions.Count; i++)
+            {
+                if (_MedicalRecordNewPrescriptions[i].ToUpdateANewlyAdded)
+                {
+                    _MedicalRecordNewPrescriptions[i] = item;
+                    return;
+                }
+            }
+        }
+
+        private void _SyncMedicalRecordAllPrescriptions(clsPrescriptionItem item)
+        {
+            for (int i = 0; i < _MedicalRecordAllPrescriptions.Count; i++)
+            {
+                if (_MedicalRecordAllPrescriptions[i].ToUpdateANewlyAdded)
+                {
+                    _MedicalRecordAllPrescriptions[i] = item;
+                    dgvPrescriptionItems.DataSource = _GetCleanPrescriptionView();
+                    return;
+                }
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsPrescriptionItem prescriptionItem = _GetPrescriptionItem();
+
+            if (MessageBox.Show(
+                "Are you sure you want to delete this item?",
+                "Confirm",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (!clsPrescriptionItem.Delete(prescriptionItem.ItemID))
+                {
+
+                }
+            }
+
+            
         }
     }
 }
