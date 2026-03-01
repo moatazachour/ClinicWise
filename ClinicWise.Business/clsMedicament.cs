@@ -47,6 +47,11 @@ namespace ClinicWise.Business
             Mode = enMode.Update;
         }
 
+        public override string ToString()
+        {
+            return $"{Brand}: {Name} ({DosageForm.ToString()})";
+        }
+
         public static async Task<List<MedicamentDTO>> GetAllAsync()
         {
             return await clsMedicamentData.GetAllAsync();

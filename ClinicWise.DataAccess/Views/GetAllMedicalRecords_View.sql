@@ -17,7 +17,8 @@ as
 				else 'Consultation'
 			end,
 		DescriptionOfVisit,
-		Diagnosis
+		Diagnosis,
+		AdditionalNotes
 	from
 		MedicalRecords
 )

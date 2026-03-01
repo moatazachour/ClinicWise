@@ -204,5 +204,11 @@ namespace ClinicWise.PrescriptionItems
         {
             this.Close();
         }
+
+        private void btnMedicamentDetails_Click(object sender, EventArgs e)
+        {
+            frmMedicamentDetails frm = new frmMedicamentDetails(_MedicamentID);
+            frm.ShowDialog();
+        }
     }
 }

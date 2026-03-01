@@ -14,5 +14,10 @@
             Brand = brand;
             DosageForm = dosageForm;
         }
+
+        public override string ToString()
+        {
+            return $"{Brand}: {Name} ({DosageForm.ToString()})";
+        }
     }
 }

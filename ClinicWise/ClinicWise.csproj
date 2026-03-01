@@ -113,6 +113,12 @@
     <Compile Include="Login\frmLoginScreen.Designer.cs">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="MedicalRecords\Controls\ctrlMedicalRecordCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MedicalRecords\Controls\ctrlMedicalRecordCard.Designer.cs">
+      <DependentUpon>ctrlMedicalRecordCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedicalRecords\frmAddEditMedicalRecord.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,12 @@
     </Compile>
     <Compile Include="MedicalRecords\frmManageMedicalRecord.Designer.cs">
       <DependentUpon>frmManageMedicalRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalRecords\frmMedicalRecordDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MedicalRecords\frmMedicalRecordDetails.Designer.cs">
+      <DependentUpon>frmMedicalRecordDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Patients\frmPatientPicker.cs">
       <SubType>Form</SubType>
@@ -174,6 +186,12 @@
     <Compile Include="Persons\frmAddEditPerson.Designer.cs">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pharmacy\Controls\ctrlMedicamentCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pharmacy\Controls\ctrlMedicamentCard.Designer.cs">
+      <DependentUpon>ctrlMedicamentCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pharmacy\frmAddEditMedicament.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,11 +204,29 @@
     <Compile Include="Pharmacy\frmManagePharmacy.Designer.cs">
       <DependentUpon>frmManagePharmacy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pharmacy\frmMedicamentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharmacy\frmMedicamentDetails.Designer.cs">
+      <DependentUpon>frmMedicamentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrescriptionItems\Controls\ctrlPrescriptionItemCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrescriptionItems\Controls\ctrlPrescriptionItemCard.Designer.cs">
+      <DependentUpon>ctrlPrescriptionItemCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrescriptionItems\frmAddEditPrescriptionItem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PrescriptionItems\frmAddEditPrescriptionItem.Designer.cs">
       <DependentUpon>frmAddEditPrescriptionItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrescriptionItems\frmPrescriptionItemDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrescriptionItems\frmPrescriptionItemDetails.Designer.cs">
+      <DependentUpon>frmPrescriptionItemDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -257,11 +293,17 @@
     <EmbeddedResource Include="Login\frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MedicalRecords\Controls\ctrlMedicalRecordCard.resx">
+      <DependentUpon>ctrlMedicalRecordCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MedicalRecords\frmAddEditMedicalRecord.resx">
       <DependentUpon>frmAddEditMedicalRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedicalRecords\frmManageMedicalRecord.resx">
       <DependentUpon>frmManageMedicalRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicalRecords\frmMedicalRecordDetails.resx">
+      <DependentUpon>frmMedicalRecordDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\frmAddEditPatient.resx">
       <DependentUpon>frmAddEditPatient.cs</DependentUpon>
@@ -284,14 +326,26 @@
     <EmbeddedResource Include="Persons\frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pharmacy\Controls\ctrlMedicamentCard.resx">
+      <DependentUpon>ctrlMedicamentCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pharmacy\frmAddEditMedicament.resx">
       <DependentUpon>frmAddEditMedicament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pharmacy\frmManagePharmacy.resx">
       <DependentUpon>frmManagePharmacy.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pharmacy\frmMedicamentDetails.resx">
+      <DependentUpon>frmMedicamentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrescriptionItems\Controls\ctrlPrescriptionItemCard.resx">
+      <DependentUpon>ctrlPrescriptionItemCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PrescriptionItems\frmAddEditPrescriptionItem.resx">
       <DependentUpon>frmAddEditPrescriptionItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrescriptionItems\frmPrescriptionItemDetails.resx">
+      <DependentUpon>frmPrescriptionItemDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -412,5 +466,8 @@
     <None Include="Resources\pharmacy_add-48.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\prescription-64.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

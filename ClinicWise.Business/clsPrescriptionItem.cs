@@ -132,7 +132,7 @@ namespace ClinicWise.Business
 
         public static bool Delete(int itemID)
         {
-            throw new NotImplementedException();
+            return clsPrescriptionItemData.Delete(itemID);
         }
     }
 }

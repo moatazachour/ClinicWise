@@ -1,4 +1,5 @@
-﻿using ClinicWise.Contracts.MedicalRecords;
+﻿using ClinicWise.Contracts.Appointments;
+using ClinicWise.Contracts.MedicalRecords;
 using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,13 @@ namespace ClinicWise.Business
 
         public int RecordID { get; set; }
         public int AppointmentID { get; set; }
+        public AppointmentDTO Appointment
+        {
+            get
+            {
+                return clsAppointment.Find(AppointmentID);
+            }
+        }
         public enVisitType VisitType { get; set; }
         public string DescriptionOfVisit { get; set; }
         public string Diagnosis { get; set; }
@@ -114,6 +122,11 @@ namespace ClinicWise.Business
         public static async Task<MedicalRecordDTO> FindAsync(int medicalRecordID)
         {
             return await clsMedicalRecordData.GetByIDAsync(medicalRecordID);
+        }
+
+        public static async Task<MedicalRecordFullViewDTO> FindFullDataAsync(int medicalRecordID)
+        {
+            return await clsMedicalRecordData.GetForCardByIDAsync(medicalRecordID);
         }
     }
 }

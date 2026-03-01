@@ -561,5 +561,43 @@ namespace ClinicWise.DataAccess
                 }
             }
         }
+
+        public static AppointmentDTO GetByID(int appointmentID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@AppointmentID", SqlDbType.Int).Value = appointmentID;
+
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new AppointmentDTO()
+                            {
+                                AppointmentID = (int)reader["AppointmentID"],
+                                DoctorID = (int)reader["DoctorID"],
+                                PatientID = (int)reader["PatientID"],
+                                Date = reader["Date"] as DateTime?,
+                                Status = (byte)reader["Status"],
+                                ScheduledByUserID = (int)reader["ScheduledBy"]
+                            };
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
     }
 }

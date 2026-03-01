@@ -142,6 +142,7 @@
             this.btnDetails.TabIndex = 34;
             this.btnDetails.Text = "Details";
             this.btnDetails.UseVisualStyleBackColor = true;
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // btnAddPrescription
             // 
@@ -367,13 +368,14 @@
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsManagePrescriptions.Name = "cmsManageDoctors";
-            this.cmsManagePrescriptions.Size = new System.Drawing.Size(179, 114);
+            this.cmsManagePrescriptions.Size = new System.Drawing.Size(181, 136);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 

@@ -96,6 +96,7 @@
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetAll.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetByAppointmentID.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetByID.sql" />
+    <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetForCardByID.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Update.sql" />
     <Content Include="StoredProcedures\Medicament\Medicament_AddNew.sql" />
     <Content Include="StoredProcedures\Medicament\Medicament_GetAll.sql" />
@@ -112,6 +113,7 @@
     <Content Include="StoredProcedures\Persons\Person_IsExistByNationalNo.sql" />
     <Content Include="StoredProcedures\Persons\Person_Update.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_AddNew.sql" />
+    <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_Delete.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_GetAllByMedicalRecord.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_GetByID.sql" />
     <Content Include="StoredProcedures\PrescriptionItems\PrescriptionItem_Update.sql" />

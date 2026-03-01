@@ -68,7 +68,6 @@ namespace ClinicWise.MedicalRecords
             txtDiagnosis.Text = null;
             txtAdditionalNotes.Text = null;
             btnAppointmentDatails.Enabled = _AppointmentID != -1;
-
         }
 
         public async Task _LoadByAppointmentIDAsync(int appointmentID)
@@ -284,7 +283,6 @@ namespace ClinicWise.MedicalRecords
             }
         }
 
-
         private void cmbVisitType_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (cmbVisitType.SelectedItem is null)
@@ -441,7 +439,7 @@ namespace ClinicWise.MedicalRecords
             }
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clsPrescriptionItem prescriptionItem = _GetPrescriptionItem();
 
@@ -453,11 +451,62 @@ namespace ClinicWise.MedicalRecords
             {
                 if (!clsPrescriptionItem.Delete(prescriptionItem.ItemID))
                 {
-
+                    MessageBox.Show(
+                        "Prescription Deletion Failed?",
+                        "Failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
                 }
+
+                await _LoadDataAsync();
+            }
+        }
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            if (_MedicalRecordAllPrescriptions.Count == 0)
+                return;
+
+            clsPrescriptionItem prescriptionItem = _GetPrescriptionItem();
+
+            if (prescriptionItem == null) return;
+
+            if (prescriptionItem.IsNewlyAdded)
+            {
+                MessageBox.Show(
+                    "This prescription is not saved yet!",
+                    "Not Saved",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
             }
 
-            
+            frmPrescriptionItemDetails frm = new frmPrescriptionItemDetails(prescriptionItem.ItemID);
+            frm.ShowDialog();
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_MedicalRecordAllPrescriptions.Count == 0)
+                return;
+
+            clsPrescriptionItem prescriptionItem = _GetPrescriptionItem();
+
+            if (prescriptionItem == null) return;
+
+            if (prescriptionItem.IsNewlyAdded)
+            {
+                MessageBox.Show(
+                    "This prescription is not saved yet!",
+                    "Not Saved",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            frmPrescriptionItemDetails frm = new frmPrescriptionItemDetails(prescriptionItem.ItemID);
+            frm.ShowDialog();
         }
     }
 }

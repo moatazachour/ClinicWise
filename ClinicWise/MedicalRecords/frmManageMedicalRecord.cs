@@ -169,5 +169,12 @@ namespace ClinicWise.MedicalRecords
 
             await _LoadDataAsync();
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int currentMedicalRecordID = (int)dgvManageMedicalRecords.CurrentRow.Cells[0].Value;
+            frmMedicalRecordDetails frm = new frmMedicalRecordDetails(currentMedicalRecordID);
+            frm.ShowDialog();
+        }
     }
 }

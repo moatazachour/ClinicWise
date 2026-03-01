@@ -100,6 +100,11 @@ namespace ClinicWise.Business
             return await clsAppointmentData.GetByIDAsync(appointmentID);
         }
 
+        public static AppointmentDTO Find(int appointmentID)
+        {
+            return clsAppointmentData.GetByID(appointmentID);
+        }
+
         public static async Task<AppointmentDisplayDTO> FindDetailedAsync(int appointmentID)
         {
             return await clsAppointmentData.GetDetailedByID(appointmentID);

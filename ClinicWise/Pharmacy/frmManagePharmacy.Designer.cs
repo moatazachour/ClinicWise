@@ -141,43 +141,44 @@
             this.deleteToolStripMenuItem,
             this.pickToolStripMenuItem});
             this.cmsManageMedicines.Name = "cmsManageDoctors";
-            this.cmsManageMedicines.Size = new System.Drawing.Size(179, 140);
+            this.cmsManageMedicines.Size = new System.Drawing.Size(181, 162);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.updateToolStripMenuItem.Text = "Update";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // pickToolStripMenuItem
             // 
             this.pickToolStripMenuItem.Enabled = false;
             this.pickToolStripMenuItem.Name = "pickToolStripMenuItem";
-            this.pickToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.pickToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.pickToolStripMenuItem.Text = "Pick";
             this.pickToolStripMenuItem.Click += new System.EventHandler(this.pickToolStripMenuItem_Click);
             // 

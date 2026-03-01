@@ -126,5 +126,12 @@ namespace ClinicWise.Pharmacy
             DataBack?.Invoke(medicamentID);
             this.Close();
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int medicamentDetails = (int)dgvManageMedicines.CurrentRow.Cells [0].Value;
+            frmMedicamentDetails frm = new frmMedicamentDetails(medicamentDetails);
+            frm.ShowDialog();
+        }
     }
 }

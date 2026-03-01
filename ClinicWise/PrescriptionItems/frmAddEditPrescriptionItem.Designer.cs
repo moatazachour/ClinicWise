@@ -223,6 +223,7 @@
             this.btnMedicamentDetails.TabIndex = 35;
             this.btnMedicamentDetails.Text = "Details";
             this.btnMedicamentDetails.UseVisualStyleBackColor = true;
+            this.btnMedicamentDetails.Click += new System.EventHandler(this.btnMedicamentDetails_Click);
             // 
             // btnPickMedicament
             // 

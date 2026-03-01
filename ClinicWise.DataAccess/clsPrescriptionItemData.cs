@@ -92,6 +92,32 @@ namespace ClinicWise.DataAccess
             }
         }
 
+        public static bool Delete(int itemID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("PrescriptionItem_Delete", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@ItemID", SqlDbType.Int).Value = itemID;
+
+                connection.Open();
+
+                try
+                {
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return rowsAffected > 0;
+        }
+
         public static async Task<List<PrescriptionItemDisplayDTO>> GetAllByMedicalRecordAsync(int medicalRecordID)
         {
             List<PrescriptionItemDisplayDTO> prescriptionItems = new List<PrescriptionItemDisplayDTO>();
