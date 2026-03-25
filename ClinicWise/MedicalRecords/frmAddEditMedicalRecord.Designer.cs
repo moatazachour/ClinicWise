@@ -33,9 +33,17 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lblMode = new System.Windows.Forms.Label();
             this.gbAppointmentInfos = new System.Windows.Forms.GroupBox();
+            this.chkProcedureIncluded = new System.Windows.Forms.CheckBox();
+            this.txtProcedureName = new System.Windows.Forms.TextBox();
             this.btnDetails = new System.Windows.Forms.Button();
             this.btnAddPrescription = new System.Windows.Forms.Button();
             this.dgvPrescriptionItems = new System.Windows.Forms.DataGridView();
+            this.cmsManagePrescriptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAdditionalNotes = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,16 +60,10 @@
             this.lblMedicalRecordID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cmsManagePrescriptions = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbAppointmentInfos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrescriptionItems)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.cmsManagePrescriptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -105,6 +107,8 @@
             // 
             // gbAppointmentInfos
             // 
+            this.gbAppointmentInfos.Controls.Add(this.chkProcedureIncluded);
+            this.gbAppointmentInfos.Controls.Add(this.txtProcedureName);
             this.gbAppointmentInfos.Controls.Add(this.btnDetails);
             this.gbAppointmentInfos.Controls.Add(this.btnAddPrescription);
             this.gbAppointmentInfos.Controls.Add(this.dgvPrescriptionItems);
@@ -128,6 +132,27 @@
             this.gbAppointmentInfos.Size = new System.Drawing.Size(1049, 644);
             this.gbAppointmentInfos.TabIndex = 58;
             this.gbAppointmentInfos.TabStop = false;
+            // 
+            // chkProcedureIncluded
+            // 
+            this.chkProcedureIncluded.AutoSize = true;
+            this.chkProcedureIncluded.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkProcedureIncluded.Location = new System.Drawing.Point(224, 306);
+            this.chkProcedureIncluded.Name = "chkProcedureIncluded";
+            this.chkProcedureIncluded.Size = new System.Drawing.Size(232, 29);
+            this.chkProcedureIncluded.TabIndex = 37;
+            this.chkProcedureIncluded.Text = "Procedure included";
+            this.chkProcedureIncluded.UseVisualStyleBackColor = true;
+            this.chkProcedureIncluded.CheckedChanged += new System.EventHandler(this.chkProcedureIncluded_CheckedChanged);
+            // 
+            // txtProcedureName
+            // 
+            this.txtProcedureName.Enabled = false;
+            this.txtProcedureName.Location = new System.Drawing.Point(489, 306);
+            this.txtProcedureName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProcedureName.Name = "txtProcedureName";
+            this.txtProcedureName.Size = new System.Drawing.Size(542, 27);
+            this.txtProcedureName.TabIndex = 36;
             // 
             // btnDetails
             // 
@@ -175,6 +200,52 @@
             this.dgvPrescriptionItems.Size = new System.Drawing.Size(687, 156);
             this.dgvPrescriptionItems.TabIndex = 31;
             // 
+            // cmsManagePrescriptions
+            // 
+            this.cmsManagePrescriptions.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsManagePrescriptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManagePrescriptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.addToolStripMenuItem,
+            this.updateToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.cmsManagePrescriptions.Name = "cmsManageDoctors";
+            this.cmsManagePrescriptions.Size = new System.Drawing.Size(179, 114);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -189,7 +260,7 @@
             // txtAdditionalNotes
             // 
             this.txtAdditionalNotes.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdditionalNotes.Location = new System.Drawing.Point(224, 359);
+            this.txtAdditionalNotes.Location = new System.Drawing.Point(224, 372);
             this.txtAdditionalNotes.Margin = new System.Windows.Forms.Padding(2);
             this.txtAdditionalNotes.Multiline = true;
             this.txtAdditionalNotes.Name = "txtAdditionalNotes";
@@ -201,7 +272,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(16, 359);
+            this.label5.Location = new System.Drawing.Point(16, 372);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(186, 25);
             this.label5.TabIndex = 28;
@@ -209,7 +280,7 @@
             // 
             // txtDiagnosis
             // 
-            this.txtDiagnosis.Location = new System.Drawing.Point(224, 303);
+            this.txtDiagnosis.Location = new System.Drawing.Point(224, 242);
             this.txtDiagnosis.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiagnosis.Name = "txtDiagnosis";
             this.txtDiagnosis.Size = new System.Drawing.Size(807, 27);
@@ -220,7 +291,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(85, 303);
+            this.label3.Location = new System.Drawing.Point(85, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 25);
             this.label3.TabIndex = 26;
@@ -229,11 +300,11 @@
             // txtVisitDescription
             // 
             this.txtVisitDescription.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVisitDescription.Location = new System.Drawing.Point(224, 188);
+            this.txtVisitDescription.Location = new System.Drawing.Point(224, 163);
             this.txtVisitDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtVisitDescription.Multiline = true;
             this.txtVisitDescription.Name = "txtVisitDescription";
-            this.txtVisitDescription.Size = new System.Drawing.Size(807, 84);
+            this.txtVisitDescription.Size = new System.Drawing.Size(807, 56);
             this.txtVisitDescription.TabIndex = 25;
             // 
             // cmbVisitType
@@ -248,7 +319,7 @@
             "Routine Check",
             "Vaccination",
             "Lab Test"});
-            this.cmbVisitType.Location = new System.Drawing.Point(224, 121);
+            this.cmbVisitType.Location = new System.Drawing.Point(224, 110);
             this.cmbVisitType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbVisitType.Name = "cmbVisitType";
             this.cmbVisitType.Size = new System.Drawing.Size(284, 30);
@@ -260,7 +331,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(25, 188);
+            this.label1.Location = new System.Drawing.Point(25, 163);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(177, 25);
             this.label1.TabIndex = 22;
@@ -301,7 +372,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(87, 121);
+            this.label6.Location = new System.Drawing.Point(87, 110);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 25);
             this.label6.TabIndex = 19;
@@ -357,52 +428,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // cmsManagePrescriptions
-            // 
-            this.cmsManagePrescriptions.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmsManagePrescriptions.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsManagePrescriptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showDetailsToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.addToolStripMenuItem,
-            this.updateToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.cmsManagePrescriptions.Name = "cmsManageDoctors";
-            this.cmsManagePrescriptions.Size = new System.Drawing.Size(181, 136);
-            // 
-            // showDetailsToolStripMenuItem
-            // 
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.showDetailsToolStripMenuItem.Text = "Show Details";
-            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            this.addToolStripMenuItem.Text = "Add";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
-            // 
-            // updateToolStripMenuItem
-            // 
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            this.updateToolStripMenuItem.Text = "Update";
-            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
             // frmAddEditMedicalRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,8 +449,8 @@
             this.gbAppointmentInfos.ResumeLayout(false);
             this.gbAppointmentInfos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrescriptionItems)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.cmsManagePrescriptions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,5 +486,7 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtProcedureName;
+        private System.Windows.Forms.CheckBox chkProcedureIncluded;
     }
 }

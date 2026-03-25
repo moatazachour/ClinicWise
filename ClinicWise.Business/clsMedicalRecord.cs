@@ -31,6 +31,8 @@ namespace ClinicWise.Business
         public string DescriptionOfVisit { get; set; }
         public string Diagnosis { get; set; }
         public string AdditionalNotes { get; set; }
+        public bool ProcedureIncluded { get; set; }
+        public string ProcedureName { get; set; }
 
         public clsMedicalRecord()
         {
@@ -40,6 +42,8 @@ namespace ClinicWise.Business
             DescriptionOfVisit = null;
             Diagnosis = null;
             AdditionalNotes = null;
+            ProcedureIncluded = false;
+            ProcedureName = null;
 
             Mode = enMode.AddNew;
         }
@@ -50,7 +54,9 @@ namespace ClinicWise.Business
             enVisitType visitType, 
             string descriptionOfVisit, 
             string diagnosis, 
-            string additionalNotes)
+            string additionalNotes,
+            bool procedureIncluded,
+            string procedureName)
         {
             RecordID = recordID;
             AppointmentID = appointmentID;
@@ -58,6 +64,8 @@ namespace ClinicWise.Business
             DescriptionOfVisit = descriptionOfVisit;
             Diagnosis = diagnosis;
             AdditionalNotes = additionalNotes;
+            ProcedureIncluded = procedureIncluded;
+            ProcedureName = procedureName;
 
             Mode = enMode.Update;
         }
@@ -71,6 +79,8 @@ namespace ClinicWise.Business
             DescriptionOfVisit = recordDTO.DescriptionOfVisit;
             Diagnosis = recordDTO.Diagnosis;
             AdditionalNotes = recordDTO.AdditionalNotes;
+            ProcedureIncluded = recordDTO.ProcedureIncluded;
+            ProcedureName = recordDTO.ProcedureName;
 
             Mode = enMode.Update;
         }
@@ -88,7 +98,7 @@ namespace ClinicWise.Business
         private bool _AddNew()
         {
             RecordID = clsMedicalRecordData.AddNew(AppointmentID, (byte)VisitType, DescriptionOfVisit,
-                                                   Diagnosis, AdditionalNotes);
+                                                   Diagnosis, AdditionalNotes, ProcedureIncluded, ProcedureName);
 
             return RecordID != -1;
         }
@@ -96,7 +106,7 @@ namespace ClinicWise.Business
         private bool _Update()
         {
             return clsMedicalRecordData.Update(RecordID, (byte)VisitType, DescriptionOfVisit,
-                                               Diagnosis, AdditionalNotes);
+                                               Diagnosis, AdditionalNotes, ProcedureIncluded, ProcedureName);
         }
 
         public bool Save()
@@ -107,6 +117,7 @@ namespace ClinicWise.Business
                     if (_AddNew())
                     {
                         Mode = enMode.Update;
+                        //_FinalizeAppointment();
                         return true;
                     }
                     return false;
@@ -118,6 +129,13 @@ namespace ClinicWise.Business
                     return false;
             }
         }
+
+        // TODO
+        //private bool _FinalizeAppointment()
+        //{
+        //    // This method will generate an invoice after
+        //    return clsAppointmentData.CompleteAppointment(AppointmentID);
+        //}
 
         public static async Task<MedicalRecordDTO> FindAsync(int medicalRecordID)
         {

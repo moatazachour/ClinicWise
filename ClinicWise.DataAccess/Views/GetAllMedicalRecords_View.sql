@@ -18,7 +18,9 @@ as
 			end,
 		DescriptionOfVisit,
 		Diagnosis,
-		AdditionalNotes
+		AdditionalNotes,
+		ProcedureIncluded,
+		ProcedureName
 	from
 		MedicalRecords
 )

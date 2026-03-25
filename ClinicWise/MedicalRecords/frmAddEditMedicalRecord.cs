@@ -67,6 +67,9 @@ namespace ClinicWise.MedicalRecords
             txtVisitDescription.Text = null;
             txtDiagnosis.Text = null;
             txtAdditionalNotes.Text = null;
+            chkProcedureIncluded.Checked = false;
+            txtProcedureName.Text = null;
+            txtProcedureName.Enabled = chkProcedureIncluded.Checked;
             btnAppointmentDatails.Enabled = _AppointmentID != -1;
         }
 
@@ -114,6 +117,8 @@ namespace ClinicWise.MedicalRecords
                 txtVisitDescription.Text = _MedicalRecord.DescriptionOfVisit;
                 txtDiagnosis.Text = _MedicalRecord.Diagnosis;
                 txtAdditionalNotes.Text = _MedicalRecord.AdditionalNotes;
+                chkProcedureIncluded.Checked = _MedicalRecord.ProcedureIncluded;
+                txtProcedureName.Text = _MedicalRecord.ProcedureName;
 
                 List<PrescriptionItemDisplayDTO> prescriptionItems = await clsPrescriptionItem.GetAllByMedicalRecordAsync(_MedicalRecordID);
                 _MedicalRecordAllPrescriptions = prescriptionItems.Select(p => new clsPrescriptionItem
@@ -173,6 +178,8 @@ namespace ClinicWise.MedicalRecords
                 txtVisitDescription.Text = _MedicalRecord.DescriptionOfVisit;
                 txtDiagnosis.Text = _MedicalRecord.Diagnosis;
                 txtAdditionalNotes.Text = _MedicalRecord.AdditionalNotes;
+                chkProcedureIncluded.Checked = _MedicalRecord.ProcedureIncluded;
+                txtProcedureName.Text = _MedicalRecord.ProcedureName;
 
                 List<PrescriptionItemDisplayDTO> prescriptionItems = await clsPrescriptionItem.GetAllByMedicalRecordAsync(_MedicalRecordID);
                 _MedicalRecordAllPrescriptions = prescriptionItems.Select(p => new clsPrescriptionItem
@@ -218,6 +225,8 @@ namespace ClinicWise.MedicalRecords
             _MedicalRecord.DescriptionOfVisit = txtVisitDescription.Text;
             _MedicalRecord.Diagnosis = txtDiagnosis.Text;
             _MedicalRecord.AdditionalNotes = txtAdditionalNotes.Text;
+            _MedicalRecord.ProcedureIncluded = chkProcedureIncluded.Checked;
+            _MedicalRecord.ProcedureName = chkProcedureIncluded.Checked ? txtProcedureName.Text : null;
 
             _MedicalRecord.VisitType = _GetVisitTypeFromComboBox();
 
@@ -507,6 +516,11 @@ namespace ClinicWise.MedicalRecords
 
             frmPrescriptionItemDetails frm = new frmPrescriptionItemDetails(prescriptionItem.ItemID);
             frm.ShowDialog();
+        }
+
+        private void chkProcedureIncluded_CheckedChanged(object sender, EventArgs e)
+        {
+            txtProcedureName.Enabled = chkProcedureIncluded.Checked;
         }
     }
 }

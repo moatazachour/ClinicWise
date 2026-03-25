@@ -8,6 +8,8 @@
         public string DescriptionOfVisit { get; set; }
         public string Diagnosis { get; set; }
         public string AdditionalNotes { get; set; }
+        public bool ProcedureIncluded { get; set; }
+        public string ProcedureName { get; set; }
 
         public MedicalRecordDTO(
             int recordID, 
@@ -15,7 +17,9 @@
             byte visitType, 
             string descriptionOfVisit, 
             string diagnosis, 
-            string additionalNotes)
+            string additionalNotes,
+            bool procedureIncluded,
+            string procedureName)
         {
             RecordID = recordID;
             AppointmentID = appointmentID;
@@ -23,6 +27,8 @@
             DescriptionOfVisit = descriptionOfVisit;
             Diagnosis = diagnosis;
             AdditionalNotes = additionalNotes;
+            ProcedureIncluded = procedureIncluded;
+            ProcedureName = procedureName;
         }
     }
 }

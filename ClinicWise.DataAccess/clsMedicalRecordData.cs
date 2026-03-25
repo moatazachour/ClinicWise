@@ -10,7 +10,8 @@ namespace ClinicWise.DataAccess
     public class clsMedicalRecordData
     {
         public static int AddNew(
-            int appointmentID, byte visitType, string descriptionOfVisit, string diagnosis, string additionalNotes)
+            int appointmentID, byte visitType, string descriptionOfVisit, string diagnosis, string additionalNotes,
+            bool procedureIncluded, string procedureName)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("MedicalRecord_Add", connection))
@@ -26,6 +27,10 @@ namespace ClinicWise.DataAccess
                 command.Parameters.Add("@AdditionalNotes", SqlDbType.NVarChar).Value =
                     string.IsNullOrWhiteSpace(additionalNotes) ? (object)DBNull.Value : additionalNotes;
 
+                command.Parameters.Add("@ProcedureIncluded", SqlDbType.Bit).Value = procedureIncluded;
+
+                command.Parameters.Add("@ProcedureName", SqlDbType.VarChar).Value =
+                    string.IsNullOrWhiteSpace(procedureName) ? (object)DBNull.Value : procedureName;
 
                 SqlParameter outputIdParam = new SqlParameter("@RecordID", SqlDbType.Int)
                 {
@@ -68,9 +73,11 @@ namespace ClinicWise.DataAccess
                             medicalRecords.Add(new MedicalRecordViewDTO(
                                 (int)reader["RecordID"],
                                 (int)reader["AppointmentID"],
-                                (string)reader["VisitTypeLabel"],
-                                (string)reader["DescriptionOfVisit"],
-                                (string)reader["Diagnosis"]
+                                reader["VisitTypeLabel"] as string,
+                                reader["DescriptionOfVisit"] as string,
+                                reader["Diagnosis"] as string,
+                                (bool)reader["ProcedureIncluded"],
+                                reader["ProcedureName"] as string
                             ));
                         }
                     }
@@ -105,9 +112,11 @@ namespace ClinicWise.DataAccess
                                 (int)reader["RecordID"],
                                 appointmentID,
                                 (byte)reader["VisitType"],
-                                (string)reader["DescriptionOfVisit"],
-                                (string)reader["Diagnosis"],
-                                (string)reader["AdditionalNotes"]
+                                reader["DescriptionOfVisit"] as string,
+                                reader["Diagnosis"] as string,
+                                reader["AdditionalNotes"] as string,
+                                (bool)reader["ProcedureIncluded"],
+                                reader["ProcedureName"] as string
                             );
                         }
                         else
@@ -144,9 +153,11 @@ namespace ClinicWise.DataAccess
                                 medicalRecordID,
                                 (int)reader["AppointmentID"],
                                 (byte)reader["VisitType"],
-                                (string)reader["DescriptionOfVisit"],
-                                (string)reader["Diagnosis"],
-                                (string)reader["AdditionalNotes"]
+                                reader["DescriptionOfVisit"] as string,
+                                reader["Diagnosis"] as string,
+                                reader["AdditionalNotes"] as string,
+                                (bool)reader["ProcedureIncluded"],
+                                reader["ProcedureName"] as string
                             );
                         }
                         else
@@ -182,10 +193,12 @@ namespace ClinicWise.DataAccess
                             return new MedicalRecordFullViewDTO(
                                 (int)reader["RecordID"],
                                 (int)reader["AppointmentID"],
-                                (string)reader["VisitTypeLabel"],
-                                (string)reader["DescriptionOfVisit"],
-                                (string)reader["Diagnosis"],
-                                (string)reader["AdditionalNotes"]
+                                reader["VisitTypeLabel"] as string,
+                                reader["DescriptionOfVisit"] as string,
+                                reader["Diagnosis"] as string,
+                                reader["AdditionalNotes"] as string,
+                                (bool)reader["ProcedureIncluded"],
+                                reader["ProcedureName"] as string
                             );
                         }
                         return null;    
@@ -205,7 +218,9 @@ namespace ClinicWise.DataAccess
             byte visitType, 
             string descriptionOfVisit, 
             string diagnosis, 
-            string additionalNotes)
+            string additionalNotes,
+            bool procedureIncluded,
+            string procedureName)
         {
             int rowsAfected = 0;
 
@@ -222,6 +237,11 @@ namespace ClinicWise.DataAccess
                     string.IsNullOrWhiteSpace(diagnosis) ? (object)DBNull.Value : diagnosis;
                 command.Parameters.Add("@AdditionalNotes", SqlDbType.NVarChar).Value =
                     string.IsNullOrWhiteSpace(additionalNotes) ? (object)DBNull.Value : additionalNotes;
+
+                command.Parameters.Add("@ProcedureIncluded", SqlDbType.Bit).Value = procedureIncluded;
+
+                command.Parameters.Add("@ProcedureName", SqlDbType.VarChar).Value =
+                    string.IsNullOrWhiteSpace(procedureName) ? (object)DBNull.Value : procedureName;
 
                 connection.Open();
 

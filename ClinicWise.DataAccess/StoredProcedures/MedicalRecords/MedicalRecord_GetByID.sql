@@ -1,4 +1,4 @@
-create procedure MedicalRecord_GetByID
+alter procedure MedicalRecord_GetByID
 	@RecordID int
 as
 begin
@@ -9,7 +9,9 @@ begin
 		DescriptionOfVisit,
 		Diagnosis,
 		AdditionalNotes,
-		VisitType
+		VisitType,
+		ProcedureIncluded,
+		ProcedureName
 	from
 		MedicalRecords
 	where
