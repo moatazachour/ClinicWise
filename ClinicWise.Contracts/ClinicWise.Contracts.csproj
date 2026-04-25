@@ -68,6 +68,7 @@
     <Compile Include="Speciatizations\SpecializationDTO.cs" />
     <Compile Include="Users\UserDisplayDTO.cs" />
     <Compile Include="Users\UserDTO.cs" />
+    <Compile Include="VisitTypeFees\VisitTypeFeeDTO.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

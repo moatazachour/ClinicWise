@@ -98,6 +98,12 @@
     <Compile Include="Doctors\frmManageDoctors.Designer.cs">
       <DependentUpon>frmManageDoctors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Financial\Visit Fees\frmManageVisitFees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Financial\Visit Fees\frmManageVisitFees.Designer.cs">
+      <DependentUpon>frmManageVisitFees.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,9 @@
     <EmbeddedResource Include="Doctors\frmManageDoctors.resx">
       <DependentUpon>frmManageDoctors.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Financial\Visit Fees\frmManageVisitFees.resx">
+      <DependentUpon>frmManageVisitFees.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -465,9 +474,14 @@
   <ItemGroup>
     <None Include="Resources\pharmacy_add-48.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\visit-type-fees.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\prescription-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visit-type-fees-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -56,6 +56,7 @@
     <Compile Include="clsRole.cs" />
     <Compile Include="clsSpecialization.cs" />
     <Compile Include="clsUser.cs" />
+    <Compile Include="clsVisitTypeFee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

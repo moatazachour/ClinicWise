@@ -34,7 +34,8 @@
             this.appointmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medicalRecordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pharmacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paymentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.financialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visitFeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentUserInformationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,7 @@
             this.appointmentsToolStripMenuItem,
             this.medicalRecordsToolStripMenuItem,
             this.pharmacyToolStripMenuItem,
-            this.paymentsToolStripMenuItem,
+            this.financialToolStripMenuItem,
             this.usersToolStripMenuItem,
             this.accountSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -127,17 +128,29 @@
             this.pharmacyToolStripMenuItem.Text = "  Pharmacy";
             this.pharmacyToolStripMenuItem.Click += new System.EventHandler(this.pharmacyToolStripMenuItem_Click);
             // 
-            // paymentsToolStripMenuItem
+            // financialToolStripMenuItem
             // 
-            this.paymentsToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paymentsToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.paymentsToolStripMenuItem.Image = global::ClinicWise.Properties.Resources.payment_method_67;
-            this.paymentsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.paymentsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.paymentsToolStripMenuItem.Name = "paymentsToolStripMenuItem";
-            this.paymentsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
-            this.paymentsToolStripMenuItem.Size = new System.Drawing.Size(347, 101);
-            this.paymentsToolStripMenuItem.Text = "   Payments";
+            this.financialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.visitFeesToolStripMenuItem});
+            this.financialToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.financialToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.financialToolStripMenuItem.Image = global::ClinicWise.Properties.Resources.payment_method_67;
+            this.financialToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.financialToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.financialToolStripMenuItem.Name = "financialToolStripMenuItem";
+            this.financialToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.financialToolStripMenuItem.Size = new System.Drawing.Size(347, 101);
+            this.financialToolStripMenuItem.Text = "   Financial";
+            // 
+            // visitFeesToolStripMenuItem
+            // 
+            this.visitFeesToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visitFeesToolStripMenuItem.Image = global::ClinicWise.Properties.Resources.visit_type_fees_64;
+            this.visitFeesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.visitFeesToolStripMenuItem.Name = "visitFeesToolStripMenuItem";
+            this.visitFeesToolStripMenuItem.Size = new System.Drawing.Size(293, 70);
+            this.visitFeesToolStripMenuItem.Text = "Visit Fees";
+            this.visitFeesToolStripMenuItem.Click += new System.EventHandler(this.visitFeesToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
             // 
@@ -231,10 +244,11 @@
         private System.Windows.Forms.ToolStripMenuItem medicalRecordsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem paymentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem financialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentUserInformationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem signOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pharmacyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem visitFeesToolStripMenuItem;
     }
 }

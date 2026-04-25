@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Appointments;
 using ClinicWise.Doctors;
+using ClinicWise.Financial.Visit_Fees;
 using ClinicWise.Global_Classes;
 using ClinicWise.Login;
 using ClinicWise.MedicalRecords;
@@ -80,6 +81,12 @@ namespace ClinicWise
         private void medicalRecordsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageMedicalRecord frm = new frmManageMedicalRecord();
+            frm.ShowDialog();
+        }
+
+        private void visitFeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManageVisitFees frm = new frmManageVisitFees();
             frm.ShowDialog();
         }
     }
