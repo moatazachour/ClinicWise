@@ -6,11 +6,11 @@ As
 	SELECT  vf.VisitFeeID
 	  ,case vf.VisitType
 		when 1 then 'Consultation'
-		when 2 then 'FollowUp'
+		when 2 then 'Follow Up'
 		when 3 then 'Emergency'
-		when 4 then 'RoutineCheck'
+		when 4 then 'Routine Check'
 		when 5 then 'Vaccination'
-		when 6 then 'LabTest'
+		when 6 then 'Lab Test'
 		else 'Consultation'
 	  end as VisitTypeLabel
       ,vf.BaseAmount

@@ -67,7 +67,7 @@ namespace ClinicWise.Financial.Visit_Fees
                     break;
 
                 case "Follow up":
-                    _VisitTypesFeeFilter = _VisitTypesFeeList.Where(vf => vf.VisitTypeLabel == "Follow up").ToList();
+                    _VisitTypesFeeFilter = _VisitTypesFeeList.Where(vf => vf.VisitTypeLabel == "Follow Up").ToList();
                     break;
 
                 case "Emergency":
@@ -118,6 +118,11 @@ namespace ClinicWise.Financial.Visit_Fees
 
             dgvManageVisitTypesFees.DataSource = _VisitTypesFeeFilter;
             lblRecordCount.Text = dgvManageVisitTypesFees.RowCount.ToString();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
