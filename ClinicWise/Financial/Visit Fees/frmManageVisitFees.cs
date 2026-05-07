@@ -44,7 +44,7 @@ namespace ClinicWise.Financial.Visit_Fees
             cbManageVisitFees.SelectedItem = "None";
             _VisitTypesFeeList = await clsVisitTypeFee.GetAllAsync();
             dgvManageVisitTypesFees.DataSource = _VisitTypesFeeList;
-
+            lblRecordCount.Text = dgvManageVisitTypesFees.RowCount.ToString();
         }
 
         private void cbManageVisitFees_SelectedIndexChanged(object sender, EventArgs e)
