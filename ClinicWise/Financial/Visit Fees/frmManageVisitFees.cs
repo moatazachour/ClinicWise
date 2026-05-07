@@ -20,25 +20,15 @@ namespace ClinicWise.Financial.Visit_Fees
 
         private async void btnAddVisitFee_Click(object sender, EventArgs e)
         {
-            frmAddEditVisitFee frm = new frmAddEditVisitFee(-1);
+            frmAddEditVisitFee frm = new frmAddEditVisitFee();
             frm.ShowDialog();
 
             await _LoadDataAsync();
-        }
-
-        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int visitFeeID = (int)dgvManageVisitTypesFees.CurrentRow.Cells[0].Value;
-            frmAddEditVisitFee frm = new frmAddEditVisitFee(visitFeeID);
-            frm.ShowDialog();
-
-            await _LoadDataAsync();
-
         }
 
         private async void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddEditVisitFee frm = new frmAddEditVisitFee(-1);
+            frmAddEditVisitFee frm = new frmAddEditVisitFee();
             frm.ShowDialog();
 
             await _LoadDataAsync();
