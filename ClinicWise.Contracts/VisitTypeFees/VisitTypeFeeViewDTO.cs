@@ -3,33 +3,32 @@ using System;
 
 namespace ClinicWise.Contracts.VisitTypeFees
 {
-    public class VisitTypeFeeDTO
+    public class VisitTypeFeeViewDTO
     {
         public int ID { get; set; }
-        public enVisitType VisitType { get; set; }
+        public string VisitTypeLabel { get; set; }
         public decimal BaseAmount { get; set; }
         public DateTime EffectiveFrom { get; set; }
         public DateTime? EffectiveTo { get; set; }
-        public int CreatedByUserID { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public string CreatedBy { get; set; }
+        public bool IsActive { get; set; }
 
-        public VisitTypeFeeDTO(
+        public VisitTypeFeeViewDTO(
             int iD,
-            enVisitType visitType,
+            string visitTypeLabel,
             decimal baseAmount,
             DateTime effectiveFrom,
             DateTime? effectiveTo,
-            int createdByUserID,
-            DateTime createdAt)
+            string createdBy,
+            bool isActive)
         {
             ID = iD;
-            VisitType = visitType;
+            VisitTypeLabel = visitTypeLabel;
             BaseAmount = baseAmount;
             EffectiveFrom = effectiveFrom;
             EffectiveTo = effectiveTo;
-            CreatedByUserID = createdByUserID;
-            CreatedAt = createdAt;
+            CreatedBy = createdBy;
+            IsActive = isActive;
         }
-
     }
 }

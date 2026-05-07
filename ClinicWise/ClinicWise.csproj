@@ -98,6 +98,12 @@
     <Compile Include="Doctors\frmManageDoctors.Designer.cs">
       <DependentUpon>frmManageDoctors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Financial\Visit Fees\frmAddEditVisitFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Financial\Visit Fees\frmAddEditVisitFee.Designer.cs">
+      <DependentUpon>frmAddEditVisitFee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Financial\Visit Fees\frmManageVisitFees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctors\frmManageDoctors.resx">
       <DependentUpon>frmManageDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Financial\Visit Fees\frmAddEditVisitFee.resx">
+      <DependentUpon>frmAddEditVisitFee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Financial\Visit Fees\frmManageVisitFees.resx">
       <DependentUpon>frmManageVisitFees.cs</DependentUpon>

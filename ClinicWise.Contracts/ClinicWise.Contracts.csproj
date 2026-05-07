@@ -69,6 +69,7 @@
     <Compile Include="Users\UserDisplayDTO.cs" />
     <Compile Include="Users\UserDTO.cs" />
     <Compile Include="VisitTypeFees\VisitTypeFeeDTO.cs" />
+    <Compile Include="VisitTypeFees\VisitTypeFeeViewDTO.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Contracts.MedicalRecords;
 using ClinicWise.Contracts.VisitTypeFees;
+using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ namespace ClinicWise.Business
         public int ID { get; set; }
         public enVisitType VisitType { get; set; }
         public decimal BaseAmount { get; set; }
-        public bool IsActive { get; set; }
         public DateTime EffectiveFrom { get; set; }
         public DateTime? EffectiveTo { get; set; }
         public int CreatedByUserID { get; set; }
@@ -25,7 +25,6 @@ namespace ClinicWise.Business
             ID = -1;
             VisitType = enVisitType.Consultation;
             BaseAmount = 0;
-            IsActive = false;
             EffectiveFrom = DateTime.Today;
             EffectiveTo = null;
             CreatedByUserID = -1;
@@ -38,16 +37,14 @@ namespace ClinicWise.Business
             int iD, 
             enVisitType visitType, 
             decimal baseAmount, 
-            bool isActive, 
             DateTime effectiveFrom, 
-            DateTime effectiveTo, 
+            DateTime? effectiveTo, 
             int createdByUserID, 
             DateTime createdAt)
         {
             ID = iD;
             VisitType = visitType;
             BaseAmount = baseAmount;
-            IsActive = isActive;
             EffectiveFrom = effectiveFrom;
             EffectiveTo = effectiveTo;
             CreatedByUserID = createdByUserID;
@@ -56,7 +53,20 @@ namespace ClinicWise.Business
             Mode = enMode.Update;
         }
 
-        public async Task<bool> Save()
+        public clsVisitTypeFee(VisitTypeFeeDTO visitTypeDTO)
+        {
+            ID = visitTypeDTO.ID;
+            VisitType = visitTypeDTO.VisitType;
+            BaseAmount = visitTypeDTO.BaseAmount;
+            EffectiveFrom = visitTypeDTO.EffectiveFrom;
+            EffectiveTo = visitTypeDTO.EffectiveTo;
+            CreatedByUserID = visitTypeDTO.CreatedByUserID;
+            CreatedAt = visitTypeDTO.CreatedAt;
+
+            Mode = enMode.Update;
+        }
+
+        public bool Save()
         {
             switch (Mode)
             {
@@ -78,22 +88,25 @@ namespace ClinicWise.Business
 
         private bool _Update()
         {
-            throw new NotImplementedException();
+            return clsVisitTypeFeeData.Update(ID, (byte)VisitType, BaseAmount, EffectiveFrom, EffectiveTo);
         }
 
         private bool _AddNew()
         {
-            throw new NotImplementedException();
+            CreatedAt = DateTime.Now;
+            this.ID = clsVisitTypeFeeData.AddNew((byte)VisitType, BaseAmount, EffectiveFrom, EffectiveTo, CreatedByUserID, CreatedAt);
+
+            return this.ID != -1;
         }
         
-        public async Task<VisitTypeFeeDTO> FindAsync()
+        public static async Task<VisitTypeFeeDTO> FindAsync(int visitFeeID)
         {
-            throw new NotImplementedException();
+            return await clsVisitTypeFeeData.GetByIDAsync(visitFeeID);
         }
 
-        public async Task<List<VisitTypeFeeDTO>> GetAllAsync()
+        public static async Task<List<VisitTypeFeeViewDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await clsVisitTypeFeeData.GetAllAsync();
         }
     }
 }

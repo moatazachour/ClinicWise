@@ -56,6 +56,7 @@
     <Compile Include="clsGuardianRelationshipData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="clsPrescriptionItemData.cs" />
+    <Compile Include="clsVisitTypeFeeData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +66,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Functions\dbo.CheckIfFeeIsActive.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_AddNew.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetAll.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetByDoctor.sql" />
@@ -129,6 +131,10 @@
     <Content Include="StoredProcedures\Users\User_GetByUsernameAndPassword.sql" />
     <Content Include="StoredProcedures\Users\User_IsPersonAssignedToUserAccount.sql" />
     <Content Include="StoredProcedures\Users\User_Update.sql" />
+    <Content Include="StoredProcedures\VisitTypeFees\VisitFee_AddNew.sql" />
+    <Content Include="StoredProcedures\VisitTypeFees\VisitFee_GetAll.sql" />
+    <Content Include="StoredProcedures\VisitTypeFees\VisitFee_GetByID.sql" />
+    <Content Include="StoredProcedures\VisitTypeFees\VisitFee_Update.sql" />
     <Content Include="Triggers\trg_AfterDeleteDoctor.sql" />
     <Content Include="Triggers\trg_AfterDeleteGuardian.sql" />
     <Content Include="Triggers\trg_AfterDeletePatient.sql" />
@@ -141,6 +147,7 @@
     <Content Include="Views\GetAllPatients_View.sql" />
     <Content Include="Views\GetAllPersons_View.sql" />
     <Content Include="Views\GetAllUsers_View.sql" />
+    <Content Include="Views\GetAllVisitFees_View.sql" />
     <Content Include="Views\PrescriptionItem_GetAll.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
