@@ -11,7 +11,6 @@ namespace ClinicWise.Financial.Visit_Fees
 {
     public partial class frmAddEditVisitFee : Form
     {
-        private int _VisitFeeID;
         private clsVisitTypeFee _VisitTypeFee;
 
         public frmAddEditVisitFee()
