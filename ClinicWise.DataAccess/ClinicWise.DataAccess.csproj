@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="Functions\dbo.CheckIfFeeIsActive.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_AddNew.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_Complete.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetAll.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetByDoctor.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetByID.sql" />
@@ -95,6 +96,7 @@
     <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
+    <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_DoesAppointmentHaveMedicalRecord.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetAll.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetByAppointmentID.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetByID.sql" />
@@ -135,10 +137,12 @@
     <Content Include="StoredProcedures\VisitTypeFees\VisitFee_GetAll.sql" />
     <Content Include="StoredProcedures\VisitTypeFees\VisitFee_GetByID.sql" />
     <Content Include="StoredProcedures\VisitTypeFees\VisitFee_Update.sql" />
+    <Content Include="Triggers\trg_AfterCompleteAppointment.sql" />
     <Content Include="Triggers\trg_AfterDeleteDoctor.sql" />
     <Content Include="Triggers\trg_AfterDeleteGuardian.sql" />
     <Content Include="Triggers\trg_AfterDeletePatient.sql" />
     <Content Include="Triggers\trg_AfterDeletePerson.sql" />
+    <Content Include="Triggers\trg_AfterInsertInvoice.sql" />
     <Content Include="Views\Appointments\GetAllAppointments_View.sql" />
     <Content Include="Views\Appointments\GetTodaysAppointments_View.sql" />
     <Content Include="Views\Appointments\GetTomorrowsAppointments_View.sql" />

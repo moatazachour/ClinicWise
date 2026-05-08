@@ -492,5 +492,8 @@
   <ItemGroup>
     <None Include="Resources\visit-type-fees-64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Financial\Invoices\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

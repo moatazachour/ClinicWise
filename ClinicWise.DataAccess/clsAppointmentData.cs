@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
 namespace ClinicWise.DataAccess
@@ -598,6 +599,31 @@ namespace ClinicWise.DataAccess
                     throw;
                 }
             }
+        }
+
+        public static bool Complete(int appointmentID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_Complete", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@AppointmentID", SqlDbType.Int).Value = appointmentID;
+                connection.Open();
+
+                try
+                {
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return rowsAffected > 0;
         }
     }
 }

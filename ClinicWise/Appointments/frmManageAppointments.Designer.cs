@@ -55,6 +55,7 @@
             this.cbDate = new System.Windows.Forms.ComboBox();
             this.btnAddAppointment = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.completeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageAppointments)).BeginInit();
             this.cmsManageAppointments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -136,11 +137,12 @@
             this.confirmToolStripMenuItem,
             this.cancelToolStripMenuItem,
             this.noShowStripMenuItem,
+            this.completeToolStripMenuItem,
             this.toolStripSeparator2,
             this.documentVisitToolStripMenuItem,
             this.pickToolStripMenuItem});
             this.cmsManageAppointments.Name = "cmsManageDoctors";
-            this.cmsManageAppointments.Size = new System.Drawing.Size(222, 198);
+            this.cmsManageAppointments.Size = new System.Drawing.Size(222, 246);
             this.cmsManageAppointments.Opening += new System.ComponentModel.CancelEventHandler(this.cmsManageUsers_Opening);
             // 
             // showDetailsToolStripMenuItem
@@ -340,6 +342,13 @@
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
+            // completeToolStripMenuItem
+            // 
+            this.completeToolStripMenuItem.Name = "completeToolStripMenuItem";
+            this.completeToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.completeToolStripMenuItem.Text = "Complete";
+            this.completeToolStripMenuItem.Click += new System.EventHandler(this.completeToolStripMenuItem_Click);
+            // 
             // frmManageAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,5 +407,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem documentVisitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pickToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem completeToolStripMenuItem;
     }
 }

@@ -191,5 +191,33 @@ namespace ClinicWise.Business
         {
             return await clsAppointmentData.GetByPatientAsync(patientID);
         }
+
+        public static CompleteAppointmentResult Complete(int appointmentID)
+        {
+            if (!_DoesAppointmentHaveMedicalRecord(appointmentID))
+                return new CompleteAppointmentResult(false, "Appointment cannot be completed: no medical record found.");
+
+            if (!clsAppointmentData.Complete(appointmentID))
+                return new CompleteAppointmentResult(false, "Appointment completion failed.");
+
+            return new CompleteAppointmentResult(true);
+        }
+
+        private static bool _DoesAppointmentHaveMedicalRecord(int appointmentID)
+        {
+            return clsMedicalRecordData.DoesThisAppointmentHaveMedicalRecord(appointmentID);
+        }
+    }
+
+    public class CompleteAppointmentResult
+    {
+        public bool IsSuccess { get; }
+        public string Message { get; }
+
+        public CompleteAppointmentResult(bool isSuccess, string message = "Success")
+        {
+            IsSuccess = isSuccess;
+            Message = message;
+        }
     }
 }

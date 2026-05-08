@@ -2,7 +2,6 @@
 using ClinicWise.Contracts;
 using ClinicWise.Contracts.Appointments;
 using ClinicWise.Contracts.Patients;
-using ClinicWise.Doctors;
 using ClinicWise.MedicalRecords;
 using System;
 using System.Collections.Generic;
@@ -400,7 +399,7 @@ namespace ClinicWise.Appointments
 
             clsAppointment appointment = new clsAppointment(appointmentDTO);
 
-            if (appointment.Date >  DateTime.Now)
+            if (appointment.Date > DateTime.Now)
             {
                 MessageBox.Show("Appointment Date is still in the future!", "Upcoming Appointment",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -453,6 +452,23 @@ namespace ClinicWise.Appointments
 
             AppointmentDataBack?.Invoke(appointment);
             this.Close();
+        }
+
+        private void completeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int selectedAppointmentID = (int)dgvManageAppointments.CurrentRow.Cells[0].Value;
+
+            CompleteAppointmentResult result = clsAppointment.Complete(selectedAppointmentID);
+
+            if (!result.IsSuccess)
+            {
+                MessageBox.Show(result.Message, "Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            MessageBox.Show("Appointment Completed!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

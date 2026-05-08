@@ -258,5 +258,35 @@ namespace ClinicWise.DataAccess
 
             return rowsAfected > 0;
         }
+
+        public static bool DoesThisAppointmentHaveMedicalRecord(int appointmentID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("MedicalRecord_DoesAppointmentHaveMedicalRecord", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@AppointmentID", SqlDbType.Int).Value = appointmentID;
+
+                SqlParameter outputParam = new SqlParameter("@IsFound", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(outputParam);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    return Convert.ToBoolean(command.Parameters["@IsFound"].Value);
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
     }
 }
