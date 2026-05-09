@@ -47,6 +47,8 @@
     <Compile Include="clsDoctorData.cs" />
     <Compile Include="clsGlobal.cs" />
     <Compile Include="clsGuardianData.cs" />
+    <Compile Include="clsInvoiceData.cs" />
+    <Compile Include="clsInvoiceItemData.cs" />
     <Compile Include="clsMedicalRecordData.cs" />
     <Compile Include="clsMedicamentData.cs" />
     <Compile Include="clsPatientData.cs" />
@@ -95,6 +97,8 @@
     <Content Include="StoredProcedures\Guardians\Guardian_AddNew.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
+    <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_GetByInvoice.sql" />
+    <Content Include="StoredProcedures\Invoices\Invoice_GetByAppointmentAndStatus.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_DoesAppointmentHaveMedicalRecord.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_GetAll.sql" />

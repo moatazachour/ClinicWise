@@ -49,6 +49,10 @@
     <Compile Include="Doctors\DoctorDTO.cs" />
     <Compile Include="Guardians\GuardianDTO.cs" />
     <Compile Include="Guardians\GuardianRelationshipDTO.cs" />
+    <Compile Include="InvoiceItems\InvoiceItemDTO.cs" />
+    <Compile Include="Invoices\enDiscountType.cs" />
+    <Compile Include="Invoices\enInvoiceStatus.cs" />
+    <Compile Include="Invoices\InvoiceDTO.cs" />
     <Compile Include="MedicalRecords\enVisitType.cs" />
     <Compile Include="MedicalRecords\MedicalRecordDTO.cs" />
     <Compile Include="MedicalRecords\MedicalRecordFullViewDTO.cs" />

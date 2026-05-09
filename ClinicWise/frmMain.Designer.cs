@@ -42,6 +42,7 @@
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.invoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -131,7 +132,8 @@
             // financialToolStripMenuItem
             // 
             this.financialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.visitFeesToolStripMenuItem});
+            this.visitFeesToolStripMenuItem,
+            this.invoicesToolStripMenuItem});
             this.financialToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.financialToolStripMenuItem.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.financialToolStripMenuItem.Image = global::ClinicWise.Properties.Resources.payment_method_67;
@@ -148,7 +150,7 @@
             this.visitFeesToolStripMenuItem.Image = global::ClinicWise.Properties.Resources.visit_type_fees_64;
             this.visitFeesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.visitFeesToolStripMenuItem.Name = "visitFeesToolStripMenuItem";
-            this.visitFeesToolStripMenuItem.Size = new System.Drawing.Size(293, 70);
+            this.visitFeesToolStripMenuItem.Size = new System.Drawing.Size(294, 70);
             this.visitFeesToolStripMenuItem.Text = "Visit Fees";
             this.visitFeesToolStripMenuItem.Click += new System.EventHandler(this.visitFeesToolStripMenuItem_Click);
             // 
@@ -213,6 +215,15 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // invoicesToolStripMenuItem
+            // 
+            this.invoicesToolStripMenuItem.Image = global::ClinicWise.Properties.Resources.invoice_48;
+            this.invoicesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.invoicesToolStripMenuItem.Name = "invoicesToolStripMenuItem";
+            this.invoicesToolStripMenuItem.Size = new System.Drawing.Size(294, 70);
+            this.invoicesToolStripMenuItem.Text = "Invoices";
+            this.invoicesToolStripMenuItem.Click += new System.EventHandler(this.invoicesToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,5 +261,6 @@
         private System.Windows.Forms.ToolStripMenuItem signOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pharmacyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visitFeesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem invoicesToolStripMenuItem;
     }
 }

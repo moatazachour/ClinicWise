@@ -2,6 +2,7 @@
 using ClinicWise.Contracts;
 using ClinicWise.Contracts.Appointments;
 using ClinicWise.Contracts.Patients;
+using ClinicWise.Financial.Invoices;
 using ClinicWise.MedicalRecords;
 using System;
 using System.Collections.Generic;
@@ -467,8 +468,10 @@ namespace ClinicWise.Appointments
                 return;
             }
 
-            MessageBox.Show("Appointment Completed!", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmAddEditInvoice frm = new frmAddEditInvoice(selectedAppointmentID);
+            frm.ShowDialog();
+
+            // HERE IT SHOULD OPEN THE INVOICE MANAGEMENT PAGE
         }
     }
 }
