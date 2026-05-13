@@ -104,6 +104,12 @@
     <Compile Include="Financial\Invoices\frmAddEditInvoice.Designer.cs">
       <DependentUpon>frmAddEditInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Financial\Invoices\frmManageInvoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Financial\Invoices\frmManageInvoices.Designer.cs">
+      <DependentUpon>frmManageInvoices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Financial\Visit Fees\frmAddEditVisitFee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Financial\Invoices\frmAddEditInvoice.resx">
       <DependentUpon>frmAddEditInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Financial\Invoices\frmManageInvoices.resx">
+      <DependentUpon>frmManageInvoices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Financial\Visit Fees\frmAddEditVisitFee.resx">
       <DependentUpon>frmAddEditVisitFee.cs</DependentUpon>
@@ -510,6 +519,14 @@
   <ItemGroup>
     <None Include="Resources\invoice-64.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\invoice2-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice-update-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice-update-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

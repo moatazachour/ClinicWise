@@ -98,6 +98,7 @@
     <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_GetByInvoice.sql" />
+    <Content Include="StoredProcedures\Invoices\Invoice_GetAll.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByAppointmentAndStatus.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_DoesAppointmentHaveMedicalRecord.sql" />
@@ -151,6 +152,7 @@
     <Content Include="Views\Appointments\GetTodaysAppointments_View.sql" />
     <Content Include="Views\Appointments\GetTomorrowsAppointments_View.sql" />
     <Content Include="Views\GetAllDoctors_View.sql" />
+    <Content Include="Views\GetAllInvoices_View.sql" />
     <Content Include="Views\GetAllMedicalRecords_View.sql" />
     <Content Include="Views\GetAllPatients_View.sql" />
     <Content Include="Views\GetAllPersons_View.sql" />

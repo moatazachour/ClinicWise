@@ -1,6 +1,7 @@
 ﻿using ClinicWise.Contracts.Invoices;
 using ClinicWise.DataAccess;
 using System;
+using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
@@ -123,6 +124,11 @@ namespace ClinicWise.Business
         public static async Task<InvoiceDTO> FindDraftedByAppointmentIdAsync(int appointmentID)
         {
             return await clsInvoiceData.GetByAppointmentIdAndStatusAsync(appointmentID, (byte)enInvoiceStatus.Draft);
+        }
+
+        public static async Task<List<InvoiceViewDTO>> GetAllAsync()
+        {
+            return await clsInvoiceData.GetAllAsync();
         }
     }
 }

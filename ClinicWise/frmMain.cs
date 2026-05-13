@@ -93,8 +93,8 @@ namespace ClinicWise
 
         private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmAddEditInvoice frm = new frmAddEditInvoice();
-            //frm.ShowDialog();
+            frmManageInvoices frm = new frmManageInvoices();
+            frm.ShowDialog();
         }
     }
 }

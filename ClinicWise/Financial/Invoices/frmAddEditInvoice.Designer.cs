@@ -43,10 +43,18 @@
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label7 = new System.Windows.Forms.Label();
             this.gbInvoiceInfos = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.gbDiscount = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nudDiscountAmount = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.nudDiscountPercent = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblDoctor = new System.Windows.Forms.Label();
@@ -59,22 +67,14 @@
             this.lblMode = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.gbDiscount = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nudDiscountAmount = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceItems)).BeginInit();
             this.cmsManageInvoiceItems.SuspendLayout();
             this.gbInvoiceInfos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDiscountPercent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbDiscount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscountAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDiscountPercent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -227,17 +227,99 @@
             this.gbInvoiceInfos.TabIndex = 64;
             this.gbInvoiceInfos.TabStop = false;
             // 
-            // comboBox1
+            // lblTotalAmount
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "By Amount",
-            "By Percentage"});
-            this.comboBox1.Location = new System.Drawing.Point(200, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(212, 27);
-            this.comboBox1.TabIndex = 50;
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.BackColor = System.Drawing.Color.Azure;
+            this.lblTotalAmount.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAmount.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lblTotalAmount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTotalAmount.Location = new System.Drawing.Point(575, 665);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(51, 56);
+            this.lblTotalAmount.TabIndex = 54;
+            this.lblTotalAmount.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label13.Location = new System.Drawing.Point(251, 678);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(249, 41);
+            this.label13.TabIndex = 53;
+            this.label13.Text = "Total Amount:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Loyality",
+            "Financial Hardship",
+            "Staff",
+            "Waiver"});
+            this.comboBox2.Location = new System.Drawing.Point(209, 173);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(212, 27);
+            this.comboBox2.TabIndex = 52;
+            // 
+            // gbDiscount
+            // 
+            this.gbDiscount.Controls.Add(this.label5);
+            this.gbDiscount.Controls.Add(this.nudDiscountAmount);
+            this.gbDiscount.Controls.Add(this.label3);
+            this.gbDiscount.Controls.Add(this.nudDiscountPercent);
+            this.gbDiscount.Controls.Add(this.comboBox1);
+            this.gbDiscount.Controls.Add(this.label6);
+            this.gbDiscount.Controls.Add(this.label11);
+            this.gbDiscount.Location = new System.Drawing.Point(88, 228);
+            this.gbDiscount.Name = "gbDiscount";
+            this.gbDiscount.Size = new System.Drawing.Size(805, 167);
+            this.gbDiscount.TabIndex = 51;
+            this.gbDiscount.TabStop = false;
+            this.gbDiscount.Text = "Discount Details";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label5.Location = new System.Drawing.Point(335, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 28);
+            this.label5.TabIndex = 53;
+            this.label5.Text = "%";
+            // 
+            // nudDiscountAmount
+            // 
+            this.nudDiscountAmount.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudDiscountAmount.Location = new System.Drawing.Point(594, 108);
+            this.nudDiscountAmount.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudDiscountAmount.Name = "nudDiscountAmount";
+            this.nudDiscountAmount.Size = new System.Drawing.Size(120, 27);
+            this.nudDiscountAmount.TabIndex = 52;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(484, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 23);
+            this.label3.TabIndex = 51;
+            this.label3.Text = "Amount:";
             // 
             // nudDiscountPercent
             // 
@@ -256,16 +338,17 @@
             this.nudDiscountPercent.Size = new System.Drawing.Size(120, 27);
             this.nudDiscountPercent.TabIndex = 48;
             // 
-            // label11
+            // comboBox1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(61, 111);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(123, 23);
-            this.label11.TabIndex = 47;
-            this.label11.Text = "Percentage:";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "By Amount",
+            "By Percentage"});
+            this.comboBox1.Location = new System.Drawing.Point(200, 49);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(212, 27);
+            this.comboBox1.TabIndex = 50;
             // 
             // label6
             // 
@@ -277,6 +360,28 @@
             this.label6.Size = new System.Drawing.Size(169, 23);
             this.label6.TabIndex = 44;
             this.label6.Text = "Discount Method:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label11.Location = new System.Drawing.Point(61, 111);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(123, 23);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "Percentage:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(56, 173);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 23);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Discount Type:";
             // 
             // lblSubTotal
             // 
@@ -395,9 +500,9 @@
             this.lblMode.Location = new System.Drawing.Point(394, 107);
             this.lblMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(241, 36);
+            this.lblMode.Size = new System.Drawing.Size(247, 36);
             this.lblMode.TabIndex = 59;
-            this.lblMode.Text = "Finalyze Invoice";
+            this.lblMode.Text = "Manage Invoice";
             // 
             // btnSave
             // 
@@ -423,111 +528,6 @@
             this.pictureBox1.TabIndex = 65;
             this.pictureBox1.TabStop = false;
             // 
-            // gbDiscount
-            // 
-            this.gbDiscount.Controls.Add(this.label5);
-            this.gbDiscount.Controls.Add(this.nudDiscountAmount);
-            this.gbDiscount.Controls.Add(this.label3);
-            this.gbDiscount.Controls.Add(this.nudDiscountPercent);
-            this.gbDiscount.Controls.Add(this.comboBox1);
-            this.gbDiscount.Controls.Add(this.label6);
-            this.gbDiscount.Controls.Add(this.label11);
-            this.gbDiscount.Location = new System.Drawing.Point(88, 228);
-            this.gbDiscount.Name = "gbDiscount";
-            this.gbDiscount.Size = new System.Drawing.Size(805, 167);
-            this.gbDiscount.TabIndex = 51;
-            this.gbDiscount.TabStop = false;
-            this.gbDiscount.Text = "Discount Details";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Loyality",
-            "Financial Hardship",
-            "Staff",
-            "Waiver"});
-            this.comboBox2.Location = new System.Drawing.Point(209, 173);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(212, 27);
-            this.comboBox2.TabIndex = 52;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(56, 173);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 23);
-            this.label1.TabIndex = 51;
-            this.label1.Text = "Discount Type:";
-            // 
-            // nudDiscountAmount
-            // 
-            this.nudDiscountAmount.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudDiscountAmount.Location = new System.Drawing.Point(594, 108);
-            this.nudDiscountAmount.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudDiscountAmount.Name = "nudDiscountAmount";
-            this.nudDiscountAmount.Size = new System.Drawing.Size(120, 27);
-            this.nudDiscountAmount.TabIndex = 52;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(484, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 23);
-            this.label3.TabIndex = 51;
-            this.label3.Text = "Amount:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(335, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 28);
-            this.label5.TabIndex = 53;
-            this.label5.Text = "%";
-            // 
-            // lblTotalAmount
-            // 
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.BackColor = System.Drawing.Color.Azure;
-            this.lblTotalAmount.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.ForeColor = System.Drawing.Color.ForestGreen;
-            this.lblTotalAmount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTotalAmount.Location = new System.Drawing.Point(575, 665);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(51, 56);
-            this.lblTotalAmount.TabIndex = 54;
-            this.lblTotalAmount.Text = "0";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(251, 678);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(249, 41);
-            this.label13.TabIndex = 53;
-            this.label13.Text = "Total Amount:";
-            // 
             // frmAddEditInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -549,11 +549,11 @@
             this.cmsManageInvoiceItems.ResumeLayout(false);
             this.gbInvoiceInfos.ResumeLayout(false);
             this.gbInvoiceInfos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDiscountPercent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbDiscount.ResumeLayout(false);
             this.gbDiscount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscountAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDiscountPercent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
