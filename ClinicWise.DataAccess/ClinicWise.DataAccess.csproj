@@ -97,6 +97,7 @@
     <Content Include="StoredProcedures\Guardians\Guardian_AddNew.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
+    <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_AddNew.sql" />
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_GetByInvoice.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetAll.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByAppointmentAndStatus.sql" />

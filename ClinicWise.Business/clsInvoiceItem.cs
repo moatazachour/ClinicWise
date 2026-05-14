@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Contracts.InvoiceItems;
 using ClinicWise.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -54,6 +55,35 @@ namespace ClinicWise.Business
         public static async Task<List<InvoiceItemDTO>> GetAllByInvoiceAsync(int invoiceID)
         {
             return await clsInvoiceItemData.GetAllByInvoiceAsync(invoiceID);
+        }
+
+        public bool Save()
+        {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNew())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    return false;
+                case enMode.Update:
+                    return _Update();
+                default:
+                    return false;
+            }
+        }
+
+        private bool _Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool _AddNew()
+        {
+            ItemID = clsInvoiceItemData.AddNew(InvoiceID, Description, Quantity, UnitPrice, TotalPrice);
+            return ItemID != -1;
         }
     }
 }

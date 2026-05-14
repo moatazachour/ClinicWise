@@ -4,12 +4,47 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
 namespace ClinicWise.DataAccess
 {
     public class clsInvoiceItemData
     {
+        public static int AddNew(int invoiceID, string description, int quantity, decimal unitPrice, decimal totalPrice)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("InvoiceItem_AddNew", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@InvoiceID", SqlDbType.Int).Value = invoiceID;
+                command.Parameters.Add("@Description", SqlDbType.NVarChar).Value = description;
+                command.Parameters.Add("@Quantity", SqlDbType.Int).Value = quantity;
+                command.Parameters.Add("@UnitPrice", SqlDbType.Decimal).Value = unitPrice;
+                command.Parameters.Add("@TotalPrice", SqlDbType.Decimal).Value = totalPrice;
+
+                SqlParameter outputParam = new SqlParameter("@ItemID", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(outputParam);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    return (int)command.Parameters["@ItemID"].Value;
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
         public static async Task<List<InvoiceItemDTO>> GetAllByInvoiceAsync(int invoiceID)
         {
             List<InvoiceItemDTO> invoiceItems = new List<InvoiceItemDTO>();

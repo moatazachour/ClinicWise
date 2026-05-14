@@ -4,6 +4,7 @@ using ClinicWise.Contracts.Appointments;
 using ClinicWise.Contracts.InvoiceItems;
 using ClinicWise.Contracts.Invoices;
 using ClinicWise.Contracts.Patients;
+using ClinicWise.Financial.InvoiceItems;
 using ClinicWise.Global_Classes;
 using System;
 using System.Collections.Generic;
@@ -335,6 +336,28 @@ namespace ClinicWise.Financial.Invoices
         private async void btnResetForm_Click(object sender, EventArgs e)
         {
             await _LoadInformations(_LoadMode);
+        }
+
+        private void btnAddInvoiceItem_Click(object sender, EventArgs e)
+        {
+            int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
+
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _InvoiceID);
+            frm.ShowDialog();
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _InvoiceID);
+            frm.ShowDialog();
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
+
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(invoiceItemID, _InvoiceID);
+            frm.ShowDialog();
         }
     }
 }
