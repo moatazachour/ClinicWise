@@ -34,7 +34,7 @@
             this.lblInvoiceNumber = new System.Windows.Forms.Label();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDetails = new System.Windows.Forms.Button();
-            this.btnAddPrescription = new System.Windows.Forms.Button();
+            this.btnAddInvoiceItem = new System.Windows.Forms.Button();
             this.dgvInvoiceItems = new System.Windows.Forms.DataGridView();
             this.cmsManageInvoiceItems = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +69,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnCheckMedicalRecord = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceItems)).BeginInit();
             this.cmsManageInvoiceItems.SuspendLayout();
@@ -117,27 +118,27 @@
             this.btnDetails.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnDetails.ForeColor = System.Drawing.Color.Black;
             this.btnDetails.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDetails.Location = new System.Drawing.Point(833, 488);
+            this.btnDetails.Location = new System.Drawing.Point(60, 515);
             this.btnDetails.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(106, 39);
+            this.btnDetails.Size = new System.Drawing.Size(106, 31);
             this.btnDetails.TabIndex = 34;
             this.btnDetails.Text = "Details";
             this.btnDetails.UseVisualStyleBackColor = true;
             // 
-            // btnAddPrescription
+            // btnAddInvoiceItem
             // 
-            this.btnAddPrescription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddPrescription.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.btnAddPrescription.ForeColor = System.Drawing.Color.Black;
-            this.btnAddPrescription.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAddPrescription.Location = new System.Drawing.Point(833, 434);
-            this.btnAddPrescription.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddPrescription.Name = "btnAddPrescription";
-            this.btnAddPrescription.Size = new System.Drawing.Size(106, 39);
-            this.btnAddPrescription.TabIndex = 32;
-            this.btnAddPrescription.Text = "Add";
-            this.btnAddPrescription.UseVisualStyleBackColor = true;
+            this.btnAddInvoiceItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddInvoiceItem.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAddInvoiceItem.ForeColor = System.Drawing.Color.Black;
+            this.btnAddInvoiceItem.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnAddInvoiceItem.Location = new System.Drawing.Point(60, 474);
+            this.btnAddInvoiceItem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddInvoiceItem.Name = "btnAddInvoiceItem";
+            this.btnAddInvoiceItem.Size = new System.Drawing.Size(106, 31);
+            this.btnAddInvoiceItem.TabIndex = 32;
+            this.btnAddInvoiceItem.Text = "Add";
+            this.btnAddInvoiceItem.UseVisualStyleBackColor = true;
             // 
             // dgvInvoiceItems
             // 
@@ -146,13 +147,13 @@
             this.dgvInvoiceItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInvoiceItems.ContextMenuStrip = this.cmsManageInvoiceItems;
             this.dgvInvoiceItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvInvoiceItems.Location = new System.Drawing.Point(194, 431);
+            this.dgvInvoiceItems.Location = new System.Drawing.Point(186, 431);
             this.dgvInvoiceItems.Margin = new System.Windows.Forms.Padding(2);
             this.dgvInvoiceItems.Name = "dgvInvoiceItems";
             this.dgvInvoiceItems.RowHeadersWidth = 51;
             this.dgvInvoiceItems.RowTemplate.Height = 24;
             this.dgvInvoiceItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInvoiceItems.Size = new System.Drawing.Size(628, 156);
+            this.dgvInvoiceItems.Size = new System.Drawing.Size(870, 156);
             this.dgvInvoiceItems.TabIndex = 31;
             // 
             // cmsManageInvoiceItems
@@ -196,7 +197,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(36, 440);
+            this.label7.Location = new System.Drawing.Point(15, 431);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(153, 25);
             this.label7.TabIndex = 30;
@@ -204,6 +205,7 @@
             // 
             // gbInvoiceInfos
             // 
+            this.gbInvoiceInfos.Controls.Add(this.btnDelete);
             this.gbInvoiceInfos.Controls.Add(this.btnResetForm);
             this.gbInvoiceInfos.Controls.Add(this.lblTotalAmount);
             this.gbInvoiceInfos.Controls.Add(this.label13);
@@ -217,7 +219,7 @@
             this.gbInvoiceInfos.Controls.Add(this.lblAppointmentID);
             this.gbInvoiceInfos.Controls.Add(this.label8);
             this.gbInvoiceInfos.Controls.Add(this.btnDetails);
-            this.gbInvoiceInfos.Controls.Add(this.btnAddPrescription);
+            this.gbInvoiceInfos.Controls.Add(this.btnAddInvoiceItem);
             this.gbInvoiceInfos.Controls.Add(this.dgvInvoiceItems);
             this.gbInvoiceInfos.Controls.Add(this.label7);
             this.gbInvoiceInfos.Controls.Add(this.lblPatient);
@@ -226,7 +228,7 @@
             this.gbInvoiceInfos.ForeColor = System.Drawing.Color.DodgerBlue;
             this.gbInvoiceInfos.Location = new System.Drawing.Point(34, 209);
             this.gbInvoiceInfos.Name = "gbInvoiceInfos";
-            this.gbInvoiceInfos.Size = new System.Drawing.Size(977, 697);
+            this.gbInvoiceInfos.Size = new System.Drawing.Size(1079, 697);
             this.gbInvoiceInfos.TabIndex = 64;
             this.gbInvoiceInfos.TabStop = false;
             // 
@@ -236,10 +238,10 @@
             this.btnResetForm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnResetForm.ForeColor = System.Drawing.Color.Black;
             this.btnResetForm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnResetForm.Location = new System.Drawing.Point(745, 184);
+            this.btnResetForm.Location = new System.Drawing.Point(908, 240);
             this.btnResetForm.Margin = new System.Windows.Forms.Padding(2);
             this.btnResetForm.Name = "btnResetForm";
-            this.btnResetForm.Size = new System.Drawing.Size(148, 39);
+            this.btnResetForm.Size = new System.Drawing.Size(148, 48);
             this.btnResetForm.TabIndex = 66;
             this.btnResetForm.Text = "Reset Form";
             this.btnResetForm.UseVisualStyleBackColor = true;
@@ -252,7 +254,7 @@
             this.lblTotalAmount.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.ForeColor = System.Drawing.Color.ForestGreen;
             this.lblTotalAmount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTotalAmount.Location = new System.Drawing.Point(691, 615);
+            this.lblTotalAmount.Location = new System.Drawing.Point(824, 618);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(51, 56);
             this.lblTotalAmount.TabIndex = 54;
@@ -264,7 +266,7 @@
             this.label13.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.ForestGreen;
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(367, 628);
+            this.label13.Location = new System.Drawing.Point(500, 631);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(249, 41);
             this.label13.TabIndex = 53;
@@ -280,7 +282,7 @@
             "Financial Hardship",
             "Staff",
             "Waiver"});
-            this.cbDiscountType.Location = new System.Drawing.Point(209, 173);
+            this.cbDiscountType.Location = new System.Drawing.Point(212, 173);
             this.cbDiscountType.Name = "cbDiscountType";
             this.cbDiscountType.Size = new System.Drawing.Size(212, 27);
             this.cbDiscountType.TabIndex = 52;
@@ -509,11 +511,11 @@
             // 
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(765, 925);
+            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(844, 925);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(116, 38);
+            this.btnClose.Size = new System.Drawing.Size(116, 47);
             this.btnClose.TabIndex = 63;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -522,24 +524,23 @@
             // lblMode
             // 
             this.lblMode.AutoSize = true;
-            this.lblMode.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMode.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblMode.Location = new System.Drawing.Point(394, 107);
+            this.lblMode.Location = new System.Drawing.Point(442, 90);
             this.lblMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(247, 36);
+            this.lblMode.Size = new System.Drawing.Size(271, 38);
             this.lblMode.TabIndex = 59;
             this.lblMode.Text = "Manage Invoice";
             // 
             // btnSave
             // 
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(895, 925);
+            this.btnSave.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(974, 925);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(116, 38);
+            this.btnSave.Size = new System.Drawing.Size(116, 47);
             this.btnSave.TabIndex = 62;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -551,7 +552,7 @@
             this.pictureBox1.Image = global::ClinicWise.Properties.Resources.invoice_64;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1042, 71);
+            this.pictureBox1.Size = new System.Drawing.Size(1141, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 65;
             this.pictureBox1.TabStop = false;
@@ -562,20 +563,34 @@
             this.btnCheckMedicalRecord.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.btnCheckMedicalRecord.ForeColor = System.Drawing.Color.Black;
             this.btnCheckMedicalRecord.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCheckMedicalRecord.Location = new System.Drawing.Point(779, 166);
+            this.btnCheckMedicalRecord.Location = new System.Drawing.Point(918, 170);
             this.btnCheckMedicalRecord.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckMedicalRecord.Name = "btnCheckMedicalRecord";
-            this.btnCheckMedicalRecord.Size = new System.Drawing.Size(232, 39);
+            this.btnCheckMedicalRecord.Size = new System.Drawing.Size(195, 34);
             this.btnCheckMedicalRecord.TabIndex = 55;
             this.btnCheckMedicalRecord.Text = "Check Medical Record";
             this.btnCheckMedicalRecord.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.ForeColor = System.Drawing.Color.Black;
+            this.btnDelete.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnDelete.Location = new System.Drawing.Point(60, 556);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(106, 31);
+            this.btnDelete.TabIndex = 67;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // frmAddEditInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1042, 983);
+            this.ClientSize = new System.Drawing.Size(1141, 983);
             this.Controls.Add(this.btnCheckMedicalRecord);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
@@ -611,7 +626,7 @@
         private System.Windows.Forms.Label lblInvoiceNumber;
         private System.Windows.Forms.GroupBox gbInvoiceInfos;
         private System.Windows.Forms.Button btnDetails;
-        private System.Windows.Forms.Button btnAddPrescription;
+        private System.Windows.Forms.Button btnAddInvoiceItem;
         private System.Windows.Forms.DataGridView dgvInvoiceItems;
         private System.Windows.Forms.ContextMenuStrip cmsManageInvoiceItems;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
@@ -645,5 +660,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCheckMedicalRecord;
         private System.Windows.Forms.Button btnResetForm;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

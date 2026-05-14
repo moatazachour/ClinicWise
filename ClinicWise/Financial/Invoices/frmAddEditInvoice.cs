@@ -16,6 +16,7 @@ namespace ClinicWise.Financial.Invoices
     {
         public enum enInvoiceLoadMode { ByAppointment, ByInvoice }
         private enInvoiceLoadMode _LoadMode;
+        private bool _IsLoading = false;
 
         private int _AppointmentID;
         private int _InvoiceID;
@@ -44,6 +45,8 @@ namespace ClinicWise.Financial.Invoices
 
         private async Task _LoadInformations(enInvoiceLoadMode loadMode)
         {
+            _IsLoading = true;
+
             InvoiceDTO invoice;
 
             if (_LoadMode == enInvoiceLoadMode.ByAppointment)
@@ -64,11 +67,19 @@ namespace ClinicWise.Financial.Invoices
             if (_Invoice.DiscountType != null)
             {
                 cbDiscountType.Text = _GetDiscountType();
-                
+
                 if (_Invoice.DiscountType != enDiscountType.Waiver)
                 {
-                    nudDiscountAmount.Value = _Invoice.DiscountAmount;
-                    nudDiscountPercent.Value = _Invoice.DiscountPercent ?? 0;
+                    if (_Invoice.DiscountAmount > 0m)
+                    {
+                        nudDiscountAmount.Value = _Invoice.DiscountAmount;
+                        cbDiscountMethod.Text = "By Amount";
+                    }
+                    else
+                    {
+                        nudDiscountPercent.Value = _Invoice.DiscountPercent ?? 0;
+                        cbDiscountMethod.Text = "By Percentage";
+                    }
                 }
             }
             else
@@ -78,6 +89,8 @@ namespace ClinicWise.Financial.Invoices
 
             lblTotalAmount.Text = $"{_Invoice.TotalAmount} TND";
             await _LoadInvoiceItems();
+
+            _IsLoading = false;
         }
 
         private string _GetDiscountType()
@@ -150,6 +163,9 @@ namespace ClinicWise.Financial.Invoices
 
         private void cbDiscountType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_IsLoading)
+                return;
+
             if (cbDiscountType.Text.Equals("None"))
             {
                 gbDiscount.Enabled = false;
@@ -172,6 +188,7 @@ namespace ClinicWise.Financial.Invoices
                 gbDiscount.Enabled = false;
                 _ResetDiscountFields();
                 _Invoice.Status = enInvoiceStatus.Waived;
+                _Invoice.DiscountType = enDiscountType.Waiver;
                 _Invoice.OutstandingBalance = 0m;
                 _Invoice.IssuedByUserID = clsGlobalSettings.CurrentUserID;
             }
@@ -179,6 +196,8 @@ namespace ClinicWise.Financial.Invoices
 
         private void cbDiscountMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_IsLoading) return;
+
             _Invoice.DiscountPercent = null;
             _Invoice.DiscountAmount = 0;
             _Invoice.TotalAmount = _Invoice.SubTotal;
@@ -235,6 +254,9 @@ namespace ClinicWise.Financial.Invoices
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!_CheckFields())
+                return;
+
             if (_Invoice.Status == enInvoiceStatus.Draft)
             {
                 _Invoice.Status = enInvoiceStatus.Issued;
@@ -263,6 +285,46 @@ namespace ClinicWise.Financial.Invoices
                      MessageBoxButtons.OK,
                      MessageBoxIcon.Error);
             }
+        }
+
+        private bool _CheckFields()
+        {
+            errorProvider1.Clear();
+
+            bool isValid = true;
+
+            if (_Invoice.DiscountType == enDiscountType.Loyality ||
+                _Invoice.DiscountType == enDiscountType.FinancialHardship ||
+                _Invoice.DiscountType == enDiscountType.Staff)
+            {
+                if (cbDiscountMethod.SelectedIndex == -1)
+                {
+                    errorProvider1.SetError(cbDiscountMethod,
+                        "You should select a discount method!");
+
+                    isValid = false;
+                }
+
+                if (cbDiscountMethod.Text == "By Percentage" &&
+                    _Invoice.DiscountPercent == 0m)
+                {
+                    errorProvider1.SetError(nudDiscountPercent,
+                        "Discount percent cannot be 0.");
+
+                    isValid = false;
+                }
+
+                if (cbDiscountMethod.Text == "By Amount" &&
+                    _Invoice.DiscountAmount == 0m)
+                {
+                    errorProvider1.SetError(nudDiscountAmount,
+                        "Discount amount cannot be 0.");
+
+                    isValid = false;
+                }
+            }
+
+            return isValid;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
