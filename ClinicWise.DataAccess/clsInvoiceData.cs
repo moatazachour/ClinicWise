@@ -54,7 +54,6 @@ namespace ClinicWise.DataAccess
                 return invoices;
             }
         }
-        
 
         public static async Task<InvoiceDTO> GetByAppointmentIdAndStatusAsync(int appointmentID, byte status)
         {
@@ -94,6 +93,106 @@ namespace ClinicWise.DataAccess
                     throw;
                 }
             }
+        }
+
+        public static async Task<InvoiceDTO> GetByIDAsync(int invoiceID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Invoice_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@InvoiceID", SqlDbType.Int).Value = invoiceID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new InvoiceDTO()
+                            {
+                                InvoiceID = invoiceID,
+                                InvoiceNumber = (string)reader["InvoiceNumber"],
+                                AppointmentID = (int)reader["AppointmentID"],
+                                PatientID = (int)reader["PatientID"],
+                                SubTotal = (decimal)reader["SubTotal"],
+                                DiscountAmount = (decimal)reader["DiscountAmount"],
+                                DiscountPercent = reader["DiscountPercent"] as decimal?,
+                                DiscountType = reader["DiscountType"] == DBNull.Value ? null : (enDiscountType?)(byte)reader["DiscountType"],
+                                DiscountAuthorizedByUserID = reader["DiscountAuthorizedByUserID"] as int?,
+                                TotalAmount = (decimal)reader["TotalAmount"],
+                                AmountPaid = (decimal)reader["AmountPaid"],
+                                OutstandingBalance = reader["OutstandingBalance"] as decimal?,
+                                Status = (enInvoiceStatus)(byte)reader["Status"],
+                                IssuedByUserID = reader["IssuedByUserID"] as int?,
+                                IssuedAt = reader["IssuedAt"] as DateTime?,
+                                VoidedByUserID = reader["VoidedByUserID"] as int?,
+                                VoidReason = reader["VoidReason"] as string,
+                                Notes = reader["Notes"] as string,
+                            };
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
+        public static bool Update(
+            int invoiceID, 
+            decimal subTotal, 
+            decimal discountAmount, 
+            decimal? discountPercent, 
+            enDiscountType? discountType, 
+            int? discountAuthorizedByUserID, 
+            decimal totalAmount, 
+            decimal amountPaid, 
+            decimal? outstandingBalance, 
+            enInvoiceStatus status, 
+            int? issuedByUserID, 
+            DateTime? issuedAt)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Invoice_Update", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@InvoiceID", SqlDbType.Int).Value = invoiceID;
+                command.Parameters.Add("@SubTotal", SqlDbType.Decimal).Value = subTotal;
+                command.Parameters.Add("@DiscountAmount", SqlDbType.Decimal).Value = discountAmount;
+                command.Parameters.Add("@DiscountPercent", SqlDbType.Decimal).Value = (object)discountPercent ?? DBNull.Value;
+                command.Parameters.Add("@DiscountType", SqlDbType.TinyInt).Value = discountType.HasValue ? (object)(byte)discountType.Value : DBNull.Value;
+                command.Parameters.Add("@DiscountAuthorizedByUserID", SqlDbType.Int).Value = (object)discountAuthorizedByUserID ?? DBNull.Value;
+                command.Parameters.Add("@TotalAmount", SqlDbType.Decimal).Value = totalAmount;
+                command.Parameters.Add("@AmountPaid", SqlDbType.Decimal).Value = amountPaid;
+                command.Parameters.Add("@OutstandingBalance", SqlDbType.Decimal).Value = (object)outstandingBalance ?? DBNull.Value;
+                command.Parameters.Add("@Status", SqlDbType.TinyInt).Value = (byte)status;
+                command.Parameters.Add("@IssuedByUserID", SqlDbType.Int).Value = (object)issuedByUserID ?? DBNull.Value;
+                command.Parameters.Add("@IssuedAt", SqlDbType.DateTime).Value = (object)issuedAt ?? DBNull.Value;
+
+                connection.Open();
+
+                try
+                {
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return rowsAffected > 0;
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ClinicWise.Business.clsAppointment;
+using static ClinicWise.Financial.Invoices.frmAddEditInvoice;
 using static ClinicWise.MedicalRecords.frmAddEditMedicalRecord;
 
 namespace ClinicWise.Appointments
@@ -468,10 +469,11 @@ namespace ClinicWise.Appointments
                 return;
             }
 
-            frmAddEditInvoice frm = new frmAddEditInvoice(selectedAppointmentID);
+            frmAddEditInvoice frm = new frmAddEditInvoice(selectedAppointmentID, enInvoiceLoadMode.ByAppointment);
             frm.ShowDialog();
 
-            // HERE IT SHOULD OPEN THE INVOICE MANAGEMENT PAGE
+            frmManageInvoices frmInvoices = new frmManageInvoices();
+            frmInvoices.ShowDialog();
         }
     }
 }

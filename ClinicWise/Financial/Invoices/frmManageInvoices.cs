@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ClinicWise.Business.clsAppointment;
+using static ClinicWise.Financial.Invoices.frmAddEditInvoice;
 
 namespace ClinicWise.Financial.Invoices
 {
@@ -109,6 +110,24 @@ namespace ClinicWise.Financial.Invoices
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private async void btnEditInvoice_Click(object sender, EventArgs e)
+        {
+            int invoiceID = (int)dgvManageInvoices.CurrentRow.Cells[0].Value;
+            frmAddEditInvoice frm = new frmAddEditInvoice(invoiceID, enInvoiceLoadMode.ByInvoice);
+            frm.ShowDialog();
+
+            await _LoadData();
+        }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int invoiceID = (int)dgvManageInvoices.CurrentRow.Cells[0].Value;
+            frmAddEditInvoice frm = new frmAddEditInvoice(invoiceID, enInvoiceLoadMode.ByInvoice);
+            frm.ShowDialog();
+
+            await _LoadData();
         }
     }
 }

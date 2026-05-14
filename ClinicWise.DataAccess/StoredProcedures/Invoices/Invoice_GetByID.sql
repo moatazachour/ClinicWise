@@ -1,0 +1,10 @@
+CREATE PROCEDURE Invoice_GetByID
+	@InvoiceID INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT *
+	FROM Invoices
+	WHERE InvoiceID = @InvoiceID;
+END;

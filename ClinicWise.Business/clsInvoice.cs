@@ -130,5 +130,21 @@ namespace ClinicWise.Business
         {
             return await clsInvoiceData.GetAllAsync();
         }
+
+        public static async Task<InvoiceDTO> FindAsync(int invoiceID)
+        {
+            return await clsInvoiceData.GetByIDAsync(invoiceID);
+        }
+
+        public bool Save()
+        {
+            return _Update();
+        }
+
+        private bool _Update()
+        {
+            return clsInvoiceData.Update(InvoiceID, SubTotal, DiscountAmount, DiscountPercent, DiscountType, DiscountAuthorizedByUserID,
+                TotalAmount, AmountPaid, OutstandingBalance, Status, IssuedByUserID, IssuedAt);
+        }
     }
 }

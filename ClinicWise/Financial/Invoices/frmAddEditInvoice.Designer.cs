@@ -43,15 +43,16 @@
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label7 = new System.Windows.Forms.Label();
             this.gbInvoiceInfos = new System.Windows.Forms.GroupBox();
+            this.btnResetForm = new System.Windows.Forms.Button();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbDiscountType = new System.Windows.Forms.ComboBox();
             this.gbDiscount = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.nudDiscountAmount = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.nudDiscountPercent = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbDiscountMethod = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +68,7 @@
             this.lblMode = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCheckMedicalRecord = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceItems)).BeginInit();
             this.cmsManageInvoiceItems.SuspendLayout();
@@ -202,9 +204,10 @@
             // 
             // gbInvoiceInfos
             // 
+            this.gbInvoiceInfos.Controls.Add(this.btnResetForm);
             this.gbInvoiceInfos.Controls.Add(this.lblTotalAmount);
             this.gbInvoiceInfos.Controls.Add(this.label13);
-            this.gbInvoiceInfos.Controls.Add(this.comboBox2);
+            this.gbInvoiceInfos.Controls.Add(this.cbDiscountType);
             this.gbInvoiceInfos.Controls.Add(this.gbDiscount);
             this.gbInvoiceInfos.Controls.Add(this.label1);
             this.gbInvoiceInfos.Controls.Add(this.lblSubTotal);
@@ -223,9 +226,24 @@
             this.gbInvoiceInfos.ForeColor = System.Drawing.Color.DodgerBlue;
             this.gbInvoiceInfos.Location = new System.Drawing.Point(34, 209);
             this.gbInvoiceInfos.Name = "gbInvoiceInfos";
-            this.gbInvoiceInfos.Size = new System.Drawing.Size(977, 764);
+            this.gbInvoiceInfos.Size = new System.Drawing.Size(977, 697);
             this.gbInvoiceInfos.TabIndex = 64;
             this.gbInvoiceInfos.TabStop = false;
+            // 
+            // btnResetForm
+            // 
+            this.btnResetForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnResetForm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnResetForm.ForeColor = System.Drawing.Color.Black;
+            this.btnResetForm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnResetForm.Location = new System.Drawing.Point(745, 184);
+            this.btnResetForm.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetForm.Name = "btnResetForm";
+            this.btnResetForm.Size = new System.Drawing.Size(148, 39);
+            this.btnResetForm.TabIndex = 66;
+            this.btnResetForm.Text = "Reset Form";
+            this.btnResetForm.UseVisualStyleBackColor = true;
+            this.btnResetForm.Click += new System.EventHandler(this.btnResetForm_Click);
             // 
             // lblTotalAmount
             // 
@@ -234,7 +252,7 @@
             this.lblTotalAmount.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.ForeColor = System.Drawing.Color.ForestGreen;
             this.lblTotalAmount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTotalAmount.Location = new System.Drawing.Point(575, 665);
+            this.lblTotalAmount.Location = new System.Drawing.Point(691, 615);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(51, 56);
             this.lblTotalAmount.TabIndex = 54;
@@ -246,25 +264,27 @@
             this.label13.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.ForestGreen;
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(251, 678);
+            this.label13.Location = new System.Drawing.Point(367, 628);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(249, 41);
             this.label13.TabIndex = 53;
             this.label13.Text = "Total Amount:";
             // 
-            // comboBox2
+            // cbDiscountType
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cbDiscountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDiscountType.FormattingEnabled = true;
+            this.cbDiscountType.Items.AddRange(new object[] {
+            "None",
             "Loyality",
             "Financial Hardship",
             "Staff",
             "Waiver"});
-            this.comboBox2.Location = new System.Drawing.Point(209, 173);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(212, 27);
-            this.comboBox2.TabIndex = 52;
+            this.cbDiscountType.Location = new System.Drawing.Point(209, 173);
+            this.cbDiscountType.Name = "cbDiscountType";
+            this.cbDiscountType.Size = new System.Drawing.Size(212, 27);
+            this.cbDiscountType.TabIndex = 52;
+            this.cbDiscountType.SelectedIndexChanged += new System.EventHandler(this.cbDiscountType_SelectedIndexChanged);
             // 
             // gbDiscount
             // 
@@ -272,9 +292,10 @@
             this.gbDiscount.Controls.Add(this.nudDiscountAmount);
             this.gbDiscount.Controls.Add(this.label3);
             this.gbDiscount.Controls.Add(this.nudDiscountPercent);
-            this.gbDiscount.Controls.Add(this.comboBox1);
+            this.gbDiscount.Controls.Add(this.cbDiscountMethod);
             this.gbDiscount.Controls.Add(this.label6);
             this.gbDiscount.Controls.Add(this.label11);
+            this.gbDiscount.Enabled = false;
             this.gbDiscount.Location = new System.Drawing.Point(88, 228);
             this.gbDiscount.Name = "gbDiscount";
             this.gbDiscount.Size = new System.Drawing.Size(805, 167);
@@ -295,6 +316,7 @@
             // 
             // nudDiscountAmount
             // 
+            this.nudDiscountAmount.Enabled = false;
             this.nudDiscountAmount.Increment = new decimal(new int[] {
             10,
             0,
@@ -309,6 +331,7 @@
             this.nudDiscountAmount.Name = "nudDiscountAmount";
             this.nudDiscountAmount.Size = new System.Drawing.Size(120, 27);
             this.nudDiscountAmount.TabIndex = 52;
+            this.nudDiscountAmount.ValueChanged += new System.EventHandler(this.nudDiscountAmount_ValueChanged);
             // 
             // label3
             // 
@@ -323,6 +346,7 @@
             // 
             // nudDiscountPercent
             // 
+            this.nudDiscountPercent.Enabled = false;
             this.nudDiscountPercent.Increment = new decimal(new int[] {
             5,
             0,
@@ -337,18 +361,20 @@
             this.nudDiscountPercent.Name = "nudDiscountPercent";
             this.nudDiscountPercent.Size = new System.Drawing.Size(120, 27);
             this.nudDiscountPercent.TabIndex = 48;
+            this.nudDiscountPercent.ValueChanged += new System.EventHandler(this.nudDiscountPercent_ValueChanged);
             // 
-            // comboBox1
+            // cbDiscountMethod
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbDiscountMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDiscountMethod.FormattingEnabled = true;
+            this.cbDiscountMethod.Items.AddRange(new object[] {
             "By Amount",
             "By Percentage"});
-            this.comboBox1.Location = new System.Drawing.Point(200, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(212, 27);
-            this.comboBox1.TabIndex = 50;
+            this.cbDiscountMethod.Location = new System.Drawing.Point(200, 49);
+            this.cbDiscountMethod.Name = "cbDiscountMethod";
+            this.cbDiscountMethod.Size = new System.Drawing.Size(212, 27);
+            this.cbDiscountMethod.TabIndex = 50;
+            this.cbDiscountMethod.SelectedIndexChanged += new System.EventHandler(this.cbDiscountMethod_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -484,13 +510,14 @@
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(755, 994);
+            this.btnClose.Location = new System.Drawing.Point(765, 925);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(116, 38);
             this.btnClose.TabIndex = 63;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblMode
             // 
@@ -509,13 +536,14 @@
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(888, 994);
+            this.btnSave.Location = new System.Drawing.Point(895, 925);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(116, 38);
             this.btnSave.TabIndex = 62;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // pictureBox1
             // 
@@ -523,17 +551,32 @@
             this.pictureBox1.Image = global::ClinicWise.Properties.Resources.invoice_64;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1037, 89);
+            this.pictureBox1.Size = new System.Drawing.Size(1042, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 65;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnCheckMedicalRecord
+            // 
+            this.btnCheckMedicalRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCheckMedicalRecord.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCheckMedicalRecord.ForeColor = System.Drawing.Color.Black;
+            this.btnCheckMedicalRecord.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnCheckMedicalRecord.Location = new System.Drawing.Point(779, 166);
+            this.btnCheckMedicalRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCheckMedicalRecord.Name = "btnCheckMedicalRecord";
+            this.btnCheckMedicalRecord.Size = new System.Drawing.Size(232, 39);
+            this.btnCheckMedicalRecord.TabIndex = 55;
+            this.btnCheckMedicalRecord.Text = "Check Medical Record";
+            this.btnCheckMedicalRecord.UseVisualStyleBackColor = true;
             // 
             // frmAddEditInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1037, 1061);
+            this.ClientSize = new System.Drawing.Size(1042, 983);
+            this.Controls.Add(this.btnCheckMedicalRecord);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblInvoiceNumber);
@@ -541,8 +584,9 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblMode);
             this.Controls.Add(this.btnSave);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditInvoice";
-            this.Text = "frmAddEditInvoice";
+            this.Text = "Manage Invoice";
             this.Load += new System.EventHandler(this.frmAddEditInvoice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceItems)).EndInit();
@@ -590,8 +634,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown nudDiscountPercent;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbDiscountMethod;
+        private System.Windows.Forms.ComboBox cbDiscountType;
         private System.Windows.Forms.GroupBox gbDiscount;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown nudDiscountAmount;
@@ -599,5 +643,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTotalAmount;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnCheckMedicalRecord;
+        private System.Windows.Forms.Button btnResetForm;
     }
 }

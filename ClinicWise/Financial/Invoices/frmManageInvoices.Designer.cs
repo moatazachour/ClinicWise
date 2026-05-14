@@ -29,21 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbInvoiceStatus = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecordCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.mtxtFilter = new System.Windows.Forms.MaskedTextBox();
-            this.pickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.documentVisitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.completeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noShowStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.confirmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,62 +113,22 @@
             this.mtxtFilter.TextChanged += new System.EventHandler(this.mtxtFilter_TextChanged);
             this.mtxtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtFilter_KeyPress);
             // 
-            // pickToolStripMenuItem
-            // 
-            this.pickToolStripMenuItem.Name = "pickToolStripMenuItem";
-            this.pickToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
-            this.pickToolStripMenuItem.Text = "Pick Appointment";
-            // 
-            // documentVisitToolStripMenuItem
-            // 
-            this.documentVisitToolStripMenuItem.Name = "documentVisitToolStripMenuItem";
-            this.documentVisitToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
-            this.documentVisitToolStripMenuItem.Text = "Document Visit";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(218, 6);
-            // 
-            // completeToolStripMenuItem
-            // 
-            this.completeToolStripMenuItem.Name = "completeToolStripMenuItem";
-            this.completeToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
-            this.completeToolStripMenuItem.Text = "Complete";
-            // 
-            // noShowStripMenuItem
-            // 
-            this.noShowStripMenuItem.Name = "noShowStripMenuItem";
-            this.noShowStripMenuItem.Size = new System.Drawing.Size(221, 26);
-            this.noShowStripMenuItem.Text = "No Show";
-            // 
-            // cancelToolStripMenuItem
-            // 
-            this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
-            this.cancelToolStripMenuItem.Text = "Cancel";
-            // 
-            // confirmToolStripMenuItem
-            // 
-            this.confirmToolStripMenuItem.Name = "confirmToolStripMenuItem";
-            this.confirmToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
-            this.confirmToolStripMenuItem.Text = "Confirm";
-            // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(218, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             // 
             // cmsManageAppointments
@@ -185,16 +138,9 @@
             this.cmsManageAppointments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showDetailsToolStripMenuItem,
             this.toolStripSeparator1,
-            this.updateToolStripMenuItem,
-            this.confirmToolStripMenuItem,
-            this.cancelToolStripMenuItem,
-            this.noShowStripMenuItem,
-            this.completeToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.documentVisitToolStripMenuItem,
-            this.pickToolStripMenuItem});
+            this.updateToolStripMenuItem});
             this.cmsManageAppointments.Name = "cmsManageDoctors";
-            this.cmsManageAppointments.Size = new System.Drawing.Size(222, 224);
+            this.cmsManageAppointments.Size = new System.Drawing.Size(181, 84);
             // 
             // cbManageInvoices
             // 
@@ -223,38 +169,38 @@
             this.dgvManageInvoices.AllowUserToResizeRows = false;
             this.dgvManageInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvManageInvoices.BackgroundColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvManageInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvManageInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvManageInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvManageInvoices.ContextMenuStrip = this.cmsManageAppointments;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvManageInvoices.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvManageInvoices.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvManageInvoices.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvManageInvoices.Location = new System.Drawing.Point(22, 258);
             this.dgvManageInvoices.Margin = new System.Windows.Forms.Padding(2);
             this.dgvManageInvoices.MultiSelect = false;
             this.dgvManageInvoices.Name = "dgvManageInvoices";
             this.dgvManageInvoices.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvManageInvoices.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvManageInvoices.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvManageInvoices.RowHeadersWidth = 51;
             this.dgvManageInvoices.RowTemplate.Height = 24;
             this.dgvManageInvoices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -293,6 +239,7 @@
             this.btnEditInvoice.Size = new System.Drawing.Size(76, 63);
             this.btnEditInvoice.TabIndex = 50;
             this.btnEditInvoice.UseVisualStyleBackColor = true;
+            this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
             // 
             // frmManageInvoices
             // 
@@ -329,13 +276,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox mtxtFilter;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripMenuItem pickToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem documentVisitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem completeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noShowStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem confirmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;

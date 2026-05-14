@@ -4,6 +4,7 @@ using ClinicWise.Contracts.Appointments;
 using ClinicWise.Contracts.InvoiceItems;
 using ClinicWise.Contracts.Invoices;
 using ClinicWise.Contracts.Patients;
+using ClinicWise.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,25 +14,42 @@ namespace ClinicWise.Financial.Invoices
 {
     public partial class frmAddEditInvoice : Form
     {
+        public enum enInvoiceLoadMode { ByAppointment, ByInvoice }
+        private enInvoiceLoadMode _LoadMode;
+
         private int _AppointmentID;
+        private int _InvoiceID;
         private clsInvoice _Invoice;
         private List<InvoiceItemDTO> _InvoiceItems;
 
-        public frmAddEditInvoice(int appointmentID)
+        public frmAddEditInvoice(int id, enInvoiceLoadMode loadMode)
         {
             InitializeComponent();
 
-            _AppointmentID = appointmentID;
+            _LoadMode = loadMode;
+            
+            if (_LoadMode == enInvoiceLoadMode.ByAppointment)
+            {
+                _AppointmentID = id;
+                return;
+            }
+
+            _InvoiceID = id;
         }
 
         private async void frmAddEditInvoice_Load(object sender, EventArgs e)
         {
-            await _LoadInformations();
+            await _LoadInformations(_LoadMode);
         }
 
-        private async Task _LoadInformations()
+        private async Task _LoadInformations(enInvoiceLoadMode loadMode)
         {
-            InvoiceDTO invoice = await clsInvoice.FindDraftedByAppointmentIdAsync(_AppointmentID);
+            InvoiceDTO invoice;
+
+            if (_LoadMode == enInvoiceLoadMode.ByAppointment)
+                invoice = await clsInvoice.FindDraftedByAppointmentIdAsync(_AppointmentID);
+            else
+                invoice = await clsInvoice.FindAsync(_InvoiceID);
 
             if (invoice == null)
                 return;
@@ -43,8 +61,65 @@ namespace ClinicWise.Financial.Invoices
             lblPatient.Text = await _GetPatientFullName();
             lblDoctor.Text = await _GetDoctorFullLabelName();
             lblSubTotal.Text = $"{_Invoice.SubTotal} TND";
+            if (_Invoice.DiscountType != null)
+            {
+                cbDiscountType.Text = _GetDiscountType();
+                
+                if (_Invoice.DiscountType != enDiscountType.Waiver)
+                {
+                    nudDiscountAmount.Value = _Invoice.DiscountAmount;
+                    nudDiscountPercent.Value = _Invoice.DiscountPercent ?? 0;
+                }
+            }
+            else
+            {
+                cbDiscountType.Text = "None";
+            }
+
             lblTotalAmount.Text = $"{_Invoice.TotalAmount} TND";
             await _LoadInvoiceItems();
+        }
+
+        private string _GetDiscountType()
+        {
+            switch (_Invoice.DiscountType)
+            {
+                case enDiscountType.Loyality:
+                    return "Loyality";
+                
+                case enDiscountType.FinancialHardship:
+                    return "Financial Hardship";
+
+                case enDiscountType.Staff:
+                    return "Staff";
+
+                case enDiscountType.Waiver:
+                    return "Waiver";
+                
+                default:
+                    return "Loyality";
+            }
+        }
+
+        private enDiscountType _SetDiscountType(string discountTypeLabel)
+        {
+            switch (discountTypeLabel)
+            {
+                case "Loyality":
+                    return enDiscountType.Loyality;
+
+                case "Financial Hardship":
+                    return enDiscountType.FinancialHardship;
+
+                case "Staff":
+                    return enDiscountType.Staff;
+
+                case "Waiver":
+                    return enDiscountType.Waiver;
+
+                default:
+                    return enDiscountType.Loyality;
+            }
         }
 
         private async Task _LoadInvoiceItems()
@@ -71,6 +146,133 @@ namespace ClinicWise.Financial.Invoices
         {
             PatientDTO patientDTO = await clsPatient.FindAsync(_Invoice.PatientID);
             return patientDTO.FullName;
+        }
+
+        private void cbDiscountType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDiscountType.Text.Equals("None"))
+            {
+                gbDiscount.Enabled = false;
+                _ResetDiscountFields();
+            }
+
+            if (cbDiscountType.Text.Equals("Loyality")
+                || cbDiscountType.Text.Equals("Financial Hardship")
+                || cbDiscountType.Text.Equals("Staff"))
+            {
+                gbDiscount.Enabled = true;
+                _ResetDiscountFields();
+                _Invoice.DiscountType = _SetDiscountType(cbDiscountType.Text);
+                _Invoice.DiscountAuthorizedByUserID = clsGlobalSettings.CurrentUser.UserID;
+                nudDiscountAmount.Maximum = _Invoice.SubTotal;
+            }
+
+            if (cbDiscountType.Text.Equals("Waiver"))
+            {
+                gbDiscount.Enabled = false;
+                _ResetDiscountFields();
+                _Invoice.Status = enInvoiceStatus.Waived;
+                _Invoice.OutstandingBalance = 0m;
+                _Invoice.IssuedByUserID = clsGlobalSettings.CurrentUserID;
+            }
+        }
+
+        private void cbDiscountMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _Invoice.DiscountPercent = null;
+            _Invoice.DiscountAmount = 0;
+            _Invoice.TotalAmount = _Invoice.SubTotal;
+            lblTotalAmount.Text = $"{_Invoice.TotalAmount} TND";
+
+            nudDiscountAmount.Value = 0;
+            nudDiscountPercent.Value = 0;
+            nudDiscountAmount.Enabled = cbDiscountMethod.SelectedItem.Equals("By Amount");
+            nudDiscountPercent.Enabled = cbDiscountMethod.SelectedItem.Equals("By Percentage");
+        }
+
+        private void _ResetDiscountFields()
+        {
+            _Invoice.DiscountType = null;
+            _Invoice.DiscountPercent = null;
+            _Invoice.DiscountAmount = 0;
+            _Invoice.DiscountAuthorizedByUserID = null;
+            _Invoice.TotalAmount = _Invoice.SubTotal;
+            lblTotalAmount.Text = $"{_Invoice.TotalAmount} TND";
+
+
+            nudDiscountAmount.Value = 0;
+            nudDiscountPercent.Value = 0;
+        }
+
+        private void nudDiscountPercent_ValueChanged(object sender, EventArgs e)
+        {
+            decimal totalAfterDiscount = _GetNewTotalAfterDiscountByPercent(_Invoice.SubTotal, nudDiscountPercent.Value);
+            _Invoice.DiscountPercent = nudDiscountPercent.Value;
+            _Invoice.TotalAmount = totalAfterDiscount;
+            lblTotalAmount.Text = $"{totalAfterDiscount} TND";
+        }
+
+        private decimal _GetNewTotalAfterDiscountByPercent(decimal subTotal, decimal percent)
+        {
+            return Math.Round(subTotal - (subTotal * percent / 100), 2);
+        }
+
+        private void nudDiscountAmount_ValueChanged(object sender, EventArgs e)
+        {
+            decimal totalAfterDiscount = _GetNewTotalAfterDiscountByAmount(_Invoice.SubTotal, nudDiscountAmount.Value);
+            _Invoice.DiscountAmount = nudDiscountAmount.Value;
+            _Invoice.TotalAmount = totalAfterDiscount;
+            lblTotalAmount.Text = $"{totalAfterDiscount} TND";
+        }
+
+        private decimal _GetNewTotalAfterDiscountByAmount(decimal subTotal, decimal amount)
+        {
+            if (amount > subTotal)
+                return 0m;
+
+            return subTotal -= amount;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (_Invoice.Status == enInvoiceStatus.Draft)
+            {
+                _Invoice.Status = enInvoiceStatus.Issued;
+                _Invoice.IssuedByUserID = clsGlobalSettings.CurrentUserID;
+            }
+
+            if (_Invoice.Status == enInvoiceStatus.Issued)
+                _Invoice.OutstandingBalance = _Invoice.TotalAmount;
+
+            if (_Invoice.Save())
+            {
+                MessageBox.Show(
+                    $"Invoice Saved Successfully",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                btnSave.Enabled = false;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Invoice Failed to be saved",
+                    "Error",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private async void btnResetForm_Click(object sender, EventArgs e)
+        {
+            await _LoadInformations(_LoadMode);
         }
     }
 }
