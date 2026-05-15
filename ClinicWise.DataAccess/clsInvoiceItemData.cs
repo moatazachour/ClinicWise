@@ -85,5 +85,76 @@ namespace ClinicWise.DataAccess
 
             return invoiceItems;
         }
+
+        public static async Task<InvoiceItemDTO> GetByIdAsync(int invoiceItemID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("InvoiceItem_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@ItemID", SqlDbType.Int).Value = invoiceItemID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new InvoiceItemDTO()
+                            {
+                                ItemID = (int)reader["ItemID"],
+                                InvoiceID = (int)reader["InvoiceID"],
+                                Description = reader["Description"] as string,
+                                Quantity = (int)reader["Quantity"],
+                                UnitPrice = (decimal)reader["UnitPrice"],
+                                TotalPrice = (decimal)reader["TotalPrice"],
+                                VisitFeeID = reader["VisitFeeID"] as int?
+                            };
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
+        public static bool Update(int itemID, int invoiceID, string description, int quantity, decimal unitPrice, decimal totalPrice)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("InvoiceItem_Update", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add("@ItemID", SqlDbType.Int).Value = itemID;
+                command.Parameters.Add("@InvoiceID", SqlDbType.Int).Value = invoiceID;
+                command.Parameters.Add("@Description", SqlDbType.NVarChar).Value = description;
+                command.Parameters.Add("@Quantity", SqlDbType.Int).Value = quantity;
+                command.Parameters.Add("@UnitPrice", SqlDbType.Decimal).Value = unitPrice;
+                command.Parameters.Add("@TotalPrice", SqlDbType.Decimal).Value = totalPrice;
+
+                connection.Open();
+
+                try
+                {
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return rowsAffected > 0;
+        }
     }
 }

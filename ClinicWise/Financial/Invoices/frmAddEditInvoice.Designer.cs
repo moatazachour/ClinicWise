@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblInvoiceNumber = new System.Windows.Forms.Label();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDetails = new System.Windows.Forms.Button();
             this.btnAddInvoiceItem = new System.Windows.Forms.Button();
             this.dgvInvoiceItems = new System.Windows.Forms.DataGridView();
             this.cmsManageInvoiceItems = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -70,6 +69,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCheckMedicalRecord = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoiceItems)).BeginInit();
             this.cmsManageInvoiceItems.SuspendLayout();
@@ -109,22 +109,8 @@
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // btnDetails
-            // 
-            this.btnDetails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDetails.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.btnDetails.ForeColor = System.Drawing.Color.Black;
-            this.btnDetails.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDetails.Location = new System.Drawing.Point(60, 515);
-            this.btnDetails.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(106, 31);
-            this.btnDetails.TabIndex = 34;
-            this.btnDetails.Text = "Details";
-            this.btnDetails.UseVisualStyleBackColor = true;
             // 
             // btnAddInvoiceItem
             // 
@@ -168,30 +154,30 @@
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.cmsManageInvoiceItems.Name = "cmsManageDoctors";
-            this.cmsManageInvoiceItems.Size = new System.Drawing.Size(181, 136);
+            this.cmsManageInvoiceItems.Size = new System.Drawing.Size(179, 114);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.showDetailsToolStripMenuItem.Text = "Show Details";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(175, 6);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
@@ -221,7 +207,7 @@
             this.gbInvoiceInfos.Controls.Add(this.label9);
             this.gbInvoiceInfos.Controls.Add(this.lblAppointmentID);
             this.gbInvoiceInfos.Controls.Add(this.label8);
-            this.gbInvoiceInfos.Controls.Add(this.btnDetails);
+            this.gbInvoiceInfos.Controls.Add(this.btnUpdate);
             this.gbInvoiceInfos.Controls.Add(this.btnAddInvoiceItem);
             this.gbInvoiceInfos.Controls.Add(this.dgvInvoiceItems);
             this.gbInvoiceInfos.Controls.Add(this.label7);
@@ -271,7 +257,7 @@
             this.lblTotalAmount.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.ForeColor = System.Drawing.Color.ForestGreen;
             this.lblTotalAmount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTotalAmount.Location = new System.Drawing.Point(824, 618);
+            this.lblTotalAmount.Location = new System.Drawing.Point(791, 619);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(51, 56);
             this.lblTotalAmount.TabIndex = 54;
@@ -283,7 +269,7 @@
             this.label13.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.ForestGreen;
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(500, 631);
+            this.label13.Location = new System.Drawing.Point(467, 632);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(249, 41);
             this.label13.TabIndex = 53;
@@ -588,6 +574,21 @@
             this.pictureBox1.TabIndex = 65;
             this.pictureBox1.TabStop = false;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnUpdate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnUpdate.Location = new System.Drawing.Point(60, 515);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(106, 31);
+            this.btnUpdate.TabIndex = 34;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmAddEditInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -628,7 +629,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblInvoiceNumber;
         private System.Windows.Forms.GroupBox gbInvoiceInfos;
-        private System.Windows.Forms.Button btnDetails;
         private System.Windows.Forms.Button btnAddInvoiceItem;
         private System.Windows.Forms.DataGridView dgvInvoiceItems;
         private System.Windows.Forms.ContextMenuStrip cmsManageInvoiceItems;
@@ -664,5 +664,6 @@
         private System.Windows.Forms.Button btnCheckMedicalRecord;
         private System.Windows.Forms.Button btnResetForm;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

@@ -52,6 +52,19 @@ namespace ClinicWise.Business
             Mode = enMode.Update;
         }
 
+        public clsInvoiceItem(InvoiceItemDTO invoiceItemDTO)
+        {
+            ItemID = invoiceItemDTO.ItemID;
+            InvoiceID = invoiceItemDTO.InvoiceID;
+            Description = invoiceItemDTO.Description;
+            Quantity = invoiceItemDTO.Quantity;
+            UnitPrice = invoiceItemDTO.UnitPrice;
+            TotalPrice = invoiceItemDTO.TotalPrice;
+            VisitFeeID = invoiceItemDTO.VisitFeeID;
+
+            Mode = enMode.Update;
+        }
+
         public static async Task<List<InvoiceItemDTO>> GetAllByInvoiceAsync(int invoiceID)
         {
             return await clsInvoiceItemData.GetAllByInvoiceAsync(invoiceID);
@@ -77,13 +90,18 @@ namespace ClinicWise.Business
 
         private bool _Update()
         {
-            throw new NotImplementedException();
+            return clsInvoiceItemData.Update(ItemID,  InvoiceID, Description, Quantity, UnitPrice, TotalPrice);
         }
 
         private bool _AddNew()
         {
             ItemID = clsInvoiceItemData.AddNew(InvoiceID, Description, Quantity, UnitPrice, TotalPrice);
             return ItemID != -1;
+        }
+
+        public static async Task<InvoiceItemDTO> FindAsync(int invoiceItemID)
+        {
+            return await clsInvoiceItemData.GetByIdAsync(invoiceItemID);
         }
     }
 }

@@ -68,6 +68,9 @@ namespace ClinicWise.Financial.Invoices
             if (_Invoice.DiscountType != null)
             {
                 cbDiscountType.Text = _GetDiscountType();
+                gbDiscount.Enabled = cbDiscountType.Text.Equals("Loyality")
+                || cbDiscountType.Text.Equals("Financial Hardship")
+                || cbDiscountType.Text.Equals("Staff");
 
                 if (_Invoice.DiscountType != enDiscountType.Waiver)
                 {
@@ -75,11 +78,13 @@ namespace ClinicWise.Financial.Invoices
                     {
                         nudDiscountAmount.Value = _Invoice.DiscountAmount;
                         cbDiscountMethod.Text = "By Amount";
+                        nudDiscountAmount.Enabled = true;
                     }
                     else
                     {
                         nudDiscountPercent.Value = _Invoice.DiscountPercent ?? 0;
                         cbDiscountMethod.Text = "By Percentage";
+                        nudDiscountPercent.Enabled = true;
                     }
                 }
             }
@@ -355,6 +360,16 @@ namespace ClinicWise.Financial.Invoices
         }
 
         private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
+
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(invoiceItemID, _InvoiceID);
+            frm.ShowDialog();
+
+            await _LoadInformations(_LoadMode);
+        }
+
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
 

@@ -1,4 +1,5 @@
 ﻿using ClinicWise.Business;
+using ClinicWise.Contracts.InvoiceItems;
 using ClinicWise.Contracts.Invoices;
 using System;
 using System.Threading.Tasks;
@@ -36,7 +37,26 @@ namespace ClinicWise.Financial.InvoiceItems
 
         private async Task _LoadDataAsync()
         {
-            throw new NotImplementedException();
+            InvoiceItemDTO invoiceItemDTO = await clsInvoiceItem.FindAsync(_InvoiceItemID);
+
+            if (invoiceItemDTO == null)
+            {
+                MessageBox.Show(
+                    "Invoice Item Not Found!",
+                    "Error",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
+
+                return;
+            }
+
+            _InvoiceItem = new clsInvoiceItem(invoiceItemDTO);
+            lblItemID.Text = _InvoiceItem.ItemID.ToString();
+            lblInvoiceNumber.Text = _Invoice.InvoiceNumber;
+            txtDescription.Text = _InvoiceItem.Description;
+            nudQuantity.Value = _InvoiceItem.Quantity;
+            nudUnitPrice.Value = _InvoiceItem.UnitPrice;
+            lblTotalPrice.Text = $"{_InvoiceItem.TotalPrice} DNT";
         }
 
         private async Task _ResetInformations()
