@@ -338,26 +338,30 @@ namespace ClinicWise.Financial.Invoices
             await _LoadInformations(_LoadMode);
         }
 
-        private void btnAddInvoiceItem_Click(object sender, EventArgs e)
-        {
-            int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
-
-            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _InvoiceID);
-            frm.ShowDialog();
-        }
-
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void btnAddInvoiceItem_Click(object sender, EventArgs e)
         {
             frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _InvoiceID);
             frm.ShowDialog();
+
+            await _LoadInformations(_LoadMode);
         }
 
-        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _InvoiceID);
+            frm.ShowDialog();
+
+            await _LoadInformations(_LoadMode);
+        }
+
+        private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
 
             frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(invoiceItemID, _InvoiceID);
             frm.ShowDialog();
+
+            await _LoadInformations(_LoadMode);
         }
     }
 }

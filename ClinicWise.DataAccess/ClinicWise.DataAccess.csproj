@@ -151,6 +151,7 @@
     <Content Include="Triggers\trg_AfterDeletePatient.sql" />
     <Content Include="Triggers\trg_AfterDeletePerson.sql" />
     <Content Include="Triggers\trg_AfterInsertInvoice.sql" />
+    <Content Include="Triggers\trg_AfterInsertInvoiceItem.sql" />
     <Content Include="Views\Appointments\GetAllAppointments_View.sql" />
     <Content Include="Views\Appointments\GetTodaysAppointments_View.sql" />
     <Content Include="Views\Appointments\GetTomorrowsAppointments_View.sql" />

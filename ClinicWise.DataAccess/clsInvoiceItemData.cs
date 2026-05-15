@@ -71,7 +71,7 @@ namespace ClinicWise.DataAccess
                                 Quantity = (int)reader["Quantity"],
                                 UnitPrice = (decimal)reader["UnitPrice"],
                                 TotalPrice = (decimal)reader["TotalPrice"],
-                                VisitFeeID = (int)reader["VisitFeeID"]
+                                VisitFeeID = reader["VisitFeeID"] as int?
                             });
                         }
                     }
