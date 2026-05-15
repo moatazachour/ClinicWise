@@ -378,5 +378,53 @@ namespace ClinicWise.Financial.Invoices
 
             await _LoadInformations(_LoadMode);
         }
+
+        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
+
+            if (MessageBox.Show(
+                $"Are you sure you want to delete this item with ID [{invoiceItemID}]",
+                "Are you sure?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information)
+                == DialogResult.OK)
+            {
+                if (clsInvoiceItem.Delete(invoiceItemID))
+                    await _LoadInformations(_LoadMode);
+                
+                else
+                    MessageBox.Show(
+                        "Delete is not deleted due to data connected to it.",
+                        "Error",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Error);
+
+            }
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
+
+            if (MessageBox.Show(
+                $"Are you sure you want to delete this item with ID [{invoiceItemID}]",
+                "Are you sure?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information)
+                == DialogResult.OK)
+            {
+                if (clsInvoiceItem.Delete(invoiceItemID))
+                    await _LoadInformations(_LoadMode);
+
+                else
+                    MessageBox.Show(
+                        "Delete is not deleted due to data connected to it.",
+                        "Error",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Error);
+
+            }
+        }
     }
 }

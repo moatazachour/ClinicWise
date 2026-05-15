@@ -98,6 +98,7 @@
     <Content Include="StoredProcedures\Guardians\Guardian_GetByID.sql" />
     <Content Include="StoredProcedures\Guardians\Guardian_Update.sql" />
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_AddNew.sql" />
+    <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_Delete.sql" />
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_GetByID.sql" />
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_GetByInvoice.sql" />
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_Update.sql" />
@@ -150,6 +151,7 @@
     <Content Include="Triggers\trg_AfterCompleteAppointment.sql" />
     <Content Include="Triggers\trg_AfterDeleteDoctor.sql" />
     <Content Include="Triggers\trg_AfterDeleteGuardian.sql" />
+    <Content Include="Triggers\trg_AfterDeleteInvoiceItem.sql" />
     <Content Include="Triggers\trg_AfterDeletePatient.sql" />
     <Content Include="Triggers\trg_AfterDeletePerson.sql" />
     <Content Include="Triggers\trg_AfterInsertInvoice.sql" />

@@ -103,5 +103,10 @@ namespace ClinicWise.Business
         {
             return await clsInvoiceItemData.GetByIdAsync(invoiceItemID);
         }
+
+        public static bool Delete(int invoiceItemID)
+        {
+            return clsInvoiceItemData.Delete(invoiceItemID);
+        }
     }
 }
