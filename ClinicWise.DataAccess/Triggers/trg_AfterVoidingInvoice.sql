@@ -1,10 +1,11 @@
-ALTER TRIGGER trg_AfterCompleteAppointment ON Appointments
+ALTER TRIGGER trg_AfterVoidingInvoice ON Invoices
 AFTER UPDATE
 AS
 BEGIN
+
     SET NOCOUNT ON;
 
-    IF UPDATE(Status) AND EXISTS (SELECT 1 FROM inserted WHERE Status = 3)
+    IF UPDATE(Status) AND EXISTS (SELECT 1 FROM inserted WHERE Status = 5)
     BEGIN
         INSERT INTO [dbo].[Invoices]
            ([InvoiceNumber]
@@ -30,6 +31,6 @@ BEGIN
         INNER JOIN VisitFees vf ON mr.VisitType = vf.VisitType
             AND dbo.CheckIfFeeIsActive(vf.EffectiveFrom, vf.EffectiveTo) = 1
 
-        WHERE i.Status = 3 AND d.Status <> 3;
+        WHERE i.Status = 5 AND d.Status <> 5;
     END
 END;

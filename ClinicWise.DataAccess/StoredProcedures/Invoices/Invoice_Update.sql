@@ -1,4 +1,4 @@
-CREATE PROCEDURE Invoice_Update
+ALTER PROCEDURE Invoice_Update
 	@InvoiceID INT, 
     @SubTotal DECIMAL(10, 2), 
     @DiscountAmount DECIMAL(10, 2), 
@@ -10,7 +10,11 @@ CREATE PROCEDURE Invoice_Update
     @OutstandingBalance DECIMAL(10, 2),
     @Status TINYINT, 
     @IssuedByUserID INT, 
-    @IssuedAt DATETIME
+    @IssuedAt DATETIME,
+    @VoidedByUserID INT,
+    @VoidedAt DATETIME,
+    @VoidReason NVARCHAR(255),
+    @Notes NVARCHAR(255)
 AS
 BEGIN
 
@@ -26,6 +30,10 @@ BEGIN
         ,[Status] = @Status
         ,[IssuedByUserID] = @IssuedByUserID
         ,[IssuedAt] = @IssuedAt
+        ,[VoidedByUserID] = @VoidedByUserID
+        ,[VoidedAt] = @VoidedAt
+        ,[VoidReason] = @VoidReason
+        ,[Notes] = @Notes
     WHERE InvoiceID = @InvoiceID;
 
 END;

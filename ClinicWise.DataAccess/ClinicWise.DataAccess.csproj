@@ -105,6 +105,7 @@
     <Content Include="StoredProcedures\Invoices\Invoice_GetAll.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByAppointmentAndStatus.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByID.sql" />
+    <Content Include="StoredProcedures\Invoices\Invoice_GetLatestInvoiceByAppointmentID.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_Update.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_DoesAppointmentHaveMedicalRecord.sql" />
@@ -157,6 +158,7 @@
     <Content Include="Triggers\trg_AfterInsertInvoice.sql" />
     <Content Include="Triggers\trg_AfterInsertInvoiceItem.sql" />
     <Content Include="Triggers\trg_AfterUpdateInvoiceItem.sql" />
+    <Content Include="Triggers\trg_AfterVoidingInvoice.sql" />
     <Content Include="Views\Appointments\GetAllAppointments_View.sql" />
     <Content Include="Views\Appointments\GetTodaysAppointments_View.sql" />
     <Content Include="Views\Appointments\GetTomorrowsAppointments_View.sql" />

@@ -129,6 +129,58 @@ namespace ClinicWise.DataAccess
                                 IssuedByUserID = reader["IssuedByUserID"] as int?,
                                 IssuedAt = reader["IssuedAt"] as DateTime?,
                                 VoidedByUserID = reader["VoidedByUserID"] as int?,
+                                VoidedAt = reader["VoidedAt"] as DateTime?,
+                                VoidReason = reader["VoidReason"] as string,
+                                Notes = reader["Notes"] as string,
+                            };
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
+        public static async Task<InvoiceDTO> GetLatestInvoiceByAppointmentIdAsync(int appointmentID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Invoice_GetLatestInvoiceByAppointmentID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@AppointmentID", SqlDbType.Int).Value = appointmentID;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new InvoiceDTO()
+                            {
+                                InvoiceID = (int)reader["InvoiceID"],
+                                InvoiceNumber = (string)reader["InvoiceNumber"],
+                                AppointmentID = appointmentID,
+                                PatientID = (int)reader["PatientID"],
+                                SubTotal = (decimal)reader["SubTotal"],
+                                DiscountAmount = (decimal)reader["DiscountAmount"],
+                                DiscountPercent = reader["DiscountPercent"] as decimal?,
+                                DiscountType = reader["DiscountType"] == DBNull.Value ? null : (enDiscountType?)(byte)reader["DiscountType"],
+                                DiscountAuthorizedByUserID = reader["DiscountAuthorizedByUserID"] as int?,
+                                TotalAmount = (decimal)reader["TotalAmount"],
+                                AmountPaid = (decimal)reader["AmountPaid"],
+                                OutstandingBalance = reader["OutstandingBalance"] as decimal?,
+                                Status = (enInvoiceStatus)(byte)reader["Status"],
+                                IssuedByUserID = reader["IssuedByUserID"] as int?,
+                                IssuedAt = reader["IssuedAt"] as DateTime?,
+                                VoidedByUserID = reader["VoidedByUserID"] as int?,
+                                VoidedAt = reader["VoidedAt"] as DateTime?,
                                 VoidReason = reader["VoidReason"] as string,
                                 Notes = reader["Notes"] as string,
                             };
@@ -157,7 +209,11 @@ namespace ClinicWise.DataAccess
             decimal? outstandingBalance, 
             enInvoiceStatus status, 
             int? issuedByUserID, 
-            DateTime? issuedAt)
+            DateTime? issuedAt,
+            int? voidedByUserID,
+            DateTime? voidedAt,
+            string voidReason,
+            string notes)
         {
             int rowsAffected = 0;
 
@@ -178,6 +234,13 @@ namespace ClinicWise.DataAccess
                 command.Parameters.Add("@Status", SqlDbType.TinyInt).Value = (byte)status;
                 command.Parameters.Add("@IssuedByUserID", SqlDbType.Int).Value = (object)issuedByUserID ?? DBNull.Value;
                 command.Parameters.Add("@IssuedAt", SqlDbType.DateTime).Value = (object)issuedAt ?? DBNull.Value;
+                command.Parameters.Add("@VoidedByUserID", SqlDbType.Int).Value = (object)voidedByUserID ?? DBNull.Value;
+                command.Parameters.Add("@VoidedAt", SqlDbType.DateTime).Value = (object)voidedAt ?? DBNull.Value;
+                command.Parameters.Add("@VoidReason", SqlDbType.NVarChar).Value =
+                    string.IsNullOrWhiteSpace(voidReason) ? DBNull.Value : (object)voidReason;
+
+                command.Parameters.Add("@Notes", SqlDbType.NVarChar).Value =
+                    string.IsNullOrWhiteSpace(notes) ? DBNull.Value : (object)notes;
 
                 connection.Open();
 

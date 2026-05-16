@@ -293,6 +293,16 @@ namespace ClinicWise.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap patient_information_48 {
+            get {
+                object obj = ResourceManager.GetObject("patient_information_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap payment_method_67 {
             get {
                 object obj = ResourceManager.GetObject("payment-method-67", resourceCulture);
@@ -386,6 +396,16 @@ namespace ClinicWise.Properties {
         internal static System.Drawing.Bitmap visit_type_fees_64 {
             get {
                 object obj = ResourceManager.GetObject("visit-type-fees-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap void_invoice_64 {
+            get {
+                object obj = ResourceManager.GetObject("void-invoice-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

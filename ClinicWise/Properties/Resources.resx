@@ -118,17 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="person_girl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\person_girl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="medical-records-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medical-records-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pharmacy-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pharmacy-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="person_girl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\person_girl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="doctor_female" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\doctor_female.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cross 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cross 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="medical-records-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\medical-records-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="invoice2-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invoice2-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="prescription-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\prescription-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,8 +145,8 @@
   <data name="doctor-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doctor-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pharmacy_add-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pharmacy_add-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="invoice-update-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invoice-update-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="appointments-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\appointments-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,17 +178,14 @@
   <data name="person_boy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\person_boy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="invoice2-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\invoice2-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="visit-type-fees" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\visit-type-fees.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="doctor_female" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\doctor_female.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pharmacy_add-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pharmacy_add-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Add Person 40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add Person 40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -195,6 +198,9 @@
   </data>
   <data name="doctor-96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doctor-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="patient_information_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\patient_information_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="doctor_femaleV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doctor_femaleV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,7 +220,7 @@
   <data name="invoice-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invoice-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="invoice-update-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\invoice-update-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="void-invoice-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\void-invoice-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

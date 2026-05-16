@@ -20,6 +20,7 @@ namespace ClinicWise.Contracts.Invoices
         public int? IssuedByUserID { get; set; }
         public DateTime? IssuedAt { get; set; }
         public int? VoidedByUserID { get; set; }
+        public DateTime? VoidedAt { get; set; }
         public string VoidReason { get; set; }
         public string Notes { get; set; }
 

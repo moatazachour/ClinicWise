@@ -22,10 +22,10 @@ namespace ClinicWise.Financial.Invoices
 
         private async void frmManageInvoices_Load(object sender, EventArgs e)
         {
-            await _LoadData();
+            await _LoadDataAsync();
         }
 
-        private async Task _LoadData()
+        private async Task _LoadDataAsync()
         {
             cbManageInvoices.SelectedItem = "None";
             _InvoicesList = await clsInvoice.GetAllAsync();
@@ -118,7 +118,7 @@ namespace ClinicWise.Financial.Invoices
             frmAddEditInvoice frm = new frmAddEditInvoice(invoiceID, enInvoiceLoadMode.ByInvoice);
             frm.ShowDialog();
 
-            await _LoadData();
+            await _LoadDataAsync();
         }
 
         private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,7 +127,42 @@ namespace ClinicWise.Financial.Invoices
             frmAddEditInvoice frm = new frmAddEditInvoice(invoiceID, enInvoiceLoadMode.ByInvoice);
             frm.ShowDialog();
 
-            await _LoadData();
+            await _LoadDataAsync();
+        }
+
+        private async void voidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            enInvoiceStatus status = (enInvoiceStatus)dgvManageInvoices.CurrentRow.Cells[8].Value;
+            
+            if (status == enInvoiceStatus.PartiallyPaid ||
+                status == enInvoiceStatus.Paid)
+            {
+                MessageBox.Show(
+                    $"Invoice Already in Payment Phase",
+                    "Failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                
+                return;
+            }
+
+            if (status == enInvoiceStatus.Void)
+            {
+                MessageBox.Show(
+                    $"Invoice Already Voided",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
+            int selectedInvoiceID = (int)dgvManageInvoices.CurrentRow.Cells[0].Value;
+
+            frmVoidingInvoice frm = new frmVoidingInvoice(selectedInvoiceID);
+            frm.ShowDialog();
+
+            await _LoadDataAsync();
         }
     }
 }

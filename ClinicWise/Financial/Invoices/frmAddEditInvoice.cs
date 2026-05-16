@@ -152,6 +152,66 @@ namespace ClinicWise.Financial.Invoices
             dgvInvoiceItems.Columns["VisitFeeID"].Visible = false;
         }
 
+        private async Task _ReloadAfterInvoiceItemsChangedAsync()
+        {
+            if (_Invoice == null)
+            {
+                await _LoadInformations(_LoadMode);
+                return;
+            }
+
+            enDiscountType? discountType = _Invoice.DiscountType;
+            decimal discountAmount = _Invoice.DiscountAmount;
+            decimal? discountPercent = _Invoice.DiscountPercent;
+            int? authorizedByUserID = _Invoice.DiscountAuthorizedByUserID;
+            string discountTypeText = cbDiscountType.Text;
+            string discountMethodText = cbDiscountMethod.Text;
+
+            await _LoadInformations(_LoadMode);
+
+            _IsLoading = true;
+
+            _Invoice.DiscountType = discountType;
+            _Invoice.DiscountAmount = discountAmount;
+            _Invoice.DiscountPercent = discountPercent;
+            _Invoice.DiscountAuthorizedByUserID = authorizedByUserID;
+
+            cbDiscountType.Text = string.IsNullOrWhiteSpace(discountTypeText) ? "None" : discountTypeText;
+            cbDiscountMethod.Text = discountMethodText;
+
+            gbDiscount.Enabled = cbDiscountType.Text.Equals("Loyality")
+                || cbDiscountType.Text.Equals("Financial Hardship")
+                || cbDiscountType.Text.Equals("Staff");
+
+            nudDiscountAmount.Maximum = Math.Max(_Invoice.SubTotal, discountAmount);
+            nudDiscountAmount.Enabled = cbDiscountMethod.Text.Equals("By Amount");
+            nudDiscountPercent.Enabled = cbDiscountMethod.Text.Equals("By Percentage");
+
+            nudDiscountAmount.Value = discountAmount;
+            nudDiscountPercent.Value = discountPercent ?? 0m;
+
+            if (discountType == enDiscountType.Waiver)
+            {
+                _Invoice.OutstandingBalance = 0m;
+            }
+            else if (cbDiscountMethod.Text.Equals("By Amount"))
+            {
+                _Invoice.TotalAmount = _GetNewTotalAfterDiscountByAmount(_Invoice.SubTotal, discountAmount);
+            }
+            else if (cbDiscountMethod.Text.Equals("By Percentage"))
+            {
+                _Invoice.TotalAmount = _GetNewTotalAfterDiscountByPercent(_Invoice.SubTotal, discountPercent ?? 0m);
+            }
+            else
+            {
+                _Invoice.TotalAmount = _Invoice.SubTotal;
+            }
+
+            lblTotalAmount.Text = $"{_Invoice.TotalAmount} TND";
+
+            _IsLoading = false;
+        }
+
         private async Task<string> _GetDoctorFullLabelName()
         {
             AppointmentDTO appointmentDTO = await clsAppointment.FindAsync(_Invoice.AppointmentID);
@@ -233,6 +293,8 @@ namespace ClinicWise.Financial.Invoices
 
         private void nudDiscountPercent_ValueChanged(object sender, EventArgs e)
         {
+            if (_IsLoading) return;
+
             decimal totalAfterDiscount = _GetNewTotalAfterDiscountByPercent(_Invoice.SubTotal, nudDiscountPercent.Value);
             _Invoice.DiscountPercent = nudDiscountPercent.Value;
             _Invoice.TotalAmount = totalAfterDiscount;
@@ -246,6 +308,8 @@ namespace ClinicWise.Financial.Invoices
 
         private void nudDiscountAmount_ValueChanged(object sender, EventArgs e)
         {
+            if (_IsLoading) return;
+
             decimal totalAfterDiscount = _GetNewTotalAfterDiscountByAmount(_Invoice.SubTotal, nudDiscountAmount.Value);
             _Invoice.DiscountAmount = nudDiscountAmount.Value;
             _Invoice.TotalAmount = totalAfterDiscount;
@@ -347,38 +411,38 @@ namespace ClinicWise.Financial.Invoices
 
         private async void btnAddInvoiceItem_Click(object sender, EventArgs e)
         {
-            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _InvoiceID);
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _Invoice.InvoiceID);
             frm.ShowDialog();
 
-            await _LoadInformations(_LoadMode);
+            await _ReloadAfterInvoiceItemsChangedAsync();
         }
 
         private async void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _InvoiceID);
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(-1, _Invoice.InvoiceID);
             frm.ShowDialog();
 
-            await _LoadInformations(_LoadMode);
+            await _ReloadAfterInvoiceItemsChangedAsync();
         }
 
         private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
 
-            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(invoiceItemID, _InvoiceID);
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(invoiceItemID, _Invoice.InvoiceID);
             frm.ShowDialog();
 
-            await _LoadInformations(_LoadMode);
+            await _ReloadAfterInvoiceItemsChangedAsync();
         }
 
         private async void btnUpdate_Click(object sender, EventArgs e)
         {
             int invoiceItemID = (int)dgvInvoiceItems.CurrentRow.Cells[0].Value;
 
-            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(invoiceItemID, _InvoiceID);
+            frmAddEditInvoiceItem frm = new frmAddEditInvoiceItem(invoiceItemID, _Invoice.InvoiceID);
             frm.ShowDialog();
 
-            await _LoadInformations(_LoadMode);
+            await _ReloadAfterInvoiceItemsChangedAsync();
         }
 
         private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -393,7 +457,7 @@ namespace ClinicWise.Financial.Invoices
                 == DialogResult.OK)
             {
                 if (clsInvoiceItem.Delete(invoiceItemID))
-                    await _LoadInformations(_LoadMode);
+                    await _ReloadAfterInvoiceItemsChangedAsync();
                 
                 else
                     MessageBox.Show(
@@ -417,7 +481,7 @@ namespace ClinicWise.Financial.Invoices
                 == DialogResult.OK)
             {
                 if (clsInvoiceItem.Delete(invoiceItemID))
-                    await _LoadInformations(_LoadMode);
+                    await _ReloadAfterInvoiceItemsChangedAsync();
 
                 else
                     MessageBox.Show(

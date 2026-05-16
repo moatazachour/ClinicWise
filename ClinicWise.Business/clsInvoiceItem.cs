@@ -23,6 +23,7 @@ namespace ClinicWise.Business
         {
             ItemID = -1;
             InvoiceID = -1;
+            
             Description = string.Empty;
             Quantity = 0;
             UnitPrice = 0;

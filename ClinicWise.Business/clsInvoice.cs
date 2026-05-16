@@ -28,6 +28,7 @@ namespace ClinicWise.Business
         public int? IssuedByUserID { get; set; }
         public DateTime? IssuedAt { get; set; }
         public int? VoidedByUserID { get; set; }
+        public DateTime? VoidedAt { get; set; } 
         public string VoidReason { get; set; }
         public string Notes { get; set; }
 
@@ -49,6 +50,7 @@ namespace ClinicWise.Business
             IssuedByUserID = null;
             IssuedAt = null;
             VoidedByUserID = null;
+            VoidedAt = null;
             VoidReason = null;
             Notes = null;
 
@@ -71,7 +73,8 @@ namespace ClinicWise.Business
             enInvoiceStatus status, 
             int? issuedByUserID, 
             DateTime? issuedAt, 
-            int? voidedByUserID, 
+            int? voidedByUserID,
+            DateTime? voidedAt,
             string voidReason, 
             string notes)
         {
@@ -91,6 +94,7 @@ namespace ClinicWise.Business
             IssuedByUserID = issuedByUserID;
             IssuedAt = issuedAt;
             VoidedByUserID = voidedByUserID;
+            VoidedAt = voidedAt;
             VoidReason = voidReason;
             Notes = notes;
 
@@ -115,6 +119,7 @@ namespace ClinicWise.Business
             IssuedByUserID = invoiceDTO.IssuedByUserID;
             IssuedAt = invoiceDTO.IssuedAt;
             VoidedByUserID = invoiceDTO.VoidedByUserID;
+            VoidedAt = invoiceDTO.VoidedAt;
             VoidReason = invoiceDTO.VoidReason;
             Notes = invoiceDTO.Notes;
 
@@ -144,7 +149,12 @@ namespace ClinicWise.Business
         private bool _Update()
         {
             return clsInvoiceData.Update(InvoiceID, SubTotal, DiscountAmount, DiscountPercent, DiscountType, DiscountAuthorizedByUserID,
-                TotalAmount, AmountPaid, OutstandingBalance, Status, IssuedByUserID, IssuedAt);
+                TotalAmount, AmountPaid, OutstandingBalance, Status, IssuedByUserID, IssuedAt, VoidedByUserID, VoidedAt, VoidReason, Notes);
+        }
+
+        public static async Task<InvoiceDTO> GetReplacementInvoiceAsync(int appointmentID)
+        {
+            return await clsInvoiceData.GetLatestInvoiceByAppointmentIdAsync(appointmentID);
         }
     }
 }

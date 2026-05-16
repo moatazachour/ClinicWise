@@ -46,6 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEditInvoice = new System.Windows.Forms.Button();
+            this.voidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsManageAppointments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -138,9 +139,10 @@
             this.cmsManageAppointments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showDetailsToolStripMenuItem,
             this.toolStripSeparator1,
-            this.updateToolStripMenuItem});
+            this.updateToolStripMenuItem,
+            this.voidToolStripMenuItem});
             this.cmsManageAppointments.Name = "cmsManageDoctors";
-            this.cmsManageAppointments.Size = new System.Drawing.Size(181, 84);
+            this.cmsManageAppointments.Size = new System.Drawing.Size(181, 110);
             // 
             // cbManageInvoices
             // 
@@ -241,6 +243,13 @@
             this.btnEditInvoice.UseVisualStyleBackColor = true;
             this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
             // 
+            // voidToolStripMenuItem
+            // 
+            this.voidToolStripMenuItem.Name = "voidToolStripMenuItem";
+            this.voidToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.voidToolStripMenuItem.Text = "Void";
+            this.voidToolStripMenuItem.Click += new System.EventHandler(this.voidToolStripMenuItem_Click);
+            // 
             // frmManageInvoices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,5 +293,6 @@
         private System.Windows.Forms.DataGridView dgvManageInvoices;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEditInvoice;
+        private System.Windows.Forms.ToolStripMenuItem voidToolStripMenuItem;
     }
 }
