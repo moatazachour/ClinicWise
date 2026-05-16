@@ -37,6 +37,8 @@
             this.lblMedicalRecordID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvPrescriptionItems = new System.Windows.Forms.DataGridView();
+            this.cmsManagePrescriptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,8 +47,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblAppointment = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmsManagePrescriptions = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblProcedureName = new System.Windows.Forms.Label();
+            this.chkProcedureIncluded = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.gbAppointmentInfos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrescriptionItems)).BeginInit();
             this.cmsManagePrescriptions.SuspendLayout();
@@ -55,6 +58,9 @@
             // gbAppointmentInfos
             // 
             this.gbAppointmentInfos.BackColor = System.Drawing.Color.Azure;
+            this.gbAppointmentInfos.Controls.Add(this.chkProcedureIncluded);
+            this.gbAppointmentInfos.Controls.Add(this.lblProcedureName);
+            this.gbAppointmentInfos.Controls.Add(this.label9);
             this.gbAppointmentInfos.Controls.Add(this.lblAdditionalNotes);
             this.gbAppointmentInfos.Controls.Add(this.lblDiagnosis);
             this.gbAppointmentInfos.Controls.Add(this.lblVisitDescription);
@@ -84,7 +90,7 @@
             this.lblAdditionalNotes.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.lblAdditionalNotes.ForeColor = System.Drawing.Color.SteelBlue;
             this.lblAdditionalNotes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblAdditionalNotes.Location = new System.Drawing.Point(287, 409);
+            this.lblAdditionalNotes.Location = new System.Drawing.Point(287, 435);
             this.lblAdditionalNotes.Name = "lblAdditionalNotes";
             this.lblAdditionalNotes.Size = new System.Drawing.Size(691, 76);
             this.lblAdditionalNotes.TabIndex = 42;
@@ -96,7 +102,7 @@
             this.lblDiagnosis.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.lblDiagnosis.ForeColor = System.Drawing.Color.SteelBlue;
             this.lblDiagnosis.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblDiagnosis.Location = new System.Drawing.Point(288, 353);
+            this.lblDiagnosis.Location = new System.Drawing.Point(287, 386);
             this.lblDiagnosis.Name = "lblDiagnosis";
             this.lblDiagnosis.Size = new System.Drawing.Size(691, 25);
             this.lblDiagnosis.TabIndex = 41;
@@ -110,7 +116,7 @@
             this.lblVisitDescription.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblVisitDescription.Location = new System.Drawing.Point(288, 238);
             this.lblVisitDescription.Name = "lblVisitDescription";
-            this.lblVisitDescription.Size = new System.Drawing.Size(691, 72);
+            this.lblVisitDescription.Size = new System.Drawing.Size(691, 61);
             this.lblVisitDescription.TabIndex = 40;
             this.lblVisitDescription.Text = "[????]";
             // 
@@ -167,6 +173,22 @@
             this.dgvPrescriptionItems.Size = new System.Drawing.Size(698, 156);
             this.dgvPrescriptionItems.TabIndex = 31;
             // 
+            // cmsManagePrescriptions
+            // 
+            this.cmsManagePrescriptions.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsManagePrescriptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManagePrescriptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsToolStripMenuItem});
+            this.cmsManagePrescriptions.Name = "cmsManageDoctors";
+            this.cmsManagePrescriptions.Size = new System.Drawing.Size(179, 30);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -183,7 +205,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(83, 409);
+            this.label5.Location = new System.Drawing.Point(83, 435);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(186, 25);
             this.label5.TabIndex = 28;
@@ -194,7 +216,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(152, 353);
+            this.label3.Location = new System.Drawing.Point(151, 386);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 25);
             this.label3.TabIndex = 26;
@@ -261,21 +283,39 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Appointment:";
             // 
-            // cmsManagePrescriptions
+            // lblProcedureName
             // 
-            this.cmsManagePrescriptions.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmsManagePrescriptions.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsManagePrescriptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showDetailsToolStripMenuItem});
-            this.cmsManagePrescriptions.Name = "cmsManageDoctors";
-            this.cmsManagePrescriptions.Size = new System.Drawing.Size(181, 52);
+            this.lblProcedureName.AutoSize = true;
+            this.lblProcedureName.BackColor = System.Drawing.Color.Azure;
+            this.lblProcedureName.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lblProcedureName.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblProcedureName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblProcedureName.Location = new System.Drawing.Point(331, 319);
+            this.lblProcedureName.Name = "lblProcedureName";
+            this.lblProcedureName.Size = new System.Drawing.Size(74, 25);
+            this.lblProcedureName.TabIndex = 44;
+            this.lblProcedureName.Text = "[????]";
             // 
-            // showDetailsToolStripMenuItem
+            // chkProcedureIncluded
             // 
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.showDetailsToolStripMenuItem.Text = "Show Details";
-            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            this.chkProcedureIncluded.AutoSize = true;
+            this.chkProcedureIncluded.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkProcedureIncluded.Location = new System.Drawing.Point(293, 324);
+            this.chkProcedureIncluded.Name = "chkProcedureIncluded";
+            this.chkProcedureIncluded.Size = new System.Drawing.Size(15, 14);
+            this.chkProcedureIncluded.TabIndex = 45;
+            this.chkProcedureIncluded.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label9.Location = new System.Drawing.Point(62, 319);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(207, 25);
+            this.label9.TabIndex = 43;
+            this.label9.Text = "Contain Operation:";
             // 
             // ctrlMedicalRecordCard
             // 
@@ -313,5 +353,8 @@
         private System.Windows.Forms.Label lblVisitType;
         private System.Windows.Forms.ContextMenuStrip cmsManagePrescriptions;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkProcedureIncluded;
+        private System.Windows.Forms.Label lblProcedureName;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -3,9 +3,11 @@ using ClinicWise.Contracts;
 using ClinicWise.Contracts.Appointments;
 using ClinicWise.Contracts.InvoiceItems;
 using ClinicWise.Contracts.Invoices;
+using ClinicWise.Contracts.MedicalRecords;
 using ClinicWise.Contracts.Patients;
 using ClinicWise.Financial.InvoiceItems;
 using ClinicWise.Global_Classes;
+using ClinicWise.MedicalRecords;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -425,6 +427,13 @@ namespace ClinicWise.Financial.Invoices
                         MessageBoxIcon.Error);
 
             }
+        }
+
+        private async void btnCheckMedicalRecord_Click(object sender, EventArgs e)
+        {
+            MedicalRecordDTO medicalRecord = await clsMedicalRecord.FindByAppointmentIDAsync(_Invoice.AppointmentID);
+            frmMedicalRecordDetails frm = new frmMedicalRecordDetails(medicalRecord.RecordID);
+            frm.ShowDialog();
         }
     }
 }

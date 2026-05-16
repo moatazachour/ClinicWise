@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace ClinicWise.MedicalRecords.Controls
 {
@@ -38,6 +39,9 @@ namespace ClinicWise.MedicalRecords.Controls
             lblVisitDescription.Text = medicalRecord.DescriptionOfVisit ?? "[N/A]";
             lblDiagnosis.Text = medicalRecord.Diagnosis ?? "[N/A]";
             lblAdditionalNotes.Text = medicalRecord.AdditionalNotes ?? "[N/A]";
+            chkProcedureIncluded.AutoCheck = false;
+            chkProcedureIncluded.Checked = medicalRecord.ProcedureIncluded;
+            lblProcedureName.Text = medicalRecord.ProcedureName ?? "No Procedure";
 
             _MedicalRecordPrescriptionItems = await clsPrescriptionItem.GetAllByMedicalRecordAsync(medicalRecordID);
             dgvPrescriptionItems.DataSource = _GetCleanPrescriptionView(_MedicalRecordPrescriptionItems);

@@ -564,6 +564,7 @@
             this.btnCheckMedicalRecord.TabIndex = 55;
             this.btnCheckMedicalRecord.Text = "Check Medical Record";
             this.btnCheckMedicalRecord.UseVisualStyleBackColor = true;
+            this.btnCheckMedicalRecord.Click += new System.EventHandler(this.btnCheckMedicalRecord_Click);
             // 
             // pictureBox1
             // 
