@@ -105,6 +105,7 @@
     <Content Include="StoredProcedures\Invoices\Invoice_GetAll.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByAppointmentAndStatus.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByID.sql" />
+    <Content Include="StoredProcedures\Invoices\Invoice_GetByInvoiceNumber.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetLatestInvoiceByAppointmentID.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_Update.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />

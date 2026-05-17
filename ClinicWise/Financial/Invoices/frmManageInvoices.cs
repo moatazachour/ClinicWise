@@ -1,5 +1,6 @@
 ﻿using ClinicWise.Business;
 using ClinicWise.Contracts.Invoices;
+using ClinicWise.Financial.Payments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -160,6 +161,51 @@ namespace ClinicWise.Financial.Invoices
             int selectedInvoiceID = (int)dgvManageInvoices.CurrentRow.Cells[0].Value;
 
             frmVoidingInvoice frm = new frmVoidingInvoice(selectedInvoiceID);
+            frm.ShowDialog();
+
+            await _LoadDataAsync();
+        }
+
+        private async void payToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            enInvoiceStatus status = (enInvoiceStatus)dgvManageInvoices.CurrentRow.Cells[8].Value;
+
+            if (status == enInvoiceStatus.Paid)
+            {
+                MessageBox.Show(
+                    $"Invoice Already in Paid",
+                    "Paid",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (status == enInvoiceStatus.Void)
+            {
+                MessageBox.Show(
+                    $"Invoice Voided, You can't pay it.",
+                    "Voided",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (status == enInvoiceStatus.Waived)
+            {
+                MessageBox.Show(
+                    $"Invoice is Waived, You can't pay it.",
+                    "Waived",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            int invoiceID = (int)dgvManageInvoices.CurrentRow.Cells[0].Value;
+            frmAddEditPayment frm = new frmAddEditPayment(-1);
+            await frm.LoadInvoice(invoiceID);
             frm.ShowDialog();
 
             await _LoadDataAsync();

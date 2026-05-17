@@ -62,6 +62,7 @@
     <Compile Include="Medicaments\MedicamentDTO.cs" />
     <Compile Include="Patients\PatientDisplayDTO.cs" />
     <Compile Include="Patients\PatientDTO.cs" />
+    <Compile Include="Payments\enPaymentMethod.cs" />
     <Compile Include="Persons\PersonDTO.cs" />
     <Compile Include="PrescriptionItems\PrescriptionItemDisplayDTO.cs" />
     <Compile Include="PrescriptionItems\PrescriptionItemsCreateDTO.cs" />

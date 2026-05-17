@@ -303,6 +303,26 @@ namespace ClinicWise.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap payment_64 {
+            get {
+                object obj = ResourceManager.GetObject("payment-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap payment_72 {
+            get {
+                object obj = ResourceManager.GetObject("payment-72", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap payment_method_67 {
             get {
                 object obj = ResourceManager.GetObject("payment-method-67", resourceCulture);

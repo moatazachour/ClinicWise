@@ -156,5 +156,10 @@ namespace ClinicWise.Business
         {
             return await clsInvoiceData.GetLatestInvoiceByAppointmentIdAsync(appointmentID);
         }
+
+        public static async Task<InvoiceDTO> FindByInvoiceNumberAsync(string invoiceNumber)
+        {
+            return await clsInvoiceData.GetByInvoiceNumberAsync(invoiceNumber);
+        }
     }
 }

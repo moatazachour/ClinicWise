@@ -146,6 +146,57 @@ namespace ClinicWise.DataAccess
             }
         }
 
+        public static async Task<InvoiceDTO> GetByInvoiceNumberAsync(string invoiceNumber)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Invoice_GetByInvoiceNumber", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@InvoiceNumber", SqlDbType.VarChar).Value = invoiceNumber;
+
+                await connection.OpenAsync();
+
+                try
+                {
+                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            return new InvoiceDTO()
+                            {
+                                InvoiceID = (int)reader["InvoiceID"],
+                                InvoiceNumber = invoiceNumber,
+                                AppointmentID = (int)reader["AppointmentID"],
+                                PatientID = (int)reader["PatientID"],
+                                SubTotal = (decimal)reader["SubTotal"],
+                                DiscountAmount = (decimal)reader["DiscountAmount"],
+                                DiscountPercent = reader["DiscountPercent"] as decimal?,
+                                DiscountType = reader["DiscountType"] == DBNull.Value ? null : (enDiscountType?)(byte)reader["DiscountType"],
+                                DiscountAuthorizedByUserID = reader["DiscountAuthorizedByUserID"] as int?,
+                                TotalAmount = (decimal)reader["TotalAmount"],
+                                AmountPaid = (decimal)reader["AmountPaid"],
+                                OutstandingBalance = reader["OutstandingBalance"] as decimal?,
+                                Status = (enInvoiceStatus)(byte)reader["Status"],
+                                IssuedByUserID = reader["IssuedByUserID"] as int?,
+                                IssuedAt = reader["IssuedAt"] as DateTime?,
+                                VoidedByUserID = reader["VoidedByUserID"] as int?,
+                                VoidedAt = reader["VoidedAt"] as DateTime?,
+                                VoidReason = reader["VoidReason"] as string,
+                                Notes = reader["Notes"] as string,
+                            };
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
         public static async Task<InvoiceDTO> GetLatestInvoiceByAppointmentIdAsync(int appointmentID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))

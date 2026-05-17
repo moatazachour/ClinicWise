@@ -53,6 +53,7 @@
     <Compile Include="clsMedicalRecord.cs" />
     <Compile Include="clsMedicament.cs" />
     <Compile Include="clsPatient.cs" />
+    <Compile Include="clsPayment.cs" />
     <Compile Include="clsPerson.cs" />
     <Compile Include="clsPrescriptionItem.cs" />
     <Compile Include="clsRole.cs" />

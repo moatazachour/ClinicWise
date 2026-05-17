@@ -41,12 +41,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsManageAppointments = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.voidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.payToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbManageInvoices = new System.Windows.Forms.ComboBox();
             this.dgvManageInvoices = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEditInvoice = new System.Windows.Forms.Button();
-            this.voidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsManageAppointments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManageInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -140,9 +141,24 @@
             this.showDetailsToolStripMenuItem,
             this.toolStripSeparator1,
             this.updateToolStripMenuItem,
-            this.voidToolStripMenuItem});
+            this.voidToolStripMenuItem,
+            this.payToolStripMenuItem});
             this.cmsManageAppointments.Name = "cmsManageDoctors";
-            this.cmsManageAppointments.Size = new System.Drawing.Size(181, 110);
+            this.cmsManageAppointments.Size = new System.Drawing.Size(181, 136);
+            // 
+            // voidToolStripMenuItem
+            // 
+            this.voidToolStripMenuItem.Name = "voidToolStripMenuItem";
+            this.voidToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.voidToolStripMenuItem.Text = "Void";
+            this.voidToolStripMenuItem.Click += new System.EventHandler(this.voidToolStripMenuItem_Click);
+            // 
+            // payToolStripMenuItem
+            // 
+            this.payToolStripMenuItem.Name = "payToolStripMenuItem";
+            this.payToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.payToolStripMenuItem.Text = "Pay";
+            this.payToolStripMenuItem.Click += new System.EventHandler(this.payToolStripMenuItem_Click);
             // 
             // cbManageInvoices
             // 
@@ -243,13 +259,6 @@
             this.btnEditInvoice.UseVisualStyleBackColor = true;
             this.btnEditInvoice.Click += new System.EventHandler(this.btnEditInvoice_Click);
             // 
-            // voidToolStripMenuItem
-            // 
-            this.voidToolStripMenuItem.Name = "voidToolStripMenuItem";
-            this.voidToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.voidToolStripMenuItem.Text = "Void";
-            this.voidToolStripMenuItem.Click += new System.EventHandler(this.voidToolStripMenuItem_Click);
-            // 
             // frmManageInvoices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,5 +303,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEditInvoice;
         private System.Windows.Forms.ToolStripMenuItem voidToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem payToolStripMenuItem;
     }
 }

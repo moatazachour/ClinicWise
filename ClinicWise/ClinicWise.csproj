@@ -104,6 +104,18 @@
     <Compile Include="Financial\InvoiceItems\frmAddEditInvoiceItem.Designer.cs">
       <DependentUpon>frmAddEditInvoiceItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Financial\Invoices\Controls\ctrlInvoiceCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Financial\Invoices\Controls\ctrlInvoiceCard.Designer.cs">
+      <DependentUpon>ctrlInvoiceCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Financial\Invoices\Controls\ctrlInvoiceCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Financial\Invoices\Controls\ctrlInvoiceCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlInvoiceCardWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Financial\Invoices\frmAddEditInvoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,12 @@
     </Compile>
     <Compile Include="Financial\Invoices\frmVoidingInvoice.Designer.cs">
       <DependentUpon>frmVoidingInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Financial\Payments\frmAddEditPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Financial\Payments\frmAddEditPayment.Designer.cs">
+      <DependentUpon>frmAddEditPayment.cs</DependentUpon>
     </Compile>
     <Compile Include="Financial\Visit Fees\frmAddEditVisitFee.cs">
       <SubType>Form</SubType>
@@ -323,6 +341,12 @@
     <EmbeddedResource Include="Financial\InvoiceItems\frmAddEditInvoiceItem.resx">
       <DependentUpon>frmAddEditInvoiceItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Financial\Invoices\Controls\ctrlInvoiceCard.resx">
+      <DependentUpon>ctrlInvoiceCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Financial\Invoices\Controls\ctrlInvoiceCardWithFilter.resx">
+      <DependentUpon>ctrlInvoiceCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Financial\Invoices\frmAddEditInvoice.resx">
       <DependentUpon>frmAddEditInvoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Financial\Invoices\frmVoidingInvoice.resx">
       <DependentUpon>frmVoidingInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Financial\Payments\frmAddEditPayment.resx">
+      <DependentUpon>frmAddEditPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Financial\Visit Fees\frmAddEditVisitFee.resx">
       <DependentUpon>frmAddEditVisitFee.cs</DependentUpon>
@@ -551,6 +578,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\void-invoice-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment-72.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

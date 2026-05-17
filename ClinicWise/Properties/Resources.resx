@@ -130,6 +130,9 @@
   <data name="doctor_female" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doctor_female.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="void-invoice-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\void-invoice-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cross 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cross 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -159,6 +162,9 @@
   </data>
   <data name="visit-type-fees-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\visit-type-fees-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="payment-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payment-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="doctor_maleV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doctor_maleV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,7 +226,7 @@
   <data name="invoice-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invoice-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="void-invoice-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\void-invoice-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="payment-72" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payment-72.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
