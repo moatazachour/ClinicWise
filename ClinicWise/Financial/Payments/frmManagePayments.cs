@@ -2,6 +2,7 @@
 using ClinicWise.Contracts.Payments;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,7 +11,7 @@ namespace ClinicWise.Financial.Payments
     public partial class frmManagePayments : Form
     {
         private List<PaymentViewDTO> _PaymentsList;
-
+        private List<PaymentViewDTO> _PaymentsFilter;
         public frmManagePayments()
         {
             InitializeComponent();
@@ -51,6 +52,12 @@ namespace ClinicWise.Financial.Payments
         private void cbManagePayments_SelectedIndexChanged(object sender, EventArgs e)
         {
             mtxtFilter.Visible = cbManagePayments.Text != "None";
+
+            if (cbManagePayments.Text == "None")
+            {
+                dgvManagePayment.DataSource = _PaymentsList;
+                lblRecordCount.Text = dgvManagePayment.RowCount.ToString();
+            }
         }
 
         private void mtxtFilter_KeyPress(object sender, KeyPressEventArgs e)
@@ -74,6 +81,31 @@ namespace ClinicWise.Financial.Payments
             frm.ShowDialog();
 
             await _LoadInformationsAsync();
+        }
+
+        private void mtxtFilter_TextChanged(object sender, EventArgs e)
+        {
+            switch (cbManagePayments.Text)
+            {
+                case "Payment ID":
+                    if (string.IsNullOrWhiteSpace(mtxtFilter.Text))
+                        _PaymentsFilter = _PaymentsList;
+                    else
+                        _PaymentsFilter = _PaymentsList.Where(p => p.PaymentID.Equals(Convert.ToInt32(mtxtFilter.Text.Trim()))).ToList(); 
+                    break;
+
+                case "Invoice Number":
+                    _PaymentsFilter = _PaymentsList.Where(p => p.InvoiceNumber.ToLower().Contains(mtxtFilter.Text.Trim()))
+                        .ToList();
+                    break;
+
+                default:
+                    _PaymentsFilter = _PaymentsList;
+                    break;
+            }
+
+            dgvManagePayment.DataSource = _PaymentsFilter;
+            lblRecordCount.Text = _PaymentsList.Count.ToString();
         }
     }
 }
