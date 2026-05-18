@@ -154,9 +154,6 @@
   <data name="appointments-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\appointments-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="payment-method-67" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\payment-method-67.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="invoice-update-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invoice-update-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -208,17 +205,23 @@
   <data name="patient_information_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\patient_information_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="account_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\account_settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="doctor_femaleV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doctor_femaleV2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="login_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="account_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\account_settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="payment-method-67" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payment-method-67.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="account_settings_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\account_settings_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="payment-72" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payment-72.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="doctor_male" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doctor_male.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,7 +229,7 @@
   <data name="invoice-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invoice-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="payment-72" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\payment-72.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="payment_add_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payment_add_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

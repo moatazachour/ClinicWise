@@ -140,6 +140,12 @@
     <Compile Include="Financial\Payments\frmAddEditPayment.Designer.cs">
       <DependentUpon>frmAddEditPayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Financial\Payments\frmManagePayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Financial\Payments\frmManagePayments.Designer.cs">
+      <DependentUpon>frmManagePayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Financial\Visit Fees\frmAddEditVisitFee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Financial\Payments\frmAddEditPayment.resx">
       <DependentUpon>frmAddEditPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Financial\Payments\frmManagePayments.resx">
+      <DependentUpon>frmManagePayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Financial\Visit Fees\frmAddEditVisitFee.resx">
       <DependentUpon>frmAddEditVisitFee.cs</DependentUpon>
@@ -584,6 +593,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\payment-72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment_add_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblMode = new System.Windows.Forms.Label();
-            this.ctrlInvoiceCardWithFilter1 = new ClinicWise.Financial.Invoices.Controls.ctrlInvoiceCardWithFilter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.nudAmountPaid = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.cbPaymentMethod = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblMode = new System.Windows.Forms.Label();
+            this.ctrlInvoiceCardWithFilter1 = new ClinicWise.Financial.Invoices.Controls.ctrlInvoiceCardWithFilter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAmountPaid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -54,30 +57,11 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // lblMode
-            // 
-            this.lblMode.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblMode.Location = new System.Drawing.Point(288, 89);
-            this.lblMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(249, 41);
-            this.lblMode.TabIndex = 60;
-            this.lblMode.Text = "Add Payment";
-            // 
-            // ctrlInvoiceCardWithFilter1
-            // 
-            this.ctrlInvoiceCardWithFilter1.BackColor = System.Drawing.Color.Azure;
-            this.ctrlInvoiceCardWithFilter1.Location = new System.Drawing.Point(10, 133);
-            this.ctrlInvoiceCardWithFilter1.Name = "ctrlInvoiceCardWithFilter1";
-            this.ctrlInvoiceCardWithFilter1.Size = new System.Drawing.Size(793, 447);
-            this.ctrlInvoiceCardWithFilter1.TabIndex = 61;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.nudAmountPaid);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cbPaymentMethod);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 596);
@@ -87,29 +71,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payments";
             // 
-            // label1
+            // nudAmountPaid
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Location = new System.Drawing.Point(25, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Payment Method:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Cash",
-            "Card",
-            "Bank Transfer",
-            "Insurance"});
-            this.comboBox1.Location = new System.Drawing.Point(200, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(246, 25);
-            this.comboBox1.TabIndex = 3;
+            this.nudAmountPaid.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudAmountPaid.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nudAmountPaid.Location = new System.Drawing.Point(200, 101);
+            this.nudAmountPaid.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudAmountPaid.Name = "nudAmountPaid";
+            this.nudAmountPaid.Size = new System.Drawing.Size(128, 27);
+            this.nudAmountPaid.TabIndex = 5;
+            this.nudAmountPaid.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudAmountPaid.Validating += new System.ComponentModel.CancelEventHandler(this.nudAmountPaid_Validating);
             // 
             // label2
             // 
@@ -122,28 +106,32 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Amount:";
             // 
-            // numericUpDown1
+            // cbPaymentMethod
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(200, 101);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(128, 27);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.cbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPaymentMethod.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPaymentMethod.FormattingEnabled = true;
+            this.cbPaymentMethod.Items.AddRange(new object[] {
+            "Cash",
+            "Card",
+            "Bank Transfer",
+            "Insurance"});
+            this.cbPaymentMethod.Location = new System.Drawing.Point(200, 42);
+            this.cbPaymentMethod.Name = "cbPaymentMethod";
+            this.cbPaymentMethod.Size = new System.Drawing.Size(246, 26);
+            this.cbPaymentMethod.TabIndex = 3;
+            this.cbPaymentMethod.Validating += new System.ComponentModel.CancelEventHandler(this.cbPaymentMethod_Validating);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label1.Location = new System.Drawing.Point(25, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(145, 19);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Payment Method:";
             // 
             // btnClose
             // 
@@ -169,6 +157,32 @@
             this.btnSave.TabIndex = 64;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // lblMode
+            // 
+            this.lblMode.BackColor = System.Drawing.Color.Azure;
+            this.lblMode.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.lblMode.Location = new System.Drawing.Point(226, 80);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(410, 49);
+            this.lblMode.TabIndex = 66;
+            this.lblMode.Text = "Manage Payments";
+            this.lblMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlInvoiceCardWithFilter1
+            // 
+            this.ctrlInvoiceCardWithFilter1.BackColor = System.Drawing.Color.Azure;
+            this.ctrlInvoiceCardWithFilter1.Location = new System.Drawing.Point(10, 133);
+            this.ctrlInvoiceCardWithFilter1.Margin = new System.Windows.Forms.Padding(4);
+            this.ctrlInvoiceCardWithFilter1.Name = "ctrlInvoiceCardWithFilter1";
+            this.ctrlInvoiceCardWithFilter1.Size = new System.Drawing.Size(793, 447);
+            this.ctrlInvoiceCardWithFilter1.TabIndex = 61;
             // 
             // frmAddEditPayment
             // 
@@ -176,19 +190,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(815, 777);
+            this.Controls.Add(this.lblMode);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ctrlInvoiceCardWithFilter1);
-            this.Controls.Add(this.lblMode);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditPayment";
             this.Text = "frmAddEditPayment";
+            this.Load += new System.EventHandler(this.frmAddEditPayment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAmountPaid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,14 +212,15 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblMode;
         private Invoices.Controls.ctrlInvoiceCardWithFilter ctrlInvoiceCardWithFilter1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbPaymentMethod;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudAmountPaid;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label lblMode;
     }
 }

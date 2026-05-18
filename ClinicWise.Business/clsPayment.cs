@@ -1,4 +1,6 @@
+using ClinicWise.Contracts.Invoices;
 using ClinicWise.Contracts.Payments;
+using ClinicWise.DataAccess;
 using System;
 
 namespace ClinicWise.Business
@@ -65,12 +67,13 @@ namespace ClinicWise.Business
 
         private bool _Update()
         {
-            throw new NotImplementedException();
+            return clsPaymentData.Update(PaymentID, PaymentDate, Method,  AmountPaid, RecordedByUserID);
         }
 
         private bool _AddNew()
         {
-            throw new NotImplementedException();
+            PaymentID = clsPaymentData.AddNew(InvoiceID, PaymentDate, Method, AmountPaid, RecordedByUserID);
+            return PaymentID != -1;
         }
     }
 }

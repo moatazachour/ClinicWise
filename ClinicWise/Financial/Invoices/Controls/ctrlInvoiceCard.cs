@@ -20,12 +20,8 @@ namespace ClinicWise.Financial.Invoices.Controls
         {
             InvoiceDTO invoiceDTO = await clsInvoice.FindAsync(invoiceID);
 
-            if (invoiceDTO == null)
-            {
-                MessageBox.Show("Invoice does not exist", "Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!_CheckInvoice(invoiceDTO))
                 return;
-            }
 
             lblInvoiceID.Text = invoiceDTO.InvoiceID.ToString();
             lblAppointmentID.Text = invoiceDTO.AppointmentID.ToString();
@@ -38,18 +34,56 @@ namespace ClinicWise.Financial.Invoices.Controls
             lblOutstandingAmount.Text = $"{invoiceDTO.OutstandingBalance} DNT";
 
             SelectedInvoice = new clsInvoice(invoiceDTO);
+        }
+
+        private bool _CheckInvoice(InvoiceDTO invoiceDTO)
+        {
+            bool isValid = true;
+
+            if (invoiceDTO == null)
+            {
+                MessageBox.Show("Invoice does not exist", "Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            else if (invoiceDTO.Status == enInvoiceStatus.Draft)
+            {
+                MessageBox.Show("Invoice is not issued yet!", "Draft",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            else if (invoiceDTO.Status == enInvoiceStatus.Void)
+            {
+                MessageBox.Show("Invoice is Voided!", "Voided",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            else if (invoiceDTO.Status == enInvoiceStatus.Waived)
+            {
+                MessageBox.Show("Invoice is Waived!", "Waived",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            else if (invoiceDTO.Status == enInvoiceStatus.Paid)
+            {
+                MessageBox.Show("Invoice already paid!", "Paid",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isValid = false;
+            }
+
+            return isValid;
         }
 
         public async Task LoadInformationsByInvoiceNumber(string invoiceNumber)
         {
             InvoiceDTO invoiceDTO = await clsInvoice.FindByInvoiceNumberAsync(invoiceNumber);
 
-            if (invoiceDTO == null)
-            {
-                MessageBox.Show("Invoice does not exist", "Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!_CheckInvoice(invoiceDTO))
                 return;
-            }
 
             lblInvoiceID.Text = invoiceDTO.InvoiceID.ToString();
             lblAppointmentID.Text = invoiceDTO.AppointmentID.ToString();
@@ -63,7 +97,6 @@ namespace ClinicWise.Financial.Invoices.Controls
 
             SelectedInvoice = new clsInvoice(invoiceDTO);
         }
-
 
         private string _GetStatusName(enInvoiceStatus status)
         {

@@ -1,6 +1,7 @@
 ﻿using ClinicWise.Appointments;
 using ClinicWise.Doctors;
 using ClinicWise.Financial.Invoices;
+using ClinicWise.Financial.Payments;
 using ClinicWise.Financial.Visit_Fees;
 using ClinicWise.Global_Classes;
 using ClinicWise.Login;
@@ -94,6 +95,12 @@ namespace ClinicWise
         private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManageInvoices frm = new frmManageInvoices();
+            frm.ShowDialog();
+        }
+
+        private void paymentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManagePayments frm = new frmManagePayments();
             frm.ShowDialog();
         }
     }

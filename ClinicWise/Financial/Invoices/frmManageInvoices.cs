@@ -170,6 +170,17 @@ namespace ClinicWise.Financial.Invoices
         {
             enInvoiceStatus status = (enInvoiceStatus)dgvManageInvoices.CurrentRow.Cells[8].Value;
 
+            if (status == enInvoiceStatus.Draft)
+            {
+                MessageBox.Show(
+                    $"Invoice Need to be Issued First",
+                    "Draft",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
             if (status == enInvoiceStatus.Paid)
             {
                 MessageBox.Show(

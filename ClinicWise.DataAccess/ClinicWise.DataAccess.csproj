@@ -52,6 +52,7 @@
     <Compile Include="clsMedicalRecordData.cs" />
     <Compile Include="clsMedicamentData.cs" />
     <Compile Include="clsPatientData.cs" />
+    <Compile Include="clsPaymentData.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsRoleData.cs" />
     <Compile Include="clsSpecializationData.cs" />
@@ -67,6 +68,7 @@
       <Name>ClinicWise.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Functions\dbo.CheckIfFeeIsActive.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_AddNew.sql" />
@@ -124,6 +126,8 @@
     <Content Include="StoredProcedures\Patients\Patient_GetAll.sql" />
     <Content Include="StoredProcedures\Patients\Patient_GetByID.sql" />
     <Content Include="StoredProcedures\Patients\Patient_Update.sql" />
+    <Content Include="StoredProcedures\Payments\Payment_AddNew.sql" />
+    <Content Include="StoredProcedures\Payments\Payment_Update.sql" />
     <Content Include="StoredProcedures\Persons\Person_AddNew.sql" />
     <Content Include="StoredProcedures\Persons\Person_GetByID.sql" />
     <Content Include="StoredProcedures\Persons\Person_GetByNationalNo.sql" />
