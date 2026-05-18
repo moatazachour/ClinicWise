@@ -1,0 +1,10 @@
+CREATE PROCEDURE Payment_GetByID
+	@PaymentID INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT *
+	FROM Payments
+	WHERE PaymentID = @PaymentID;
+END;

@@ -2,6 +2,8 @@ using ClinicWise.Contracts.Invoices;
 using ClinicWise.Contracts.Payments;
 using ClinicWise.DataAccess;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ClinicWise.Business
 {
@@ -46,7 +48,19 @@ namespace ClinicWise.Business
 
             Mode = enMode.Update;
         }
-    
+
+        public clsPayment(PaymentDTO paymentDTO)
+        {
+            PaymentID = paymentDTO.PaymentID;
+            InvoiceID = paymentDTO.InvoiceID;
+            PaymentDate = paymentDTO.PaymentDate;
+            Method = paymentDTO.Method;
+            AmountPaid = paymentDTO.AmountPaid;
+            RecordedByUserID = paymentDTO.RecordedByUserID;
+
+            Mode = enMode.Update;
+        }
+
         public bool Save()
         {
             switch (Mode)
@@ -74,6 +88,16 @@ namespace ClinicWise.Business
         {
             PaymentID = clsPaymentData.AddNew(InvoiceID, PaymentDate, Method, AmountPaid, RecordedByUserID);
             return PaymentID != -1;
+        }
+
+        public static async Task<List<PaymentViewDTO>> GetAllAsync()
+        {
+            return await clsPaymentData.GetAllAsync();
+        }
+
+        public static async Task<PaymentDTO> GetByIdAsync(int id)
+        {
+            return await clsPaymentData.GetByIdAsync(id);
         }
     }
 }

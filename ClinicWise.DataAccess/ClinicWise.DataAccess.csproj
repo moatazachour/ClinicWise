@@ -127,6 +127,8 @@
     <Content Include="StoredProcedures\Patients\Patient_GetByID.sql" />
     <Content Include="StoredProcedures\Patients\Patient_Update.sql" />
     <Content Include="StoredProcedures\Payments\Payment_AddNew.sql" />
+    <Content Include="StoredProcedures\Payments\Payment_GetAll.sql" />
+    <Content Include="StoredProcedures\Payments\Payment_GetByID.sql" />
     <Content Include="StoredProcedures\Payments\Payment_Update.sql" />
     <Content Include="StoredProcedures\Persons\Person_AddNew.sql" />
     <Content Include="StoredProcedures\Persons\Person_GetByID.sql" />
@@ -171,6 +173,7 @@
     <Content Include="Views\GetAllInvoices_View.sql" />
     <Content Include="Views\GetAllMedicalRecords_View.sql" />
     <Content Include="Views\GetAllPatients_View.sql" />
+    <Content Include="Views\GetAllPayments_View.sql" />
     <Content Include="Views\GetAllPersons_View.sql" />
     <Content Include="Views\GetAllUsers_View.sql" />
     <Content Include="Views\GetAllVisitFees_View.sql" />

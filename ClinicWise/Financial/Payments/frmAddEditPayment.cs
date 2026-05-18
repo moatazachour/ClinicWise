@@ -46,9 +46,50 @@ namespace ClinicWise.Financial.Payments
             SelectedInvoice = ctrlInvoiceCardWithFilter1.SelectedInvoice;
         }
 
-        private void frmAddEditPayment_Load(object sender, System.EventArgs e)
+        private async void frmAddEditPayment_Load(object sender, System.EventArgs e)
         {
             _ResetInformations();
+
+            if (_Mode == enMode.Update)
+                await _LoadDataAsync();
+        }
+
+        private async Task _LoadDataAsync()
+        {
+            PaymentDTO paymentDTO = await clsPayment.GetByIdAsync(_PaymentID);
+
+            if (paymentDTO == null)
+            {
+                MessageBox.Show(
+                    "Payment Does Not Exist!",
+                    "Failed",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
+
+                return;
+            }
+        
+            _Payment = new clsPayment(paymentDTO);
+            await LoadInvoice(_Payment.InvoiceID);
+            cbPaymentMethod.Text = _GetPaymentMethodText(_Payment.Method);
+            nudAmountPaid.Value = _Payment.AmountPaid;
+        }
+
+        private string _GetPaymentMethodText(enPaymentMethod method)
+        {
+            switch (method)
+            {
+                case enPaymentMethod.Cash:
+                    return "Cash";
+                case enPaymentMethod.Card:
+                    return "Card";
+                case enPaymentMethod.BankTransfer:
+                    return "Bank Transfer";
+                case enPaymentMethod.Insurance:
+                    return "Insurance";
+                default:
+                    return "Cash";
+            }
         }
 
         private void _ResetInformations()
@@ -103,6 +144,14 @@ namespace ClinicWise.Financial.Payments
             if (SelectedInvoice == null)
             {
                 MessageBox.Show("Select an invoice to pay!", "Invoice Missing",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (SelectedInvoice.OutstandingBalance < nudAmountPaid.Value)
+            {
+                MessageBox.Show("Payment exceeds outstanding balance.", "Failed",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;

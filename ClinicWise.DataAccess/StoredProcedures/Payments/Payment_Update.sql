@@ -1,4 +1,4 @@
-CREATE PROCEDURE Payment_Update
+ALTER PROCEDURE Payment_Update
     @PaymentID INT,
     @PaymentDate DATETIME,
     @Method TINYINT,
@@ -6,7 +6,6 @@ CREATE PROCEDURE Payment_Update
     @RecordedByUserID INT
 AS
 BEGIN
-    SET NOCOUNT ON;
 
     BEGIN TRY
 

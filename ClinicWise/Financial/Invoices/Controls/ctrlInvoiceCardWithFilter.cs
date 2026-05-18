@@ -36,5 +36,11 @@ namespace ClinicWise.Financial.Invoices.Controls
             txtFilter.Text = SelectedInvoice.InvoiceNumber;
             gbFilter.Enabled = false;
         }
+
+        private void ctrlInvoiceCardWithFilter_Load(object sender, EventArgs e)
+        {
+            cbFilterBy.Text = "Invoice Number";
+            txtFilter.Focus();
+        }
     }
 }
