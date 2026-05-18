@@ -115,6 +115,20 @@ namespace ClinicWise.Financial.Invoices
 
         private async void btnEditInvoice_Click(object sender, EventArgs e)
         {
+            enInvoiceStatus status = (enInvoiceStatus)dgvManageInvoices.CurrentRow.Cells[8].Value;
+
+            if (status == enInvoiceStatus.PartiallyPaid ||
+                status == enInvoiceStatus.Paid)
+            {
+                MessageBox.Show(
+                    $"Invoice Already in Payment Phase",
+                    "Draft",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
             int invoiceID = (int)dgvManageInvoices.CurrentRow.Cells[0].Value;
             frmAddEditInvoice frm = new frmAddEditInvoice(invoiceID, enInvoiceLoadMode.ByInvoice);
             frm.ShowDialog();
@@ -124,6 +138,20 @@ namespace ClinicWise.Financial.Invoices
 
         private async void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            enInvoiceStatus status = (enInvoiceStatus)dgvManageInvoices.CurrentRow.Cells[8].Value;
+
+            if (status == enInvoiceStatus.PartiallyPaid ||
+                status == enInvoiceStatus.Paid)
+            {
+                MessageBox.Show(
+                    $"Invoice Already in Payment Phase",
+                    "Draft",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
             int invoiceID = (int)dgvManageInvoices.CurrentRow.Cells[0].Value;
             frmAddEditInvoice frm = new frmAddEditInvoice(invoiceID, enInvoiceLoadMode.ByInvoice);
             frm.ShowDialog();

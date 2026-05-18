@@ -155,5 +155,10 @@ namespace ClinicWise.Financial.Payments
                     return enPaymentMethod.Insurance;
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
