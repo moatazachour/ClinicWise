@@ -16,6 +16,21 @@ namespace ClinicWise.Financial.Invoices.Controls
             InitializeComponent();
         }
 
+        public async Task LoadForDetails(int invoiceID)
+        {
+            InvoiceDTO invoiceDTO = await clsInvoice.FindAsync(invoiceID);
+
+            lblInvoiceID.Text = invoiceDTO.InvoiceID.ToString();
+            lblAppointmentID.Text = invoiceDTO.AppointmentID.ToString();
+            lblInvoiceNumber.Text = invoiceDTO.InvoiceNumber;
+            lblPatient.Text = await _GetPatientFullName(invoiceDTO.PatientID);
+            lblStatus.Text = _GetStatusName(invoiceDTO.Status);
+            lblSubTotal.Text = $"{invoiceDTO.SubTotal} DNT";
+            lblTotalAmount.Text = $"{invoiceDTO.TotalAmount} DNT";
+            lblAmountPaid.Text = $"{invoiceDTO.AmountPaid} DNT";
+            lblOutstandingAmount.Text = $"{invoiceDTO.OutstandingBalance} DNT";
+        }
+
         public async Task LoadInformations(int invoiceID)
         {
             InvoiceDTO invoiceDTO = await clsInvoice.FindAsync(invoiceID);

@@ -249,5 +249,12 @@ namespace ClinicWise.Financial.Invoices
 
             await _LoadDataAsync();
         }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int invoiceID = (int)dgvManageInvoices.CurrentRow.Cells[0].Value;
+            frmInvoiceDetails frm = new frmInvoiceDetails(invoiceID);
+            frm.ShowDialog();
+        }
     }
 }
