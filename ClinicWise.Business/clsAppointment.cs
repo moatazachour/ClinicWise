@@ -1,4 +1,6 @@
-﻿using ClinicWise.Contracts.Appointments;
+﻿using ClinicWise.Business.Services;
+using ClinicWise.Contracts.Appointments;
+using ClinicWise.Contracts.Patients;
 using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -206,6 +208,42 @@ namespace ClinicWise.Business
         private static bool _DoesAppointmentHaveMedicalRecord(int appointmentID)
         {
             return clsMedicalRecordData.DoesThisAppointmentHaveMedicalRecord(appointmentID);
+        }
+
+        public static void MarkNoShowAfter(int noShowThresholdMinutes)
+        {
+            List<AppointmentDisplayDTO> noShowAppointments = clsAppointmentData.MarkAndGetNoShowAppointments(noShowThresholdMinutes);
+
+            _SendNoShowEmail(noShowAppointments);
+        }
+
+        private static void _SendNoShowEmail(List<AppointmentDisplayDTO> noShowAppointments)
+        {
+            string to;
+            string subject;
+            string body;
+
+            foreach (AppointmentDisplayDTO appointmentDisplay in noShowAppointments)
+            {
+                to = appointmentDisplay.PatientEmail;
+
+                if (string.IsNullOrWhiteSpace(to))
+                    continue;
+
+                subject = "Missed Appointment Notification";
+
+                body = $@"Dear {appointmentDisplay.PatientName},
+
+We noticed that you missed your appointment scheduled for {appointmentDisplay.Date:dddd, MMMM dd, yyyy} at {appointmentDisplay.Date:hh:mm tt} with Dr. {appointmentDisplay.DoctorFullLabel}.
+
+If you would like to reschedule, please contact us at your earliest convenience.
+
+We hope to see you soon.
+
+Best regards,
+ClinicWise Team";
+                EmailService.SendEmail(to, subject, body);
+            }
         }
     }
 

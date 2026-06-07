@@ -625,5 +625,46 @@ namespace ClinicWise.DataAccess
 
             return rowsAffected > 0;
         }
+
+        public static List<AppointmentDisplayDTO> MarkAndGetNoShowAppointments(int noShowThresholdMinutes)
+        {
+            List<AppointmentDisplayDTO> appointments = new List<AppointmentDisplayDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_MarkAndGetNoShowAppointments", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@NoShowThresholdMinutes", SqlDbType.Int).Value = noShowThresholdMinutes;
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            appointments.Add(
+                                new AppointmentDisplayDTO(
+                                    (int)reader["AppointmentID"],
+                                    (string)reader["DoctorFullLabel"],
+                                    (string)reader["PatientName"],
+                                    reader["PatientEmail"] as string,
+                                    reader["Date"] as DateTime?,
+                                    (string)reader["StatusCaption"],
+                                    (string)reader["ScheduledBy"]
+                                )
+                            );
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return appointments;
+        }
     }
 }

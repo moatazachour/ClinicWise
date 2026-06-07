@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicWise.Service.Jobs;
+using System;
 using System.Configuration;
 using System.ServiceProcess;
 using System.Threading.Tasks;
@@ -59,7 +60,7 @@ namespace ClinicWise.Service
 
         private void RunAllJobs()
         {
-            throw new NotImplementedException();
+            new NoShowMarkingJob().Run();
         }
 
         public void StartInConsole()

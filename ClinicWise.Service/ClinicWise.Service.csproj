@@ -55,6 +55,7 @@
     <Compile Include="ClinicWiseService.Designer.cs">
       <DependentUpon>ClinicWiseService.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jobs\NoShowMarkingJob.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,8 +68,6 @@
       <Name>ClinicWise.Business</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Jobs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

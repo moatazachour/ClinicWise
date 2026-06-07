@@ -12,6 +12,7 @@ namespace ClinicWise.Contracts.Appointments
         public DateTime? Date { get; set; }
         public string StatusCaption { get; set; }
         public string ScheduledBy { get; set; }
+        public string PatientEmail { get; set; }
 
         public AppointmentDisplayDTO(
             int appointmentID, 
@@ -44,6 +45,24 @@ namespace ClinicWise.Contracts.Appointments
             DoctorFullLabel = doctorFullLabel;
             PatientID = patientID;
             PatientName = patientName;
+            Date = date;
+            StatusCaption = statusCaption;
+            ScheduledBy = scheduledBy;
+        }
+
+        public AppointmentDisplayDTO(
+            int appointmentID,
+            string doctorFullLabel,
+            string patientName,
+            string patientEmail,
+            DateTime? date,
+            string statusCaption,
+            string scheduledBy)
+        {
+            AppointmentID = appointmentID;
+            DoctorFullLabel = doctorFullLabel;
+            PatientName = patientName;
+            PatientEmail = patientEmail;
             Date = date;
             StatusCaption = statusCaption;
             ScheduledBy = scheduledBy;

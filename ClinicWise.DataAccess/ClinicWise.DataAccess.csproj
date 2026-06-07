@@ -85,6 +85,7 @@
     <Content Include="StoredProcedures\Appointments\Appointment_GetThisWeek.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetTodays.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_GetTomorrows.sql" />
+    <Content Include="StoredProcedures\Appointments\Appointment_MarkAndGetNoShowAppointments.sql" />
     <Content Include="StoredProcedures\Appointments\Appointment_Update.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_AddNew.sql" />
     <Content Include="StoredProcedures\Doctors\Doctor_Delete.sql" />
