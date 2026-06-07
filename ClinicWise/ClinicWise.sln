@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicWise", "ClinicWise.csproj", "{9F3CC4C2-B7B7-401B-8EF3-EAB3691D63A0}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicWise.DataAccess", "..\ClinicWise.DataAccess\ClinicWise.DataAccess.csproj", "{0FA4686B-A289-48DB-97F7-3ECCE12C5921}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicWise.Contracts", "..\ClinicWise.Contracts\ClinicWise.Contracts.csproj", "{8AAD3F2D-2020-46C8-9A40-F79EA4ADAEFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicWise.Service", "..\ClinicWise.Service\ClinicWise.Service.csproj", "{C73F1105-40B4-41F8-B62E-01A72720423D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8AAD3F2D-2020-46C8-9A40-F79EA4ADAEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AAD3F2D-2020-46C8-9A40-F79EA4ADAEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AAD3F2D-2020-46C8-9A40-F79EA4ADAEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C73F1105-40B4-41F8-B62E-01A72720423D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C73F1105-40B4-41F8-B62E-01A72720423D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C73F1105-40B4-41F8-B62E-01A72720423D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C73F1105-40B4-41F8-B62E-01A72720423D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
