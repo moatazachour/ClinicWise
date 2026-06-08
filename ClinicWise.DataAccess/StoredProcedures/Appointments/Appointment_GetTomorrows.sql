@@ -1,9 +1,15 @@
-create procedure Appointment_GetTomorrows
+alter procedure Appointment_GetTomorrows
 as
 begin
 	set nocount on;
 
-	select *
+	select
+		AppointmentID,
+		DoctorFullLabel,
+		PatientName,
+		Date,
+		StatusCaption,
+		ScheduledBy
 	from GetTomorrowsAppointments_View
 	order by Date desc
 end;

@@ -45,7 +45,7 @@ namespace ClinicWise.Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message); // replace with real logging later
+                Console.WriteLine(ex); // replace with real logging later
             }
             finally
             {
@@ -61,6 +61,7 @@ namespace ClinicWise.Service
         private void RunAllJobs()
         {
             new NoShowMarkingJob().Run();
+            new AppointmentReminderJob().Run();
         }
 
         public void StartInConsole()

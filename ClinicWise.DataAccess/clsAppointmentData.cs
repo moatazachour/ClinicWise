@@ -666,5 +666,71 @@ namespace ClinicWise.DataAccess
 
             return appointments;
         }
+
+        public static List<AppointmentDisplayDTO> GetPendingReminderAppointments()
+        {
+            List<AppointmentDisplayDTO> appointments = new List<AppointmentDisplayDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_GetTomorrowsPendingReminder", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            appointments.Add(
+                                new AppointmentDisplayDTO(
+                                    (int)reader["AppointmentID"],
+                                    (string)reader["DoctorFullLabel"],
+                                    (string)reader["PatientName"],
+                                    reader["PatientEmail"] as string,
+                                    reader["Date"] as DateTime?,
+                                    (string)reader["StatusCaption"],
+                                    (string)reader["ScheduledBy"]
+                                )
+                            );
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return appointments;
+        }
+
+        public static bool MarkReminderAsSent(int appointmentID)
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Appointment_MarkReminderAsSent", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@AppointmentID", SqlDbType.Int).Value = appointmentID;
+                connection.Open();
+
+                try
+                {
+                    rowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+
+            return rowsAffected > 0;
+        }
     }
 }

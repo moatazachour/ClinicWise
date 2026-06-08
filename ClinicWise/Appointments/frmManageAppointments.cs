@@ -72,6 +72,8 @@ namespace ClinicWise.Appointments
 
             if (dgvManageAppointments.Columns["PatientID"] != null)
                 dgvManageAppointments.Columns["PatientID"].Visible = false;
+
+            dgvManageAppointments.Columns["PatientEmail"].Visible = false;
         }
 
         private async void frmManageAppointments_Load(object sender, EventArgs e)

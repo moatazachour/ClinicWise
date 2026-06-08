@@ -22,6 +22,7 @@ namespace ClinicWise.Business
         public DateTime? Date { get; set; }
         public enAppointmentStatus Status { get; set; }
         public int ScheduledByUserID { get; set; }
+        public bool ReminderSent { get; set; } = false;
 
         public clsAppointment()
         {
@@ -214,6 +215,9 @@ namespace ClinicWise.Business
         {
             List<AppointmentDisplayDTO> noShowAppointments = clsAppointmentData.MarkAndGetNoShowAppointments(noShowThresholdMinutes);
 
+            if (noShowAppointments.Count == 0)
+                return;
+
             _SendNoShowEmail(noShowAppointments);
         }
 
@@ -243,6 +247,49 @@ We hope to see you soon.
 Best regards,
 ClinicWise Team";
                 EmailService.SendEmail(to, subject, body);
+            }
+        }
+
+        public static void ProcessAppointmentReminders()
+        {
+            List<AppointmentDisplayDTO> pendingReminderAppointments = clsAppointmentData.GetPendingReminderAppointments();
+
+            if (pendingReminderAppointments.Count == 0)
+                return;
+
+            _SendAndMarkAppointmentReminders(pendingReminderAppointments);
+        }
+
+        private static void _SendAndMarkAppointmentReminders(List<AppointmentDisplayDTO> pendingReminderAppointments)
+        {
+            string to;
+            string subject;
+            string body;
+
+            foreach (AppointmentDisplayDTO appointmentDisplay in pendingReminderAppointments)
+            {
+                to = appointmentDisplay.PatientEmail;
+
+                if (string.IsNullOrWhiteSpace(to))
+                    continue;
+
+                subject = $"Appointment Reminder – Tomorrow at {appointmentDisplay.Date:hh:mm tt}";
+
+                body = $@"Dear {appointmentDisplay.PatientName},
+
+This is a friendly reminder that you have an appointment scheduled for tomorrow, {appointmentDisplay.Date:dddd, MMMM dd, yyyy} at {appointmentDisplay.Date:hh:mm tt} with Dr. {appointmentDisplay.DoctorFullLabel}.
+
+Please arrive 10 minutes early to complete any necessary paperwork.
+
+If you need to reschedule or cancel, please contact us as soon as possible so we can accommodate other patients.
+
+We look forward to seeing you.
+
+Warm regards,
+ClinicWise Team";
+                EmailService.SendEmail(to, subject, body);
+
+                clsAppointmentData.MarkReminderAsSent(appointmentDisplay.AppointmentID);
             }
         }
     }

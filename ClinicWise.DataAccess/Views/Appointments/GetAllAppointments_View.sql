@@ -20,7 +20,8 @@ as
 				when a.Status = 5 Then 'Rescheduled'
 				when a.Status = 6 Then 'NoShow'
 			end,
-		u.Username as ScheduledBy
+		u.Username as ScheduledBy,
+		a.ReminderSent
 	from Appointments a
 		inner join Doctors d
 			on a.DoctorID = d.DoctorID
@@ -35,5 +36,5 @@ as
 		inner join Users u
 			on a.ScheduledBy = u.UserID
 )
-select AppointmentID, DoctorID, DoctorFullLabel, PatientID, PatientName, PatientEmail, Date, StatusCaption, ScheduledBy
+select AppointmentID, DoctorID, DoctorFullLabel, PatientID, PatientName, PatientEmail, Date, StatusCaption, ScheduledBy, ReminderSent
 from AppointmentData;
