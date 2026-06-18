@@ -60,8 +60,9 @@ namespace ClinicWise.Service
 
         private void RunAllJobs()
         {
-            new NoShowMarkingJob().Run();
-            new AppointmentReminderJob().Run();
+            // new NoShowMarkingJob().Run();
+            //new AppointmentReminderJob().Run();
+            new InvoiceReminderJob().Run();
         }
 
         public void StartInConsole()

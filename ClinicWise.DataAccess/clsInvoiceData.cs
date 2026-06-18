@@ -248,6 +248,52 @@ namespace ClinicWise.DataAccess
             }
         }
 
+        public static List<InvoicesDueForReminderDTO> GetDueForReminder(
+            byte invoiceReminderMaxCount, 
+            byte invoiceReminderIntervalDays)
+        {
+            List<InvoicesDueForReminderDTO> unpaidInvoices = new List<InvoicesDueForReminderDTO>();
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Invoice_GetInvoicesDueForReminder", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@InvoiceReminderIntervalDays", SqlDbType.TinyInt).Value = invoiceReminderIntervalDays;
+                command.Parameters.Add("@InvoiceReminderMaxCount", SqlDbType.TinyInt).Value = invoiceReminderMaxCount;
+
+
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            unpaidInvoices.Add(new InvoicesDueForReminderDTO
+                            {
+                                InvoiceID = (int)reader["InvoiceID"],
+                                InvoiceNumber = (string)reader["InvoiceNumber"],
+                                PatientID = (int)reader["PatientID"],
+                                TotalAmount = (decimal)reader["TotalAmount"],
+                                OutstandingBalance = (decimal)reader["OutstandingBalance"],
+                                IssuedAt = (DateTime)reader["IssuedAt"],
+                                RemindersSentCount = (int)reader["RemindersSentCount"],
+                                LastReminderSentAt = reader["LastReminderSentAt"] as DateTime?
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+
+                return unpaidInvoices;
+            }
+        }
+
         public static bool Update(
             int invoiceID, 
             decimal subTotal, 

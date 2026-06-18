@@ -1,9 +1,12 @@
-﻿using ClinicWise.Contracts.Invoices;
+﻿using ClinicWise.Business.Services;
+using ClinicWise.Contracts.Guardians;
+using ClinicWise.Contracts.Invoices;
+using ClinicWise.Contracts.Patients;
 using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using System.Threading.Tasks;
+using static ClinicWise.Business.InvoiceReminderRecipientInformations;
 
 namespace ClinicWise.Business
 {
@@ -28,7 +31,7 @@ namespace ClinicWise.Business
         public int? IssuedByUserID { get; set; }
         public DateTime? IssuedAt { get; set; }
         public int? VoidedByUserID { get; set; }
-        public DateTime? VoidedAt { get; set; } 
+        public DateTime? VoidedAt { get; set; }
         public string VoidReason { get; set; }
         public string Notes { get; set; }
 
@@ -58,24 +61,24 @@ namespace ClinicWise.Business
         }
 
         public clsInvoice(
-            int invoiceID, 
-            string invoiceNumber, 
-            int appointmentID, 
-            int patientID, 
-            decimal subTotal, 
-            decimal discountAmount, 
-            decimal? discountPercent, 
-            enDiscountType? discountType, 
-            int? discountAuthorizedByUserID, 
-            decimal totalAmount, 
-            decimal amountPaid, 
-            decimal? outstandingBalance, 
-            enInvoiceStatus status, 
-            int? issuedByUserID, 
-            DateTime? issuedAt, 
+            int invoiceID,
+            string invoiceNumber,
+            int appointmentID,
+            int patientID,
+            decimal subTotal,
+            decimal discountAmount,
+            decimal? discountPercent,
+            enDiscountType? discountType,
+            int? discountAuthorizedByUserID,
+            decimal totalAmount,
+            decimal amountPaid,
+            decimal? outstandingBalance,
+            enInvoiceStatus status,
+            int? issuedByUserID,
+            DateTime? issuedAt,
             int? voidedByUserID,
             DateTime? voidedAt,
-            string voidReason, 
+            string voidReason,
             string notes)
         {
             InvoiceID = invoiceID;
@@ -161,5 +164,120 @@ namespace ClinicWise.Business
         {
             return await clsInvoiceData.GetByInvoiceNumberAsync(invoiceNumber);
         }
+
+        public static void ProcessInvoiceReminders(byte invoiceReminderMaxCount, byte invoiceReminderIntervalDays)
+        {
+            List<InvoicesDueForReminderDTO> invoiceDueForReminder = clsInvoiceData.GetDueForReminder(invoiceReminderMaxCount, invoiceReminderIntervalDays);
+            InvoiceReminderRecipientInformations recipientInfo;
+
+            foreach (var invoice in invoiceDueForReminder)
+            {
+                recipientInfo = _GetRecipientInfos(invoice.PatientID);
+
+                if (recipientInfo == null || string.IsNullOrWhiteSpace(recipientInfo.Email))
+                {
+                    clsGlobal.LogWarning($"The is no email to send to for the patient with ID = {invoice.PatientID}");
+                    continue;
+                }
+                _SendAndLogInvoiceReminder(invoice, recipientInfo);
+            }
+        }
+
+        private static InvoiceReminderRecipientInformations _GetRecipientInfos(int patientID)
+        {
+            InvoiceReminderRecipientInformations recipientInfo = new InvoiceReminderRecipientInformations();
+
+            PatientDTO patientDTO = clsPatient.Find(patientID);
+            if (patientDTO == null)
+                return null;
+
+            clsPatient patient = new clsPatient(patientDTO);
+
+            recipientInfo.PatientName = patient.FullName;
+
+            if (patient.IsAdult)
+            {
+                recipientInfo.Email = patient.Email;
+                recipientInfo.RecipientType = enRecipientType.Patient;
+            }
+            else
+            {
+                if (patient.GuardianID.HasValue)
+                {
+                    GuardianDTO guardianDTO = clsGuardian.Find(patient.GuardianID.Value);
+
+                    recipientInfo.Email = guardianDTO.Email;
+                    recipientInfo.RecipientType = enRecipientType.Guardian;
+                    recipientInfo.PatientName = patient.FullName;
+                    recipientInfo.GuardianName = guardianDTO.FullName;
+                }
+                else
+                {
+                    recipientInfo = null;
+                }
+            }
+
+            return recipientInfo;
+        }
+
+        private static void _SendAndLogInvoiceReminder(
+            InvoicesDueForReminderDTO invoice,
+            InvoiceReminderRecipientInformations recipientInfo)
+        {
+            string to;
+            string subject;
+            string body;
+
+            to = recipientInfo.Email;
+            subject = $"Payment Reminder – Outstanding Balance on Invoice {invoice.InvoiceNumber}";
+            body = _GetEmailBody(recipientInfo, invoice);
+            
+            EmailService.SendEmail(to, subject, body);
+
+            if (!clsInvoiceReminder.AddNew(
+                invoice.InvoiceID,
+                (byte)(invoice.RemindersSentCount + 1), 
+                recipientInfo.Email, 
+                DateTime.Now))
+            {
+                clsGlobal.LogWarning("The reminder persistance failed!");
+            }
+        }
+
+        private static string _GetEmailBody(InvoiceReminderRecipientInformations recipientInfo, InvoicesDueForReminderDTO invoice)
+        {
+            if (recipientInfo.RecipientType == enRecipientType.Patient)
+                return $@"Dear {recipientInfo.PatientName},
+
+This is a friendly reminder that you have an outstanding balance 
+of {invoice.OutstandingBalance:C} on invoice {invoice.InvoiceNumber}, 
+issued on {invoice.IssuedAt:MMMM dd, yyyy}.
+
+Please contact us at your earliest convenience to arrange payment.
+
+Warm regards,
+ClinicWise Team";
+            
+            return $@"Dear {recipientInfo.GuardianName},
+
+This is a friendly reminder that your dependent {recipientInfo.PatientName} 
+has an outstanding balance of {invoice.OutstandingBalance:C} on invoice 
+{invoice.InvoiceNumber}, issued on {invoice.IssuedAt:MMMM dd, yyyy}.
+
+Please contact us at your earliest convenience to arrange payment.
+
+Warm regards,
+ClinicWise Team";
+        }
+    }
+
+    internal class InvoiceReminderRecipientInformations
+    {
+        public enum enRecipientType { Patient, Guardian }
+
+        public string PatientName { get; set; }
+        public string GuardianName { get; set; }
+        public string Email { get; set; }
+        public enRecipientType RecipientType { get; set; }
     }
 }

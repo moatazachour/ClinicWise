@@ -49,6 +49,7 @@
     <Compile Include="clsGuardianData.cs" />
     <Compile Include="clsInvoiceData.cs" />
     <Compile Include="clsInvoiceItemData.cs" />
+    <Compile Include="clsInvoiceReminderData.cs" />
     <Compile Include="clsMedicalRecordData.cs" />
     <Compile Include="clsMedicamentData.cs" />
     <Compile Include="clsPatientData.cs" />
@@ -107,11 +108,14 @@
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_GetByID.sql" />
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_GetByInvoice.sql" />
     <Content Include="StoredProcedures\InvoiceItems\InvoiceItem_Update.sql" />
+    <Content Include="StoredProcedures\InvoiceReminders\InvoiceReminder_AddNew.sql" />
+    <Content Include="StoredProcedures\InvoiceReminders\InvoiceReminder_GetLatestByInvoiceID.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetAll.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByAppointmentAndStatus.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByID.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetByInvoiceNumber.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetLatestInvoiceByAppointmentID.sql" />
+    <Content Include="StoredProcedures\Invoices\Invoice_GetInvoicesDueForReminder.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_Update.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_DoesAppointmentHaveMedicalRecord.sql" />

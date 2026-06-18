@@ -56,6 +56,7 @@
       <DependentUpon>ClinicWiseService.cs</DependentUpon>
     </Compile>
     <Compile Include="Jobs\AppointmentReminderJob.cs" />
+    <Compile Include="Jobs\InvoiceReminderJob.cs" />
     <Compile Include="Jobs\NoShowMarkingJob.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

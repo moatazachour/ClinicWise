@@ -74,7 +74,7 @@ namespace ClinicWise.DataAccess
             }
         }
 
-        public static async Task<GuardianDTO> GetByID(int guardianID)
+        public static async Task<GuardianDTO> GetByIDAsync(int guardianID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Guardian_GetByID", connection))
@@ -119,5 +119,49 @@ namespace ClinicWise.DataAccess
             }
         }
 
+        public static GuardianDTO GetByID(int guardianID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Guardian_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@GuardianID", SqlDbType.Int).Value = guardianID;
+
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new GuardianDTO
+                            (
+                                guardianID,
+                                (int)reader["PersonID"],
+                                (string)reader["NationalNo"],
+                                (string)reader["FirstName"],
+                                (string)reader["LastName"],
+                                (DateTime)reader["DateOfBirth"],
+                                (byte)reader["Gender"],
+                                reader["Phone"] as string,
+                                reader["Email"] as string,
+                                reader["Address"] as string,
+                                reader["ImagePath"] as string,
+                                (int)reader["RelationshipID"],
+                                (int)reader["CreatedByUserID"]
+                            );
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
     }
 }

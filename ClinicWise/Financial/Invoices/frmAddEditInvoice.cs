@@ -336,7 +336,10 @@ namespace ClinicWise.Financial.Invoices
             }
 
             if (_Invoice.Status == enInvoiceStatus.Issued)
+            {
                 _Invoice.OutstandingBalance = _Invoice.TotalAmount;
+                _Invoice.IssuedAt = DateTime.Now;
+            }
 
             if (_Invoice.Save())
             {

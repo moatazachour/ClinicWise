@@ -115,7 +115,12 @@ namespace ClinicWise.Business
 
         public new async static Task<GuardianDTO> FindAsync(int guardianID)
         {
-            return await clsGuardianData.GetByID(guardianID);
+            return await clsGuardianData.GetByIDAsync(guardianID);
+        }
+
+        public static GuardianDTO Find(int guardianID)
+        {
+            return clsGuardianData.GetByID(guardianID);
         }
 
         public GuardianDTO ToDTO()

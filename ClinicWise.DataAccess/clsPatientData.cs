@@ -123,7 +123,7 @@ namespace ClinicWise.DataAccess
             }
         }
 
-        public static async Task<PatientDTO> GetByID(int patientID)
+        public static async Task<PatientDTO> GetByIDAsync(int patientID)
         {
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             using (SqlCommand command = new SqlCommand("Patient_GetByID", connection))
@@ -171,6 +171,56 @@ namespace ClinicWise.DataAccess
                 }
             }
         }
+
+        public static PatientDTO GetByID(int patientID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            using (SqlCommand command = new SqlCommand("Patient_GetByID", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@PatientID", SqlDbType.Int).Value = patientID;
+
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new PatientDTO
+                            {
+                                PatientID = patientID,
+                                PersonID = (int)reader["PersonID"],
+                                NationalNo = reader["NationalNo"] as string,
+                                FirstName = (string)reader["FirstName"],
+                                LastName = (string)reader["LastName"],
+                                DateOfBirth = (DateTime)reader["DateOfBirth"],
+                                Gender = (byte)reader["Gender"],
+                                Phone = reader["Phone"] as string,
+                                Email = reader["Email"] as string,
+                                Address = reader["Address"] as string,
+                                ImagePath = reader["ImagePath"] == DBNull.Value
+                                                ? null
+                                                : (string)reader["ImagePath"],
+                                CreatedByUserID = (int)reader["CreatedByUserID"],
+                                GuardianID = reader["GuardianID"] == DBNull.Value
+                                                ? (int?)null
+                                                : (int)reader["GuardianID"]
+                            };
+                        }
+
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clsGlobal.LogError(ex);
+                    throw;
+                }
+            }
+        }
+
 
         public static bool Delete(int patientID, int deletedByUserID)
         {

@@ -15,6 +15,21 @@ namespace ClinicWise.Business
         public new enMode Mode = enMode.AddNew;
 
         public int PatientID { get; set; }
+        public int Age => _GetAge();
+        public bool IsAdult => Age >= 18;
+
+        private int _GetAge()
+        {
+            DateTime today = DateTime.Today;
+
+            int age = today.Year - DateOfBirth.Year;
+
+            if (today < DateOfBirth.AddYears(age))
+                age--;
+
+            return age;
+        }
+
         public int? GuardianID { get; set; }
 
         private GuardianDTO _GuardianInfo;
@@ -109,7 +124,12 @@ namespace ClinicWise.Business
 
         public new async static Task<PatientDTO> FindAsync(int patientID)
         {
-            return await clsPatientData.GetByID(patientID);
+            return await clsPatientData.GetByIDAsync(patientID);
+        }
+
+        public static PatientDTO Find(int patientID)
+        {
+            return clsPatientData.GetByID(patientID);
         }
 
         public async static Task<List<PatientDisplayDTO>> GetAllAsync()

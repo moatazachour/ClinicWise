@@ -52,6 +52,7 @@
     <Compile Include="clsGuardianRelationship.cs" />
     <Compile Include="clsInvoice.cs" />
     <Compile Include="clsInvoiceItem.cs" />
+    <Compile Include="clsInvoiceReminder.cs" />
     <Compile Include="clsMedicalRecord.cs" />
     <Compile Include="clsMedicament.cs" />
     <Compile Include="clsPatient.cs" />

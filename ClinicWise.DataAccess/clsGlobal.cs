@@ -19,5 +19,17 @@ namespace ClinicWise.DataAccess
 
             EventLog.WriteEntry(SourceName, Message, EventLogEntryType.Error);
         }
+
+        static public void LogWarning(string warning, string SourceName = "ClinicWise")
+        {
+            if (!EventLog.SourceExists(SourceName))
+            {
+                EventLog.CreateEventSource(SourceName, "Application");
+            }
+
+            string Message = warning;
+
+            EventLog.WriteEntry(SourceName, Message, EventLogEntryType.Warning);
+        }
     }
 }
