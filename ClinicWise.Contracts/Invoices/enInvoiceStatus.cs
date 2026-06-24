@@ -7,6 +7,7 @@
         PartiallyPaid,
         Paid,
         Waived,
-        Void
+        Void,
+        Overdue
     }
 }

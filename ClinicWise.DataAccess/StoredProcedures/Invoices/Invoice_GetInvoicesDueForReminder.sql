@@ -30,7 +30,7 @@ BEGIN
         I.IssuedAt
 
     HAVING
-        COUNT(IR.InvoiceReminderID) < @InvoiceReminderMaxCount
+        COUNT(IR.InvoiceReminderID) <= @InvoiceReminderMaxCount
         AND DATEDIFF(DAY, ISNULL(MAX(IR.SentAt), I.IssuedAt), GETDATE()) >= @InvoiceReminderIntervalDays;
 
 END;

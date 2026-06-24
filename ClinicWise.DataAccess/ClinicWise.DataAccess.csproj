@@ -116,6 +116,7 @@
     <Content Include="StoredProcedures\Invoices\Invoice_GetByInvoiceNumber.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetLatestInvoiceByAppointmentID.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_GetInvoicesDueForReminder.sql" />
+    <Content Include="StoredProcedures\Invoices\Invoice_MarkOverdue.sql" />
     <Content Include="StoredProcedures\Invoices\Invoice_Update.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_Add.sql" />
     <Content Include="StoredProcedures\MedicalRecords\MedicalRecord_DoesAppointmentHaveMedicalRecord.sql" />

@@ -5,6 +5,7 @@ using ClinicWise.Contracts.Patients;
 using ClinicWise.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.Pkcs;
 using System.Threading.Tasks;
 using static ClinicWise.Business.InvoiceReminderRecipientInformations;
 
@@ -172,6 +173,11 @@ namespace ClinicWise.Business
 
             foreach (var invoice in invoiceDueForReminder)
             {
+                if (invoice.RemindersSentCount >= invoiceReminderMaxCount)
+                {
+                    _MarkInvoiceAsOverdue(invoice);
+                    continue;
+                }
                 recipientInfo = _GetRecipientInfos(invoice.PatientID);
 
                 if (recipientInfo == null || string.IsNullOrWhiteSpace(recipientInfo.Email))
@@ -181,6 +187,69 @@ namespace ClinicWise.Business
                 }
                 _SendAndLogInvoiceReminder(invoice, recipientInfo);
             }
+        }
+
+        private static void _MarkInvoiceAsOverdue(InvoicesDueForReminderDTO invoice)
+        {
+            if (!clsInvoiceData.MarkOverdue(invoice.InvoiceID))
+                clsGlobal.LogWarning("Invoice Overdue Marking Failed!");
+
+            InvoiceReminderRecipientInformations recipientInfo = _GetRecipientInfos(invoice.PatientID);
+            if (recipientInfo == null || string.IsNullOrWhiteSpace(recipientInfo.Email))
+            {
+                clsGlobal.LogWarning($"The is no email to send to for the patient with ID = {invoice.PatientID}");
+                return;
+            }
+
+            _SendFinalNotice(invoice, recipientInfo);
+        }
+
+        private static void _SendFinalNotice(
+            InvoicesDueForReminderDTO invoice, 
+            InvoiceReminderRecipientInformations recipientInfo)
+        {
+            string to;
+            string subject;
+            string body;
+
+            to = recipientInfo.Email;
+            subject = $"Final Notice – Invoice {invoice.InvoiceNumber} Now Overdue";
+            body = _GetFinalNoticeEmailBody(recipientInfo, invoice);
+
+            EmailService.SendEmail(to, subject, body);
+        }
+
+        private static string _GetFinalNoticeEmailBody(
+            InvoiceReminderRecipientInformations recipientInfo, 
+            InvoicesDueForReminderDTO invoice)
+        {
+            if (recipientInfo.RecipientType == enRecipientType.Patient)
+                return $@"Dear {recipientInfo.PatientName},
+
+Despite our previous reminders, the outstanding balance of 
+{invoice.OutstandingBalance:C} on invoice {invoice.InvoiceNumber}, 
+issued on {invoice.IssuedAt:MMMM dd, yyyy}, remains unpaid.
+
+Your invoice has now been marked as overdue. We strongly urge 
+you to contact us as soon as possible to settle this balance 
+and avoid any further action.
+
+Warm regards,
+ClinicWise Team";
+
+            return $@"Dear {recipientInfo.GuardianName},
+
+Despite our previous reminders, the outstanding balance of 
+{invoice.OutstandingBalance:C} on invoice {invoice.InvoiceNumber} 
+for your dependent {recipientInfo.PatientName}, issued on 
+{invoice.IssuedAt:MMMM dd, yyyy}, remains unpaid.
+
+This invoice has now been marked as overdue. We strongly urge 
+you to contact us as soon as possible to settle this balance 
+and avoid any further action.
+
+Warm regards,
+ClinicWise Team";
         }
 
         private static InvoiceReminderRecipientInformations _GetRecipientInfos(int patientID)
@@ -230,7 +299,7 @@ namespace ClinicWise.Business
 
             to = recipientInfo.Email;
             subject = $"Payment Reminder – Outstanding Balance on Invoice {invoice.InvoiceNumber}";
-            body = _GetEmailBody(recipientInfo, invoice);
+            body = _GetInvoiceReminderEmailBody(recipientInfo, invoice);
             
             EmailService.SendEmail(to, subject, body);
 
@@ -244,7 +313,7 @@ namespace ClinicWise.Business
             }
         }
 
-        private static string _GetEmailBody(InvoiceReminderRecipientInformations recipientInfo, InvoicesDueForReminderDTO invoice)
+        private static string _GetInvoiceReminderEmailBody(InvoiceReminderRecipientInformations recipientInfo, InvoicesDueForReminderDTO invoice)
         {
             if (recipientInfo.RecipientType == enRecipientType.Patient)
                 return $@"Dear {recipientInfo.PatientName},
