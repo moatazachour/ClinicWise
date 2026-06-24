@@ -69,6 +69,10 @@
       <Project>{c4fb53a0-8ffe-4126-8932-ce90a6b6b6f4}</Project>
       <Name>ClinicWise.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ClinicWise.DataAccess\ClinicWise.DataAccess.csproj">
+      <Project>{0FA4686B-A289-48DB-97F7-3ECCE12C5921}</Project>
+      <Name>ClinicWise.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

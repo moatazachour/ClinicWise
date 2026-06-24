@@ -1,4 +1,5 @@
-﻿using ClinicWise.Service.Jobs;
+﻿using ClinicWise.DataAccess;
+using ClinicWise.Service.Jobs;
 using System;
 using System.Configuration;
 using System.ServiceProcess;
@@ -20,7 +21,7 @@ namespace ClinicWise.Service
         protected override void OnStart(string[] args)
         {
             Console.WriteLine("Service has started");
-            _timer = new Timer(_intervalHours * 60_000); // To change to hour after, currently it is in minutes
+            _timer = new Timer(_intervalHours * 3_600_000);
             _timer.Elapsed += OnTimeElapsed;
             _timer.AutoReset = true;
             _timer.Start();
@@ -30,7 +31,7 @@ namespace ClinicWise.Service
                 try { RunAllJobs(); }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message); // replace with real logging later
+                    clsGlobal.LogError(ex);
                 }
             });
 
@@ -60,8 +61,8 @@ namespace ClinicWise.Service
 
         private void RunAllJobs()
         {
-            // new NoShowMarkingJob().Run();
-            //new AppointmentReminderJob().Run();
+            new NoShowMarkingJob().Run();
+            new AppointmentReminderJob().Run();
             new InvoiceReminderJob().Run();
         }
 
