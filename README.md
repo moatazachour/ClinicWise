@@ -18,18 +18,18 @@ The project focuses on practical clinic workflows: patient and doctor records, g
 
 ## Features
 
-| Area | What it supports |
-| --- | --- |
-| Patients and persons | Shared person records, patient profiles, patient picker screens, image handling, and guardian linking |
-| Doctors | Doctor profiles, specializations, doctor picker screens, and doctor availability checks |
-| Appointments | Scheduling, filtering by date ranges, conflict checks, business-hours validation, and lifecycle status tracking |
-| Medical records | Visit records connected to appointments, diagnosis/notes fields, and prescription item management |
-| Pharmacy | Medication catalog with dosage forms, add/edit flows, detail screens, and reusable medication cards |
-| Prescriptions | Prescription items tied to medical records with dosage, frequency, and duration information |
-| Financials | Visit fees, invoice items, invoices, discounts, voiding, outstanding balances, and payment tracking |
-| Users and roles | Login, user management, role lookup, active/inactive status, and password changes |
-| Background service | Automatic appointment reminders, missed-appointment no-show marking, invoice payment reminders, and final overdue notices |
-| Database layer | Stored procedures, SQL views, triggers, and a scalar function for active visit fee checks |
+| Area                 | What it supports                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Patients and persons | Shared person records, patient profiles, patient picker screens, image handling, and guardian linking                     |
+| Doctors              | Doctor profiles, specializations, doctor picker screens, and doctor availability checks                                   |
+| Appointments         | Scheduling, filtering by date ranges, conflict checks, business-hours validation, and lifecycle status tracking           |
+| Medical records      | Visit records connected to appointments, diagnosis/notes fields, and prescription item management                         |
+| Pharmacy             | Medication catalog with dosage forms, add/edit flows, detail screens, and reusable medication cards                       |
+| Prescriptions        | Prescription items tied to medical records with dosage, frequency, and duration information                               |
+| Financials           | Visit fees, invoice items, invoices, discounts, voiding, outstanding balances, and payment tracking                       |
+| Users and roles      | Login, user management, role lookup, active/inactive status, and password changes                                         |
+| Background service   | Automatic appointment reminders, missed-appointment no-show marking, invoice payment reminders, and final overdue notices |
+| Database layer       | Stored procedures, SQL views, triggers, and a scalar function for active visit fee checks                                 |
 
 ## Domain Rules
 
@@ -81,7 +81,8 @@ public enum enInvoiceStatus
     PartiallyPaid,
     Paid,
     Waived,
-    Void
+    Void,
+    Overdue
 }
 ```
 
@@ -261,7 +262,6 @@ Service-related SQL assets include:
    ```
 
 2. Restore the database backup.
-
    - Open SQL Server Management Studio.
    - Restore `ClinicDB.bak`.
    - Keep or rename the restored database as `ClinicDB`.
@@ -282,7 +282,6 @@ Service-related SQL assets include:
 4. Configure service reminder and email settings.
 
    Open `ClinicWise.Service/App.config` and set:
-
    - `IntervalHours`: how often the service runs all jobs.
    - `NoShowThresholdMinutes`: how long after an appointment time before it can be marked as no-show.
    - `InvoiceReminderMaxCount`: how many invoice reminders are sent before final overdue handling.
@@ -292,7 +291,6 @@ Service-related SQL assets include:
    For Gmail, `SmtpPass` should be an app password, not the normal account password. Avoid committing real production credentials.
 
 5. Build and run the desktop application.
-
    - Open `ClinicWise/ClinicWise.sln`.
    - Restore/build the solution in Visual Studio.
    - Set `ClinicWise` as the startup project.
